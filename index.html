@@ -1331,12 +1331,12 @@ nav{
   pointer-events:none;
 }
 .cta-box h2{
-  font-family:var(--font-display);font-size:clamp(1.6rem,2.5vw,2.2rem);
-  font-weight:700;letter-spacing:-1px;margin-bottom:10px;position:relative;
+  font-family:var(--font-display);font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:700;letter-spacing:-1.5px;margin-bottom:14px;position:relative;
   color:var(--text);
 }
 .cta-box h2 em{font-style:normal;color:var(--accent)}
-.cta-sub{font-size:.92rem;color:var(--text-sub);margin-bottom:32px;position:relative}
+.cta-sub{font-size:1.05rem;color:var(--text);margin-bottom:36px;position:relative;line-height:1.6}
 .cta-form{
   display:flex;gap:10px;justify-content:center;max-width:420px;margin:0 auto;position:relative;
 }
@@ -1348,7 +1348,7 @@ nav{
 }
 .cta-input::placeholder{color:var(--text-dim)}
 .cta-input:focus{border-color:rgba(13,148,136,0.4)}
-.cta-note{margin-top:14px;font-size:.72rem;color:var(--text-dim);position:relative}
+.cta-note{margin-top:18px;font-size:.82rem;color:var(--text-sub);position:relative;font-weight:500}
 
 /* CTA extras */
 .cta-divider {
@@ -2194,6 +2194,22 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   font-weight:700;color:var(--text);margin-bottom:8px;
 }
 .wl-success p{font-size:.88rem;color:var(--text-sub)}
+/* Already joined toast */
+.wl-toast{
+  position:fixed;top:24px;left:50%;transform:translateX(-50%) translateY(-100px);
+  z-index:10000;
+  padding:16px 28px;border-radius:14px;
+  background:var(--accent);color:#fff;
+  font-size:.92rem;font-weight:600;
+  box-shadow:0 8px 32px rgba(13,148,136,0.3);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s;
+  opacity:0;pointer-events:none;
+}
+.wl-toast.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
+
 @media(max-width:560px){
   .wl-row{grid-template-columns:1fr}
   .wl-modal{padding:28px 20px}
@@ -2253,7 +2269,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
           <span class="lang-en">EN</span>
         </button>
       </li>
-      <li><a href="javascript:void(0)" onclick="document.getElementById('waitlistModal').classList.add('open')"><button class="btn btn-nav btn-fill" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</button></a></li>
+      <li><a href="javascript:void(0)" onclick="openWaitlist()"><button class="btn btn-nav btn-fill" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</button></a></li>
     </ul>
   </div>
 </nav>
@@ -2264,7 +2280,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   <div class="hero-brand">Solarian</div>
   <h1 class="hero-title" data-zh="像总经理一样下指令，<span style='color:var(--accent)'>硅基团队</span>交付结果" data-en="Command like a CEO, your <span style='color:var(--accent)'>AI team</span> delivers">像总经理一样下指令，<span style="color:var(--accent)">硅基团队</span>交付结果</h1>
   <div class="hero-btns">
-    <a href="javascript:void(0)" class="btn btn-fill" onclick="document.getElementById('waitlistModal').classList.add('open')">
+    <a href="javascript:void(0)" class="btn btn-fill" onclick="openWaitlist()">
       <span data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
@@ -2460,7 +2476,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   <div class="cta-box wrap reveal">
     <h2 data-zh="加入 <em>Waitlist</em>" data-en="Join the <em>Waitlist</em>">加入 <em>Waitlist</em></h2>
     <p class="cta-sub" data-zh="Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。" data-en="Solarian launches Q2. Tell us your needs and get early access.">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
-    <button class="btn btn-fill btn-waitlist-open" onclick="document.getElementById('waitlistModal').classList.add('open')">
+    <button class="btn btn-fill btn-waitlist-open" onclick="openWaitlist()">
       <span data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
@@ -2469,6 +2485,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 </section>
 
 <!-- ========== WAITLIST MODAL ========== -->
+<div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
 <div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="wl-modal">
     <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
@@ -2581,7 +2598,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 </footer>
 
 <!-- Floating CTA -->
-<a href="javascript:void(0)" class="floating-cta" id="floatingCta" onclick="document.getElementById('waitlistModal').classList.add('open')" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</a>
+<a href="javascript:void(0)" class="floating-cta" id="floatingCta" onclick="openWaitlist()" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</a>
 
 <script>
 // ========== i18n SYSTEM ==========
@@ -4100,6 +4117,16 @@ fObs.observe(heroEl);
 // ========== WAITLIST FORM ==========
 const WAITLIST_ENDPOINT = '/api/waitlist';
 
+function openWaitlist() {
+  if (localStorage.getItem('solarian_waitlist_joined')) {
+    var toast = document.getElementById('wlToast');
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 3000);
+    return;
+  }
+  document.getElementById('waitlistModal').classList.add('open');
+}
+
 function submitWaitlist(e) {
   e.preventDefault();
   const form = document.getElementById('waitlistForm');
@@ -4115,6 +4142,7 @@ function submitWaitlist(e) {
     body: JSON.stringify(data)
   }).then(r => {
     if (r.ok) {
+      localStorage.setItem('solarian_waitlist_joined', '1');
       form.style.display = 'none';
       document.querySelector('.wl-header').style.display = 'none';
       document.getElementById('wlSuccess').style.display = 'block';
