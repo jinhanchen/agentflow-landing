@@ -1941,6 +1941,7 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   gap:28px;align-items:stretch;
   max-width:980px;margin:0 auto 72px;
   text-align:left;
+  overflow:visible;
 }
 .cmp-col{
   padding:32px 32px;border-radius:18px;
@@ -1998,70 +1999,95 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 }
 
 /* Capability row */
+/* Run #10 wrapper — allow tags to overflow right */
+.cmp-after-wrap{
+  position:relative;overflow:visible;
+}
+
+/* Capability tags container — stacked vertically, anchored to right edge */
 .mp-caps{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:24px;max-width:900px;margin:0 auto;
-  overflow:hidden;
+  position:absolute;
+  top:16px;
+  left:calc(100% + 14px);
+  display:flex;flex-direction:column;
+  gap:10px;
+  z-index:2;
+  pointer-events:none;
 }
+.mp-caps.vis{pointer-events:auto}
+
+/* Each tag — horizontal strip */
 .cap-item{
-  padding:32px 28px;border-radius:16px;
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  text-align:center;
-  position:relative;
+  display:flex;align-items:center;gap:12px;
+  padding:10px 20px 10px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(13,148,136,0.2);
+  box-shadow:0 4px 20px -4px rgba(13,148,136,0.12),0 1px 3px rgba(0,0,0,0.04);
+  white-space:nowrap;
   opacity:0;
-  transform:translateX(80px);
-  transition:opacity .6s cubic-bezier(.22,1,.36,1),
-             transform .6s cubic-bezier(.22,1,.36,1),
-             border-color .25s var(--ease),
-             box-shadow .25s var(--ease);
+  transform:translateX(40px);
+  transition:opacity .5s cubic-bezier(.22,1,.36,1),
+             transform .5s cubic-bezier(.22,1,.36,1),
+             box-shadow .25s var(--ease),
+             border-color .25s var(--ease);
 }
-.cap-item:nth-child(1){transition-delay:0s}
-.cap-item:nth-child(2){transition-delay:.12s}
-.cap-item:nth-child(3){transition-delay:.24s}
+.cap-item:nth-child(1){transition-delay:.1s}
+.cap-item:nth-child(2){transition-delay:.25s}
+.cap-item:nth-child(3){transition-delay:.4s}
 
 .mp-caps.vis .cap-item{
   opacity:1;
   transform:translateX(0);
 }
-.cap-item::before{
-  content:'';position:absolute;inset:0;border-radius:16px;
-  background:linear-gradient(135deg,rgba(13,148,136,0.06),transparent 60%);
-  opacity:0;transition:opacity .3s var(--ease);pointer-events:none;
-}
-.cap-item:hover::before{opacity:1}
 .cap-item:hover{
   border-color:var(--accent);
-  transform:translateY(-4px);
-  box-shadow:0 12px 32px -8px rgba(13,148,136,0.15);
+  box-shadow:0 8px 28px -4px rgba(13,148,136,0.22),0 2px 6px rgba(0,0,0,0.06);
+  transform:translateX(4px);
 }
 .mp-caps.vis .cap-item:hover{
-  transform:translateY(-4px);
+  transform:translateX(4px);
 }
+
 .cap-icon-box{
-  width:52px;height:52px;border-radius:14px;
+  width:36px;height:36px;min-width:36px;border-radius:10px;
   background:var(--accent-sub);color:var(--accent);
   display:grid;place-items:center;
-  margin:0 auto 18px;
-  transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  flex-shrink:0;
 }
-.cap-item:hover .cap-icon-box{
-  transform:scale(1.1);
-  box-shadow:0 4px 16px rgba(13,148,136,0.2);
-}
-.cap-icon-box svg{width:24px;height:24px}
+.cap-icon-box svg{width:18px;height:18px}
+
 .cap-title{
   font-family:var(--font-display);
-  font-size:1.1rem;font-weight:700;
-  letter-spacing:-.5px;color:var(--text);
-  margin-bottom:8px;
+  font-size:.92rem;font-weight:700;
+  letter-spacing:-.3px;color:var(--text);
 }
 .cap-desc{
-  font-size:.88rem;color:var(--text-sub);
-  line-height:1.6;
+  font-size:.78rem;color:var(--text-sub);
+  margin-left:2px;
 }
+.cap-desc::before{
+  content:'·';margin-right:6px;color:var(--accent);font-weight:700;
+}
+
 @media(prefers-reduced-motion:reduce){
   .cap-item{opacity:1;transform:none;transition:none}
+}
+
+/* Mobile: tags go below the card */
+@media(max-width:1100px){
+  .mp-caps{
+    position:static;
+    margin-top:20px;
+    pointer-events:auto;
+  }
+  .cap-item{
+    transform:translateX(30px);
+  }
+  .mp-caps.vis .cap-item{
+    transform:translateX(0);
+  }
 }
 
 /* Closing tagline */
@@ -2081,8 +2107,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   .mp-compare{grid-template-columns:1fr;gap:16px}
   .cmp-arrow{flex-direction:row;padding:8px 0}
   .cmp-arrow-svg{transform:rotate(90deg);width:16px;height:64px}
-  .mp-caps{grid-template-columns:1fr;gap:16px}
-  .cap-item{transform:translateX(60px)}
 }
 
 /* Footer on dark */
@@ -2301,7 +2325,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
           </svg>
           <div class="cmp-arrow-bot">经验沉淀</div>
         </div>
-        <div class="cmp-col cmp-after">
+        <div class="cmp-col cmp-after cmp-after-wrap">
           <div class="cmp-tag cmp-tag-after">Run #10</div>
           <div class="cmp-grid">
             <div class="cmp-row"><span class="cmp-label">耗时</span><span class="cmp-val cmp-hl">30 分钟 <em>↓ 83%</em></span></div>
@@ -2309,25 +2333,24 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
             <div class="cmp-row"><span class="cmp-label">Token 消耗</span><span class="cmp-val cmp-hl">8,200 <em>↓ 66%</em></span></div>
             <div class="cmp-row"><span class="cmp-label">人工介入</span><span class="cmp-val cmp-hl">0 次 <em>全自动</em></span></div>
           </div>
-        </div>
-      </div>
-
-      <!-- Capabilities -->
-      <div class="mp-caps">
-        <div class="cap-item">
-          <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <div class="cap-title" data-zh="自己写 Skill" data-en="Self-Writing Skills">自己写 Skill</div>
-          <div class="cap-desc" data-zh="提炼可复用技能模块" data-en="Extract reusable skill modules">提炼可复用技能模块</div>
-        </div>
-        <div class="cap-item">
-          <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-          <div class="cap-title" data-zh="自己提炼规则" data-en="Self-Extracting Rules">自己提炼规则</div>
-          <div class="cap-desc" data-zh="从经验中提取行为准则" data-en="Extract behavioral rules from experience">从经验中提取行为准则</div>
-        </div>
-        <div class="cap-item">
-          <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-          <div class="cap-title" data-zh="自己写工具" data-en="Self-Building Tools">自己写工具</div>
-          <div class="cap-desc" data-zh="自动编写脚本替代 LLM" data-en="Auto-write scripts to replace LLM">自动编写脚本替代 LLM</div>
+          <!-- Capability tags — slide out from right edge -->
+          <div class="mp-caps">
+            <div class="cap-item">
+              <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              <span class="cap-title" data-zh="自己写 Skill" data-en="Self-Writing Skills">自己写 Skill</span>
+              <span class="cap-desc" data-zh="提炼可复用技能模块" data-en="Extract reusable skill modules">提炼可复用技能模块</span>
+            </div>
+            <div class="cap-item">
+              <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
+              <span class="cap-title" data-zh="自己提炼规则" data-en="Self-Extracting Rules">自己提炼规则</span>
+              <span class="cap-desc" data-zh="从经验中提取行为准则" data-en="Extract behavioral rules from experience">从经验中提取行为准则</span>
+            </div>
+            <div class="cap-item">
+              <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+              <span class="cap-title" data-zh="自己写工具" data-en="Self-Building Tools">自己写工具</span>
+              <span class="cap-desc" data-zh="自动编写脚本替代 LLM" data-en="Auto-write scripts to replace LLM">自动编写脚本替代 LLM</span>
+            </div>
+          </div>
         </div>
       </div>
 
