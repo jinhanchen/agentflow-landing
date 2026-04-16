@@ -1998,20 +1998,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   color:#5F8D4E;font-weight:600;
   margin-left:8px;letter-spacing:0;
 }
-/* Percentage badges — below the number, inside the card */
-.cmp-val.cmp-hl{
-  display:flex;flex-direction:column;align-items:flex-end;
-}
-.cmp-roll em{
-  display:inline-block;
-  margin-top:3px;
-  padding:2px 8px;
-  border-radius:6px;
-  background:rgba(13,148,136,0.08);
-  font-style:normal;font-size:.64rem;
-  color:var(--accent);font-weight:600;
-  letter-spacing:0;white-space:nowrap;
-}
 .cmp-arrow{
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
@@ -2850,7 +2836,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
         el.textContent=display+suffix;
         if(t<1)requestAnimationFrame(tick);
         else{
-          el.innerHTML=display+suffix+'<em>'+extra+'</em>';
+          el.textContent=display+suffix;
           el.classList.add('rolled');
         }
       })(start);
