@@ -267,45 +267,32 @@ article.story{
   color:var(--text);
 }
 article.story .story-header{
-  margin:0 -40px 48px;padding:52px 40px 40px;
-  border-bottom:none;border-radius:20px;
+  margin:0 0 48px;padding:0 0 32px;
+  border-bottom:1px solid var(--border);
   font-family:var(--font-body);
-  background:linear-gradient(135deg, #1a1f2e 0%, #0f1729 50%, #0d3d38 100%);
-  position:relative;overflow:hidden;
+  background:transparent;
+  position:relative;
 }
-article.story .story-header::before{
-  content:'';position:absolute;top:-60px;right:-40px;
-  width:300px;height:300px;
-  background:radial-gradient(circle, rgba(20,184,166,0.18), transparent 65%);
-  pointer-events:none;
-}
-article.story .story-header::after{
-  content:'';position:absolute;bottom:-80px;left:-60px;
-  width:250px;height:250px;
-  background:radial-gradient(circle, rgba(217,119,87,0.1), transparent 65%);
-  pointer-events:none;
-}
+article.story .story-header::before{display:none}
+article.story .story-header::after{display:none}
 .story-header-eyebrow{
-  display:inline-block;padding:6px 14px;border-radius:100px;
-  background:rgba(20,184,166,0.2);color:#4FD1C5;
+  display:inline-block;padding:5px 12px;border-radius:100px;
+  background:rgba(13,148,136,0.1);color:var(--accent);
   font-size:.72rem;font-weight:600;
   letter-spacing:2px;text-transform:uppercase;
   margin-bottom:20px;
-  position:relative;
 }
 .story-header h1{
   font-family:var(--font-display);
-  font-size:clamp(2rem,3.6vw,3rem);
-  font-weight:700;letter-spacing:-1.8px;line-height:1.15;
-  color:#fff;
-  margin-bottom:20px;
-  position:relative;
+  font-size:clamp(1.8rem,3.2vw,2.6rem);
+  font-weight:700;letter-spacing:-1.5px;line-height:1.2;
+  color:var(--text);
+  margin-bottom:16px;
 }
-.story-header h1 em{font-style:normal;color:#4FD1C5}
+.story-header h1 em{font-style:normal;color:var(--accent)}
 .story-header-meta{
   font-family:var(--font-display);
-  font-size:.82rem;color:rgba(255,255,255,0.45);letter-spacing:.3px;
-  position:relative;
+  font-size:.82rem;color:var(--text-dim);letter-spacing:.3px;
 }
 .story-header-meta span{margin:0 8px}
 article.story p{margin-bottom:24px;color:rgba(26,31,46,0.82)}
@@ -440,7 +427,7 @@ article.story sup a:hover{text-decoration:underline}
   .news-arrow{grid-column:2;grid-row:1/span 3;align-self:center}
   .article-layout{padding:0 20px}
   article.story{padding:12px 0 60px;font-size:1rem}
-  article.story .story-header{margin:0 -20px 36px;padding:36px 20px 28px;border-radius:14px}
+  article.story .story-header{margin:0;padding:0 0 24px;border-radius:0}
   .story-cta{padding:0 20px}
   .footer-inner{flex-direction:column;gap:14px}
 }
