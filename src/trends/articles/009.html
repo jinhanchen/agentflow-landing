@@ -1,43 +1,68 @@
-<p>如果你在五年前告诉一位创业者，现在一个人可以用每月 20 美元运营一家完整的互联网公司，他大概率不会相信。融资、团队、服务器、运维——哪一项不是钱烧出来的？</p>
+        <p class="lede">
+          如果你在五年前告诉一位创业者，现在一个人可以用每月 20 美元运营一家完整的互联网公司，他大概率不会相信。融资、团队、服务器、运维——哪一项不是钱烧出来的？但今天，这不是玩笑，而是可以直接复制的事实。
+        </p>
 
-<p>但今天，这不是玩笑，而是可以直接复制的事实。</p>
+        <div class="section-break"></div>
 
-<h3>一人公司的完整基建清单</h3>
+        <h2>一人公司的完整基建清单</h2>
 
-<p>以下是目前验证可用的最精简工具栈，覆盖一家互联网公司从开发到收款的全部环节：</p>
+        <p>以下是目前验证可用的最精简工具栈，覆盖一家互联网公司从开发到收款的全部环节：</p>
 
-<ul>
-  <li><strong>Claude Code（$20/月）</strong> — AI 开发助手，直接在终端写代码、调试、重构。把"雇一名全栈工程师"变成了月费服务。</li>
-  <li><strong>Supabase（免费）</strong> — 开源后端，底层 PostgreSQL，提供数据库、认证、实时订阅和存储。两个项目、500MB 数据库，对 MVP 绰绰有余。</li>
-  <li><strong>Vercel（免费）</strong> — 部署平台，git push 即上线，自带 CDN 和边缘计算。</li>
-  <li><strong>Namecheap（约 $1/月）</strong> — 域名注册，.com 约 $12/年。有自己的域名，是"认真做产品"和"玩玩而已"的分水岭。</li>
-  <li><strong>Stripe（0 月费，2.9% 交易抽成）</strong> — 在线支付基础设施，从收第一笔到百万级交易，用同一套系统。</li>
-  <li><strong>GitHub（免费）</strong> — 代码版本控制，同时也是整个项目的协作与 CI/CD 枢纽。</li>
-  <li><strong>Clerk（免费，1 万月活内）</strong> — 用户认证，提供完整登录 / 注册 / OAuth / MFA 组件。比自己写 auth 省几天时间，且更安全。</li>
-  <li><strong>Resend（免费，3,000 封/月）</strong> — 开发者邮件服务，用于验证码、通知、营销邮件。</li>
-  <li><strong>Cloudflare（免费）</strong> — DNS + CDN + DDoS 防护 + SSL，行业标准操作。</li>
-  <li><strong>PostHog（免费，百万事件/月）</strong> — 产品分析平台，事件追踪 + 漏斗分析 + A/B 测试。</li>
-  <li><strong>Sentry（免费，5,000 次错误事件/月）</strong> — 错误监控，代码报错时自动捕获并告警。没有它，你根本不知道用户遇到了什么 bug。</li>
-  <li><strong>Upstash（免费，1 万次请求/天）</strong> — Serverless Redis，用于缓存、速率限制、会话存储。</li>
-  <li><strong>Pinecone（免费，约 100 万向量）</strong> — 向量数据库，AI 应用的语义搜索标配。</li>
-</ul>
+        <ul>
+          <li><strong>Claude Code（$20/月）</strong> — AI 开发助手，直接在终端写代码、调试、重构。把"雇一名全栈工程师"变成了月费服务。</li>
+          <li><strong>Supabase（免费）</strong> — 开源后端，底层 PostgreSQL，提供数据库、认证、实时订阅和存储。免费层包含 500MB 数据库、5 万月活用户和 1GB 存储，对 MVP 绰绰有余<sup><a href="#ref-1">[1]</a></sup>。</li>
+          <li><strong>Vercel（免费）</strong> — 部署平台，git push 即上线，自带 CDN 和边缘计算。免费层提供 100GB/月流量和自动 CI/CD<sup><a href="#ref-2">[2]</a></sup>。</li>
+          <li><strong>Namecheap（约 $1/月）</strong> — 域名注册，.com 约 $12/年。有自己的域名，是"认真做产品"和"玩玩而已"的分水岭。</li>
+          <li><strong>Stripe（0 月费，2.9% + 30¢ 交易抽成）</strong> — 在线支付基础设施，无月费、无设置费，从收第一笔到百万级交易，用同一套系统<sup><a href="#ref-3">[3]</a></sup>。</li>
+          <li><strong>GitHub（免费）</strong> — 代码版本控制，同时也是整个项目的协作与 CI/CD 枢纽。</li>
+          <li><strong>Clerk（免费，1 万月活内）</strong> — 用户认证，提供完整登录 / 注册 / OAuth / MFA 组件。比自己写 auth 省几天时间，且更安全。</li>
+          <li><strong>Resend（免费，3,000 封/月）</strong> — 开发者邮件服务，用于验证码、通知、营销邮件。</li>
+          <li><strong>Cloudflare（免费）</strong> — DNS + CDN + DDoS 防护 + SSL，行业标准操作。</li>
+          <li><strong>PostHog（免费，百万事件/月）</strong> — 产品分析平台，事件追踪 + 漏斗分析 + A/B 测试。</li>
+          <li><strong>Sentry（免费，5,000 次错误事件/月）</strong> — 错误监控，代码报错时自动捕获并告警。没有它，你根本不知道用户遇到了什么 bug。</li>
+          <li><strong>Upstash（免费，1 万次请求/天）</strong> — Serverless Redis，用于缓存、速率限制、会话存储。</li>
+          <li><strong>Pinecone（免费，约 100 万向量）</strong> — 向量数据库，AI 应用的语义搜索标配。</li>
+        </ul>
 
-<p><strong>合计固定成本：约 $21/月。</strong> 变动成本只有 Stripe 的交易抽成——有收入才有这笔支出。</p>
+        <p><strong>合计固定成本：约 $21/月。</strong> 变动成本只有 Stripe 的交易抽成——有收入才有这笔支出。</p>
 
-<h3>这张清单的真正意义</h3>
+        <blockquote>行业分析显示，2026 年完整的 solopreneur AI 工具栈年运营成本在 $3,000-$12,000 之间，相比传统团队模式降低了 95-98% 的运营成本。当使用免费层构建时，从 0 到 10,000 用户甚至可能不花一分钱。<sup><a href="#ref-4">[4]</a></sup></blockquote>
 
-<p>不是"便宜"，而是<strong>职能的完整覆盖</strong>。</p>
+        <div class="section-break"></div>
 
-<p>这 13 个工具，分别对应一家互联网公司的开发层（Claude + GitHub）、后端与数据层（Supabase + Upstash + Pinecone）、部署与基础设施层（Vercel + Namecheap + Cloudflare）、用户与支付层（Clerk + Stripe），以及运维与监控层（Resend + PostHog + Sentry）。</p>
+        <h2>这张清单的真正意义</h2>
 
-<p>五年前，这些职能对应的是五个以上专职人员，加上动辄几万元/月的服务器开销。现在，它们被打包成"一键即用"的 SaaS 服务，90% 以上对个人和早期项目完全免费。</p>
+        <p>不是"便宜"，而是<strong>职能的完整覆盖</strong>。</p>
 
-<h3>你一个人，就是一家公司</h3>
+        <p>这 13 个工具，分别对应一家互联网公司的开发层（Claude + GitHub）、后端与数据层（Supabase + Upstash + Pinecone）、部署与基础设施层（Vercel + Namecheap + Cloudflare）、用户与支付层（Clerk + Stripe），以及运维与监控层（Resend + PostHog + Sentry）。</p>
 
-<p>一人公司的核心，从来不是"一个人干所有活"，而是"一个人掌控全部决策权和 100% 的利润"。AI 和工具接管了执行层，你负责判断什么值得做，以及怎么做。</p>
+        <p>五年前，这些职能对应的是五个以上专职人员，加上动辄几万元/月的服务器开销。现在，它们被打包成"一键即用"的 SaaS 服务，90% 以上对个人和早期项目完全免费。业内最推荐的组合——Next.js + Supabase + Stripe + Vercel——几乎已经成为 solo founder 的标准技术栈<sup><a href="#ref-5">[5]</a></sup>。</p>
 
-<p>不需要融资，不用稀释股权；不需要团队，不用应付管理内耗。你只需要找到一个能解决真实痛点的需求，把产品做出来，然后收钱。</p>
+        <div class="section-break"></div>
 
-<p>从来没有哪个时代，让普通人以这么低的成本，完整掌控自己的商业价值链。</p>
+        <h2>你一个人，就是一家公司</h2>
 
-<p>不过，工具清单解决的是"能做"的问题。真正的挑战——<strong>做什么、做给谁、做到什么程度</strong>——这些问题工具给不了答案。一人公司需要的不只是一堆工具，而是让这些工具像团队一样协同运转的操作系统。这正是 Solarian 正在构建的事。</p>
+        <p>一人公司的核心，从来不是"一个人干所有活"，而是"一个人掌控全部决策权和 100% 的利润"。AI 和工具接管了执行层，你负责判断什么值得做，以及怎么做。</p>
+
+        <p>不需要融资，不用稀释股权；不需要团队，不用应付管理内耗。你只需要找到一个能解决真实痛点的需求，把产品做出来，然后收钱。</p>
+
+        <p>从来没有哪个时代，让普通人以这么低的成本，完整掌控自己的商业价值链。</p>
+
+        <p>不过，工具清单解决的是"能做"的问题。真正的挑战——<strong>做什么、做给谁、做到什么程度</strong>——这些问题工具给不了答案。一人公司需要的不只是一堆工具，而是让这些工具像团队一样协同运转的操作系统。这正是 Solarian 正在构建的事。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">Supabase Pricing · <a href="https://supabase.com/pricing" target="_blank" rel="noopener">https://supabase.com/pricing</a></li>
+          <li id="ref-2">Vercel Pricing: Hobby, Pro, and Enterprise plans · <a href="https://vercel.com/pricing" target="_blank" rel="noopener">https://vercel.com/pricing</a></li>
+          <li id="ref-3">Stripe Pricing & Fees · <a href="https://stripe.com/pricing" target="_blank" rel="noopener">https://stripe.com/pricing</a></li>
+          <li id="ref-4">The $0 Tech Stack That Actually Scales to 10,000 Users · Medium · 2026 · <a href="https://medium.com/@pranavgorathe19/the-0-tech-stack-that-actually-scales-to-10-000-users-no-credit-card-required-4096f4c881c5" target="_blank" rel="noopener">https://medium.com/@pranavgorathe19</a></li>
+          <li id="ref-5">The Solopreneur SaaS Toolkit for 2026: Every Tool You Need to Build, Launch & Grow · Big Ideas DB · <a href="https://bigideasdb.com/solopreneur-saas-toolkit-2026" target="_blank" rel="noopener">https://bigideasdb.com/solopreneur-saas-toolkit-2026</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 9 期<br>
+          2026-04
+        </div>

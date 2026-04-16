@@ -1,50 +1,79 @@
-<p>在 AI Agent 系统真正跑通之前，很少有人关注一个问题：<strong>这玩意儿到底要烧多少钱？</strong></p>
+        <p class="lede">
+          在 AI Agent 系统真正跑通之前，很少有人关注一个问题：<strong>这玩意儿到底要烧多少钱？</strong>一个真实的案例：4 个 AI Agent 7×24 持续运行，11 个定时任务，每天几十轮对话。优化前，每天烧 $100-150，月均超过 $1,000。优化后，稳定在 $10/天，月均 $200 出头。省了 80%。核心方法，只有三个字：<strong>分层用</strong>。
+        </p>
 
-<p>一个真实的案例：4 个 AI Agent 7×24 持续运行，11 个定时任务，每天几十轮对话。优化前，每天烧 $100-150，月均超过 $1,000。优化后，稳定在 $10/天，月均 $200 出头。</p>
+        <div class="section-break"></div>
 
-<p>省了 80%。核心方法，只有三个字：<strong>分层用</strong>。</p>
+        <h2>核心原则：不是所有任务都需要最强模型</h2>
 
-<h3>核心原则：不是所有任务都需要最强模型</h3>
+        <p>很多人一上来就让所有 AI 请求都走最贵的旗舰模型——无论是日常对话、定时任务还是后台自动化。这就像开法拉利去买菜：能用，但完全没必要。</p>
 
-<p>很多人一上来就让所有 AI 请求都走最贵的旗舰模型——无论是日常对话、定时任务还是后台自动化。这就像开法拉利去买菜：能用，但完全没必要。</p>
+        <p>正确的做法是<strong>按任务重要性分配模型</strong>。光这一步，通常就能砍掉 60-70% 的开支。</p>
 
-<p>正确的做法是<strong>按任务重要性分配模型</strong>。光这一步，通常就能砍掉 60-70% 的开支。</p>
+        <p>好消息是，AI API 的成本正在以类似摩尔定律的速度下降。OpenAI 的旗舰模型定价从 2023 年的 $30/百万 token 降到了 2025 年的 $2.50——<strong>三年下降了 12 倍</strong>。而"够用级别"的模型降幅更大：GPT-4o mini 的价格比最初的 GPT-4 便宜了 <strong>200 倍</strong><sup><a href="#ref-1">[1]</a></sup>。行业分析显示，同等能力的 AI 推理成本大约每 6-8 个月减半<sup><a href="#ref-1">[1]</a></sup>。</p>
 
-<h3>四个有效的分层策略</h3>
+        <blockquote>DeepSeek V3 在 2024 年 12 月以 $0.14/百万 token 的价格登场——一个前沿级模型，定价仅为 GPT-4 发布时的 1/100。2025 年 1 月的 DeepSeek R1 推理模型定价 $0.55/$2.19，而 OpenAI 四个月前推出的 o1-preview 定价为 $15/$60——能力相当，价格差距 97%。<sup><a href="#ref-1">[1]</a></sup></blockquote>
 
-<p><strong>策略一：建立 Fallback 链，永远不因一个模型挂掉而停摆</strong></p>
+        <div class="section-break"></div>
 
-<p>配置模型优先级链：旗舰模型（主力）→ 国产大模型（成本低，API 兼容）→ 中端模型（备选）→ 轻量模型（兜底）。某个服务限流或故障时，自动切换到下一级，用户基本感知不到差异。这既是容灾方案，也是成本控制手段。</p>
+        <h2>四个有效的分层策略</h2>
 
-<p><strong>策略二：不同 Agent 用不同模型</strong></p>
+        <p><strong>策略一：建立 Fallback 链，永远不因一个模型挂掉而停摆</strong></p>
 
-<p>对创造力要求高的 Agent（写作、分析、策略）——用旗舰模型。执行确定性任务的 Agent（格式转换、数据整理、状态检查）——用中端或轻量模型。同等质量下，成本差距可达 5-10 倍。</p>
+        <p>配置模型优先级链：旗舰模型（主力）→ 国产大模型（成本低，API 兼容）→ 中端模型（备选）→ 轻量模型（兜底）。某个服务限流或故障时，自动切换到下一级，用户基本感知不到差异。这既是容灾方案，也是成本控制手段。业内实践报告显示，提示压缩和模型路由可以带来 <strong>20-40%</strong> 的额外成本节约<sup><a href="#ref-2">[2]</a></sup>。</p>
 
-<p><strong>策略三：定时任务全部走轻量模型</strong></p>
+        <p><strong>策略二：不同 Agent 用不同模型</strong></p>
 
-<p>这是省钱最狠的一刀。大多数定时任务做的事很简单：读个文件、查个 API、检查系统状态、格式化输出。这些根本不需要"聪明"的模型，需要的是快和便宜。</p>
+        <p>对创造力要求高的 Agent（写作、分析、策略）——用旗舰模型。执行确定性任务的 Agent（格式转换、数据整理、状态检查）——用中端或轻量模型。同等质量下，成本差距可达 5-10 倍。这也是 Mixture of Experts (MoE) 架构的核心思路：只激活模型总参数的一小部分来处理每个 token<sup><a href="#ref-1">[1]</a></sup>。</p>
 
-<p>若全部用旗舰模型，10 个定时任务每月可能烧 $30+。换成轻量模型后，不到 $5。唯一的例外：需要创造力的任务（如自动生成内容），依然值得用旗舰模型。</p>
+        <p><strong>策略三：定时任务全部走轻量模型</strong></p>
 
-<p><strong>策略四：控制上下文窗口，避免 token 无限膨胀</strong></p>
+        <p>这是省钱最狠的一刀。大多数定时任务做的事很简单：读个文件、查个 API、检查系统状态、格式化输出。这些根本不需要"聪明"的模型，需要的是快和便宜。</p>
 
-<p>长对话的成本增长往往不是线性的——每一轮都要把历史对话带进去。对上下文进行定期压缩或裁剪（例如超过一小时的内容自动压缩），通常能让长对话的 token 成本降低 30-50%。</p>
+        <p>若全部用旗舰模型，10 个定时任务每月可能烧 $30+。换成轻量模型后，不到 $5。唯一的例外：需要创造力的任务（如自动生成内容），依然值得用旗舰模型。</p>
 
-<h3>真实的账单对比</h3>
+        <p><strong>策略四：控制上下文窗口，避免 token 无限膨胀</strong></p>
 
-<p><strong>优化前</strong>（全部旗舰模型，无 fallback）：Anthropic API 约 $1,000/月，其他模型 $30/月，合计超过 $1,000。</p>
+        <p>长对话的成本增长往往不是线性的——每一轮都要把历史对话带进去。对上下文进行定期压缩或裁剪（例如超过一小时的内容自动压缩），通常能让长对话的 token 成本降低 30-50%。缓存机制（prompt caching）对重复性工作负载的效果更加显著<sup><a href="#ref-2">[2]</a></sup>。</p>
 
-<p><strong>优化后</strong>（分层策略 + fallback 链 + 定时任务降级）：主力 API 约 $200/月（仅主对话和高创造力任务），其他 API 约 $8/月，合计约 $210。</p>
+        <div class="section-break"></div>
 
-<p><strong>节省 80%，系统稳定性反而提升了</strong>——因为 fallback 链消除了单点故障。</p>
+        <h2>真实的账单对比</h2>
 
-<h3>如果你只做一件事</h3>
+        <p><strong>优化前</strong>（全部旗舰模型，无 fallback）：Anthropic API 约 $1,000/月，其他模型 $30/月，合计超过 $1,000。</p>
 
-<p>如果觉得全面优化太复杂，优先做这两件事：</p>
+        <p><strong>优化后</strong>（分层策略 + fallback 链 + 定时任务降级）：主力 API 约 $200/月（仅主对话和高创造力任务），其他 API 约 $8/月，合计约 $210。</p>
 
-<ul>
-  <li><strong>给所有 AI 调用加上 fallback 链</strong>——既是容灾，也是成本控制</li>
-  <li><strong>把所有定时任务降级到轻量模型</strong>——通常省下的钱，超过你的想象</li>
-</ul>
+        <p><strong>节省 80%，系统稳定性反而提升了</strong>——因为 fallback 链消除了单点故障。</p>
 
-<p>对一人公司而言，AI 开支是真实的运营成本，不是可以忽略的细节。Solarian 内置了模型分层路由能力，让不同类型的任务自动匹配合适的模型——你不需要手动配置每一条规则，系统会帮你把成本控制做进工作流里。</p>
+        <p>对比行业数据：2026 年一个完整的 solopreneur AI 工具栈年运营成本在 $3,000-$12,000 之间<sup><a href="#ref-3">[3]</a></sup>。通过分层路由优化，可以把 AI API 部分的支出压缩到这个范围的下限。</p>
+
+        <div class="section-break"></div>
+
+        <h2>如果你只做一件事</h2>
+
+        <p>如果觉得全面优化太复杂，优先做这两件事：</p>
+
+        <ul>
+          <li><strong>给所有 AI 调用加上 fallback 链</strong>——既是容灾，也是成本控制</li>
+          <li><strong>把所有定时任务降级到轻量模型</strong>——通常省下的钱，超过你的想象</li>
+        </ul>
+
+        <p>对一人公司而言，AI 开支是真实的运营成本，不是可以忽略的细节。Solarian 内置了模型分层路由能力，让不同类型的任务自动匹配合适的模型——你不需要手动配置每一条规则，系统会帮你把成本控制做进工作流里。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">AI Price Index: LLM Costs Dropped 300x (2023-2026) · TokenCost · <a href="https://tokencost.app/blog/ai-price-index" target="_blank" rel="noopener">https://tokencost.app/blog/ai-price-index</a></li>
+          <li id="ref-2">Best Practices for AI API Cost & Throughput Management (2025) · SkyWork · <a href="https://skywork.ai/blog/ai-api-cost-throughput-pricing-token-math-budgets-2025/" target="_blank" rel="noopener">https://skywork.ai/blog/ai-api-cost-throughput-pricing-token-math-budgets-2025/</a></li>
+          <li id="ref-3">The Rise of the Solopreneur Tech Stack in 2026 · PrometAI · <a href="https://prometai.app/blog/solopreneur-tech-stack-2026" target="_blank" rel="noopener">https://prometai.app/blog/solopreneur-tech-stack-2026</a></li>
+          <li id="ref-4">LLM API Pricing 2026 — Compare 300+ AI Model Costs · PricePerToken · <a href="https://pricepertoken.com/" target="_blank" rel="noopener">https://pricepertoken.com/</a></li>
+          <li id="ref-5">The cost of AI is decreasing · Ramp · <a href="https://ramp.com/velocity/ai-is-getting-cheaper" target="_blank" rel="noopener">https://ramp.com/velocity/ai-is-getting-cheaper</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 12 期<br>
+          2026-04
+        </div>
