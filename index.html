@@ -317,7 +317,7 @@ nav{
   width:0;height:100%;
   background:linear-gradient(90deg,#5CC4A8,#06b6d4);
   border-radius:2px;
-  transition:width 1.8s cubic-bezier(0.25,0.8,0.35,1);
+  transition:width 0.8s cubic-bezier(0.25,0.8,0.35,1);
 }
 
 /* Scene captions — clickable cards to left of demo panel, accumulate as scenes play */
@@ -3902,7 +3902,7 @@ fObs.observe(heroEl);
   const bootBar = document.getElementById('bootBarFill');
   if (bootBar) {
     // Step 1: fill to 70% after small delay (lets transition apply)
-    setTimeout(() => { bootBar.style.width = '70%'; }, 400);
+    setTimeout(() => { bootBar.style.width = '70%'; }, 200);
   }
 
   // Start when scrolled into view
