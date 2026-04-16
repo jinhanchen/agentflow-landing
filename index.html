@@ -1998,17 +1998,21 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   color:#5F8D4E;font-weight:600;
   margin-left:8px;letter-spacing:0;
 }
-/* Reserve space for percentage badges so they don't push numbers */
-.cmp-row{display:flex;align-items:baseline;justify-content:space-between}
-.cmp-val.cmp-hl{
-  display:flex;align-items:baseline;gap:0;white-space:nowrap;
+/* Percentage badges — absolute so they never push numbers */
+.cmp-roll{
+  position:relative;
+  display:inline-block;
 }
-.cmp-roll{flex-shrink:0}
 .cmp-roll em{
-  display:inline-block;min-width:52px;text-align:right;
+  position:absolute;
+  left:100%;
+  top:50%;
+  transform:translateY(-50%);
+  margin-left:8px;
+  white-space:nowrap;
   font-style:normal;font-size:.68rem;
   color:#5F8D4E;font-weight:600;
-  margin-left:8px;letter-spacing:0;
+  letter-spacing:0;
 }
 .cmp-arrow{
   display:flex;flex-direction:column;
