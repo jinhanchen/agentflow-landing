@@ -1943,6 +1943,18 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   text-align:left;
   overflow:visible;
 }
+/* Sequential animation — each step hidden until triggered */
+.cmp-step{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);
+}
+.cmp-step.cmp-vis{
+  opacity:1;
+  transform:translateY(0);
+}
+.cmp-step[data-step="1"].cmp-vis{opacity:.82}
+.cmp-step.cmp-before{opacity:0}
 .cmp-col{
   padding:32px 32px;border-radius:18px;
   background:var(--bg-card);border:1px solid var(--border);
@@ -1999,98 +2011,74 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 }
 
 /* Capability row */
-/* Run #10 wrapper — allow tags to overflow right */
-.cmp-after-wrap{
-  position:relative;overflow:visible;
-}
-
-/* Capability tags — clip container flush with card right edge */
-.mp-caps{
-  position:absolute;
-  top:20px;
-  left:100%;
+/* Middle column — arrow + tags stacked */
+.cmp-middle{
   display:flex;flex-direction:column;
-  gap:10px;
-  z-index:2;
-  overflow:hidden;
-  padding:4px 300px 4px 0;
+  align-items:center;justify-content:center;
+  gap:16px;
 }
 
-/* Each tag — horizontal strip, starts fully hidden inside the card */
+/* Capability tags — square cards above the arrow */
+.mp-caps{
+  display:flex;gap:10px;
+}
 .cap-item{
-  display:flex;align-items:center;gap:12px;
-  padding:10px 20px 10px 12px;
-  border-radius:0 12px 12px 0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  width:88px;height:88px;
+  border-radius:14px;
   background:rgba(255,255,255,0.95);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(13,148,136,0.2);
-  border-left:3px solid var(--accent);
-  box-shadow:0 4px 20px -4px rgba(13,148,136,0.12),0 1px 3px rgba(0,0,0,0.04);
-  white-space:nowrap;
-  transform:translateX(-105%);
-  transition:transform .6s cubic-bezier(.34,1.3,.64,1),
+  border:1px solid rgba(13,148,136,0.25);
+  box-shadow:0 4px 16px -4px rgba(13,148,136,0.12),0 1px 3px rgba(0,0,0,0.04);
+  text-align:center;
+  opacity:0;
+  transform:scale(0.5) translateY(10px);
+  transition:opacity .4s cubic-bezier(.22,1,.36,1),
+             transform .5s cubic-bezier(.34,1.4,.64,1),
              box-shadow .25s var(--ease),
              border-color .25s var(--ease);
 }
-.cap-item:nth-child(1){transition-delay:.15s}
-.cap-item:nth-child(2){transition-delay:.35s}
-.cap-item:nth-child(3){transition-delay:.55s}
+.cap-item:nth-child(1){transition-delay:0s}
+.cap-item:nth-child(2){transition-delay:.12s}
+.cap-item:nth-child(3){transition-delay:.24s}
 
-.mp-caps.vis .cap-item{
-  transform:translateX(0);
+.cmp-step.cmp-vis .cap-item{
+  opacity:1;
+  transform:scale(1) translateY(0);
 }
 .cap-item:hover{
   border-color:var(--accent);
-  box-shadow:0 8px 28px -4px rgba(13,148,136,0.22),0 2px 6px rgba(0,0,0,0.06);
-}
-.mp-caps.vis .cap-item:hover{
-  transform:translateX(6px);
+  box-shadow:0 8px 24px -4px rgba(13,148,136,0.2);
+  transform:scale(1.05) translateY(-2px);
 }
 
 .cap-icon-box{
-  width:34px;height:34px;min-width:34px;border-radius:9px;
+  width:32px;height:32px;border-radius:9px;
   background:var(--accent-sub);color:var(--accent);
   display:grid;place-items:center;
-  flex-shrink:0;
+  margin-bottom:6px;
 }
-.cap-icon-box svg{width:17px;height:17px}
+.cap-icon-box svg{width:16px;height:16px}
 
 .cap-title{
   font-family:var(--font-display);
-  font-size:.9rem;font-weight:700;
-  letter-spacing:-.3px;color:var(--text);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:-.2px;color:var(--text);
+  line-height:1.2;
 }
-.cap-desc{
-  font-size:.76rem;color:var(--text-sub);
-  margin-left:2px;
+.cap-desc{display:none}
+
+/* Rolling number highlight */
+.cmp-roll em{
+  display:inline;
+  opacity:0;
+  transition:opacity .4s var(--ease);
 }
-.cap-desc::before{
-  content:'·';margin-right:6px;color:var(--accent);font-weight:700;
-}
+.cmp-roll.rolled em{opacity:1}
 
 @media(prefers-reduced-motion:reduce){
-  .cap-item{transform:translateX(0)!important;transition:none}
-}
-
-/* Mobile / narrow: tags below the card */
-@media(max-width:1100px){
-  .mp-caps{
-    position:static;
-    overflow:visible;
-    padding:0;
-    margin-top:20px;
-  }
-  .cap-item{
-    border-radius:12px;
-    border-left:3px solid var(--accent);
-    transform:translateX(-60px);
-    opacity:0;
-    transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .5s cubic-bezier(.22,1,.36,1);
-  }
-  .mp-caps.vis .cap-item{
-    transform:translateX(0);
-    opacity:1;
-  }
+  .cmp-step{opacity:1!important;transform:none!important;transition:none!important}
+  .cap-item{opacity:1;transform:none;transition:none}
 }
 
 /* Closing tagline */
@@ -2108,8 +2096,12 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   #market-product{padding:80px 0}
   .mp-hero-stats{grid-template-columns:1fr;gap:14px}
   .mp-compare{grid-template-columns:1fr;gap:16px}
+  .cmp-middle{flex-direction:column}
   .cmp-arrow{flex-direction:row;padding:8px 0}
   .cmp-arrow-svg{transform:rotate(90deg);width:16px;height:64px}
+  .mp-caps{flex-direction:row;justify-content:center}
+  .cap-item{width:76px;height:76px}
+  .cap-title{font-size:.62rem}
 }
 
 /* Footer on dark */
@@ -2310,9 +2302,10 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
       <h2 class="mp-headline"><span>一支为 <em>OPC</em> 定制的</span><span>自主协作的 AI 团队</span></h2>
       <p class="mp-subtitle">同一条工作流，<em>越跑越好</em></p>
 
-      <!-- Before / After comparison -->
-      <div class="mp-compare">
-        <div class="cmp-col cmp-before">
+      <!-- Before / After comparison — sequential animation -->
+      <div class="mp-compare" id="mpCompare">
+        <!-- Step 1: Run #1 -->
+        <div class="cmp-col cmp-before cmp-step" data-step="1">
           <div class="cmp-tag">Run #1</div>
           <div class="cmp-grid">
             <div class="cmp-row"><span class="cmp-label">耗时</span><span class="cmp-val">3 小时</span></div>
@@ -2321,22 +2314,15 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
             <div class="cmp-row"><span class="cmp-label">人工介入</span><span class="cmp-val">8 次</span></div>
           </div>
         </div>
-        <div class="cmp-arrow">
-          <div class="cmp-arrow-top">10 次迭代</div>
-          <svg class="cmp-arrow-svg" viewBox="0 0 64 16" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 8h56M50 3l8 5-8 5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <div class="cmp-arrow-bot">经验沉淀</div>
-        </div>
-        <div class="cmp-col cmp-after cmp-after-wrap">
-          <div class="cmp-tag cmp-tag-after">Run #10</div>
-          <div class="cmp-grid">
-            <div class="cmp-row"><span class="cmp-label">耗时</span><span class="cmp-val cmp-hl">30 分钟 <em>↓ 83%</em></span></div>
-            <div class="cmp-row"><span class="cmp-label">质量评分</span><span class="cmp-val cmp-hl">4.5 / 5 <em>↑ 61%</em></span></div>
-            <div class="cmp-row"><span class="cmp-label">Token 消耗</span><span class="cmp-val cmp-hl">8,200 <em>↓ 66%</em></span></div>
-            <div class="cmp-row"><span class="cmp-label">人工介入</span><span class="cmp-val cmp-hl">0 次 <em>全自动</em></span></div>
+        <!-- Step 2: Arrow + capability tags -->
+        <div class="cmp-middle cmp-step" data-step="2">
+          <div class="cmp-arrow">
+            <div class="cmp-arrow-top">10 次迭代</div>
+            <svg class="cmp-arrow-svg" viewBox="0 0 64 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 8h56M50 3l8 5-8 5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="cmp-arrow-bot">经验沉淀</div>
           </div>
-          <!-- Capability tags — slide out from right edge -->
           <div class="mp-caps">
             <div class="cap-item">
               <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
@@ -2353,6 +2339,16 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
               <span class="cap-title" data-zh="自己写工具" data-en="Self-Building Tools">自己写工具</span>
               <span class="cap-desc" data-zh="自动编写脚本替代 LLM" data-en="Auto-write scripts to replace LLM">自动编写脚本替代 LLM</span>
             </div>
+          </div>
+        </div>
+        <!-- Step 3: Run #10 with rolling numbers -->
+        <div class="cmp-col cmp-after cmp-step" data-step="3">
+          <div class="cmp-tag cmp-tag-after">Run #10</div>
+          <div class="cmp-grid">
+            <div class="cmp-row"><span class="cmp-label">耗时</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="180" data-to="30" data-suffix=" 分钟" data-extra=" ↓ 83%">3 小时</span></span></div>
+            <div class="cmp-row"><span class="cmp-label">质量评分</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="2.8" data-to="4.5" data-suffix=" / 5" data-extra=" ↑ 61%">2.8 / 5</span></span></div>
+            <div class="cmp-row"><span class="cmp-label">Token 消耗</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="24000" data-to="8200" data-suffix="" data-extra=" ↓ 66%">24,000</span></span></div>
+            <div class="cmp-row"><span class="cmp-label">人工介入</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="8" data-to="0" data-suffix=" 次" data-extra=" 全自动">8 次</span></span></div>
           </div>
         </div>
       </div>
@@ -2626,12 +2622,58 @@ document.querySelectorAll('a').forEach(a => {
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Capabilities slide-in from right
-const capsEl=document.querySelector('.mp-caps');
-if(capsEl){
-  const capsObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');capsObs.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
-  capsObs.observe(capsEl);
-}
+// Compare section — sequential animation + rolling numbers
+(function(){
+  const wrap=document.getElementById('mpCompare');
+  if(!wrap)return;
+  const steps=wrap.querySelectorAll('.cmp-step');
+  let triggered=false;
+
+  // Rolling number animation
+  function rollNumbers(){
+    wrap.querySelectorAll('.cmp-roll').forEach(el=>{
+      const from=parseFloat(el.dataset.from);
+      const to=parseFloat(el.dataset.to);
+      const suffix=el.dataset.suffix||'';
+      const extra=el.dataset.extra||'';
+      const isFloat=(to%1!==0)||(from%1!==0);
+      const dur=1200;
+      const start=performance.now();
+      (function tick(now){
+        const t=Math.min((now-start)/dur,1);
+        const ease=1-Math.pow(1-t,3);
+        const cur=from+(to-from)*ease;
+        const display=isFloat?cur.toFixed(1):Math.round(cur).toLocaleString();
+        el.textContent=display+suffix;
+        if(t<1)requestAnimationFrame(tick);
+        else{
+          el.innerHTML=display+suffix+'<em>'+extra+'</em>';
+          el.classList.add('rolled');
+        }
+      })(start);
+    });
+  }
+
+  // Sequential reveal: step1 → step2 → step3
+  function runSequence(){
+    if(triggered)return;
+    triggered=true;
+    const delays=[0,500,1200];
+    steps.forEach((s,i)=>{
+      setTimeout(()=>{
+        s.classList.add('cmp-vis');
+        if(s.dataset.step==='3'){
+          setTimeout(rollNumbers,300);
+        }
+      },delays[i]);
+    });
+  }
+
+  const seqObs=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){runSequence();seqObs.unobserve(e.target)}});
+  },{threshold:.2,rootMargin:'0px 0px -60px 0px'});
+  seqObs.observe(wrap);
+})();
 
 // Hero lines reveal
 const heroLineObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');heroLineObs.unobserve(e.target)}})},{threshold:0.3});
