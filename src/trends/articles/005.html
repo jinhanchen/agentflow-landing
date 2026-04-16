@@ -1,3 +1,86 @@
-<p>Y Combinator CEO Garry Tan 在 2025 年初透露了一个惊人的数据："我们 2025 冬季批次中，有 25% 的创业公司 95% 的代码是由 AI 生成的。你不再需要 50 或 100 个工程师。"</p>
-<p>这意味着什么？<strong>技术壁垒——曾经是创业最大的门槛——正在被 AI 彻底拉平。</strong>一个有产品直觉的非技术创始人，借助 Cursor、Claude、GitHub Copilot 等工具，可以在几天内构建出过去需要一个工程团队花几个月才能完成的产品。</p>
-<p>Tan 进一步指出，这一趋势将重新定义 VC 的投资逻辑：未来的独角兽可能不是"雇最多工程师的公司"，而是"用最少的人、最深刻地理解问题的团队"。执行力不再稀缺，洞察力才是。</p>
+        <p class="lede">
+          2025 年 3 月 6 日，Y Combinator CEO Garry Tan 在 X 上发布了一条引爆科技圈的推文："在我们 2025 冬季批次中，25% 的创业公司 95% 的代码由 LLM 生成。这不是打字错误。Vibe coding 时代到来了。"<sup><a href="#ref-1">[1]</a></sup> 这条推文被 TechCrunch、CNBC、Slashdot 等主流科技媒体转载，成为 2025 年最具标志性的 AI 创业数据点之一。它宣告的不仅是一个统计事实，而是软件开发范式的根本转变。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、数据背后的 YC 批次</h2>
+
+        <p>先理解这个数字的分量。Y Combinator 是全球最负盛名的创业加速器，孵化了 Airbnb、Stripe、Dropbox、Coinbase 等万亿美元级公司。每个批次录取率低于 2%——能进入 YC 的创业者，本身就是经过严格筛选的顶尖技术人才<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>Tan 特别强调了一个关键前提：<strong>"这些人中的每一个都是高度技术型的，完全有能力从零开始自己构建产品。一年前，他们会从零写代码——但现在，95% 是 AI 写的。"</strong><sup><a href="#ref-1">[1]</a></sup> 这不是"不会写代码的人用 AI 凑合"，而是<em>最懂代码的人选择让 AI 来写</em>。</p>
+
+        <p>结果呢？Tan 透露，这一批次的 YC 公司<strong>整体每周增长率达到 10%</strong>——这是 YC 历史上最快的增长速度和最高的盈利水平<sup><a href="#ref-3">[3]</a></sup>。AI 代码生成不仅没有降低质量，反而释放了创始人的时间，让他们把精力集中在产品方向和用户增长上。</p>
+
+        <blockquote>对创始人来说，这意味着你不再需要一支 50 或 100 人的工程团队。—— Garry Tan, Y Combinator CEO<sup><a href="#ref-1">[1]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>二、Vibe Coding：从 Karpathy 到行业标准</h2>
+
+        <p>"Vibe coding"这个术语，由 OpenAI 联合创始人、前特斯拉 AI 负责人 <strong>Andrej Karpathy</strong> 于 2025 年 2 月提出<sup><a href="#ref-4">[4]</a></sup>。他描述的是一种全新的开发方式：开发者不直接编写代码，而是用自然语言向 AI 描述意图，由 LLM 自动生成代码。开发者的角色从"写代码的人"变成了"指导 AI 写代码的人"。</p>
+
+        <p>这个概念迅速引发共振。2025 年底，"vibe coding"被《柯林斯英语词典》评为<strong>年度词汇</strong><sup><a href="#ref-4">[4]</a></sup>——一个技术术语能获此殊荣，本身就说明了这种开发方式的社会影响力。</p>
+
+        <p>到 2026 年，vibe coding 已不再是实验性概念，而是主流开发实践：</p>
+
+        <ul>
+          <li><strong>92%</strong> 的美国开发者每天使用 AI 编码工具，资深开发者报告平均 <strong>81%</strong> 的生产力提升<sup><a href="#ref-5">[5]</a></sup></li>
+          <li>Gartner 预测到 2026 年底，<strong>60%</strong> 的新代码将由 AI 生成<sup><a href="#ref-5">[5]</a></sup></li>
+          <li>Microsoft 和 Google 披露，两家公司的新增代码中已有 <strong>25-30%</strong> 由 AI 生成<sup><a href="#ref-5">[5]</a></sup></li>
+          <li>Vibe coding 市场规模 2026 年估计达 <strong>47 亿美元</strong>，预计 2027 年将以 38% 的 CAGR 增长至 123 亿美元<sup><a href="#ref-5">[5]</a></sup></li>
+        </ul>
+
+        <div class="section-break"></div>
+
+        <h2>三、从 Vibe Coding 到 Agentic Engineering</h2>
+
+        <p>Karpathy 本人在 2026 年 2 月更新了他的框架。他指出，LLM 的能力进步已经超越了他最初定义的"vibe coding"——那时候 vibe coding 更适合一次性项目或原型。他提出了一个新术语：<strong>Agentic Engineering</strong>（智能体工程）<sup><a href="#ref-4">[4]</a></sup>。</p>
+
+        <p>在 Agentic Engineering 的工作流中，开发者 99% 的时间不是在写代码，而是在<strong>编排 AI Agent 并提供监督</strong>。AI Agent 负责代码编写、测试、调试、部署——开发者负责定义目标、审查输出、做关键判断。</p>
+
+        <p>这与 Solarian 的核心理念高度一致：<em>不是让一个人干十个人的活，而是让一个人指挥十个 AI Agent 干十个人的活。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>四、不可忽视的风险</h2>
+
+        <p>AI 代码生成的速度优势不等于质量保证。多项研究揭示了值得警惕的安全隐患：</p>
+
+        <p>CodeRabbit 于 2025 年 12 月对 470 个开源 GitHub Pull Request 的分析发现，AI 参与编写的代码包含的"重大问题"（major issues）约为纯人工代码的 <strong>1.7 倍</strong>，安全漏洞率高出 <strong>2.74 倍</strong><sup><a href="#ref-6">[6]</a></sup>。另一项行业统计显示，约 <strong>45%</strong> 的 AI 生成代码包含漏洞，如硬编码密钥或输入验证不当<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <p>Garry Tan 本人也承认：<strong>当前的推理模型还不够强大，无法独立完成高质量的调试</strong>。因此，创始人必须对产品有深刻理解——AI 写代码，人类把关质量<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <blockquote>AI 生成 95% 的代码，但那 5% 的人工干预——架构决策、安全审查、产品判断——决定了产品是能跑还是能卖。</blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>五、对 OPC 创业者的意义</h2>
+
+        <p>YC 的数据点，对一人公司创业者有三重意义：</p>
+
+        <p><strong>技术壁垒正在消失。</strong>过去，"没有技术联合创始人"是独立创业者最大的障碍。现在，Cursor、Claude Code、GitHub Copilot、Replit 等工具让一个有产品直觉的非技术创始人，可以在几天内构建出过去需要一个工程团队花几个月才能完成的产品。</p>
+
+        <p><strong>速度成为核心竞争力。</strong>YC 批次 10% 的周增长率说明，当开发速度不再是瓶颈，迭代速度就是竞争优势。一人公司没有会议、没有审批流程、没有跨部门协调——决策到执行的路径最短，这在 AI 时代是结构性优势。</p>
+
+        <p><strong>洞察力取代执行力成为稀缺资源。</strong>Tan 的判断是：未来的独角兽不是"雇最多工程师的公司"，而是"用最少的人、最深刻地理解问题的团队"<sup><a href="#ref-3">[3]</a></sup>。当所有人都能用 AI 快速构建产品，<em>做对的产品</em>比<em>快速做产品</em>更重要。</p>
+
+        <p>Solarian 的定位正是在这个交叉点上：帮助一人创业者把 AI 工具从"独立的编码助手"整合成"协同运转的 Agent 团队"，让你不仅能快速构建产品，还能系统化地运营产品。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">Garry Tan (@garrytan) · X · 2025 年 3 月 6 日 · <a href="https://x.com/garrytan/status/1897303270311489931" target="_blank" rel="noopener">https://x.com/garrytan/status/1897303270311489931</a></li>
+          <li id="ref-2">95% AI-written code? Unpacking the Y Combinator CEO's developer jobs bombshell · LeadDev · 2025 · <a href="https://leaddev.com/hiring/95-ai-written-code-unpacking-the-y-combinator-ceos-developer-jobs-bombshell" target="_blank" rel="noopener">https://leaddev.com/hiring/95-ai-written-code-unpacking-the-y-combinator-ceos-developer-jobs-bombshell</a></li>
+          <li id="ref-3">Y Combinator startups are fastest growing, most profitable in fund history because of AI · CNBC · 2025 年 3 月 15 日 · <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank" rel="noopener">https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html</a></li>
+          <li id="ref-4">Vibe Coding · Wikipedia · <a href="https://en.wikipedia.org/wiki/Vibe_coding" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vibe_coding</a></li>
+          <li id="ref-5">Top Vibe Coding Statistics & Trends [2026] · Second Talent · 2026 · <a href="https://www.secondtalent.com/resources/vibe-coding-statistics/" target="_blank" rel="noopener">https://www.secondtalent.com/resources/vibe-coding-statistics/</a></li>
+          <li id="ref-6">Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code · daily.dev · 2026 · <a href="https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code" target="_blank" rel="noopener">https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 5 期<br>
+          2025
+        </div>
