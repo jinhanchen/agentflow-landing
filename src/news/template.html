@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公告 — Solarian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#F5F0E6;
+  --bg-card:#FFFFFF;
+  --border:rgba(26,31,46,0.08);
+  --border-hover:rgba(26,31,46,0.15);
+  --text:#1A1F2E;
+  --text-sub:rgba(26,31,46,0.65);
+  --text-dim:rgba(26,31,46,0.35);
+  --accent:#0d9488;
+  --accent-sub:rgba(13,148,136,0.12);
+  --accent-secondary:#D97757;
+  --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
+  --font-body:'DM Sans','Noto Sans SC',sans-serif;
+  --font-serif:'Noto Serif SC',Georgia,serif;
+  --ease:cubic-bezier(0.25,1,0.5,1);
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-weight:350;
+}
+a{color:inherit;text-decoration:none}
+
+/* ========== NAV (unified — matches index.html) ========== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  background:rgba(30,40,60,0.88);
+  backdrop-filter:blur(36px) saturate(180%);-webkit-backdrop-filter:blur(36px) saturate(180%);
+}
+.nav-inner{
+  max-width:none;padding-inline:48px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--font-display);font-size:1.05rem;font-weight:600;
+  display:flex;align-items:center;gap:9px;letter-spacing:-.3px;
+  color:#fff;
+}
+.nav-links{display:flex;align-items:center;gap:40px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:400;color:rgba(255,255,255,0.72);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.current{color:#4FD1C5;font-weight:500}
+
+/* Nav dropdown */
+.nav-dropdown{position:relative}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+  min-width:260px;background:rgba(15,23,41,0.95);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity 0.2s,transform 0.2s,visibility 0.2s;
+  transform:translateX(-50%) translateY(-6px);
+}
+.nav-dropdown:hover .nav-dd-menu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.dd-item{
+  display:block;padding:10px 14px;border-radius:8px;
+  text-decoration:none;transition:background 0.15s;
+}
+.dd-item:hover{background:rgba(255,255,255,0.04)}
+.dd-item strong{display:block;font-size:.85rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:2px}
+.dd-item span{display:block;font-size:.72rem;color:rgba(255,255,255,0.55);line-height:1.4}
+.dd-footer{border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:4px}
+.dd-footer a{display:block;padding:8px 14px;font-size:.75rem;color:var(--accent)}
+
+/* Lang toggle */
+.lang-toggle{
+  display:inline-flex;
+  border:1px solid rgba(255,255,255,0.14);border-radius:100px;overflow:hidden;
+  background:rgba(255,255,255,0.02);cursor:pointer;
+}
+.lang-toggle span{
+  padding:4px 10px;font-size:.72rem;font-weight:600;
+  color:rgba(255,255,255,0.55);transition:all .2s;
+}
+.lang-toggle span.active{color:#4FD1C5;background:rgba(13,148,136,0.22)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 24px;border-radius:100px;
+  font-family:var(--font-body);font-size:.88rem;font-weight:500;
+  border:1px solid var(--border);background:transparent;color:var(--text);
+  cursor:pointer;transition:all .25s var(--ease);
+}
+.btn-fill{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn-nav{padding:7px 18px;font-size:.82rem;border-radius:100px}
+
+/* ========== PAGE HERO (list view) ========== */
+.page-hero{
+  padding:160px 40px 40px;text-align:center;
+  max-width:900px;margin:0 auto;
+}
+.page-hero-eyebrow{
+  font-size:.72rem;font-weight:500;color:var(--accent);
+  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;
+}
+.page-hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:700;letter-spacing:-2px;line-height:1.1;
+  color:var(--text);
+}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero p{
+  font-size:1rem;color:var(--text-sub);
+  max-width:520px;line-height:1.7;margin:18px auto 0;
+}
+
+/* ========== NEWS TABLE LIST (card panel with hierarchy) ========== */
+.news-list{
+  max-width:880px;margin:0 auto;padding:40px 40px 100px;
+}
+.news-table{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:
+    0 2px 4px rgba(26,31,46,0.03),
+    0 12px 32px -8px rgba(26,31,46,0.08);
+}
+.news-row{
+  display:grid;grid-template-columns:140px 130px 1fr 40px;
+  align-items:center;gap:24px;
+  padding:24px 28px;
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+  transition:background-color .2s var(--ease),padding .2s var(--ease);
+  position:relative;
+}
+.news-row:last-child{border-bottom:none}
+.news-row:hover{background:var(--bg-card-hover);padding-left:36px}
+.news-row::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--accent);transform:scaleY(0);transform-origin:top;
+  transition:transform .25s var(--ease);
+}
+.news-row:hover::before{transform:scaleY(1)}
+.news-date{font-family:var(--font-display);font-size:.82rem;font-weight:500;color:var(--text-dim);letter-spacing:.3px}
+.news-tag{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:4px 12px;border-radius:6px;
+  font-size:.7rem;font-weight:600;letter-spacing:.3px;
+  width:fit-content;
+}
+.tag-brand{background:var(--accent-sub);color:var(--accent)}
+.tag-product{background:rgba(217,119,87,0.14);color:var(--accent-secondary)}
+.tag-milestone{background:rgba(201,169,97,0.18);color:#8A7433}
+.news-title-cell{min-width:0}
+.news-title{
+  font-family:var(--font-display);font-size:1.05rem;font-weight:600;
+  color:var(--text);letter-spacing:-.3px;line-height:1.3;margin-bottom:4px;
+}
+.news-summary{
+  font-size:.82rem;color:var(--text-sub);line-height:1.5;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.news-arrow{color:var(--text-dim);font-size:1rem;transition:all .2s var(--ease)}
+.news-row:hover .news-arrow{color:var(--accent);transform:translateX(4px)}
+
+.news-note{
+  margin-top:40px;padding:28px;background:var(--accent-sub);
+  border-radius:12px;text-align:center;
+  font-size:.88rem;color:var(--text-sub);
+}
+
+/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+.news-article-view{display:none}
+.news-article-view.active{display:block}
+
+.article-layout{
+  max-width:1120px;margin:120px auto 0;
+  padding:0 40px;
+  display:grid;grid-template-columns:220px 1fr;
+  gap:72px;align-items:start;
+}
+
+/* Left sidebar — sticky navigation */
+.sub-sidebar{
+  position:sticky;top:100px;
+  padding-top:8px;
+}
+.sub-sidebar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--text-sub);
+  font-size:.82rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  transition:all .2s var(--ease);
+  margin-bottom:40px;
+}
+.sub-sidebar-back:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(-3px);
+}
+.sub-sidebar-back svg{width:12px;height:12px}
+
+.sub-sidebar-label{
+  font-family:var(--font-display);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+  padding-left:16px;
+}
+.sub-sidebar-toc{
+  list-style:none;padding:0;margin:0 0 32px;
+  border-left:1px solid var(--border);
+}
+.sub-sidebar-toc li{margin:0}
+.sub-sidebar-toc a{
+  display:block;padding:9px 16px;
+  font-size:.84rem;line-height:1.4;
+  color:var(--text-sub);
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.sub-sidebar-toc a:hover{
+  color:var(--text);border-left-color:var(--border-hover);
+}
+.sub-sidebar-toc a.active{
+  color:var(--accent);border-left-color:var(--accent);
+  font-weight:500;background:var(--accent-sub);
+}
+
+.sub-sidebar-meta{
+  padding:16px;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--text-dim);
+  line-height:1.6;
+}
+.sub-sidebar-meta strong{
+  display:block;color:var(--text-sub);font-weight:600;
+  font-family:var(--font-display);
+  margin-bottom:4px;
+}
+
+.article-main{min-width:0}
+
+/* Article content */
+article.story{
+  max-width:680px;margin:0;padding:0 0 80px;
+  font-family:var(--font-serif);
+  font-size:1.08rem;line-height:1.85;
+  color:var(--text);
+}
+article.story .story-header{
+  margin-bottom:48px;padding-bottom:32px;
+  border-bottom:1px solid var(--border);
+  font-family:var(--font-body);
+}
+.story-header-eyebrow{
+  display:inline-block;padding:6px 14px;border-radius:100px;
+  background:var(--accent-sub);color:var(--accent);
+  font-size:.72rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.story-header h1{
+  font-family:var(--font-display);
+  font-size:clamp(2rem,3.6vw,3rem);
+  font-weight:700;letter-spacing:-1.8px;line-height:1.15;
+  color:var(--text);
+  margin-bottom:20px;
+}
+.story-header h1 em{font-style:normal;color:var(--accent)}
+.story-header-meta{
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--text-dim);letter-spacing:.3px;
+}
+.story-header-meta span{margin:0 8px}
+article.story p{margin-bottom:24px;color:rgba(26,31,46,0.82)}
+article.story p.lede{
+  font-size:1.22rem;line-height:1.7;
+  color:var(--text);margin-bottom:40px;font-weight:500;
+}
+article.story blockquote{
+  margin:36px 0;padding:4px 0 4px 24px;
+  border-left:3px solid var(--accent);
+  font-style:italic;font-size:1.1rem;color:var(--text);
+}
+article.story h2{
+  font-family:var(--font-display);
+  font-size:1.6rem;font-weight:700;
+  letter-spacing:-1px;line-height:1.25;
+  color:var(--text);margin:52px 0 20px;
+  scroll-margin-top:100px;
+}
+article.story strong{color:var(--text);font-weight:700}
+article.story em{color:var(--accent-secondary);font-style:normal;font-weight:500}
+article.story .section-break{
+  width:70px;height:2px;background:var(--accent);
+  margin:52px auto;border-radius:2px;opacity:.35;
+}
+article.story .signature{
+  margin-top:56px;padding-top:28px;
+  border-top:1px solid var(--border);text-align:center;
+  font-family:var(--font-display);
+  font-size:.86rem;color:var(--text-sub);line-height:1.7;
+}
+article.story .signature strong{display:block;color:var(--text);font-size:1rem;margin-bottom:4px}
+
+/* Article bottom CTA (full width under article, not inside layout) */
+.story-cta{max-width:680px;margin:0 auto 100px;padding:0 40px}
+.story-cta-inner{
+  background:linear-gradient(135deg,#1a1f2e 0%,#0f1729 100%);
+  padding:44px 36px;border-radius:20px;
+  text-align:center;color:#fff;position:relative;overflow:hidden;
+}
+.story-cta-inner::before{
+  content:'';position:absolute;top:-40%;left:50%;
+  transform:translateX(-50%);width:120%;height:200px;
+  background:radial-gradient(ellipse,rgba(13,148,136,0.28),transparent 70%);
+  pointer-events:none;
+}
+.story-cta h3{
+  font-family:var(--font-display);
+  font-size:1.3rem;font-weight:700;letter-spacing:-.5px;
+  margin-bottom:10px;position:relative;color:#fff;
+}
+.story-cta p{
+  font-size:.92rem;color:rgba(255,255,255,0.7);
+  margin-bottom:22px;line-height:1.6;position:relative;
+}
+.story-cta .btn{position:relative}
+
+/* ========== FOOTER ========== */
+footer{
+  background:#1a1f2e;border-top:1px solid rgba(255,255,255,0.08);
+  padding:36px 0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;padding-inline:40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+footer .logo{color:#fff;font-size:.9rem}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,0.85)}
+
+/* Research tag (绿色，用 DESIGN_TOKENS 里的 success 色) */
+.tag-research{background:rgba(95,141,78,0.14);color:#5F8D4E}
+
+/* References 列表样式 */
+article.story ol.references{
+  list-style:decimal;
+  margin:0 0 32px 0;padding-left:28px;
+  font-family:var(--font-body);
+  font-size:.85rem;
+  color:var(--text-sub);
+  line-height:1.7;
+}
+article.story ol.references li{margin-bottom:10px}
+article.story ol.references a{
+  color:var(--accent);
+  word-break:break-all;
+  text-decoration:underline;
+  text-decoration-color:var(--accent-sub);
+  text-underline-offset:2px;
+}
+article.story ol.references a:hover{
+  text-decoration-color:var(--accent);
+}
+
+/* 脚注角标 */
+article.story sup{
+  font-size:.65em;
+  color:var(--accent);
+  font-family:var(--font-body);
+  font-weight:600;
+  padding:0 1px;
+}
+article.story sup a{color:inherit;text-decoration:none}
+article.story sup a:hover{text-decoration:underline}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .article-layout{
+    grid-template-columns:1fr;gap:24px;margin-top:100px;
+  }
+  .sub-sidebar{
+    position:static;padding:0 0 24px;
+    border-bottom:1px solid var(--border);margin-bottom:16px;
+  }
+  .sub-sidebar-toc,.sub-sidebar-label,.sub-sidebar-meta{display:none}
+  .sub-sidebar-back{margin-bottom:16px}
+  article.story{max-width:100%}
+}
+@media(max-width:768px){
+  .nav-inner{padding-inline:20px}
+  .nav-links{gap:16px}
+  .nav-links li:nth-child(4){display:none} /* hide lang toggle on mobile */
+  .page-hero{padding:140px 20px 30px}
+  .news-list{padding:30px 20px 80px}
+  .news-row{grid-template-columns:1fr 40px;gap:10px;row-gap:6px}
+  .news-date,.news-tag{grid-column:1}
+  .news-date{font-size:.75rem;margin-bottom:-4px}
+  .news-tag{margin-bottom:4px}
+  .news-title-cell{grid-column:1;grid-row:3}
+  .news-arrow{grid-column:2;grid-row:1/span 3;align-self:center}
+  .article-layout{padding:0 20px}
+  article.story{padding:12px 0 60px;font-size:1rem}
+  .story-cta{padding:0 20px}
+  .footer-inner{flex-direction:column;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV (unified) ========== -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.svg" alt="Solarian" style="height:28px">
+      Solarian
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="index.html#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="index.html#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="index.html#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="index.html#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="trends.html">OPC 博客</a></li>
+      <li><a href="news.html" class="current">公告</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
+      <li><a href="index.html#waitlist"><button class="btn btn-nav btn-fill">加入 Waitlist</button></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ========== LIST VIEW ========== -->
+<div id="newsList">
+  <section class="page-hero">
+    <div class="page-hero-eyebrow">News</div>
+    <h1>Solarian <em>公告</em></h1>
+    <p>产品更新、里程碑、品牌故事——第一时间在这里发布</p>
+  </section>
+
+  <section class="news-list">
+    <div class="news-table">
+
+      {{NEWS_ROWS}}
+
+    </div>
+
+    <div class="news-note">更多公告陆续发布——订阅 Waitlist 第一时间获得通知</div>
+  </section>
+</div>
+
+<!-- ========== ARTICLE VIEW ========== -->
+<div id="newsArticle" class="news-article-view">
+  <div class="article-layout">
+
+    <!-- LEFT STICKY SIDEBAR -->
+    <aside class="sub-sidebar">
+      <button class="sub-sidebar-back" onclick="closeArticle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回公告列表
+      </button>
+
+      <div class="sub-sidebar-label">On This Page</div>
+      <ul class="sub-sidebar-toc" id="articleToc"></ul>
+    </aside>
+
+    <!-- MAIN ARTICLE COLUMN -->
+    <div class="article-main">
+      {{ARTICLE:brand-story}}
+
+      {{ARTICLE:opc-trend-report}}
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="story-cta">
+    <div class="story-cta-inner">
+      <h3>一起出发</h3>
+      <p>Solarian Q2 发布。留下邮箱，第一时间获得内测资格。</p>
+      <a href="index.html#waitlist" class="btn btn-fill">
+        加入 Waitlist
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
+      </a>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#demo">产品</a>
+      <a href="trends.html">博客</a>
+      <a href="news.html">公告</a>
+      <a href="about.html">关于</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Lang toggle (visual only on subpage)
+function toggleLang(){
+  const toggle = document.getElementById('langToggle');
+  const zh = toggle.querySelector('.lang-zh');
+  const en = toggle.querySelector('.lang-en');
+  zh.classList.toggle('active');
+  en.classList.toggle('active');
+}
+
+// ========== ARTICLE SWITCHER ==========
+let currentTocObserver = null;
+
+function buildTOC(articleId){
+  const article = document.getElementById('article-' + articleId);
+  const toc = document.getElementById('articleToc');
+  toc.innerHTML = '';
+
+  // Build TOC from h2 elements
+  article.querySelectorAll('h2').forEach((h2, i) => {
+    if(!h2.id) h2.id = articleId + '-sec-' + i;
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.dataset.target = h2.id;
+    a.textContent = h2.textContent;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById(h2.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  // Scroll-spy
+  if(currentTocObserver) currentTocObserver.disconnect();
+  const tocLinks = toc.querySelectorAll('a');
+  currentTocObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        tocLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  article.querySelectorAll('h2').forEach(h => currentTocObserver.observe(h));
+}
+
+function openArticle(id){
+  document.getElementById('newsList').style.display = 'none';
+  const view = document.getElementById('newsArticle');
+  view.classList.add('active');
+  view.querySelectorAll('article.story').forEach(a => a.style.display = 'none');
+  const target = document.getElementById('article-' + id);
+  if(!target) return;
+  target.style.display = 'block';
+  buildTOC(id);
+  window.scrollTo({top:0, behavior:'instant'});
+  history.replaceState(null, '', '#' + id);
+}
+
+function closeArticle(){
+  document.getElementById('newsArticle').classList.remove('active');
+  document.getElementById('newsList').style.display = 'block';
+  if(currentTocObserver){ currentTocObserver.disconnect(); currentTocObserver = null; }
+  window.scrollTo({top:0, behavior:'instant'});
+  history.replaceState(null, '', location.pathname);
+}
+
+// Deep-link: open article directly if URL has hash
+(function(){
+  const hash = location.hash.replace('#','');
+  if(hash && document.getElementById('article-' + hash)) openArticle(hash);
+})();
+</script>
+
+</body>
+</html>

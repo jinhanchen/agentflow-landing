@@ -3,27 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>关于 — AgentFlow</title>
+<title>关于 — Solarian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
 :root{
-  --bg:#0a0f1a;
-  --bg-card:#0f1729;
-  --bg-card-hover:#141e33;
-  --border:rgba(255,255,255,0.06);
-  --border-hover:rgba(255,255,255,0.12);
-  --text:rgba(255,255,255,0.9);
-  --text-sub:rgba(255,255,255,0.5);
-  --text-dim:rgba(255,255,255,0.25);
-  --accent:#14b8a6;
-  --accent-sub:rgba(20,184,166,0.15);
-  --accent-glow:rgba(20,184,166,0.08);
+  --bg:#F5F0E6;
+  --bg-card:#FFFFFF;
+  --bg-card-hover:#FDFBF6;
+  --border:rgba(26,31,46,0.08);
+  --border-hover:rgba(26,31,46,0.15);
+  --text:#1A1F2E;
+  --text-sub:rgba(26,31,46,0.65);
+  --text-dim:rgba(26,31,46,0.35);
+  --accent:#0d9488;
+  --accent-sub:rgba(13,148,136,0.12);
+  --accent-secondary:#D97757;
   --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
   --font-body:'DM Sans','Noto Sans SC',sans-serif;
+  --font-serif:'Noto Serif SC',Georgia,serif;
   --ease:cubic-bezier(0.25,1,0.5,1);
 }
 
@@ -33,324 +34,388 @@ body{
   background:var(--bg);
   color:var(--text);
   line-height:1.6;
-  overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   font-weight:350;
 }
 a{color:inherit;text-decoration:none}
 
-/* ========== SPOTLIGHT ========== */
-.spotlight{
-  position:fixed;inset:0;pointer-events:none;z-index:9999;
-  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(20,184,166,0.04),transparent 60%);
-}
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal.rv1{transition-delay:.1s}
+.reveal.rv2{transition-delay:.2s}
+.reveal.rv3{transition-delay:.3s}
 
-/* ========== AMBIENT PARTICLES ========== */
-.particles{
-  position:fixed;inset:0;z-index:0;pointer-events:none;
-}
-.particles span{
-  position:absolute;
-  width:2px;height:2px;
-  background:rgba(255,255,255,0.15);
-  border-radius:50%;
-  animation:drift linear infinite;
-}
-@keyframes drift{
-  0%{transform:translateY(0) scale(1);opacity:0}
-  10%{opacity:1}
-  90%{opacity:1}
-  100%{transform:translateY(-100vh) scale(0.5);opacity:0}
-}
-
-/* ========== SCROLL REVEAL ========== */
-.reveal{opacity:0;transform:translateY(36px)}
-.reveal.vis{opacity:1;animation:springUp .85s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes springUp{
-  0%{opacity:0;transform:translateY(36px)}
-  60%{opacity:1;transform:translateY(-5px)}
-  80%{transform:translateY(2px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-.rv1{animation-delay:80ms!important}
-.rv2{animation-delay:160ms!important}
-.rv3{animation-delay:240ms!important}
-@media(prefers-reduced-motion:reduce){.reveal.vis{animation:none;opacity:1;transform:none}}
-
-/* ========== LAYOUT ========== */
-.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding-inline:40px}
-.center{text-align:center;display:flex;flex-direction:column;align-items:center}
-
-/* ========== NAV ========== */
+/* ========== NAV (unified — transparent → dark on scroll) ========== */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:16px 0;
-  transition:background .3s,border-color .3s;
-  border-bottom:1px solid transparent;
-}
-nav.scrolled{
-  background:rgba(10,15,26,0.85);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom-color:var(--border);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  background:rgba(30,40,60,0.88);
+  backdrop-filter:blur(36px) saturate(180%);-webkit-backdrop-filter:blur(36px) saturate(180%);
 }
 .nav-inner{
-  max-width:1100px;margin:0 auto;padding-inline:40px;
+  max-width:none;padding-inline:48px;margin:0 auto;
   display:flex;align-items:center;justify-content:space-between;
 }
 .logo{
   font-family:var(--font-display);font-size:1.05rem;font-weight:600;
   display:flex;align-items:center;gap:9px;letter-spacing:-.3px;
+  color:#fff;
 }
-.logo-mark{
-  width:28px;height:28px;border-radius:7px;background:var(--accent);
-  display:grid;place-items:center;
-}
-.logo-mark svg{width:14px;height:14px;stroke:var(--bg);stroke-width:2.5;fill:none}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{font-size:.85rem;font-weight:400;color:var(--text-sub);transition:color .2s}
-.nav-links a:hover{color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:40px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:400;color:rgba(255,255,255,0.72);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-links a.current{color:#4FD1C5;font-weight:500}
 
-/* ========== BUTTONS ========== */
+.nav-dropdown{position:relative}
+.nav-dd-trigger{cursor:pointer}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+  min-width:260px;background:rgba(15,23,41,0.95);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s,transform .2s,visibility .2s;
+  transform:translateX(-50%) translateY(-6px);
+}
+.nav-dropdown:hover .nav-dd-menu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.dd-item{display:block;padding:10px 14px;border-radius:8px;text-decoration:none;transition:background .15s}
+.dd-item:hover{background:rgba(255,255,255,0.04)}
+.dd-item strong{display:block;font-size:.85rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:2px}
+.dd-item span{display:block;font-size:.72rem;color:rgba(255,255,255,0.55);line-height:1.4}
+.dd-footer{border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:4px}
+.dd-footer a{display:block;padding:8px 14px;font-size:.75rem;color:var(--accent)}
+
+.lang-toggle{
+  display:inline-flex;
+  border:1px solid rgba(255,255,255,0.14);border-radius:100px;overflow:hidden;
+  background:rgba(255,255,255,0.02);cursor:pointer;
+}
+.lang-toggle span{
+  padding:4px 10px;font-size:.72rem;font-weight:600;
+  color:rgba(255,255,255,0.55);transition:all .2s;
+}
+.lang-toggle span.active{color:#4FD1C5;background:rgba(13,148,136,0.22)}
+
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:10px 24px;border-radius:100px;
   font-family:var(--font-body);font-size:.88rem;font-weight:500;
   border:1px solid var(--border);background:transparent;color:var(--text);
   cursor:pointer;transition:all .25s var(--ease);
-  position:relative;overflow:hidden;
 }
-/* Shimmer sweep on hover */
-.btn::after{
-  content:'';position:absolute;top:0;left:-100%;
-  width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
-  transition:none;
-}
-.btn:hover::after{
-  left:120%;
-  transition:left .6s var(--ease);
-}
-.btn:hover{border-color:var(--border-hover);transform:translateY(-2px)}
-.btn:active{transform:scale(.97)}
-.btn svg{width:14px;height:14px;transition:transform .3s var(--ease)}
-.btn:hover svg{transform:translateX(4px)}
-
-.btn-fill{
-  background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600;
-}
-.btn-fill:hover{border-color:var(--accent)}
-.btn-fill::after{
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
-}
-
+.btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+.btn-fill{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.btn-fill:hover{background:#0B7F74;color:#fff}
 .btn-nav{padding:7px 18px;font-size:.82rem;border-radius:100px}
 
-/* ========== SECTION COMMON ========== */
-.section{padding:120px 0}
-.section-eyebrow{
-  font-size:.72rem;font-weight:500;color:var(--text-dim);
+/* ========== PAGE HERO ========== */
+.page-hero{
+  padding:160px 40px 40px;text-align:center;
+  max-width:860px;margin:0 auto;
+}
+.page-hero-eyebrow{
+  font-size:.72rem;font-weight:500;color:var(--accent);
   letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;
 }
-.section-title{
+.page-hero h1{
   font-family:var(--font-display);
-  font-size:clamp(1.8rem,3vw,2.6rem);
-  font-weight:700;line-height:1.15;letter-spacing:-1.5px;
+  font-size:clamp(2.4rem,4.5vw,3.6rem);
+  font-weight:700;letter-spacing:-2px;line-height:1.1;
+  color:var(--text);
+}
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+.page-hero p{
+  font-size:1rem;color:var(--text-sub);
+  max-width:520px;line-height:1.7;margin:18px auto 0;
+}
+
+/* ========== LAYOUT ========== */
+.wrap{max-width:880px;margin:0 auto;padding-inline:40px}
+
+/* ========== FOUNDER CARD ========== */
+.founder-section{
+  max-width:880px;margin:40px auto;padding:0 40px;
+}
+.founder-card{
+  display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:center;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:40px 40px;
+  box-shadow:0 8px 24px -8px rgba(26,31,46,0.06);
+  transition:all .3s var(--ease);
+}
+.founder-card:hover{
+  border-color:var(--border-hover);
+  box-shadow:0 16px 40px -12px rgba(26,31,46,0.1);
+}
+.founder-avatar{
+  width:160px;height:160px;border-radius:50%;
+  overflow:hidden;border:3px solid var(--bg);
+  box-shadow:0 0 0 1px var(--border),0 12px 24px -8px rgba(26,31,46,0.08);
+  background:linear-gradient(135deg,var(--accent-sub),rgba(217,119,87,0.1));
+}
+.founder-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.founder-info h2{
+  font-family:var(--font-display);
+  font-size:1.9rem;font-weight:700;
+  letter-spacing:-1px;line-height:1.1;
+  color:var(--text);margin-bottom:6px;
+}
+.founder-title{
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--accent);
+  letter-spacing:1.2px;text-transform:uppercase;font-weight:600;
+  margin-bottom:18px;
+}
+.founder-info p{
+  font-size:.95rem;color:var(--text-sub);
+  line-height:1.7;margin-bottom:12px;
+}
+.founder-info p:last-child{margin-bottom:0}
+
+/* ========== ORIGIN STORY ========== */
+.story-section{
+  max-width:760px;margin:80px auto;padding:0 40px;
+}
+.story-eyebrow{
+  text-align:center;
+  font-family:var(--font-display);
+  font-size:.72rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);
   margin-bottom:14px;
 }
-.section-title em{font-style:normal;color:var(--accent)}
+.story-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,3vw,2.4rem);
+  font-weight:700;letter-spacing:-1px;line-height:1.2;
+  color:var(--text);text-align:center;
+  margin-bottom:48px;
+}
+.story-title em{font-style:normal;color:var(--accent)}
 
-/* ========== CTA ========== */
-.cta-box{
-  background:var(--bg-card);border:1px solid var(--border);
-  border-radius:16px;padding:72px 40px;text-align:center;
+.story-content{
+  font-family:var(--font-serif);
+  font-size:1.05rem;line-height:1.85;
+  color:rgba(26,31,46,0.82);
+}
+.story-content p{margin-bottom:22px}
+.story-highlight{
+  margin:32px 0;padding:28px 32px;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-left:4px solid var(--accent);
+  border-radius:12px;
+  font-family:var(--font-serif);
+  font-style:italic;font-size:1.12rem;line-height:1.65;
+  color:var(--text);
+  box-shadow:0 4px 16px -6px rgba(26,31,46,0.06);
+}
+.story-content strong{color:var(--text);font-weight:700}
+.story-content em{color:var(--accent-secondary);font-style:normal;font-weight:500}
+
+/* ========== BOTTOM CTA (dark island) ========== */
+.bottom-cta-wrap{
+  margin:60px 0 0;
+  padding:100px 0;
+  background:linear-gradient(135deg,#1a1f2e 0%,#0f1729 100%);
   position:relative;overflow:hidden;
 }
-.cta-box::before{
-  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
-  width:400px;height:250px;
-  background:radial-gradient(ellipse,var(--accent-glow),transparent 70%);
+.bottom-cta-wrap::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:720px;height:360px;
+  background:radial-gradient(ellipse,rgba(13,148,136,0.22),transparent 70%);
   pointer-events:none;
 }
-.cta-box h2 em{font-style:normal;color:var(--accent)}
-.cta-sub{font-size:.92rem;color:var(--text-sub);margin-bottom:32px;position:relative}
-
-/* ========== SEPARATOR ========== */
-.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 auto}
+.bottom-cta{
+  max-width:680px;margin:0 auto;padding:0 40px;
+  text-align:center;color:#fff;position:relative;
+}
+.bottom-cta h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,2.6vw,2.2rem);
+  font-weight:700;letter-spacing:-1px;line-height:1.2;
+  color:#fff;margin-bottom:12px;
+}
+.bottom-cta h2 em{font-style:normal;color:#4FD1C5}
+.bottom-cta p{
+  font-size:1rem;color:rgba(255,255,255,0.7);
+  line-height:1.6;margin-bottom:28px;
+  max-width:480px;margin-left:auto;margin-right:auto;
+}
 
 /* ========== FOOTER ========== */
 footer{
-  position:relative;z-index:1;
-  border-top:1px solid var(--border);padding:32px 0;
+  background:#1a1f2e;
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:36px 0;
 }
 .footer-inner{
   max-width:1100px;margin:0 auto;padding-inline:40px;
   display:flex;justify-content:space-between;align-items:center;
 }
-.footer-copy{font-size:.72rem;color:var(--text-dim)}
+footer .logo{color:#fff;font-size:.9rem}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
 .footer-links{display:flex;gap:20px}
-.footer-links a{font-size:.72rem;color:var(--text-dim);transition:color .2s}
-.footer-links a:hover{color:var(--text-sub)}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,0.85)}
 
-/* ========== FOUNDER SECTION ========== */
-.founder-section{display:flex;gap:48px;align-items:flex-start}
-.founder-avatar{
-  width:180px;height:180px;border-radius:50%;overflow:hidden;flex-shrink:0;
-  border:2px solid rgba(20,184,166,0.3);box-shadow:0 0 40px rgba(20,184,166,0.1);
-}
-.founder-avatar img{width:100%;height:100%;object-fit:cover}
-.founder-info h1{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-1px;margin-bottom:4px}
-.founder-en{font-family:var(--font-display);font-size:.88rem;color:var(--text-dim);font-weight:500;margin-bottom:16px}
-.founder-info p{font-size:.88rem;color:var(--text-sub);line-height:1.8;margin-bottom:10px}
-.founder-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.ftag{
-  padding:4px 14px;border-radius:100px;font-size:.72rem;
-  background:var(--accent-sub);border:1px solid rgba(20,184,166,0.2);color:var(--accent);
-}
-
-/* ========== STORY SECTION ========== */
-.story-content p{font-size:.9rem;color:var(--text-sub);line-height:1.9;margin-bottom:14px}
-.story-highlight{
-  background:linear-gradient(135deg,rgba(20,184,166,0.06),rgba(99,102,241,0.04));
-  border:1px solid var(--border);border-left:3px solid var(--accent);
-  border-radius:0 10px 10px 0;padding:20px 24px;margin:24px 0;
-  font-size:.95rem;font-weight:500;color:var(--text);line-height:1.7;
-}
-
-/* ========== MILESTONES ========== */
-.ms-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-.ms-card{
-  background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
-  padding:24px;transition:all .3s var(--ease);
-}
-.ms-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
-.ms-year{font-family:var(--font-display);font-size:.72rem;font-weight:600;color:var(--accent);letter-spacing:1px;margin-bottom:8px}
-.ms-title{font-family:var(--font-display);font-size:.92rem;font-weight:600;margin-bottom:6px}
-.ms-desc{font-size:.78rem;color:var(--text-dim)}
-
-/* ========== MOBILE RESPONSIVE ========== */
 @media(max-width:768px){
-  .founder-section{flex-direction:column;align-items:center;text-align:center}
-  .founder-avatar{width:140px;height:140px}
-  .founder-tags{justify-content:center}
-  .ms-grid{grid-template-columns:1fr}
+  .nav-inner{padding-inline:20px}
   .nav-links{gap:16px}
-  .wrap{padding-inline:20px}
-  .cta-box{padding:48px 24px}
-  .footer-inner{flex-direction:column;gap:16px;text-align:center}
+  .nav-links li:nth-child(5){display:none} /* hide lang toggle on mobile */
+  .page-hero{padding:140px 20px 30px}
+  .founder-section{padding:0 20px;margin:24px auto}
+  .founder-card{
+    grid-template-columns:1fr;gap:24px;
+    padding:32px 24px;text-align:center;
+  }
+  .founder-avatar{margin:0 auto;width:120px;height:120px}
+  .story-section{padding:0 20px;margin:60px auto}
+  .story-highlight{padding:22px 24px;font-size:1rem}
+  .bottom-cta-wrap{padding:60px 0}
+  .bottom-cta{padding:0 20px}
+  .footer-inner{flex-direction:column;gap:14px;text-align:center}
 }
 </style>
 </head>
 <body>
 
-<div class="spotlight" id="spot"></div>
-<div class="particles" id="particles"></div>
-
-<!-- NAV -->
+<!-- ========== NAV (unified) ========== -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="AgentFlow" style="height:28px">
-      AgentFlow
+      <img src="assets/logo.svg" alt="Solarian" style="height:28px">
+      Solarian
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#product">产品</a></li>
-      <li><a href="trends.html">趋势</a></li>
-      <li><a href="about.html" style="color:var(--text)">关于</a></li>
+      <li><a href="index.html">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="index.html#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="index.html#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="index.html#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="index.html#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="trends.html">OPC 博客</a></li>
+      <li><a href="news.html">公告</a></li>
+      <li><a href="about.html" class="current">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
       <li><a href="index.html#waitlist"><button class="btn btn-nav btn-fill">加入 Waitlist</button></a></li>
     </ul>
   </div>
 </nav>
 
-<!-- ========== FOUNDER ========== -->
-<section class="wrap" style="padding-top:160px;padding-bottom:80px">
-  <div class="founder-section reveal">
+<!-- ========== PAGE HERO ========== -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow">About</div>
+  <h1>关于 <em>Solarian</em></h1>
+  <p>一人公司时代的产品，由一人公司打造</p>
+</section>
+
+<!-- ========== FOUNDER CARD ========== -->
+<section class="founder-section reveal">
+  <div class="founder-card">
     <div class="founder-avatar">
       <img src="assets/franklin_avatar.png" alt="Franklin">
     </div>
     <div class="founder-info">
-      <h1>Franklin</h1>
-      <div class="founder-en">Franklin · 创始人</div>
+      <h2>Franklin</h2>
+      <div class="founder-title">Solarian 创始人</div>
       <p>AI 产品设计者，拥有 8 年海外学习与工作经验。曾创办多个 AI 产品项目，在产品设计与 AI 应用方面有丰富实践。</p>
-      <p>2026 年 All in AI，用 Claude Code 一个人完成了 AgentFlow 从产品设计、规划文档到前端驾驶舱界面的全部工作。</p>
+      <p>2026 年 All in AI，用 Claude Code 一个人完成了 Solarian 从产品设计、规划文档到前端驾驶舱界面的全部工作。</p>
     </div>
   </div>
 </section>
-
-<div class="sep"></div>
 
 <!-- ========== ORIGIN STORY ========== -->
-<section class="section wrap" style="max-width:800px">
-  <div class="reveal">
-    <div class="section-eyebrow">Origin Story</div>
-    <div class="section-title" style="font-size:clamp(1.4rem,2.5vw,2rem)">AgentFlow 来自我自己的<em>痛点</em></div>
-  </div>
-  <div class="story-content reveal rv1">
+<section class="story-section reveal rv1">
+  <div class="story-eyebrow">Origin Story</div>
+  <h2 class="story-title">Solarian 来自我自己的<em>痛点</em></h2>
+  <div class="story-content">
     <p>我每天用 5-6 个 AI Agent 窗口协同工作——分角色、传信息、手动串联——本质上已经在运营一支 AI 团队，只是没有工具把它产品化。</p>
-    <p>我需要一个"文案专员"记住我的品牌调性，一个"调研分析师"持续追踪竞品动态，一个"程序员"随时修改代码。但每个 AI 都不认识我，每次对话都从零开始。</p>
+    <p>我需要一个"文案专员"记住我的品牌调性，一个"调研分析师"持续追踪竞品动态，一个"程序员"随时修改代码。但每个 AI 都不认识我，<em>每次对话都从零开始</em>。</p>
     <div class="story-highlight">
-      我就是 AgentFlow 的第一个用户。我比任何人都清楚这套工作方式的痛点和潜力。
+      我就是 Solarian 的第一个用户。我比任何人都清楚这套工作方式的痛点和潜力。
     </div>
-    <p>AgentFlow 的 V3 原型——从产品设计、24 份规划文档到前端驾驶舱界面——全部由我一人 + AI 完成。三个月，零外部团队，从概念到可运行原型。</p>
-    <p>这本身就是 AgentFlow 价值主张的活证明：如果用 AI 一个人做出了一个完整产品原型，那么让每个一人公司都拥有这种能力——就不是愿景，而是已经被验证的可能性。</p>
+    <p>Solarian 的 V3 原型——从产品设计、24 份规划文档到前端驾驶舱界面——全部由我一人 + AI 完成。<strong>三个月，零外部团队，从概念到可运行原型。</strong></p>
+    <p>这本身就是 Solarian 价值主张的活证明：如果用 AI 一个人做出了一个完整产品原型，那么让每个一人公司都拥有这种能力——就不是愿景，而是<em>已经被验证的可能性</em>。</p>
   </div>
 </section>
-
-<div class="sep"></div>
 
 <!-- ========== BOTTOM CTA ========== -->
-<section class="section wrap center">
-  <div class="cta-box reveal">
-    <h2 style="font-family:var(--font-display);font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;letter-spacing:-1px;margin-bottom:10px;position:relative">一起定义一人公司的<em>未来</em></h2>
-    <p class="cta-sub">如果你也是一个人在创业，欢迎成为 AgentFlow 的早期用户。</p>
-    <a href="index.html#waitlist" class="btn btn-fill" style="position:relative">
+<div class="bottom-cta-wrap">
+  <div class="bottom-cta">
+    <h2>一起定义一人公司的<em>未来</em></h2>
+    <p>如果你也是一个人在创业，欢迎成为 Solarian 的早期用户。</p>
+    <a href="index.html#waitlist" class="btn btn-fill">
       加入 Waitlist
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>
-</section>
+</div>
 
 <!-- ========== FOOTER ========== -->
 <footer>
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="index.html" class="logo" style="font-size:.9rem">
-        <img src="assets/logo.svg" alt="AgentFlow" style="height:22px">
-        AgentFlow
+      <a href="index.html" class="logo">
+        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
       </a>
-      <span class="footer-copy">&copy; 2026 AgentFlow</span>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
     </div>
     <div class="footer-links">
+      <a href="index.html#demo">产品</a>
+      <a href="trends.html">博客</a>
+      <a href="news.html">公告</a>
       <a href="about.html">关于</a>
-      <a href="trends.html">趋势</a>
-      <a href="#">Twitter</a>
-      <a href="#">联系我们</a>
     </div>
   </div>
 </footer>
 
 <script>
-// Spotlight
-const s=document.getElementById('spot');
-document.addEventListener('mousemove',e=>{s.style.setProperty('--mx',e.clientX+'px');s.style.setProperty('--my',e.clientY+'px')});
-
-// Nav scroll
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>40)});
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
 
 // Scroll reveal
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('vis'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// Particles
-const pc=document.getElementById('particles');
-for(let i=0;i<30;i++){
-  const sp=document.createElement('span');
-  sp.style.left=Math.random()*100+'%';
-  sp.style.top=Math.random()*100+'vh';
-  sp.style.animationDuration=(8+Math.random()*12)+'s';
-  sp.style.animationDelay=Math.random()*8+'s';
-  sp.style.width=sp.style.height=(1+Math.random()*2)+'px';
-  pc.appendChild(sp);
+// Lang toggle (visual only)
+function toggleLang(){
+  const t = document.getElementById('langToggle');
+  if(!t) return;
+  t.querySelector('.lang-zh').classList.toggle('active');
+  t.querySelector('.lang-en').classList.toggle('active');
 }
 </script>
+
 </body>
 </html>

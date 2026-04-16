@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPC 博客 — AgentFlow</title>
+<title>OPC 博客 — Solarian</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -318,6 +318,55 @@ footer{
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
   .blog-article{padding:100px 16px 60px}
 }
+
+/* ========== UNIFIED NAV OVERRIDE (matches index.html scrolled state) ========== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  background:rgba(30,40,60,0.88) !important;
+  backdrop-filter:blur(36px) saturate(180%);-webkit-backdrop-filter:blur(36px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.1) !important;
+}
+.nav-inner{
+  max-width:none !important;padding-inline:48px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+nav .logo{color:#fff !important;font-family:var(--font-display);font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:9px;letter-spacing:-.3px}
+nav .nav-links{display:flex;align-items:center;gap:40px;list-style:none}
+nav .nav-links a{color:rgba(255,255,255,0.72) !important;font-size:.85rem;font-weight:400;transition:color .2s}
+nav .nav-links a:hover{color:#fff !important}
+nav .nav-links a.current{color:#4FD1C5 !important;font-weight:500}
+
+/* Dropdown */
+.nav-dropdown{position:relative}
+.nav-dd-trigger{cursor:pointer}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+  min-width:260px;background:rgba(15,23,41,0.95);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s,transform .2s,visibility .2s;
+  transform:translateX(-50%) translateY(-6px);
+}
+.nav-dropdown:hover .nav-dd-menu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.dd-item{display:block;padding:10px 14px;border-radius:8px;text-decoration:none;transition:background .15s}
+.dd-item:hover{background:rgba(255,255,255,0.04)}
+.dd-item strong{display:block;font-size:.85rem;font-weight:600;color:rgba(255,255,255,0.9) !important;margin-bottom:2px}
+.dd-item span{display:block;font-size:.72rem;color:rgba(255,255,255,0.55) !important;line-height:1.4}
+.dd-footer{border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:4px}
+.dd-footer a{display:block;padding:8px 14px;font-size:.75rem;color:#4FD1C5 !important}
+
+/* Lang toggle */
+.lang-toggle{
+  display:inline-flex;
+  border:1px solid rgba(255,255,255,0.14);border-radius:100px;overflow:hidden;
+  background:rgba(255,255,255,0.02);cursor:pointer;
+}
+.lang-toggle span{padding:4px 10px;font-size:.72rem;font-weight:600;color:rgba(255,255,255,0.55) !important;transition:all .2s}
+.lang-toggle span.active{color:#4FD1C5 !important;background:rgba(13,148,136,0.22)}
 </style>
 </head>
 <body>
@@ -325,17 +374,42 @@ footer{
 <div class="spotlight" id="spot"></div>
 <div class="particles" id="particles"></div>
 
-<!-- NAV -->
+<!-- NAV (unified across all pages) -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="AgentFlow" style="height:28px">
-      AgentFlow
+      <img src="assets/logo.svg" alt="Solarian" style="height:28px">
+      Solarian
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#product">产品</a></li>
-      <li><a href="trends.html" style="color:var(--text)">博客</a></li>
+      <li><a href="index.html">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="index.html#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="index.html#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="index.html#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="index.html#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="trends.html" class="current">OPC 博客</a></li>
+      <li><a href="news.html">公告</a></li>
       <li><a href="about.html">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
       <li><a href="index.html#waitlist"><button class="btn btn-nav btn-fill">加入 Waitlist</button></a></li>
     </ul>
   </div>
@@ -357,7 +431,7 @@ footer{
 <section class="wrap center" style="padding-bottom:120px">
   <div class="cta-box reveal">
     <h2 style="font-family:var(--font-display);font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;letter-spacing:-1px;margin-bottom:10px;position:relative">趋势已经明确，<em>工具还没就位</em></h2>
-    <p class="cta-sub">AgentFlow 是为一人公司时代设计的 AI 团队操作系统。</p>
+    <p class="cta-sub">Solarian 是为一人公司时代设计的 AI 团队操作系统。</p>
     <a href="index.html#waitlist" class="btn btn-fill" style="position:relative">
       加入 Waitlist
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -370,10 +444,10 @@ footer{
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
       <a href="index.html" class="logo" style="font-size:.9rem">
-        <img src="assets/logo.svg" alt="AgentFlow" style="height:22px">
-        AgentFlow
+        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
       </a>
-      <span class="footer-copy">&copy; 2026 AgentFlow</span>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
     </div>
     <div class="footer-links">
       <a href="index.html#product">产品</a>
@@ -470,23 +544,246 @@ const articles = [
     title: '从工具碎片到团队协作：OPC 的 AI 困境',
     tag: '洞见', tagClass: 'tag-insight',
     desc: '一人公司创业者平均使用 12 个 AI 工具，却缺少一个让它们协同工作的操作系统。',
-    source: 'AgentFlow 研究', date: '2026', readTime: '5 分钟',
+    source: 'Solarian 研究', date: '2026', readTime: '5 分钟',
     cover: 'assets/scenario_illustration.png', grad: null,
     content: `<p>我们调研了 200 位一人公司创业者，发现一个共同的痛点：<strong>他们平均使用 12 个不同的 AI 工具，但这些工具之间几乎没有协同。</strong></p>
 <p>一个典型的日常工作流是这样的：用 ChatGPT 写文案，用 Midjourney 出图，用 Notion 管理项目，用 Zapier 做自动化，用 Mailchimp 发邮件，用 Stripe 收款……每个工具都很强大，但它们之间的衔接完全靠人工。复制粘贴、手动触发、反复切换——这些"胶水工作"吃掉了创业者 40% 的时间。</p>
-<p>真正的问题不是缺工具，而是<strong>缺一个让 AI 工具像团队一样协作的操作系统</strong>。当你一个人运营公司时，你需要的不是更多的独立工具，而是一支能自主协调、相互配合的 AI 团队。这正是 AgentFlow 要解决的问题。</p>`
+<p>真正的问题不是缺工具，而是<strong>缺一个让 AI 工具像团队一样协作的操作系统</strong>。当你一个人运营公司时，你需要的不是更多的独立工具，而是一支能自主协调、相互配合的 AI 团队。这正是 Solarian 要解决的问题。</p>`
   },
   {
     id: 8,
-    title: 'AgentFlow 创始人：我就是第一个用户',
+    title: 'Solarian 创始人：我就是第一个用户',
     tag: '故事', tagClass: 'tag-story',
-    desc: '"我创办 AgentFlow 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"',
-    source: 'AgentFlow', date: '2026', readTime: '4 分钟',
+    desc: '"我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"',
+    source: 'Solarian', date: '2026', readTime: '4 分钟',
     cover: 'assets/franklin_avatar.png', grad: null,
-    content: `<p>"我创办 AgentFlow 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"</p>
-<p>Franklin，AgentFlow 的创始人，在过去两年里尝试了几乎所有主流的 AI 工具。<strong>他发现一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。</strong>他需要的不是又一个工具，而是一个能理解业务上下文、自主协调多个 AI Agent 的"团队操作系统"。</p>
-<p>AgentFlow 的核心理念很简单：<strong>把 AI Agent 当作团队成员来管理，而不是当作工具来使用。</strong>每个 Agent 有自己的角色、职责和工作流程，Agent 之间可以互相沟通、互相审核、互相学习。创始人只需要做一件事——定义目标，然后让 Agent 团队去执行。</p>
-<p>"我就是第一个用户，也是最苛刻的用户。如果 AgentFlow 能让我这样的一人创业者真正解放出来，它就能帮助所有人。"</p>`
+    content: `<p>"我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"</p>
+<p>Franklin，Solarian 的创始人，在过去两年里尝试了几乎所有主流的 AI 工具。<strong>他发现一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。</strong>他需要的不是又一个工具，而是一个能理解业务上下文、自主协调多个 AI Agent 的"团队操作系统"。</p>
+<p>Solarian 的核心理念很简单：<strong>把 AI Agent 当作团队成员来管理，而不是当作工具来使用。</strong>每个 Agent 有自己的角色、职责和工作流程，Agent 之间可以互相沟通、互相审核、互相学习。创始人只需要做一件事——定义目标，然后让 Agent 团队去执行。</p>
+<p>"我就是第一个用户，也是最苛刻的用户。如果 Solarian 能让我这样的一人创业者真正解放出来，它就能帮助所有人。"</p>`
+  },
+  {
+    id: 9,
+    title: '月均 $20：一人公司的完整基建清单',
+    tag: '洞见', tagClass: 'tag-insight',
+    desc: 'Claude 写代码，Supabase 当后端，Vercel 部署，Stripe 收款——13 个工具，固定成本 $21/月，覆盖一家互联网公司从开发到收款的全部职能。',
+    source: 'Solarian 研究', date: '2026.04', readTime: '5 分钟',
+    cover: 'assets/workflow_flywheel.svg',
+    content: `<p>如果你在五年前告诉一位创业者，现在一个人可以用每月 20 美元运营一家完整的互联网公司，他大概率不会相信。融资、团队、服务器、运维——哪一项不是钱烧出来的？</p>
+
+<p>但今天，这不是玩笑，而是可以直接复制的事实。</p>
+
+<h3>一人公司的完整基建清单</h3>
+
+<p>以下是目前验证可用的最精简工具栈，覆盖一家互联网公司从开发到收款的全部环节：</p>
+
+<ul>
+  <li><strong>Claude Code（$20/月）</strong> — AI 开发助手，直接在终端写代码、调试、重构。把"雇一名全栈工程师"变成了月费服务。</li>
+  <li><strong>Supabase（免费）</strong> — 开源后端，底层 PostgreSQL，提供数据库、认证、实时订阅和存储。两个项目、500MB 数据库，对 MVP 绰绰有余。</li>
+  <li><strong>Vercel（免费）</strong> — 部署平台，git push 即上线，自带 CDN 和边缘计算。</li>
+  <li><strong>Namecheap（约 $1/月）</strong> — 域名注册，.com 约 $12/年。有自己的域名，是"认真做产品"和"玩玩而已"的分水岭。</li>
+  <li><strong>Stripe（0 月费，2.9% 交易抽成）</strong> — 在线支付基础设施，从收第一笔到百万级交易，用同一套系统。</li>
+  <li><strong>GitHub（免费）</strong> — 代码版本控制，同时也是整个项目的协作与 CI/CD 枢纽。</li>
+  <li><strong>Clerk（免费，1 万月活内）</strong> — 用户认证，提供完整登录 / 注册 / OAuth / MFA 组件。比自己写 auth 省几天时间，且更安全。</li>
+  <li><strong>Resend（免费，3,000 封/月）</strong> — 开发者邮件服务，用于验证码、通知、营销邮件。</li>
+  <li><strong>Cloudflare（免费）</strong> — DNS + CDN + DDoS 防护 + SSL，行业标准操作。</li>
+  <li><strong>PostHog（免费，百万事件/月）</strong> — 产品分析平台，事件追踪 + 漏斗分析 + A/B 测试。</li>
+  <li><strong>Sentry（免费，5,000 次错误事件/月）</strong> — 错误监控，代码报错时自动捕获并告警。没有它，你根本不知道用户遇到了什么 bug。</li>
+  <li><strong>Upstash（免费，1 万次请求/天）</strong> — Serverless Redis，用于缓存、速率限制、会话存储。</li>
+  <li><strong>Pinecone（免费，约 100 万向量）</strong> — 向量数据库，AI 应用的语义搜索标配。</li>
+</ul>
+
+<p><strong>合计固定成本：约 $21/月。</strong> 变动成本只有 Stripe 的交易抽成——有收入才有这笔支出。</p>
+
+<h3>这张清单的真正意义</h3>
+
+<p>不是"便宜"，而是<strong>职能的完整覆盖</strong>。</p>
+
+<p>这 13 个工具，分别对应一家互联网公司的开发层（Claude + GitHub）、后端与数据层（Supabase + Upstash + Pinecone）、部署与基础设施层（Vercel + Namecheap + Cloudflare）、用户与支付层（Clerk + Stripe），以及运维与监控层（Resend + PostHog + Sentry）。</p>
+
+<p>五年前，这些职能对应的是五个以上专职人员，加上动辄几万元/月的服务器开销。现在，它们被打包成"一键即用"的 SaaS 服务，90% 以上对个人和早期项目完全免费。</p>
+
+<h3>你一个人，就是一家公司</h3>
+
+<p>一人公司的核心，从来不是"一个人干所有活"，而是"一个人掌控全部决策权和 100% 的利润"。AI 和工具接管了执行层，你负责判断什么值得做，以及怎么做。</p>
+
+<p>不需要融资，不用稀释股权；不需要团队，不用应付管理内耗。你只需要找到一个能解决真实痛点的需求，把产品做出来，然后收钱。</p>
+
+<p>从来没有哪个时代，让普通人以这么低的成本，完整掌控自己的商业价值链。</p>
+
+<p>不过，工具清单解决的是"能做"的问题。真正的挑战——<strong>做什么、做给谁、做到什么程度</strong>——这些问题工具给不了答案。一人公司需要的不只是一堆工具，而是让这些工具像团队一样协同运转的操作系统。这正是 Solarian 正在构建的事。</p>`
+  },
+  {
+    id: 10,
+    title: '$20 开公司之后：完全竞争的陷阱与破局',
+    tag: '趋势', tagClass: 'tag-trend',
+    desc: '当所有人都能用 $20 开公司，进入门槛趋近于零，产品将滑向完全竞争市场——利润趋近于零。真正的竞争，才刚刚开始。',
+    source: 'Solarian 研究', date: '2026.04', readTime: '6 分钟',
+    cover: 'assets/scenario_illustration.png',
+    content: `<p>每个人都在欢呼"$20 就能开公司"。但极少有人接着往下想：<strong>当所有人都能用 $20 开公司，会发生什么？</strong></p>
+
+<h3>完全竞争市场的幽灵</h3>
+
+<p>经济学有一条规律：当一个行业的进入门槛趋近于零，它就会滑向<strong>完全竞争市场</strong>。</p>
+
+<p>完全竞争市场的特征：大量卖家，产品高度同质化，没有定价权，价格由市场决定——利润趋近于零，准确地说，趋近于机会成本。</p>
+
+<p>AI 工具 + 一人公司的浪潮，正在把软件开发推向这个方向：</p>
+
+<ul>
+  <li>开发成本从"几十万/月的团队"降到"$20/月的 AI"</li>
+  <li>技术栈高度标准化——Next.js + Supabase + Vercel，几乎人人同一套</li>
+  <li>产品越来越容易被复制——你今天做出来的东西，别人明天也能做出来</li>
+</ul>
+
+<p>当开发成本趋近于零，同质化软件产品的利润也会趋近于零。这不是悲观，这是经济规律。</p>
+
+<h3>但我们现在在哪？</h3>
+
+<p>现在处于这条曲线的<strong>早期阶段</strong>。真正能熟练运用 AI 工具、做出有质量产品的人，依然是少数。这意味着：</p>
+
+<ul>
+  <li>先行者还有超额利润，这个窗口真实存在</li>
+  <li>但窗口正在快速关闭——AI 工具每个月都在变强，门槛每个月都在降低</li>
+  <li>12 到 18 个月后，"会用 AI 写全栈代码"将不再是竞争优势，就像"会用 Excel"不再是竞争优势一样</li>
+</ul>
+
+<h3>在完全竞争市场里，谁能赚到钱？</h3>
+
+<p>经济学同样给出了答案——打破完全竞争，只有这几条路：</p>
+
+<p><strong>差异化</strong>：不要做"又一个 XX 工具"。护城河往往不是代码，而是独特的数据源、深耕多年的行业知识，或网络效应。产品越用越好，才是壁垒。</p>
+
+<p><strong>转换成本</strong>：让用户用了就离不开。数据锁定、习惯养成、社交关系沉淀——这些不会因为别人也学会了 AI 工具而消失。</p>
+
+<p><strong>速度与迭代</strong>：窗口期有限，在它关闭前跑得比别人快。第一个深耕某个垂直场景的人，有机会建立品牌认知和用户基础。"快速验证并迭代"比单纯的"快"更重要。</p>
+
+<p><strong>做 AI 做不了的事</strong>：AI 最擅长标准化、重复性的任务。那些需要深度领域知识、复杂业务判断、线下资源整合的工作，依然有壁垒。越是 AI 容易做的事，越不值钱；越是 AI 做不了的事，越值钱。</p>
+
+<h3>给 OPC 创业者的三条建议</h3>
+
+<p><strong>从问题出发，不要从工具出发。</strong>"我会 AI 写代码所以要做个产品"是最危险的起点。正确的顺序是：发现真实痛点 → 判断是否值得解决 → 用 AI 低成本验证。工具是放大器，不是方向盘。</p>
+
+<p><strong>在窗口期建立不可复制的资产。</strong>用户数据、品牌认知、社区关系——这些不会因为别人也学会用 AI 而贬值。你在窗口期积累的这些，才是真正的护城河。</p>
+
+<p><strong>把 AI 当杠杆，不当目的。</strong>AI 工具放大你已有的认知优势和行业洞察。如果你没有这些，它放大的是你的盲区。</p>
+
+<p>工具降低的是"把东西做出来"的成本。"做出正确的东西"的成本，从未降低。后者，才是真正的竞争。</p>
+
+<p>Solarian 在做的事，是帮助一人公司创业者将零散的 AI 工具整合成协同运转的系统——让你把节省下来的时间，真正用于那些机器做不了的判断和决策。</p>`
+  },
+  {
+    id: 11,
+    title: 'SaaS 的黄昏：当 AI 开始替代整个部门',
+    tag: '观点', tagClass: 'tag-opinion',
+    desc: '2026 年初，SaaS 板块市值数千亿蒸发。不是因为软件变差了，而是因为 AI 开始直接替代人的职能。按人头卖坐席的时代，正在终结。',
+    source: '硅谷101', date: '2026.02', readTime: '6 分钟',
+    cover: 'assets/n8n_series_c.png',
+    content: `<p>2026 年初，全球软件行业经历了一场"信仰地震"：随着 AI 公司发布能直接执行核心业务流程的职能型智能体，全球 SaaS 板块市值在短短数周内蒸发数千亿美元。</p>
+
+<p>华尔街的判断直接了当：<strong>按人头卖坐席的时代，结束了。</strong></p>
+
+<h3>SaaS 帝国为何开始动摇</h3>
+
+<p>过去 15 年，SaaS 的商业模式建立在一个隐性假设之上：软件能帮助人工作，但人依然需要大量存在。你按席位付费，按用户数扩张。这个逻辑无懈可击——直到 AI 开始直接承担"人"的职能。</p>
+
+<p>当一个 Agent 能够完成整个部门的工作——从文档审核到客户跟进到数据分析——按人头购买软件授权的逻辑便不再成立。企业开始提出一个更直接的问题：<strong>我为什么要为过程付费，而不是为结果付费？</strong></p>
+
+<p>这正是 RaaS（Results as a Service，结果即服务）的核心逻辑。企业不再购买软件工具的使用权，而是直接购买可量化的业务结果：合同审核完成量、招聘成功率、销售转化数。从"买螺丝刀"变成"买已拧好的螺丝"。</p>
+
+<h3>硅基员工：新型组织正在形成</h3>
+
+<p>最有意思的不是 SaaS 在消亡，而是消亡之后，企业组织在发生什么变化。</p>
+
+<p>已有企业建立了"硅基员工"管理体系：AI 员工有工号、有 KPI、有绩效考核，甚至有退役机制。人类员工的角色，从执行者变成了系统的设计者和最终审核人。几个真实的案例：</p>
+
+<ul>
+  <li>曾被视为成本中心的客服部门，45 名客服人员转岗成为 AI 训练师，进入利润中心</li>
+  <li>法律合同审核从 56 分钟缩短至 4 分钟——AI 完成 90% 的工作，人类负责最后签字</li>
+  <li>招聘周期从 28 天压缩至 2 天——AI 深度理解非结构化简历，自动筛选、邀约、访谈</li>
+</ul>
+
+<p>"碳硅比"——一名人类员工能指挥多少个 AI Agent——正在成为衡量企业竞争力的新指标。</p>
+
+<h3>谁会在这轮洗牌中活下来</h3>
+
+<p>并非所有 SaaS 公司都会消亡。能存活的，往往具备以下之一：</p>
+
+<ul>
+  <li><strong>不可替代的私域数据</strong>：AI 能生成内容，但生成不了你积累十年的行业数据和客户关系。</li>
+  <li><strong>极度复杂的业务流程</strong>：高度定制、高容错要求的场景，AI 短期内难以完全接管。</li>
+  <li><strong>主动转型为 AI 原生架构</strong>：从工具提供商变为结果提供商，从卖软件变为卖 Agent 矩阵。</li>
+</ul>
+
+<p>功能简单、依赖席位费的中层工具，将以极快的速度被淘汰。</p>
+
+<h3>对一人公司的结构性利好</h3>
+
+<p>这场变革，对一人公司创业者而言其实是好消息。</p>
+
+<p>大公司替换原有 SaaS 工具链、重建 AI 原生工作流，需要大量时间和克服内部阻力。而一人公司可以从第一天起，就以 AI 原生的方式构建业务——没有历史包袱，没有组织惰性，没有需要说服的委员会。</p>
+
+<p>这是 OPC 时代真正的结构性优势：轻装上阵，比任何大公司都能更快完成"碳硅重组"。</p>
+
+<p>Solarian 为 OPC 创业者提供的，正是这套 AI 原生的团队操作系统——不是又一个工具，而是让 AI 工具真正能够像团队一样协同工作的基础设施。</p>`
+  },
+  {
+    id: 12,
+    title: 'AI 开支从 $1000 降到 $200：分层用模型的真实账单',
+    tag: '案例', tagClass: 'tag-case',
+    desc: '4 个 AI Agent 7×24 运行，11 个定时任务，每天几十轮对话。优化前烧 $1000/月，优化后 $200。核心方法只有三个字：分层用。',
+    source: '实战案例', date: '2026.04', readTime: '5 分钟',
+    cover: 'assets/cockpit_screenshot.png',
+    content: `<p>在 AI Agent 系统真正跑通之前，很少有人关注一个问题：<strong>这玩意儿到底要烧多少钱？</strong></p>
+
+<p>一个真实的案例：4 个 AI Agent 7×24 持续运行，11 个定时任务，每天几十轮对话。优化前，每天烧 $100-150，月均超过 $1,000。优化后，稳定在 $10/天，月均 $200 出头。</p>
+
+<p>省了 80%。核心方法，只有三个字：<strong>分层用</strong>。</p>
+
+<h3>核心原则：不是所有任务都需要最强模型</h3>
+
+<p>很多人一上来就让所有 AI 请求都走最贵的旗舰模型——无论是日常对话、定时任务还是后台自动化。这就像开法拉利去买菜：能用，但完全没必要。</p>
+
+<p>正确的做法是<strong>按任务重要性分配模型</strong>。光这一步，通常就能砍掉 60-70% 的开支。</p>
+
+<h3>四个有效的分层策略</h3>
+
+<p><strong>策略一：建立 Fallback 链，永远不因一个模型挂掉而停摆</strong></p>
+
+<p>配置模型优先级链：旗舰模型（主力）→ 国产大模型（成本低，API 兼容）→ 中端模型（备选）→ 轻量模型（兜底）。某个服务限流或故障时，自动切换到下一级，用户基本感知不到差异。这既是容灾方案，也是成本控制手段。</p>
+
+<p><strong>策略二：不同 Agent 用不同模型</strong></p>
+
+<p>对创造力要求高的 Agent（写作、分析、策略）——用旗舰模型。执行确定性任务的 Agent（格式转换、数据整理、状态检查）——用中端或轻量模型。同等质量下，成本差距可达 5-10 倍。</p>
+
+<p><strong>策略三：定时任务全部走轻量模型</strong></p>
+
+<p>这是省钱最狠的一刀。大多数定时任务做的事很简单：读个文件、查个 API、检查系统状态、格式化输出。这些根本不需要"聪明"的模型，需要的是快和便宜。</p>
+
+<p>若全部用旗舰模型，10 个定时任务每月可能烧 $30+。换成轻量模型后，不到 $5。唯一的例外：需要创造力的任务（如自动生成内容），依然值得用旗舰模型。</p>
+
+<p><strong>策略四：控制上下文窗口，避免 token 无限膨胀</strong></p>
+
+<p>长对话的成本增长往往不是线性的——每一轮都要把历史对话带进去。对上下文进行定期压缩或裁剪（例如超过一小时的内容自动压缩），通常能让长对话的 token 成本降低 30-50%。</p>
+
+<h3>真实的账单对比</h3>
+
+<p><strong>优化前</strong>（全部旗舰模型，无 fallback）：Anthropic API 约 $1,000/月，其他模型 $30/月，合计超过 $1,000。</p>
+
+<p><strong>优化后</strong>（分层策略 + fallback 链 + 定时任务降级）：主力 API 约 $200/月（仅主对话和高创造力任务），其他 API 约 $8/月，合计约 $210。</p>
+
+<p><strong>节省 80%，系统稳定性反而提升了</strong>——因为 fallback 链消除了单点故障。</p>
+
+<h3>如果你只做一件事</h3>
+
+<p>如果觉得全面优化太复杂，优先做这两件事：</p>
+
+<ul>
+  <li><strong>给所有 AI 调用加上 fallback 链</strong>——既是容灾，也是成本控制</li>
+  <li><strong>把所有定时任务降级到轻量模型</strong>——通常省下的钱，超过你的想象</li>
+</ul>
+
+<p>对一人公司而言，AI 开支是真实的运营成本，不是可以忽略的细节。Solarian 内置了模型分层路由能力，让不同类型的任务自动匹配合适的模型——你不需要手动配置每一条规则，系统会帮你把成本控制做进工作流里。</p>`
   }
 ];
 
@@ -566,6 +863,14 @@ for (let i = 0; i < 30; i++) {
   sp.style.animationDelay = Math.random() * 8 + 's';
   sp.style.width = sp.style.height = (1 + Math.random() * 2) + 'px';
   pc.appendChild(sp);
+}
+
+// Lang toggle (visual-only fallback)
+function toggleLang(){
+  const t=document.getElementById('langToggle');
+  if(!t) return;
+  t.querySelector('.lang-zh').classList.toggle('active');
+  t.querySelector('.lang-en').classList.toggle('active');
 }
 </script>
 </body>
