@@ -2120,6 +2120,85 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   .cap-title{font-size:.62rem}
 }
 
+/* ========== WAITLIST MODAL ========== */
+.wl-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(10,14,23,0.6);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease);
+}
+.wl-overlay.open{opacity:1;pointer-events:auto}
+.wl-modal{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:20px;padding:40px 36px;
+  max-width:580px;width:90vw;max-height:90vh;
+  overflow-y:auto;position:relative;
+  box-shadow:0 24px 80px -16px rgba(0,0,0,0.3);
+  transform:translateY(20px) scale(0.97);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.wl-overlay.open .wl-modal{transform:translateY(0) scale(1)}
+.wl-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;font-size:1.6rem;
+  color:var(--text-dim);cursor:pointer;
+  transition:color .2s;line-height:1;
+}
+.wl-close:hover{color:var(--text)}
+.wl-header{text-align:center;margin-bottom:28px}
+.wl-header h3{
+  font-family:var(--font-display);font-size:1.4rem;
+  font-weight:700;letter-spacing:-.5px;color:var(--text);
+  margin-bottom:6px;
+}
+.wl-header p{font-size:.85rem;color:var(--text-sub)}
+.wl-form{display:flex;flex-direction:column;gap:18px}
+.wl-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wl-field{display:flex;flex-direction:column;gap:6px}
+.wl-field label{
+  font-size:.78rem;font-weight:600;color:var(--text);
+  letter-spacing:.2px;
+}
+.wl-req{color:#ef4444;font-weight:700}
+.wl-field input,.wl-field select,.wl-field textarea{
+  padding:10px 14px;border-radius:10px;
+  background:var(--bg-card);border:1px solid var(--border);
+  color:var(--text);font-family:var(--font-body);font-size:.88rem;
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.wl-field input:focus,.wl-field select:focus,.wl-field textarea:focus{
+  border-color:rgba(13,148,136,0.5);
+  box-shadow:0 0 0 3px rgba(13,148,136,0.08);
+}
+.wl-field input::placeholder,.wl-field textarea::placeholder{color:var(--text-dim)}
+.wl-field select{cursor:pointer;appearance:auto}
+.wl-field textarea{resize:vertical;min-height:60px}
+.wl-submit{
+  width:100%;justify-content:center;margin-top:6px;
+  padding:13px 24px;font-size:.95rem;
+}
+.wl-submit.loading{opacity:.6;pointer-events:none}
+/* Success */
+.wl-success{text-align:center;padding:40px 20px}
+.wl-success-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:var(--accent-sub);color:var(--accent);
+  font-size:1.8rem;font-weight:700;
+  display:grid;place-items:center;
+  margin:0 auto 20px;
+}
+.wl-success h3{
+  font-family:var(--font-display);font-size:1.3rem;
+  font-weight:700;color:var(--text);margin-bottom:8px;
+}
+.wl-success p{font-size:.88rem;color:var(--text-sub)}
+@media(max-width:560px){
+  .wl-row{grid-template-columns:1fr}
+  .wl-modal{padding:28px 20px}
+}
+
 /* Footer on dark */
 footer{
   background:#1a1f2e;
@@ -2174,7 +2253,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
           <span class="lang-en">EN</span>
         </button>
       </li>
-      <li><a href="#waitlist"><button class="btn btn-nav btn-fill" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</button></a></li>
+      <li><a href="javascript:void(0)" onclick="document.getElementById('waitlistModal').classList.add('open')"><button class="btn btn-nav btn-fill" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</button></a></li>
     </ul>
   </div>
 </nav>
@@ -2185,7 +2264,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   <div class="hero-brand">Solarian</div>
   <h1 class="hero-title" data-zh="像总经理一样下指令，<span style='color:var(--accent)'>硅基团队</span>交付结果" data-en="Command like a CEO, your <span style='color:var(--accent)'>AI team</span> delivers">像总经理一样下指令，<span style="color:var(--accent)">硅基团队</span>交付结果</h1>
   <div class="hero-btns">
-    <a href="#waitlist" class="btn btn-fill">
+    <a href="javascript:void(0)" class="btn btn-fill" onclick="document.getElementById('waitlistModal').classList.add('open')">
       <span data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
@@ -2380,17 +2459,108 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 <section class="cta-section" id="waitlist">
   <div class="cta-box wrap reveal">
     <h2 data-zh="加入 <em>Waitlist</em>" data-en="Join the <em>Waitlist</em>">加入 <em>Waitlist</em></h2>
-    <p class="cta-sub" data-zh="Solarian Q2 发布。留下邮箱，第一时间获得内测资格。" data-en="Solarian launches Q2. Leave your email to get early access.">Solarian Q2 发布。留下邮箱，第一时间获得内测资格。</p>
-    <div class="cta-form">
-      <input type="email" class="cta-input" id="ctaEmailInput" placeholder="输入你的邮箱" data-zh-placeholder="输入你的邮箱" data-en-placeholder="Enter your email">
-      <button class="btn btn-fill">
-        <span data-zh="加入" data-en="Join">加入</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-    </div>
+    <p class="cta-sub" data-zh="Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。" data-en="Solarian launches Q2. Tell us your needs and get early access.">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
+    <button class="btn btn-fill btn-waitlist-open" onclick="document.getElementById('waitlistModal').classList.add('open')">
+      <span data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
     <p class="cta-note" data-zh="免费加入 · 无需信用卡" data-en="Free to join · No credit card required">免费加入 · 无需信用卡</p>
   </div>
 </section>
+
+<!-- ========== WAITLIST MODAL ========== -->
+<div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wl-modal">
+    <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="wl-header">
+      <h3>加入 Solarian Waitlist</h3>
+      <p>帮助我们了解你的需求，让 Solarian 更好地为你服务</p>
+    </div>
+    <form id="waitlistForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+      <!-- Row 1: Name + Email -->
+      <div class="wl-row">
+        <div class="wl-field">
+          <label>姓名 <span class="wl-req">*</span></label>
+          <input type="text" name="name" required placeholder="你的名字">
+        </div>
+        <div class="wl-field">
+          <label>邮箱 <span class="wl-req">*</span></label>
+          <input type="email" name="email" required placeholder="name@company.com">
+        </div>
+      </div>
+      <!-- Row 2: Country + Industry -->
+      <div class="wl-row">
+        <div class="wl-field">
+          <label>所在国家/地区 <span class="wl-req">*</span></label>
+          <select name="country" required>
+            <option value="" disabled selected>选择国家/地区</option>
+            <option value="CN">中国</option>
+            <option value="US">美国</option>
+            <option value="GB">英国</option>
+            <option value="JP">日本</option>
+            <option value="KR">韩国</option>
+            <option value="SG">新加坡</option>
+            <option value="DE">德国</option>
+            <option value="FR">法国</option>
+            <option value="AU">澳大利亚</option>
+            <option value="CA">加拿大</option>
+            <option value="IN">印度</option>
+            <option value="BR">巴西</option>
+            <option value="AE">阿联酋</option>
+            <option value="HK">中国香港</option>
+            <option value="TW">中国台湾</option>
+            <option value="OTHER">其他</option>
+          </select>
+        </div>
+        <div class="wl-field">
+          <label>所在行业 <span class="wl-req">*</span></label>
+          <select name="industry" required>
+            <option value="" disabled selected>选择行业</option>
+            <option value="tech">科技/互联网</option>
+            <option value="finance">金融/投资</option>
+            <option value="ecommerce">电商/零售</option>
+            <option value="education">教育/培训</option>
+            <option value="media">媒体/内容</option>
+            <option value="consulting">咨询/服务</option>
+            <option value="manufacturing">制造/工业</option>
+            <option value="healthcare">医疗/健康</option>
+            <option value="realestate">房地产/建筑</option>
+            <option value="legal">法律/合规</option>
+            <option value="freelancer">自由职业/独立开发</option>
+            <option value="student">学生/研究</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+      </div>
+      <!-- Row 3: Role -->
+      <div class="wl-field">
+        <label>你的角色/职位</label>
+        <input type="text" name="role" placeholder="如：产品经理、创始人、开发者...">
+      </div>
+      <!-- Row 4: Pain points -->
+      <div class="wl-field">
+        <label>你目前工作中最大的痛点是什么？ <span class="wl-req">*</span></label>
+        <textarea name="painpoints" required rows="3" placeholder="例如：每天要在 5 个 AI 工具间切换，重复给每个工具上下文..."></textarea>
+      </div>
+      <!-- Row 5: Use case -->
+      <div class="wl-field">
+        <label>你希望 Solarian 帮你完成哪些具体工作？</label>
+        <textarea name="usecase" rows="3" placeholder="例如：自动生成周报、管理社交媒体内容、代码审查..."></textarea>
+      </div>
+      <!-- Submit -->
+      <button type="submit" class="btn btn-fill wl-submit" id="wlSubmitBtn">
+        <span>提交申请</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <!-- Success state -->
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>欢迎加入 Solarian！</h3>
+      <p>我们已收到你的申请，会在第一时间通知你内测开放。</p>
+    </div>
+  </div>
+</div>
 
 <!-- ========== FOOTER ========== -->
 <footer>
@@ -2411,7 +2581,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 </footer>
 
 <!-- Floating CTA -->
-<a href="#waitlist" class="floating-cta" id="floatingCta" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</a>
+<a href="javascript:void(0)" class="floating-cta" id="floatingCta" onclick="document.getElementById('waitlistModal').classList.add('open')" data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</a>
 
 <script>
 // ========== i18n SYSTEM ==========
@@ -3926,6 +4096,44 @@ fObs.observe(heroEl);
     bootObs.observe(stage);
   }
 })();
+
+// ========== WAITLIST FORM ==========
+const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/PLACEHOLDER/exec';
+
+function submitWaitlist(e) {
+  e.preventDefault();
+  const form = document.getElementById('waitlistForm');
+  const btn = document.getElementById('wlSubmitBtn');
+  const data = Object.fromEntries(new FormData(form));
+
+  btn.classList.add('loading');
+  btn.querySelector('span').textContent = '提交中...';
+
+  fetch(WAITLIST_ENDPOINT, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(() => {
+    form.style.display = 'none';
+    document.querySelector('.wl-header').style.display = 'none';
+    document.getElementById('wlSuccess').style.display = 'block';
+  }).catch(() => {
+    // no-cors always resolves, but just in case
+    btn.classList.remove('loading');
+    btn.querySelector('span').textContent = '提交失败，请重试';
+  });
+
+  return false;
+}
+
+// Close modal with Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const m = document.getElementById('waitlistModal');
+    if (m) m.classList.remove('open');
+  }
+});
 </script>
 </body>
 </html>
