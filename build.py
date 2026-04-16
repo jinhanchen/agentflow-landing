@@ -34,8 +34,21 @@ def build_news() -> None:
     # ---------- Generate list rows ----------
     row_parts = []
     for art in index["articles"]:
+        cover = art.get("cover", "")
+        cover_bg = art.get("coverBg", "")
+        if cover:
+            bg_style = f" style=\"background:{cover_bg}\"" if cover_bg else ""
+            cover_html = (
+                f'        <div class="news-cover"{bg_style}>\n'
+                f'          <img src="{cover}" alt="" loading="lazy">\n'
+                f'        </div>\n'
+            )
+        else:
+            cover_html = '        <div class="news-cover news-cover-placeholder"></div>\n'
+
         row_parts.append(
             f'<div class="news-row" onclick="openArticle(\'{art["id"]}\')">\n'
+            f'{cover_html}'
             f'        <div class="news-date">{art["date"]}</div>\n'
             f'        <div class="news-tag {art["tagClass"]}">{art["tag"]}</div>\n'
             f'        <div class="news-title-cell">\n'

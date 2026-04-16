@@ -141,9 +141,9 @@ nav{
     0 12px 32px -8px rgba(26,31,46,0.08);
 }
 .news-row{
-  display:grid;grid-template-columns:140px 130px 1fr 40px;
-  align-items:center;gap:24px;
-  padding:24px 28px;
+  display:grid;grid-template-columns:100px 140px 130px 1fr 40px;
+  align-items:center;gap:20px;
+  padding:20px 28px;
   border-bottom:1px solid var(--border);
   cursor:pointer;
   transition:background-color .2s var(--ease),padding .2s var(--ease);
@@ -151,6 +151,19 @@ nav{
 }
 .news-row:last-child{border-bottom:none}
 .news-row:hover{background:var(--bg-card-hover);padding-left:36px}
+.news-cover{
+  width:100px;height:68px;border-radius:8px;overflow:hidden;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.news-cover img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+}
+.news-cover-placeholder{
+  background:linear-gradient(135deg,#e8e0d0,#d4cfc5);
+}
 .news-row::before{
   content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
   background:var(--accent);transform:scaleY(0);transform-origin:top;
@@ -420,6 +433,7 @@ article.story sup a:hover{text-decoration:underline}
   .page-hero{padding:140px 20px 30px}
   .news-list{padding:30px 20px 80px}
   .news-row{grid-template-columns:1fr 40px;gap:10px;row-gap:6px}
+  .news-cover{display:none}
   .news-date,.news-tag{grid-column:1}
   .news-date{font-size:.75rem;margin-bottom:-4px}
   .news-tag{margin-bottom:4px}
@@ -488,6 +502,9 @@ article.story sup a:hover{text-decoration:underline}
     <div class="news-table">
 
       <div class="news-row" onclick="openArticle('brand-story')">
+        <div class="news-cover" style="background:#0f1729">
+          <img src="assets/logo.svg" alt="" loading="lazy">
+        </div>
         <div class="news-date">2026-04-15</div>
         <div class="news-tag tag-brand">Brand Story</div>
         <div class="news-title-cell">
@@ -498,6 +515,9 @@ article.story sup a:hover{text-decoration:underline}
       </div>
 
       <div class="news-row" onclick="openArticle('opc-trend-report')">
+        <div class="news-cover">
+          <img src="assets/scenario_illustration.png" alt="" loading="lazy">
+        </div>
         <div class="news-date">2026-04-15</div>
         <div class="news-tag tag-research">Research</div>
         <div class="news-title-cell">
