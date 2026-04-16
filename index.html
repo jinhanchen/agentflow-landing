@@ -4098,7 +4098,7 @@ fObs.observe(heroEl);
 })();
 
 // ========== WAITLIST FORM ==========
-const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/PLACEHOLDER/exec';
+const WAITLIST_ENDPOINT = '/api/waitlist';
 
 function submitWaitlist(e) {
   e.preventDefault();
@@ -4111,17 +4111,18 @@ function submitWaitlist(e) {
 
   fetch(WAITLIST_ENDPOINT, {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
-  }).then(() => {
-    form.style.display = 'none';
-    document.querySelector('.wl-header').style.display = 'none';
-    document.getElementById('wlSuccess').style.display = 'block';
+  }).then(r => {
+    if (r.ok) {
+      form.style.display = 'none';
+      document.querySelector('.wl-header').style.display = 'none';
+      document.getElementById('wlSuccess').style.display = 'block';
+    } else { throw new Error('fail'); }
   }).catch(() => {
-    // no-cors always resolves, but just in case
     btn.classList.remove('loading');
     btn.querySelector('span').textContent = '提交失败，请重试';
+    setTimeout(() => { btn.classList.remove('loading'); btn.querySelector('span').textContent = '提交申请'; }, 3000);
   });
 
   return false;
