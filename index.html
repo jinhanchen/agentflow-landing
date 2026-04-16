@@ -1998,21 +1998,19 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   color:#5F8D4E;font-weight:600;
   margin-left:8px;letter-spacing:0;
 }
-/* Percentage badges — absolute so they never push numbers */
-.cmp-roll{
-  position:relative;
-  display:inline-block;
+/* Percentage badges — below the number, inside the card */
+.cmp-val.cmp-hl{
+  display:flex;flex-direction:column;align-items:flex-end;
 }
 .cmp-roll em{
-  position:absolute;
-  left:100%;
-  top:50%;
-  transform:translateY(-50%);
-  margin-left:8px;
-  white-space:nowrap;
-  font-style:normal;font-size:.68rem;
-  color:#5F8D4E;font-weight:600;
-  letter-spacing:0;
+  display:inline-block;
+  margin-top:3px;
+  padding:2px 8px;
+  border-radius:6px;
+  background:rgba(13,148,136,0.08);
+  font-style:normal;font-size:.64rem;
+  color:var(--accent);font-weight:600;
+  letter-spacing:0;white-space:nowrap;
 }
 .cmp-arrow{
   display:flex;flex-direction:column;
@@ -2021,10 +2019,12 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 }
 .cmp-arrow-svg{width:100px;height:16px}
 .cmp-arrow-top,.cmp-arrow-bot{
-  font-size:.7rem;font-weight:600;
-  letter-spacing:.5px;color:var(--text-sub);
+  font-family:var(--font-display);
+  font-size:.88rem;font-weight:700;
+  letter-spacing:.3px;color:var(--text);
   white-space:nowrap;
 }
+.cmp-arrow-top{color:var(--accent);font-size:.95rem}
 
 /* Capability row */
 /* Middle column — arrow + tags stacked */
