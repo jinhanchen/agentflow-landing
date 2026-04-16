@@ -233,18 +233,79 @@ nav.scrolled{
   padding-top:4px;
 }
 
-/* ========== ARTICLE READING VIEW ========== */
-.blog-article{
-  max-width:720px;margin:0 auto;padding:120px 24px 80px;
+/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+.article-layout{
+  max-width:1120px;margin:120px auto 0;
+  padding:0 40px;
+  display:grid;grid-template-columns:220px 1fr;
+  gap:60px;align-items:start;
 }
-.article-back{
-  display:inline-flex;align-items:center;gap:6px;
-  color:var(--accent);font-size:.85rem;cursor:pointer;
-  margin-bottom:24px;transition:opacity 0.2s;
-  user-select:none;
-}
-.article-back:hover{opacity:0.7}
 
+/* Left sidebar — sticky navigation */
+.sub-sidebar{
+  position:sticky;top:100px;
+  padding-top:8px;
+}
+.sub-sidebar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--text-sub);
+  font-size:.82rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  transition:all .2s var(--ease);
+  margin-bottom:40px;
+  font-family:var(--font-body);
+}
+.sub-sidebar-back:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(-3px);
+}
+.sub-sidebar-back svg{width:12px;height:12px}
+
+.sub-sidebar-label{
+  font-family:var(--font-display);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+  padding-left:16px;
+}
+.sub-sidebar-toc{
+  list-style:none;padding:0;margin:0 0 32px;
+  border-left:1px solid var(--border);
+}
+.sub-sidebar-toc li{margin:0}
+.sub-sidebar-toc a{
+  display:block;padding:9px 16px;
+  font-size:.84rem;line-height:1.4;
+  color:var(--text-sub);
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.sub-sidebar-toc a:hover{
+  color:var(--text);border-left-color:rgba(255,255,255,0.2);
+}
+.sub-sidebar-toc a.active{
+  color:var(--accent);border-left-color:var(--accent);
+  font-weight:500;background:var(--accent-sub);
+}
+
+.sub-sidebar-meta{
+  padding:16px;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--text-dim);
+  line-height:1.6;
+}
+.sub-sidebar-meta strong{
+  display:block;color:var(--text-sub);font-weight:600;
+  font-family:var(--font-display);
+  margin-bottom:4px;
+}
+
+.article-main{min-width:0;padding-bottom:80px}
+
+/* Article content styles */
 .article-page .article-cover{
   width:100%;border-radius:12px;margin-bottom:24px;
   display:block;
@@ -278,6 +339,53 @@ nav.scrolled{
   font-style:italic;
   color:var(--text-sub);
 }
+.article-page .article-body h2{
+  font-family:var(--font-display);
+  font-size:1.2rem;font-weight:700;
+  color:var(--text);margin:36px 0 16px;
+  letter-spacing:-.5px;
+  scroll-margin-top:100px;
+}
+.article-page .article-body p.lede{
+  font-size:1.05rem;line-height:1.8;
+  color:var(--text);margin-bottom:28px;font-weight:400;
+}
+.article-page .article-body .section-break{
+  width:70px;height:2px;background:var(--accent);
+  margin:40px auto;border-radius:2px;opacity:.35;
+}
+.article-page .article-body .signature{
+  margin-top:40px;padding-top:20px;
+  border-top:1px solid var(--border);text-align:center;
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body .signature strong{
+  display:block;color:var(--text);font-size:.92rem;margin-bottom:4px;
+}
+.article-page .article-body ol.references{
+  list-style:decimal;
+  margin:0 0 24px 0;padding-left:24px;
+  font-size:.78rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body ol.references li{margin-bottom:8px}
+.article-page .article-body ol.references a{
+  color:var(--accent);word-break:break-all;
+  text-decoration:underline;text-decoration-color:var(--accent-sub);
+  text-underline-offset:2px;
+}
+.article-page .article-body ol.references a:hover{
+  text-decoration-color:var(--accent);
+}
+.article-page .article-body sup{
+  font-size:.65em;color:var(--accent);font-weight:600;
+}
+.article-page .article-body sup a{color:inherit;text-decoration:none}
+.article-page .article-body sup a:hover{text-decoration:underline}
+.article-page .article-body ul,.article-page .article-body ol{
+  margin:0 0 20px;padding-left:24px;
+}
+.article-page .article-body li{margin-bottom:8px}
 
 /* ========== CTA BOX ========== */
 .cta-box{
@@ -308,7 +416,18 @@ footer{
 .footer-links a{font-size:.72rem;color:var(--text-dim);transition:color .2s}
 .footer-links a:hover{color:var(--text-sub)}
 
-/* ========== MOBILE ========== */
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .article-layout{
+    grid-template-columns:1fr;gap:24px;margin-top:100px;
+  }
+  .sub-sidebar{
+    position:static;padding:0 0 24px;
+    border-bottom:1px solid var(--border);margin-bottom:16px;
+  }
+  .sub-sidebar-toc,.sub-sidebar-label,.sub-sidebar-meta{display:none}
+  .sub-sidebar-back{margin-bottom:16px}
+}
 @media(max-width:768px){
   .wrap{padding-inline:20px}
   .nav-inner{padding-inline:20px}
@@ -316,7 +435,8 @@ footer{
   .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .cta-box{padding:48px 20px}
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
-  .blog-article{padding:100px 16px 60px}
+  .article-layout{padding:0 20px}
+  .article-main{padding-bottom:60px}
 }
 
 /* ========== UNIFIED NAV OVERRIDE (matches index.html scrolled state) ========== */
@@ -460,10 +580,28 @@ nav .nav-links a.current{color:#4FD1C5 !important;font-weight:500}
 </div><!-- /blogGallery -->
 
 <!-- ========== ARTICLE READING VIEW ========== -->
-<div class="blog-article" id="blogArticle" style="display:none">
-  <div class="article-back" onclick="closeArticle()">&#8592; 返回博客</div>
-  <div class="article-page" id="articleContent">
-    <!-- Populated by JS -->
+<div id="blogArticle" style="display:none">
+  <div class="article-layout">
+
+    <!-- LEFT STICKY SIDEBAR -->
+    <aside class="sub-sidebar">
+      <button class="sub-sidebar-back" onclick="closeArticle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回博客
+      </button>
+
+      <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+      <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+      <div class="sub-sidebar-meta" id="articleMeta"></div>
+    </aside>
+
+    <!-- MAIN ARTICLE COLUMN -->
+    <div class="article-main">
+      <div class="article-page" id="articleContent">
+        <!-- Populated by JS -->
+      </div>
+    </div>
   </div>
 </div>
 
@@ -477,10 +615,92 @@ const articles = [
     desc: '2025 年全年新设个体工商户 1,619 万户，AI 工具的普及正在加速一人创业形态的爆发。',
     source: '新华网', date: '2026.03', readTime: '3 分钟',
     cover: 'assets/news_xinhua_opc.png',
-    content: `<p>2025 年全年新设个体工商户 1,619 万户，同比增长 12.4%。在这一波创业浪潮中，AI 工具的普及正在成为最大的加速器。</p>
-<p>新华网报道指出，<strong>传统创业模式中需要 5-10 人团队才能完成的工作，如今借助 AI 代理、自动化营销和智能客服，一个人就能独立运营。</strong>从内容创作到财务管理，从客户服务到产品设计，AI 正在重新定义"最小可行团队"的下限。</p>
-<p>数据显示，使用 AI 工具的一人创业者平均生产力提升 3-5 倍，运营成本降低 60% 以上。政策层面也在跟进：北京、深圳等地相继推出一人企业扶持计划，为这一新型创业形态提供制度保障。</p>
-<p>业内人士认为，2026 年将是一人公司从"边缘试验"走向"主流选择"的关键转折年。</p>`
+    content: `        <p class="lede">
+          2025 年全年，中国新设个体工商户 1,619.4 万户，其中"四新经济"个体工商户 646.8 万户，累计达到 3,997.5 万户，连续五年保持稳步增长<sup><a href="#ref-1">[1]</a></sup>。在大洋彼岸，美国独立创业者（solopreneur）已超过 4,180 万人，每年向经济贡献超过 1.3 万亿美元<sup><a href="#ref-2">[2]</a></sup>。这两组数字指向同一个事实：一人创业不再是边缘选择，它正在成为全球最活跃的经济增长极之一——而 AI 工具的爆发式普及，是这轮加速的核心引擎。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、数据：一人创业浪潮的规模</h2>
+
+        <p>先看中国。市场监管总局 2026 年 3 月发布的数据显示，2025 年全国新设经营主体 2,574.5 万户，其中个体工商户占 1,619.4 万户<sup><a href="#ref-1">[1]</a></sup>。更值得关注的是结构变化：在网络交易平台开展经营活动的个体工商户数量<strong>同比增长 14.7%</strong>，"成长型""发展型"个体工商户增长至 1,389 万户，占分型总量的 17.3%<sup><a href="#ref-1">[1]</a></sup>。这意味着，越来越多的个体创业者不再停留在"生存模式"，而是在借助数字工具快速成长。</p>
+
+        <p>再看全球。美国独立创办企业（不依赖风险投资的单人创始人）占新设创业公司的比例，从 2015 年的 22% 上升到 2024 年的 38%<sup><a href="#ref-3">[3]</a></sup>。在 Y Combinator 等顶级加速器的数据中，这一趋势更加明显：独立创始人占比从 2019 年的 23.7% 跃升至 2025 年中的 36.3%<sup><a href="#ref-2">[2]</a></sup>。值得注意的是，<strong>52.3% 的成功创业退出（exit）是由独立创始人实现的</strong><sup><a href="#ref-3">[3]</a></sup>——单人并不意味着单薄。</p>
+
+        <blockquote>一人创业不是权宜之计。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。<sup><a href="#ref-4">[4]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>二、AI 工具：从辅助到替代</h2>
+
+        <p>一人创业的加速，核心驱动力是 AI 工具的能力跃升。过去，一个人开公司意味着什么都得自己干——写代码、做设计、跑营销、管财务。每一项都是专业岗位，每一项都需要学习成本和时间投入。AI 改变了这个等式。</p>
+
+        <p>麦肯锡 2025 年发布的《AI 现状报告》显示，<strong>78% 的企业已在至少一个业务职能中使用 AI</strong>，但真正实现深度转型的仅占 6%<sup><a href="#ref-5">[5]</a></sup>。这个差距恰恰是一人创业者的机会窗口——他们没有组织惯性，可以从第一天起就以 AI 原生的方式构建业务。</p>
+
+        <p>麦肯锡的另一项研究追踪了 2018-2024 年间创办的数百家新企业，发现 <strong>AI 时代（2023-2024 年）启动的企业，在人均产出和资金效率上显著优于前 AI 时代</strong><sup><a href="#ref-6">[6]</a></sup>。AI 在三个维度创造价值：加速创新周期（更快生成、测试和验证想法）、提升生产力（小团队完成过去整个部门的工作）、压缩速度（从概念到 MVP 的时间大幅缩短）。</p>
+
+        <p>具体到数字：使用 AI 工具的早期创业者，<strong>调研时间缩短 60%，运营开销降低 40%，MVP 开发速度提升近 3 倍</strong><sup><a href="#ref-2">[2]</a></sup>。而麦肯锡全球研究院的宏观测算更为惊人：生成式 AI 每年可释放约 <strong>4.4 万亿美元</strong>的生产力，相当于全球 GDP 的 4%<sup><a href="#ref-7">[7]</a></sup>。</p>
+
+        <div class="section-break"></div>
+
+        <h2>三、真实案例：一个人能走多远</h2>
+
+        <p>数据是抽象的，案例是具体的。以下几个 2025-2026 年的真实案例，展示了 AI 加持下一人创业的上限正在被不断刷新：</p>
+
+        <p><strong>Danny Postma · HeadshotPro</strong>：一个人运营的 AI 头像生成工具，年经常性收入（ARR）达到 <strong>360 万美元</strong>。没有联合创始人，没有员工，从产品开发到客户获取全部由 Postma 本人借助 AI 工具完成<sup><a href="#ref-8">[8]</a></sup>。</p>
+
+        <p><strong>Maor Shlomo · Base44</strong>：一人创建的无代码开发平台，6 个月内积累 25 万用户并实现盈利，随后以 <strong>8,000 万美元</strong>被 Wix 收购<sup><a href="#ref-2">[2]</a></sup>。整个产品从概念到盈利，一个人，半年。</p>
+
+        <p><strong>Medvi</strong>：两名联合创始人的远程医疗公司，用 2 万美元启动资金和全栈 AI Agent 系统，2025 年实现 <strong>4.01 亿美元</strong>销售额<sup><a href="#ref-9">[9]</a></sup>。没有销售团队，没有客服中心——AI Agent 承担了从问诊分流到客户跟进的全部流程。</p>
+
+        <blockquote>AI 时代的创业瓶颈不是人数，而是你能让多少个 AI Agent 为你工作。HeadshotPro、Base44、Medvi 的故事，正在被无数创业者复制。</blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>四、政策加速：从默许到主动扶持</h2>
+
+        <p>一人创业浪潮不仅有市场推力，还有政策拉力。中国在 2024-2026 年间，出现了密集的制度松绑和政策支持：</p>
+
+        <p><strong>2024 年 7 月</strong>，新修订的《公司法》正式施行，取消"一个自然人只能设立一家一人有限责任公司"的限制，首次允许一人公司再投资设立一人公司<sup><a href="#ref-10">[10]</a></sup>。<strong>2025 年底</strong>，个体工商户个人所得税减半征收、增值税小规模纳税人月销售额 10 万元以下免税等优惠政策，执行期延长至 2027 年底<sup><a href="#ref-11">[11]</a></sup>。</p>
+
+        <p>地方层面更为积极。北京亦庄、深圳先后发布"AI + 一人企业"专项扶持计划，目标在三年内培育 1,000 家 AI 驱动的一人企业，配套专项基金、算力补贴和孵化基地<sup><a href="#ref-4">[4]</a></sup>。杭州、上海、成都、苏州等 20 余座城市，均推出了涵盖创业补贴、税收减免、担保贷款的一人创业支持政策。</p>
+
+        <p>政策信号很清晰：<em>一人创业不是过渡态，而是国家认可的新型生产组织方式。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>结论：浪潮已至，基础设施缺位</h2>
+
+        <p>1,619 万新设个体工商户，4,180 万美国独立创业者，78% 的企业已采用 AI——数据清楚地表明，AI 时代的一人创业浪潮已经不是预测，而是正在发生的事实。</p>
+
+        <p>但一个关键问题仍未解决：<strong>工具够多了，协同不够。</strong>一人创业者平均使用 12 个 AI 工具，但这些工具之间几乎没有协作。复制粘贴、手动触发、反复切换——这些"胶水工作"吃掉了创业者大量的时间。</p>
+
+        <p>真正缺少的，不是更多的单点工具，而是一套能让 AI 工具像团队一样协同运转的操作系统。这就是 Solarian 正在构建的事——让每一个独立创业者，都能像指挥一支真实团队一样，指挥自己的 AI 团队。</p>
+
+        <p><em>一人公司时代不是下一个十年要发生的事。它已经到来了。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">《2025 年我国新设个体工商户超 1600 万户》· 新华网 · 2026 年 3 月 26 日 · <a href="https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html" target="_blank" rel="noopener">https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html</a></li>
+          <li id="ref-2">The Rise of the Solopreneur: Why One-Person Businesses Are the Defining Entrepreneurship Story of 2026 · Epirus VC · 2026 · <a href="https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026" target="_blank" rel="noopener">https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026</a></li>
+          <li id="ref-3">The Next 1-Man Million Dollar Startup: Why 2026 Is the Year of the Solo Founder · Medium · 2026 · <a href="https://medium.com/@ayushojha010/the-next-1-man-million-dollar-startup-why-2025-is-the-year-of-the-solo-founder-d220edd35203" target="_blank" rel="noopener">https://medium.com/@ayushojha010/the-next-1-man-million-dollar-startup-why-2025-is-the-year-of-the-solo-founder-d220edd35203</a></li>
+          <li id="ref-4">《"AI + 一人企业"培育行动计划》· 深圳市工业和信息化局 · 2026 年 3 月</li>
+          <li id="ref-5">The State of AI in 2025 · McKinsey & Company · 2025 · <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai</a></li>
+          <li id="ref-6">AI Venture Building: How to Scale Faster and Smarter · McKinsey & Company · 2025 · <a href="https://www.mckinsey.com/capabilities/business-building/our-insights/how-to-build-businesses-faster-and-better-with-ai" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/business-building/our-insights/how-to-build-businesses-faster-and-better-with-ai</a></li>
+          <li id="ref-7">The Economic Potential of Generative AI: The Next Productivity Frontier · McKinsey Global Institute · 2023 · <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier</a></li>
+          <li id="ref-8">7 AI Tools That Run a One-Person Business in 2026 · Entrepreneur · 2026 · <a href="https://www.entrepreneur.com/growing-a-business/7-ai-tools-that-run-a-one-person-business-in-2026-no/501943" target="_blank" rel="noopener">https://www.entrepreneur.com/growing-a-business/7-ai-tools-that-run-a-one-person-business-in-2026-no/501943</a></li>
+          <li id="ref-9">Medvi: Two Founders, $401 Million in Revenue · The New York Times · 2026 年 4 月</li>
+          <li id="ref-10">《新〈公司法〉一人公司注册松绑》· 深圳市市场监管局 · 2024 年 7 月 · <a href="https://amr.sz.gov.cn/zcjzts/ssdj/content/post_11458245.html" target="_blank" rel="noopener">https://amr.sz.gov.cn/zcjzts/ssdj/content/post_11458245.html</a></li>
+          <li id="ref-11">《个体工商户个人所得税减半征收政策》· 国家税务总局 · <a href="https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5237814/content.html" target="_blank" rel="noopener">https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5237814/content.html</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 1 期<br>
+          2026-03
+        </div>`
   },
   {
     id: 2,
@@ -489,10 +709,101 @@ const articles = [
     desc: '继北京亦庄之后，深圳发布"AI + 一人企业"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。',
     source: '深圳工信局', date: '2026.03', readTime: '4 分钟',
     cover: 'assets/news_shenzhen_opc.png',
-    content: `<p>继北京亦庄之后，深圳市工业和信息化局正式发布《"AI + 一人企业"培育行动计划（2026-2028）》，目标在三年内培育 1,000 家 AI 驱动的一人企业。</p>
-<p>该计划包含五大核心举措：<strong>一是设立专项扶持基金，首批规模 2 亿元；二是建设 10 个一人企业孵化基地；三是提供免费 AI 工具包和算力补贴；四是简化一人公司注册和税务流程；五是打造"一人企业"标杆案例库。</strong></p>
-<p>深圳工信局相关负责人表示："一人企业不是权宜之计，而是 AI 时代的必然产物。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。深圳要做的，是让这种重构有序发生，让创业者有底气。"</p>
-<p>首批申报已于 2026 年 3 月启动，重点面向 AI 内容创作、智能电商、独立开发者和专业咨询四大方向。</p>`
+    content: `        <p class="lede">
+          2026 年 1 月，深圳市工业和信息化局正式印发《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》，目标到 2027 年底建成超 10 家面积均不少于 1 万平方米的 OPC 社区，培育超千家高成长性人工智能创业企业，集聚超万名人工智能创新创业人才<sup><a href="#ref-1">[1]</a></sup>。这不是一份普通的产业扶持文件——它标志着中国第一座城市将"一人公司"作为一种独立的产业形态，从制度层面正式纳入城市战略。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、深圳的 OPC 行动计划：不只是口号</h2>
+
+        <p>深圳的行动计划，核心是三个数字：<strong>10+、1,000、10,000</strong>——10 个以上万平方米级 OPC 社区、1,000 家以上 AI 创业企业、10,000 名以上创新创业人才。这个目标并非空中楼阁。在政策发布前，深圳已经开始了试点布局：多个城区率先建设 OPC 专属社区，提供从办公空间到算力补贴的全栈支持<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>更值得关注的是各区的差异化打法：</p>
+
+        <p><strong>南山区</strong>早在 2025 年就推出了"六个一 + 六个券"政策体系。"六个一"指一人一室一桌一笔钱一场景一站式服务；"六个券"则包括模型券、贴息券、技改券、流量券、保险券和消费券<sup><a href="#ref-3">[3]</a></sup>。对于 AI 创业者来说，模型券直接降低了大模型调用成本，这是真金白银的补贴。</p>
+
+        <p><strong>龙岗区</strong>更为激进，拟推出"AI 龙虾十条"政策：新入驻 OPC 社区的企业可获得<strong>三个月免费算力</strong>；符合条件的 AIGC 企业，按实际调用大模型费用的 30% 给予补贴，每家企业每年最高可获 <strong>100 万元</strong>支持<sup><a href="#ref-4">[4]</a></sup>。龙岗的目标很明确：要让深圳成为全国 OPC 创业的"热带雨林"。</p>
+
+        <p><strong>宝安区</strong>则从硬件制造切入，以"场景 + 金融 + 制造"构建面向 OPC 硬创业的系统性支持体系，整合政府引导基金和政府采购创新产品支持政策<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <blockquote>一人公司不是权宜之计，而是 AI 时代的必然产物。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。深圳要做的，是让这种重构有序发生。<sup><a href="#ref-2">[2]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>二、北京亦庄：另一种路径</h2>
+
+        <p>深圳不是唯一入局的城市。北京经济技术开发区（亦庄）在 2026 年 2 月发布了《关于进一步加快建设全域人工智能之城的实施方案（2026—2027 年）》，明确到 2027 年底，要<strong>聚集人工智能产业链核心企业 1,000 家，引聚超级个体及独立开发者 10,000 人</strong><sup><a href="#ref-6">[6]</a></sup>。</p>
+
+        <p>2026 年 4 月，亦庄正式启动了<strong>模数 OPC 社区</strong>——全国首个以"一人公司"为主体的产业社区，提出两年内培育 1 万名 AI 独立开发者和 100 家"超级个体"公司<sup><a href="#ref-7">[7]</a></sup>。该社区已初步形成集共享办公、人才公寓、社交空间、微接驳交通、消费配套于一体的"职、住、行、创"四位一体 AI 人才生态圈，首批 20 家 OPC 已率先入驻。</p>
+
+        <p>亦庄还建设了<strong>全国首个聚焦 AI 超级个体的全周期服务站</strong>——模数 OPC 社区企业综合服务中心，可实现<strong>最快 1 小时面对面完成公司注册</strong><sup><a href="#ref-7">[7]</a></sup>。从注册到入驻到获得算力，全链条打通。</p>
+
+        <div class="section-break"></div>
+
+        <h2>三、全国城市的政策竞赛</h2>
+
+        <p>深圳和北京之外，一场围绕 OPC 的城市政策竞赛正在全国蔓延：</p>
+
+        <ul>
+          <li><strong>上海临港新片区</strong>启动了"超级个体 288 计划"，提供专属办公和居住空间<sup><a href="#ref-8">[8]</a></sup></li>
+          <li><strong>苏州</strong>明确提出要成为"OPC 创业首选城市"，计划到 2028 年培育 1,000 家标杆一人公司<sup><a href="#ref-8">[8]</a></sup></li>
+          <li><strong>北京海淀区</strong>发布了八条硬核政策，专门面向 OPC 创业者<sup><a href="#ref-9">[9]</a></sup></li>
+          <li><strong>杭州、成都、武汉</strong>等城市也相继推出了不同力度的一人创业扶持方案</li>
+        </ul>
+
+        <p>这种城市间的竞争，本身就是最强的政策信号：<em>地方政府不是在"帮助"一人创业，而是在"争抢"一人创业者。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>四、制度松绑：从法律到税务</h2>
+
+        <p>城市级的扶持政策，建立在两层制度松绑之上。</p>
+
+        <p><strong>法律层面</strong>：2024 年 7 月 1 日实施的新《公司法》，彻底取消了"一个自然人只能设立一家一人有限责任公司"的限制，放宽了设立子公司的限制条件，同时将实缴资本缴纳期限延长至 5 年<sup><a href="#ref-10">[10]</a></sup>。这为规模化 OPC 提供了完整的法律基础架构。</p>
+
+        <p><strong>税务层面</strong>：2026 年的税收优惠力度前所未有。月销售额不超过 10 万元的 OPC 免征增值税；符合小微企业条件的一人公司，企业所得税实际税负仅 5%；个体工商户个人所得税减半征收——这些政策执行期均已明确延长至 <strong>2027 年底</strong><sup><a href="#ref-11">[11]</a></sup>。</p>
+
+        <p>法律打开了门，税务降低了槛，城市政策提供了路。三者叠加，构成了中国 OPC 创业史上最友好的制度环境。</p>
+
+        <div class="section-break"></div>
+
+        <h2>五、对创业者意味着什么</h2>
+
+        <p>如果你是一名考虑 AI 创业的独立创业者，2026 年的政策环境提供了三重确定性：</p>
+
+        <p><strong>确定性一：成本可控。</strong>算力补贴、模型券、免费办公空间——政府在帮你压低 AI 创业最大的变动成本。龙岗区的 100 万元 AI 调用补贴，对于一人公司来说，可能意味着一整年的零算力成本<sup><a href="#ref-4">[4]</a></sup>。</p>
+
+        <p><strong>确定性二：身份合法。</strong>新《公司法》让一人公司获得了与多人公司完全平等的法律地位。你不再需要找一个"挂名股东"来满足注册要求。</p>
+
+        <p><strong>确定性三：不是孤军奋战。</strong>OPC 社区模式意味着，独立创业不等于孤独创业。共享空间、社群网络、政策对接——一人公司也可以有"生态"。</p>
+
+        <p>深圳的行动计划，北京的模数社区，上海的 288 计划——这些不是地方政府的一时兴起，而是一个明确的时代信号：<em>AI 时代的一人公司，正在从"民间自发"走向"制度化支持"。</em></p>
+
+        <p>对 Solarian 而言，这意味着我们面向的不再是一个需要被"说服"的市场，而是一个正在被政策推动、加速扩大的市场。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》· 深圳市工业和信息化局 · 2026 年 1 月 · <a href="https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html" target="_blank" rel="noopener">https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html</a></li>
+          <li id="ref-2">"超级个体"登场 深圳"一人公司"重构商业新生态 · 中国新闻网 · 2026 年 3 月 16 日 · <a href="https://www.chinanews.com.cn/cj/2026/03-16/10587507.shtml" target="_blank" rel="noopener">https://www.chinanews.com.cn/cj/2026/03-16/10587507.shtml</a></li>
+          <li id="ref-3">"一人公司"在深圳悄然兴起 · 深圳市发展和改革委员会 · 2026 年 · <a href="https://fgw.sz.gov.cn/ztzl/qtztzl/szscjmyjjfzzhfwpt/xwdt/content/post_12641545.html" target="_blank" rel="noopener">https://fgw.sz.gov.cn/ztzl/qtztzl/szscjmyjjfzzhfwpt/xwdt/content/post_12641545.html</a></li>
+          <li id="ref-4">助"一人公司"创业！深圳龙岗拟推"AI 龙虾十条" · 深圳 AI 创新产业信息网 · 2026 年 · <a href="https://szaicx.com/page192?article_id=20306" target="_blank" rel="noopener">https://szaicx.com/page192?article_id=20306</a></li>
+          <li id="ref-5">"一人公司"蓬勃发展！深圳龙岗构建 OPC 创业"热带雨林" · 新浪财经 · 2026 年 · <a href="https://cj.sina.com.cn/articles/view/5787187353/158f17899020021cck" target="_blank" rel="noopener">https://cj.sina.com.cn/articles/view/5787187353/158f17899020021cck</a></li>
+          <li id="ref-6">《关于进一步加快建设全域人工智能之城的实施方案（2026—2027 年）》· 北京经济技术开发区 · 2026 年 2 月 · <a href="https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202601/t20260130_4478660.html" target="_blank" rel="noopener">https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202601/t20260130_4478660.html</a></li>
+          <li id="ref-7">亦庄谋划打造全球最大"一人公司"社区 · 首都之窗 · 2026 年 4 月 · <a href="https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html" target="_blank" rel="noopener">https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html</a></li>
+          <li id="ref-8">2026 中国一人公司政策解读：法律松绑与财税红利全析 · OpenAxo · 2026 年 · <a href="https://openaxo.com/trends/china-2026-opc-support-policy-analysis" target="_blank" rel="noopener">https://openaxo.com/trends/china-2026-opc-support-policy-analysis</a></li>
+          <li id="ref-9">海淀发布八条硬核政策，邀你共创"一人公司" · 北京日报 · 2026 年 4 月 · <a href="https://news.bjd.com.cn/2026/04/10/11681407.shtml" target="_blank" rel="noopener">https://news.bjd.com.cn/2026/04/10/11681407.shtml</a></li>
+          <li id="ref-10">"一人公司"近来何以兴起？ · 科技日报 · 2026 年 1 月 30 日 · <a href="https://www.stdaily.com/web/gdxw/2026-01/30/content_468455.html" target="_blank" rel="noopener">https://www.stdaily.com/web/gdxw/2026-01/30/content_468455.html</a></li>
+          <li id="ref-11">2026 中国一人公司政策解读：法律松绑与财税红利全析 · OpenAxo · 2026 年 · <a href="https://openaxo.com/trends/china-2026-opc-support-policy-analysis" target="_blank" rel="noopener">https://openaxo.com/trends/china-2026-opc-support-policy-analysis</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 2 期<br>
+          2026-03
+        </div>`
   },
   {
     id: 3,
@@ -812,6 +1123,8 @@ articles.forEach((a, i) => {
 });
 
 // ========== ARTICLE VIEW ==========
+let currentTocObserver = null;
+
 function openArticle(a) {
   var coverHTML = a.cover
     ? '<img class="article-cover" src="' + a.cover + '" alt="">'
@@ -824,13 +1137,62 @@ function openArticle(a) {
     '<div class="article-meta">' + a.source + ' &middot; ' + a.date + ' &middot; ' + a.readTime + '</div>' +
     '<div class="article-body">' + a.content + '</div>';
 
+  // Populate sidebar metadata
+  document.getElementById('articleMeta').innerHTML =
+    '<strong>' + a.source + '</strong>' +
+    a.date + ' · ' + a.readTime;
+
+  // Build TOC from h2 elements
+  buildTOC();
+
   document.getElementById('blogGallery').style.display = 'none';
   document.getElementById('blogArticle').style.display = 'block';
   window.scrollTo(0, 0);
 }
+
+function buildTOC() {
+  var content = document.getElementById('articleContent');
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  toc.innerHTML = '';
+
+  var h2s = content.querySelectorAll('.article-body h2');
+  label.style.display = h2s.length ? '' : 'none';
+  if (!h2s.length) return;
+
+  h2s.forEach(function(h2, i) {
+    h2.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h2.id;
+    a.textContent = h2.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      h2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  // Scroll-spy
+  if (currentTocObserver) currentTocObserver.disconnect();
+  var tocLinks = toc.querySelectorAll('a');
+  currentTocObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  h2s.forEach(function(h) { currentTocObserver.observe(h); });
+}
+
 function closeArticle() {
   document.getElementById('blogGallery').style.display = '';
   document.getElementById('blogArticle').style.display = 'none';
+  if (currentTocObserver) { currentTocObserver.disconnect(); currentTocObserver = null; }
   window.scrollTo(0, 0);
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeArticle(); });

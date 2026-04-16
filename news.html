@@ -267,28 +267,45 @@ article.story{
   color:var(--text);
 }
 article.story .story-header{
-  margin-bottom:48px;padding-bottom:32px;
-  border-bottom:1px solid var(--border);
+  margin:0 -40px 48px;padding:52px 40px 40px;
+  border-bottom:none;border-radius:20px;
   font-family:var(--font-body);
+  background:linear-gradient(135deg, #1a1f2e 0%, #0f1729 50%, #0d3d38 100%);
+  position:relative;overflow:hidden;
+}
+article.story .story-header::before{
+  content:'';position:absolute;top:-60px;right:-40px;
+  width:300px;height:300px;
+  background:radial-gradient(circle, rgba(20,184,166,0.18), transparent 65%);
+  pointer-events:none;
+}
+article.story .story-header::after{
+  content:'';position:absolute;bottom:-80px;left:-60px;
+  width:250px;height:250px;
+  background:radial-gradient(circle, rgba(217,119,87,0.1), transparent 65%);
+  pointer-events:none;
 }
 .story-header-eyebrow{
   display:inline-block;padding:6px 14px;border-radius:100px;
-  background:var(--accent-sub);color:var(--accent);
+  background:rgba(20,184,166,0.2);color:#4FD1C5;
   font-size:.72rem;font-weight:600;
   letter-spacing:2px;text-transform:uppercase;
   margin-bottom:20px;
+  position:relative;
 }
 .story-header h1{
   font-family:var(--font-display);
   font-size:clamp(2rem,3.6vw,3rem);
   font-weight:700;letter-spacing:-1.8px;line-height:1.15;
-  color:var(--text);
+  color:#fff;
   margin-bottom:20px;
+  position:relative;
 }
-.story-header h1 em{font-style:normal;color:var(--accent)}
+.story-header h1 em{font-style:normal;color:#4FD1C5}
 .story-header-meta{
   font-family:var(--font-display);
-  font-size:.82rem;color:var(--text-dim);letter-spacing:.3px;
+  font-size:.82rem;color:rgba(255,255,255,0.45);letter-spacing:.3px;
+  position:relative;
 }
 .story-header-meta span{margin:0 8px}
 article.story p{margin-bottom:24px;color:rgba(26,31,46,0.82)}
@@ -423,6 +440,7 @@ article.story sup a:hover{text-decoration:underline}
   .news-arrow{grid-column:2;grid-row:1/span 3;align-self:center}
   .article-layout{padding:0 20px}
   article.story{padding:12px 0 60px;font-size:1rem}
+  article.story .story-header{margin:0 -20px 36px;padding:36px 20px 28px;border-radius:14px}
   .story-cta{padding:0 20px}
   .footer-inner{flex-direction:column;gap:14px}
 }

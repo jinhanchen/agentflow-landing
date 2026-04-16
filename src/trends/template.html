@@ -233,18 +233,79 @@ nav.scrolled{
   padding-top:4px;
 }
 
-/* ========== ARTICLE READING VIEW ========== */
-.blog-article{
-  max-width:720px;margin:0 auto;padding:120px 24px 80px;
+/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+.article-layout{
+  max-width:1120px;margin:120px auto 0;
+  padding:0 40px;
+  display:grid;grid-template-columns:220px 1fr;
+  gap:60px;align-items:start;
 }
-.article-back{
-  display:inline-flex;align-items:center;gap:6px;
-  color:var(--accent);font-size:.85rem;cursor:pointer;
-  margin-bottom:24px;transition:opacity 0.2s;
-  user-select:none;
-}
-.article-back:hover{opacity:0.7}
 
+/* Left sidebar — sticky navigation */
+.sub-sidebar{
+  position:sticky;top:100px;
+  padding-top:8px;
+}
+.sub-sidebar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--text-sub);
+  font-size:.82rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  transition:all .2s var(--ease);
+  margin-bottom:40px;
+  font-family:var(--font-body);
+}
+.sub-sidebar-back:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(-3px);
+}
+.sub-sidebar-back svg{width:12px;height:12px}
+
+.sub-sidebar-label{
+  font-family:var(--font-display);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+  padding-left:16px;
+}
+.sub-sidebar-toc{
+  list-style:none;padding:0;margin:0 0 32px;
+  border-left:1px solid var(--border);
+}
+.sub-sidebar-toc li{margin:0}
+.sub-sidebar-toc a{
+  display:block;padding:9px 16px;
+  font-size:.84rem;line-height:1.4;
+  color:var(--text-sub);
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.sub-sidebar-toc a:hover{
+  color:var(--text);border-left-color:rgba(255,255,255,0.2);
+}
+.sub-sidebar-toc a.active{
+  color:var(--accent);border-left-color:var(--accent);
+  font-weight:500;background:var(--accent-sub);
+}
+
+.sub-sidebar-meta{
+  padding:16px;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--text-dim);
+  line-height:1.6;
+}
+.sub-sidebar-meta strong{
+  display:block;color:var(--text-sub);font-weight:600;
+  font-family:var(--font-display);
+  margin-bottom:4px;
+}
+
+.article-main{min-width:0;padding-bottom:80px}
+
+/* Article content styles */
 .article-page .article-cover{
   width:100%;border-radius:12px;margin-bottom:24px;
   display:block;
@@ -278,6 +339,53 @@ nav.scrolled{
   font-style:italic;
   color:var(--text-sub);
 }
+.article-page .article-body h2{
+  font-family:var(--font-display);
+  font-size:1.2rem;font-weight:700;
+  color:var(--text);margin:36px 0 16px;
+  letter-spacing:-.5px;
+  scroll-margin-top:100px;
+}
+.article-page .article-body p.lede{
+  font-size:1.05rem;line-height:1.8;
+  color:var(--text);margin-bottom:28px;font-weight:400;
+}
+.article-page .article-body .section-break{
+  width:70px;height:2px;background:var(--accent);
+  margin:40px auto;border-radius:2px;opacity:.35;
+}
+.article-page .article-body .signature{
+  margin-top:40px;padding-top:20px;
+  border-top:1px solid var(--border);text-align:center;
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body .signature strong{
+  display:block;color:var(--text);font-size:.92rem;margin-bottom:4px;
+}
+.article-page .article-body ol.references{
+  list-style:decimal;
+  margin:0 0 24px 0;padding-left:24px;
+  font-size:.78rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body ol.references li{margin-bottom:8px}
+.article-page .article-body ol.references a{
+  color:var(--accent);word-break:break-all;
+  text-decoration:underline;text-decoration-color:var(--accent-sub);
+  text-underline-offset:2px;
+}
+.article-page .article-body ol.references a:hover{
+  text-decoration-color:var(--accent);
+}
+.article-page .article-body sup{
+  font-size:.65em;color:var(--accent);font-weight:600;
+}
+.article-page .article-body sup a{color:inherit;text-decoration:none}
+.article-page .article-body sup a:hover{text-decoration:underline}
+.article-page .article-body ul,.article-page .article-body ol{
+  margin:0 0 20px;padding-left:24px;
+}
+.article-page .article-body li{margin-bottom:8px}
 
 /* ========== CTA BOX ========== */
 .cta-box{
@@ -308,7 +416,18 @@ footer{
 .footer-links a{font-size:.72rem;color:var(--text-dim);transition:color .2s}
 .footer-links a:hover{color:var(--text-sub)}
 
-/* ========== MOBILE ========== */
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .article-layout{
+    grid-template-columns:1fr;gap:24px;margin-top:100px;
+  }
+  .sub-sidebar{
+    position:static;padding:0 0 24px;
+    border-bottom:1px solid var(--border);margin-bottom:16px;
+  }
+  .sub-sidebar-toc,.sub-sidebar-label,.sub-sidebar-meta{display:none}
+  .sub-sidebar-back{margin-bottom:16px}
+}
 @media(max-width:768px){
   .wrap{padding-inline:20px}
   .nav-inner{padding-inline:20px}
@@ -316,7 +435,8 @@ footer{
   .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .cta-box{padding:48px 20px}
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
-  .blog-article{padding:100px 16px 60px}
+  .article-layout{padding:0 20px}
+  .article-main{padding-bottom:60px}
 }
 
 /* ========== UNIFIED NAV OVERRIDE (matches index.html scrolled state) ========== */
@@ -460,10 +580,28 @@ nav .nav-links a.current{color:#4FD1C5 !important;font-weight:500}
 </div><!-- /blogGallery -->
 
 <!-- ========== ARTICLE READING VIEW ========== -->
-<div class="blog-article" id="blogArticle" style="display:none">
-  <div class="article-back" onclick="closeArticle()">&#8592; 返回博客</div>
-  <div class="article-page" id="articleContent">
-    <!-- Populated by JS -->
+<div id="blogArticle" style="display:none">
+  <div class="article-layout">
+
+    <!-- LEFT STICKY SIDEBAR -->
+    <aside class="sub-sidebar">
+      <button class="sub-sidebar-back" onclick="closeArticle()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        返回博客
+      </button>
+
+      <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+      <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+      <div class="sub-sidebar-meta" id="articleMeta"></div>
+    </aside>
+
+    <!-- MAIN ARTICLE COLUMN -->
+    <div class="article-main">
+      <div class="article-page" id="articleContent">
+        <!-- Populated by JS -->
+      </div>
+    </div>
   </div>
 </div>
 
@@ -496,6 +634,8 @@ articles.forEach((a, i) => {
 });
 
 // ========== ARTICLE VIEW ==========
+let currentTocObserver = null;
+
 function openArticle(a) {
   var coverHTML = a.cover
     ? '<img class="article-cover" src="' + a.cover + '" alt="">'
@@ -508,13 +648,62 @@ function openArticle(a) {
     '<div class="article-meta">' + a.source + ' &middot; ' + a.date + ' &middot; ' + a.readTime + '</div>' +
     '<div class="article-body">' + a.content + '</div>';
 
+  // Populate sidebar metadata
+  document.getElementById('articleMeta').innerHTML =
+    '<strong>' + a.source + '</strong>' +
+    a.date + ' · ' + a.readTime;
+
+  // Build TOC from h2 elements
+  buildTOC();
+
   document.getElementById('blogGallery').style.display = 'none';
   document.getElementById('blogArticle').style.display = 'block';
   window.scrollTo(0, 0);
 }
+
+function buildTOC() {
+  var content = document.getElementById('articleContent');
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  toc.innerHTML = '';
+
+  var h2s = content.querySelectorAll('.article-body h2');
+  label.style.display = h2s.length ? '' : 'none';
+  if (!h2s.length) return;
+
+  h2s.forEach(function(h2, i) {
+    h2.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h2.id;
+    a.textContent = h2.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      h2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  // Scroll-spy
+  if (currentTocObserver) currentTocObserver.disconnect();
+  var tocLinks = toc.querySelectorAll('a');
+  currentTocObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  h2s.forEach(function(h) { currentTocObserver.observe(h); });
+}
+
 function closeArticle() {
   document.getElementById('blogGallery').style.display = '';
   document.getElementById('blogArticle').style.display = 'none';
+  if (currentTocObserver) { currentTocObserver.disconnect(); currentTocObserver = null; }
   window.scrollTo(0, 0);
 }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeArticle(); });
