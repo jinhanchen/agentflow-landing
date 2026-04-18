@@ -6,7 +6,7 @@
 <title>Solarian — 你的 AI 团队操作系统</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
@@ -1897,9 +1897,9 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   position:relative;
 }
 .opc-title-line2 .opc-serif{
-  font-family:'Instrument Serif',serif;
+  font-family:var(--font-display);
   font-style:italic;
-  font-weight:400;
+  font-weight:500;
   color:var(--opc-teal-ink);
   font-size:.72em;
   vertical-align:.08em;
@@ -1978,26 +1978,26 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   background:var(--bg);
 }
 .opc-stat-num{
-  font-family:'Instrument Serif','Noto Sans SC',serif;
-  font-weight:400;
+  font-family:var(--font-display);
+  font-weight:700;
   font-size:clamp(72px,10vw,128px);
   line-height:.95;
-  letter-spacing:-.02em;
+  letter-spacing:-.04em;
   color:var(--opc-ink);
   margin:10px 0 4px;
   display:flex;align-items:baseline;gap:6px;
 }
 .opc-stat-num .hero-num-value{display:inline-block;}
 .opc-stat-unit{
-  font-family:'Noto Sans SC',sans-serif;
+  font-family:var(--font-display);
   font-size:.38em;
-  font-weight:500;
+  font-weight:600;
   color:var(--opc-teal);
   letter-spacing:-.01em;
   transform:translateY(-.2em);
 }
 .opc-stat-unit.serif{
-  font-family:'Instrument Serif',serif;
+  font-family:var(--font-display);
   color:inherit;
   transform:none;
 }
