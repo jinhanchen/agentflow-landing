@@ -6,7 +6,7 @@
 <title>Solarian — 你的 AI 团队操作系统</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
@@ -260,7 +260,7 @@ nav{
   width:clamp(200px,22vw,300px);height:auto;display:block;
 }
 .hero-title-new{
-  font-family:'Noto Serif SC','Source Han Serif SC',var(--font-display),serif;
+  font-family:var(--font-display);
   font-weight:700;
   font-size:clamp(24px,3.2vw,46px);
   line-height:1.2;letter-spacing:-.01em;
@@ -273,8 +273,8 @@ nav{
   .hero-title-new .hl1,.hero-title-new .hl2{display:block}
 }
 .hero-title-new .rust{
-  font-family:'Instrument Serif','Noto Serif SC',serif;
-  font-style:italic;font-weight:400;
+  font-family:var(--font-display);
+  font-weight:700;
   color:#B45309;padding:0 .08em;
 }
 .hero-title-new .teal{color:var(--accent)}
