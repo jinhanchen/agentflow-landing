@@ -1847,20 +1847,20 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   border-radius:50%;
   left:50%;
 }
-.opc-orbit--o1{width:820px;height:820px;top:-140px;transform:translateX(-50%);}
-.opc-orbit--o2{width:520px;height:520px;top:10px;transform:translateX(-50%);border-color:rgba(14,138,117,.25);}
+.opc-orbit--o1{width:640px;height:640px;top:-50px;transform:translateX(-50%);}
+.opc-orbit--o2{width:400px;height:400px;top:70px;transform:translateX(-50%);border-color:rgba(14,138,117,.25);}
 .opc-orbit .opc-planet{
   position:absolute;width:10px;height:10px;border-radius:50%;
   background:var(--opc-teal);
   box-shadow:0 0 0 4px rgba(14,138,117,.15);
   top:-5px;left:50%;
 }
-.opc-orbit--o1 .opc-planet{transform:translateX(-50%);animation:opcSpin1 28s linear infinite;transform-origin:0 415px;}
+.opc-orbit--o1 .opc-planet{transform:translateX(-50%);animation:opcSpin1 28s linear infinite;transform-origin:0 320px;}
 .opc-orbit--o2 .opc-planet{
   transform:translateX(-50%);
   background:var(--opc-ink);
   box-shadow:0 0 0 4px rgba(30,42,46,.12);
-  animation:opcSpin2 18s linear infinite;transform-origin:0 265px;
+  animation:opcSpin2 18s linear infinite;transform-origin:0 200px;
 }
 @keyframes opcSpin1{to{transform:translateX(-50%) rotate(360deg);}}
 @keyframes opcSpin2{to{transform:translateX(-50%) rotate(-360deg);}}
@@ -2059,9 +2059,12 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   color:var(--opc-muted);letter-spacing:.2em;text-transform:uppercase;
   white-space:nowrap;
 }
-.opc-ticker-track{display:inline-flex;gap:48px;animation:opcTicker 40s linear infinite;}
+.opc-ticker-track{display:inline-flex;gap:48px;animation:opcTicker 60s linear infinite;}
 .opc-ticker-track span{display:inline-flex;gap:14px;align-items:center;}
 .opc-ticker-track span::before{content:"✦";color:var(--opc-teal);}
+.opc-ticker-track a{color:inherit;text-decoration:none;transition:color .2s}
+.opc-ticker-track a:hover{color:var(--opc-ink);text-decoration:underline;text-underline-offset:3px}
+.opc-ticker:hover .opc-ticker-track{animation-play-state:paused}
 @keyframes opcTicker{to{transform:translateX(-50%);}}
 
 /* Narrative bridge: illustration + text, side by side */
@@ -2834,9 +2837,8 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
       </div><!-- /.opc-split -->
 
       <div class="opc-ticker">
-        <div class="opc-ticker-track">
-          <span>One-Person Company</span><span>AI-Native Operations</span><span>Solo Founders</span><span>Autonomous Workflows</span><span>Beijing · Shanghai · Shenzhen · Hangzhou</span>
-          <span>One-Person Company</span><span>AI-Native Operations</span><span>Solo Founders</span><span>Autonomous Workflows</span><span>Beijing · Shanghai · Shenzhen · Hangzhou</span>
+        <div class="opc-ticker-track" id="opcTickerTrack">
+          <!-- populated by JS from src/trends/index.json (latest 10 blog articles) -->
         </div>
       </div>
     </div>
@@ -4663,6 +4665,26 @@ document.addEventListener('keydown', e => {
     if (m) m.classList.remove('open');
   }
 });
+
+/* ========== OPC blog ticker — latest 10 articles from src/trends/index.json ========== */
+(function(){
+  const track = document.getElementById('opcTickerTrack');
+  if (!track) return;
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  fetch('src/trends/index.json', {cache: 'no-cache'})
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(data => {
+      const items = (data.articles || [])
+        .slice()
+        .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')))
+        .slice(0, 10);
+      if (!items.length) return;
+      const makeHtml = it => '<span><a href="trends.html#article-' + it.num + '">' + esc(it.title) + '</a></span>';
+      // Duplicate the list so the CSS translateX(-50%) keyframe loops seamlessly
+      track.innerHTML = items.map(makeHtml).join('') + items.map(makeHtml).join('');
+    })
+    .catch(() => { /* silent fallback — ticker stays empty */ });
+})();
 
 /* ========== PROOF section (Claude Design: auto-playing quality curve) ========== */
 (function(){
