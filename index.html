@@ -1867,20 +1867,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 
 .opc-era > *:not(.opc-grid-bg):not(.opc-orbit){position:relative;z-index:2;}
 
-.opc-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;
-  color:var(--opc-teal-ink);text-transform:uppercase;
-  padding:8px 14px;border-radius:999px;background:rgba(14,138,117,.1);
-  border:1px solid rgba(14,138,117,.22);
-}
-.opc-eyebrow .opc-dot{
-  width:6px;height:6px;border-radius:50%;background:var(--opc-teal);
-  box-shadow:0 0 0 4px rgba(14,138,117,.18);
-  animation:opcPulse 2.4s ease-in-out infinite;
-}
-@keyframes opcPulse{50%{box-shadow:0 0 0 8px rgba(14,138,117,0);}}
-
 .opc-title{
   margin:26px 0 6px;
   font-family:var(--font-display);
@@ -2043,14 +2029,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 .opc-stats:hover .opc-stat:nth-child(2):not(:hover){
   transform:translate3d(-50%,18px,0) rotate(0deg) scale(.96);opacity:.9;
 }
-.opc-stats::after{
-  content:"hover to expand · 悬停查看";
-  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
-  font-family:'JetBrains Mono',monospace;font-size:11px;
-  color:var(--opc-muted);letter-spacing:.22em;text-transform:uppercase;
-  opacity:.5;
-}
-
 .opc-trend{margin:64px auto 0;display:flex;justify-content:center;}
 .opc-trend-btn{
   display:inline-flex;align-items:center;gap:12px;
@@ -2586,8 +2564,6 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
       <div class="opc-grid-bg"></div>
       <div class="opc-orbit opc-orbit--o1"><span class="opc-planet"></span></div>
       <div class="opc-orbit opc-orbit--o2"><span class="opc-planet"></span></div>
-
-      <div class="opc-eyebrow"><span class="opc-dot"></span>THE · OPC · ERA / 2026</div>
 
       <h2 class="opc-title">
         <span>一人公司时代</span>
