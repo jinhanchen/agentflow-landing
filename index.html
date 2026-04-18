@@ -1896,15 +1896,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   font-weight:800;
   position:relative;
 }
-.opc-title-line2 .opc-serif{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-weight:500;
-  color:var(--opc-teal-ink);
-  font-size:.72em;
-  vertical-align:.08em;
-  margin-right:.2em;
-}
 .opc-underline{display:inline-block;position:relative;}
 .opc-underline::after{
   content:"";position:absolute;left:2%;right:2%;bottom:.02em;height:.12em;
@@ -2794,7 +2785,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 
       <h2 class="opc-title">
         <span>一人公司时代</span>
-        <span class="opc-title-line2"><span class="opc-serif">it's here —</span><span class="opc-underline">已经到来</span></span>
+        <span class="opc-title-line2"><span class="opc-underline">已经到来</span></span>
       </h2>
 
       <p class="opc-sub">当 AI 把组织结构压缩到一个人，<b>One-Person Company</b> 不再是愿景，而是正在发生的现实。Solarian 为下一代创业者提供操作系统。</p>
@@ -2865,7 +2856,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
     <section class="proof" id="prfSection">
       <div class="prf-title-wrap">
         <h2 class="prf-title">同一条工作流，<em>越跑越好</em></h2>
-        <p class="prf-sub">不是你变快了，是 <em>它</em> 变快了。它自己写 Skill、自己提炼规则、自己把不稳的部分换成脚本。</p>
+        <p class="prf-sub">它自己写 Skill、自己提炼规则、自己把不稳的部分换成脚本。</p>
       </div>
 
       <div class="prf-readouts" id="prfReadouts">
@@ -4779,11 +4770,11 @@ document.addEventListener('keydown', e => {
   const narratives = [
     ['第一次跑。', 'Solarian 还不认识你的 OPC，执行者之间也没磨合——', '但它正在学', '。'],
     ['第二次。', '已经记住了你昨天指出的两个口味偏好。', '', ''],
-    ['第三次。', 'Marcus ', '自己封装了一个 Skill', '——把每次都要做的 3 步操作合成一个动作。'],
-    ['第四次。', 'Robin 开始在交接给 Dors 前主动补上缺失字段。', '', ''],
+    ['第三次。', '一个 Agent ', '自己封装了一个 Skill', '——把每次都要做的 3 步操作合成一个动作。'],
+    ['第四次。', '一个 Agent 开始在交接给另一个 Agent 前主动补上缺失字段。', '', ''],
     ['第五次。', '', '提炼出一条准则', '——「交接前必须复核数字」。从此写进规则集。'],
-    ['第六次。', 'Hober 不再问你「先做 A 还是先做 B」——它观察到了你的习惯。', '', ''],
-    ['第七次。', 'Marcus ', '直接写了一段脚本', '替掉之前不稳的 LLM 调用。'],
+    ['第六次。', 'Agent 不再问你「先做 A 还是先做 B」——它观察到了你的习惯。', '', ''],
+    ['第七次。', '一个 Agent ', '直接写了一段脚本', '替掉之前不稳的 LLM 调用。'],
     ['第八次。', 'Token 降到最初的 40%，质量反而更稳。', '', ''],
     ['第九次。', 'PM 自己重排了工作流——把原来串行的两步改成并行。', '', ''],
     ['第十次。', '30 分钟，0 次介入。', '你几乎忘了它在跑', '。'],
