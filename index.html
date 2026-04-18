@@ -242,9 +242,9 @@ nav{
 
 /* ========== HERO ========== */
 .hero{
-  min-height:calc(100vh - 300px);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:96px 40px 32px;position:relative;overflow:visible;
+  min-height:auto;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;text-align:center;
+  padding:48px 40px 0;position:relative;overflow:visible;
 }
 .hero-logo-icon{
   width:300px;height:auto;margin-bottom:36px;
@@ -255,7 +255,7 @@ nav{
 }
 
 /* ========== HERO REDESIGN (Claude Design) ========== */
-.hero-brand-lock{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:40px;}
+.hero-brand-lock{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:8px;}
 .hero-mark{
   width:clamp(200px,22vw,300px);height:auto;display:block;
 }
@@ -1573,7 +1573,7 @@ footer{
 /* ========== AUTO-PLAY DEMO ========== */
 .demo-section {
   padding: 0 0 40px;
-  margin-top: 40px;
+  margin-top: 32px;
   position: relative;
   z-index: 10;
 }
@@ -1854,7 +1854,7 @@ nav .logo:hover .nav-logo-badge{
 }
 nav .nav-logo-badge img{
   position:absolute;left:50%;top:50%;
-  width:56px;height:auto;
+  width:88%;height:auto;
   transform:translate(-50%,-50%);
   display:block;
 }
