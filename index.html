@@ -6,7 +6,7 @@
 <title>Solarian — 你的 AI 团队操作系统</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+SC:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
@@ -2438,6 +2438,224 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 /* Hide seps inside dark cascade (invisible anyway, but kill the 1px gap) */
 #waitlist + .sep,
 #trends + .sep{display:none}
+
+/* ========== PROOF section (Claude Design: auto-playing quality curve) ========== */
+.proof{
+  --prf-cream:#F5EFE2;
+  --prf-paper:#FAF6EC;
+  --prf-ink:#1B2430;
+  --prf-ink-2:#3A4654;
+  --prf-ink-3:#6B7687;
+  --prf-rule:rgba(27,36,48,.14);
+  --prf-rule-2:rgba(27,36,48,.08);
+  --prf-teal:#0d8a75;
+  --prf-rust:#B45309;
+  max-width:1200px;margin:0 auto;padding:0 8px;
+  color:var(--prf-ink);
+  font-family:'DM Sans','Noto Sans SC',sans-serif;
+}
+.proof .prf-title-wrap{text-align:center;margin-bottom:56px}
+.proof .prf-eye{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--prf-ink-3);
+  margin-bottom:20px;
+}
+.proof .prf-dash{flex:0 0 36px;height:1px;background:var(--prf-rule)}
+.proof .prf-n{color:var(--prf-rust)}
+.proof .prf-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2.4rem,4.4vw,3.6rem);
+  font-weight:400;line-height:1.15;letter-spacing:-1px;
+  color:var(--prf-ink);
+}
+.proof .prf-title em{font-style:italic;color:var(--prf-teal)}
+.proof .prf-sub{
+  margin:14px auto 0;
+  font-family:'DM Sans','Noto Sans SC',sans-serif;
+  font-size:1.02rem;color:var(--prf-ink-2);line-height:1.6;
+  max-width:640px;
+}
+.proof .prf-sub em{font-style:italic;color:var(--prf-teal);font-weight:500}
+
+/* readouts */
+.proof .prf-readouts{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border-top:1px solid var(--prf-rule);
+  border-bottom:1px solid var(--prf-rule);
+  background:rgba(255,255,255,.35);
+}
+.proof .prf-readout{
+  padding:22px 26px;border-right:1px solid var(--prf-rule-2);
+  position:relative;
+}
+.proof .prf-readout:last-child{border-right:none}
+.proof .prf-r-lab{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--prf-ink-3);
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+.proof .prf-r-lab::before{
+  content:'';width:6px;height:6px;border-radius:50%;background:var(--prf-ink-3);
+}
+.proof .prf-m-qual .prf-r-lab::before{background:var(--prf-teal)}
+.proof .prf-m-time .prf-r-lab::before{background:var(--prf-ink)}
+.proof .prf-m-tok .prf-r-lab::before{background:var(--prf-rust)}
+.proof .prf-m-hum .prf-r-lab::before{background:#8a7550}
+.proof .prf-r-row{display:flex;align-items:baseline;gap:6px;margin-bottom:6px}
+.proof .prf-r-val{
+  font-family:'Instrument Serif',serif;
+  font-size:2.6rem;line-height:1;font-weight:400;letter-spacing:-1px;
+  color:var(--prf-ink);
+  font-variant-numeric:tabular-nums;
+  transition:color .4s ease;
+}
+.proof .prf-m-qual.awake .prf-r-val{color:var(--prf-teal)}
+.proof .prf-r-unit{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--prf-ink-3);
+}
+.proof .prf-r-delta{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;letter-spacing:.1em;
+  color:var(--prf-ink-3);
+  opacity:0;transition:opacity .4s ease;
+}
+.proof .prf-r-delta.good{color:var(--prf-teal)}
+.proof .prf-readout.awake .prf-r-delta{opacity:1}
+
+/* chart */
+.proof .prf-chart-wrap{
+  position:relative;padding:80px 0 8px;
+}
+.proof .prf-chart-wrap::before{
+  content:'QUALITY CURVE · RUN 01 → 10';
+  position:absolute;top:30px;left:50%;transform:translateX(-50%);
+  background:var(--bg);padding:0 14px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;letter-spacing:.28em;color:var(--prf-ink-3);
+  z-index:2;
+}
+.proof .prf-chart-svg{
+  width:100%;height:380px;display:block;overflow:visible;
+}
+.proof .prf-flag{
+  position:absolute;
+  opacity:0;transform:translateY(8px);
+  transition:opacity .7s ease,transform .7s ease;
+  pointer-events:none;z-index:3;
+}
+.proof .prf-flag.show{opacity:1;transform:translateY(0)}
+.proof .prf-card{
+  background:#fff;border:1px solid var(--prf-ink);
+  padding:9px 13px;border-radius:3px;
+  font-family:'DM Sans','Noto Sans SC',sans-serif;
+  font-size:.82rem;color:var(--prf-ink);line-height:1.35;
+  box-shadow:3px 3px 0 var(--prf-ink);
+  white-space:nowrap;font-weight:500;
+}
+.proof .prf-card .prf-tag{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--prf-rust);margin-bottom:3px;font-weight:700;
+}
+.proof .prf-tick{
+  width:1px;height:28px;background:var(--prf-ink);
+  margin-left:22px;
+}
+
+/* log */
+.proof .prf-log-wrap{
+  margin-top:56px;
+  background:var(--prf-paper);
+  border:1px solid var(--prf-rule);
+  border-radius:4px;overflow:hidden;
+}
+.proof .prf-log-head{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:14px 22px;
+  border-bottom:1px solid var(--prf-rule);
+  background:rgba(255,255,255,.5);
+}
+.proof .prf-lh-l{
+  display:flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--prf-ink-2);
+}
+.proof .prf-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--prf-teal);
+  box-shadow:0 0 0 3px rgba(13,138,117,.18);
+  animation:prfPulse 1.4s ease-in-out infinite;
+}
+@keyframes prfPulse{
+  0%,100%{box-shadow:0 0 0 3px rgba(13,138,117,.18)}
+  50%{box-shadow:0 0 0 6px rgba(13,138,117,.06)}
+}
+.proof .prf-counter{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;letter-spacing:.18em;color:var(--prf-ink-3);
+}
+.proof .prf-counter b{color:var(--prf-ink);font-weight:600}
+.proof .prf-log-body{
+  padding:22px 28px 26px;
+  display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;
+  min-height:118px;
+}
+.proof .prf-log-num{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:4.2rem;line-height:1;color:var(--prf-ink);
+  letter-spacing:-2px;min-width:100px;
+  font-variant-numeric:tabular-nums;
+  transition:color .4s ease;
+}
+.proof .prf-log-num.big{color:var(--prf-teal)}
+.proof .prf-log-text{
+  font-family:'DM Sans','Noto Sans SC',sans-serif;
+  font-size:1.04rem;line-height:1.65;color:var(--prf-ink-2);
+  opacity:0;transform:translateY(4px);
+  transition:opacity .4s ease,transform .4s ease;
+}
+.proof .prf-log-text.prf-on{opacity:1;transform:translateY(0)}
+.proof .prf-log-text strong{color:var(--prf-ink);font-weight:700}
+.proof .prf-log-text em{font-style:italic;color:var(--prf-teal);font-weight:500}
+.proof .prf-log-text .prf-stamp{
+  display:inline-block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;letter-spacing:.2em;
+  color:var(--prf-rust);text-transform:uppercase;
+  margin-right:10px;padding:2px 8px;
+  border:1px solid var(--prf-rust);border-radius:100px;
+  font-weight:700;vertical-align:middle;
+}
+
+/* tail */
+.proof .prf-tail{
+  margin-top:36px;text-align:center;
+  font-family:'Caveat',cursive;
+  font-size:1.55rem;color:var(--prf-ink-2);
+}
+.proof .prf-tail em{color:var(--prf-teal);font-style:normal;font-weight:700}
+
+@media(max-width:900px){
+  .proof .prf-readouts{grid-template-columns:repeat(2,1fr)}
+  .proof .prf-readout{border-bottom:1px solid var(--prf-rule-2)}
+  .proof .prf-readout:nth-child(3),.proof .prf-readout:nth-child(4){border-bottom:none}
+  .proof .prf-readout:nth-child(2){border-right:none}
+  .proof .prf-chart-svg{height:300px}
+  .proof .prf-log-body{grid-template-columns:1fr;gap:12px;padding:20px}
+  .proof .prf-log-num{font-size:3rem;min-width:auto}
+  .proof .prf-card{white-space:normal;max-width:200px}
+}
+@media(max-width:600px){
+  .proof .prf-readout{padding:16px 18px}
+  .proof .prf-r-val{font-size:2rem}
+  .proof .prf-title{font-size:1.9rem}
+}
 </style>
 </head>
 <body>
@@ -2657,64 +2875,126 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
       </div>
     </div>
 
-    <!-- ACT 2 — The Answer -->
-    <div class="mp-act reveal">
-      <div class="mp-chapter">With Solarian</div>
-      <h2 class="mp-headline"><span>一支为 <em>OPC</em> 定制的</span><span>自主协作的 AI 团队</span></h2>
-      <p class="mp-subtitle">同一条工作流，<em>越跑越好</em></p>
+    <!-- ACT 2 — The Proof (Claude Design: auto-playing quality curve) -->
+    <section class="proof" id="prfSection">
+      <div class="prf-title-wrap">
+        <div class="prf-eye">
+          <span class="prf-dash"></span>
+          <span class="prf-n">03</span>
+          <span>/</span>
+          <span>THE PROOF</span>
+          <span class="prf-dash"></span>
+        </div>
+        <h2 class="prf-title">同一条工作流，<em>越跑越好</em></h2>
+        <p class="prf-sub">不是你变快了，是 <em>它</em> 变快了。它自己写 Skill、自己提炼规则、自己把不稳的部分换成脚本。</p>
+      </div>
 
-      <!-- Before / After comparison — sequential animation -->
-      <div class="mp-compare" id="mpCompare">
-        <!-- Step 1: Run #1 -->
-        <div class="cmp-col cmp-before cmp-step" data-step="1">
-          <div class="cmp-tag">Run #1</div>
-          <div class="cmp-grid">
-            <div class="cmp-row"><span class="cmp-label">耗时</span><span class="cmp-val">3 小时</span></div>
-            <div class="cmp-row"><span class="cmp-label">质量评分</span><span class="cmp-val">2.8 / 5</span></div>
-            <div class="cmp-row"><span class="cmp-label">Token 消耗</span><span class="cmp-val">24,000</span></div>
-            <div class="cmp-row"><span class="cmp-label">人工介入</span><span class="cmp-val">8 次</span></div>
+      <div class="prf-readouts" id="prfReadouts">
+        <div class="prf-readout prf-m-qual">
+          <div class="prf-r-lab">质量评分</div>
+          <div class="prf-r-row">
+            <span class="prf-r-val" data-m="qual">2.8</span>
+            <span class="prf-r-unit">/ 5.0</span>
           </div>
+          <div class="prf-r-delta" data-d="qual">— baseline</div>
         </div>
-        <!-- Step 2: Arrow + capability tags -->
-        <div class="cmp-middle cmp-step" data-step="2">
-          <div class="cmp-arrow">
-            <div class="cmp-arrow-top">10 次迭代</div>
-            <svg class="cmp-arrow-svg" viewBox="0 0 100 16" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M2 8h90M84 3l8 5-8 5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <div class="cmp-arrow-bot">经验沉淀</div>
+        <div class="prf-readout prf-m-time">
+          <div class="prf-r-lab">耗时</div>
+          <div class="prf-r-row">
+            <span class="prf-r-val" data-m="time">3.0</span>
+            <span class="prf-r-unit" data-u="time">hrs</span>
           </div>
-          <div class="mp-caps">
-            <div class="cap-item">
-              <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-              <span class="cap-title" data-zh="自己写 Skill" data-en="Self-Writing Skills">自己写 Skill</span>
-              <span class="cap-desc" data-zh="提炼可复用技能模块" data-en="Extract reusable skill modules">提炼可复用技能模块</span>
-            </div>
-            <div class="cap-item">
-              <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/></svg></div>
-              <span class="cap-title" data-zh="自己提炼规则" data-en="Self-Extracting Rules">自己提炼规则</span>
-              <span class="cap-desc" data-zh="从经验中提取行为准则" data-en="Extract behavioral rules from experience">从经验中提取行为准则</span>
-            </div>
-            <div class="cap-item">
-              <div class="cap-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-              <span class="cap-title" data-zh="自己写工具" data-en="Self-Building Tools">自己写工具</span>
-              <span class="cap-desc" data-zh="自动编写脚本替代 LLM" data-en="Auto-write scripts to replace LLM">自动编写脚本替代 LLM</span>
-            </div>
-          </div>
+          <div class="prf-r-delta" data-d="time">— baseline</div>
         </div>
-        <!-- Step 3: Run #10 with rolling numbers -->
-        <div class="cmp-col cmp-after cmp-step" data-step="3">
-          <div class="cmp-tag cmp-tag-after">Run #10</div>
-          <div class="cmp-grid">
-            <div class="cmp-row"><span class="cmp-label">耗时</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="180" data-to="30" data-suffix=" 分钟" data-extra="">3 小时</span></span></div>
-            <div class="cmp-row"><span class="cmp-label">质量评分</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="2.8" data-to="4.5" data-suffix=" / 5" data-extra="">2.8 / 5</span></span></div>
-            <div class="cmp-row"><span class="cmp-label">Token 消耗</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="24000" data-to="8200" data-suffix="" data-extra="">24,000</span></span></div>
-            <div class="cmp-row"><span class="cmp-label">人工介入</span><span class="cmp-val cmp-hl"><span class="cmp-roll" data-from="8" data-to="0" data-suffix=" 次" data-extra="">8 次</span></span></div>
+        <div class="prf-readout prf-m-tok">
+          <div class="prf-r-lab">Token 消耗</div>
+          <div class="prf-r-row">
+            <span class="prf-r-val" data-m="tok">24.0k</span>
+            <span class="prf-r-unit">tokens</span>
+          </div>
+          <div class="prf-r-delta" data-d="tok">— baseline</div>
+        </div>
+        <div class="prf-readout prf-m-hum">
+          <div class="prf-r-lab">人工介入</div>
+          <div class="prf-r-row">
+            <span class="prf-r-val" data-m="hum">8</span>
+            <span class="prf-r-unit">次 / run</span>
+          </div>
+          <div class="prf-r-delta" data-d="hum">— baseline</div>
+        </div>
+      </div>
+
+      <div class="prf-chart-wrap" id="prfChartWrap">
+        <svg class="prf-chart-svg" id="prfChart" viewBox="0 0 1000 380" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="prfQualFill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#0d8a75" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#0d8a75" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="prfRevealClip">
+              <rect id="prfClipRect" x="60" y="0" width="0" height="380"/>
+            </clipPath>
+          </defs>
+          <g stroke="rgba(27,36,48,.08)" stroke-width="1">
+            <line x1="60" y1="40" x2="960" y2="40"/>
+            <line x1="60" y1="120" x2="960" y2="120"/>
+            <line x1="60" y1="200" x2="960" y2="200"/>
+            <line x1="60" y1="280" x2="960" y2="280"/>
+          </g>
+          <line x1="60" y1="320" x2="960" y2="320" stroke="rgba(27,36,48,.25)" stroke-width="1"/>
+          <g font-family="JetBrains Mono,monospace" font-size="12" fill="#6B7687" letter-spacing=".1em">
+            <text x="50" y="44" text-anchor="end">5.0</text>
+            <text x="50" y="124" text-anchor="end">4.0</text>
+            <text x="50" y="204" text-anchor="end">3.0</text>
+            <text x="50" y="284" text-anchor="end">2.0</text>
+          </g>
+          <text x="50" y="18" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7687" letter-spacing=".2em">QUALITY</text>
+          <g clip-path="url(#prfRevealClip)">
+            <path id="prfQualArea" d="" fill="url(#prfQualFill)"/>
+            <path id="prfQualLine" d="" fill="none" stroke="#0d8a75" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <line x1="60" y1="80" x2="960" y2="80" stroke="#B45309" stroke-width="1" stroke-dasharray="4 5" opacity=".5"/>
+          <text x="960" y="74" text-anchor="end" font-family="JetBrains Mono,monospace" font-size="10" fill="#B45309" letter-spacing=".15em">TARGET 4.5</text>
+          <g id="prfNodes"></g>
+          <g id="prfXlabels" font-family="JetBrains Mono,monospace" font-size="12" fill="#6B7687" letter-spacing=".12em"></g>
+        </svg>
+
+        <div class="prf-flag" data-at="3">
+          <div class="prf-card"><span class="prf-tag">Run 03 · Skill</span>自己封装了一个可复用动作</div>
+          <div class="prf-tick"></div>
+        </div>
+        <div class="prf-flag" data-at="5">
+          <div class="prf-card"><span class="prf-tag">Run 05 · Rule</span>沉淀出「交接前必须复核」</div>
+          <div class="prf-tick"></div>
+        </div>
+        <div class="prf-flag" data-at="7">
+          <div class="prf-card"><span class="prf-tag">Run 07 · Tool</span>写了一段脚本替掉不稳的 LLM 调用</div>
+          <div class="prf-tick"></div>
+        </div>
+        <div class="prf-flag" data-at="9">
+          <div class="prf-card"><span class="prf-tag">Run 09 · Self</span>PM 自己重排了工作流</div>
+          <div class="prf-tick"></div>
+        </div>
+      </div>
+
+      <div class="prf-log-wrap">
+        <div class="prf-log-head">
+          <div class="prf-lh-l">
+            <span class="prf-dot"></span>
+            <span>SOLARIAN LOG · 实时学习中</span>
+          </div>
+          <div class="prf-counter" id="prfCounter"><b>01</b> / 10</div>
+        </div>
+        <div class="prf-log-body">
+          <div class="prf-log-num" id="prfLogNum">01</div>
+          <div class="prf-log-text prf-on" id="prfLogText">
+            <strong>第一次跑。</strong>Solarian 还不认识你的 OPC，执行者之间也没磨合——<em>但它正在学</em>。
           </div>
         </div>
       </div>
 
-    </div>
+      <div class="prf-tail">你不用管它怎么变好 —— <em>它自己会。</em></div>
+    </section>
 
   </div>
 </section>
@@ -4413,6 +4693,265 @@ document.addEventListener('keydown', e => {
     if (m) m.classList.remove('open');
   }
 });
+
+/* ========== PROOF section (Claude Design: auto-playing quality curve) ========== */
+(function(){
+  const section = document.getElementById('prfSection');
+  if (!section) return;
+
+  const runs = [
+    {q:2.8, t:3.0,  k:24.0, h:8},
+    {q:3.1, t:2.6,  k:22.0, h:7},
+    {q:3.4, t:2.2,  k:19.5, h:6},
+    {q:3.6, t:1.9,  k:17.5, h:5},
+    {q:3.8, t:1.5,  k:15.0, h:4},
+    {q:4.0, t:1.2,  k:13.0, h:3},
+    {q:4.15,t:1.0,  k:11.0, h:2},
+    {q:4.3, t:0.8,  k:10.0, h:1},
+    {q:4.4, t:0.65, k:9.0,  h:1},
+    {q:4.5, t:0.5,  k:8.2,  h:0},
+  ];
+  const N = runs.length;
+  const X0=60, X1=960, Y_TOP=40, Y_BOT=320;
+  const Q_MIN=2.0, Q_MAX=5.0;
+  const xAt = i => X0 + (X1 - X0) * i / (N - 1);
+  const qY  = q => Y_BOT - (Y_BOT - Y_TOP) * (q - Q_MIN) / (Q_MAX - Q_MIN);
+
+  function smooth(pts){
+    if(pts.length<2) return '';
+    let d = 'M'+pts[0][0]+' '+pts[0][1];
+    for(let i=0;i<pts.length-1;i++){
+      const p0=pts[i-1]||pts[i], p1=pts[i], p2=pts[i+1], p3=pts[i+2]||p2;
+      const c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+      const c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+      d+=' C'+c1x+' '+c1y+' '+c2x+' '+c2y+' '+p2[0]+' '+p2[1];
+    }
+    return d;
+  }
+
+  const ptsQ = runs.map((r,i)=>[xAt(i), qY(r.q)]);
+  document.getElementById('prfQualLine').setAttribute('d', smooth(ptsQ));
+  document.getElementById('prfQualArea').setAttribute(
+    'd', smooth(ptsQ) + ' L'+X1+' '+Y_BOT+' L'+X0+' '+Y_BOT+' Z'
+  );
+
+  const NS='http://www.w3.org/2000/svg';
+  const nodesG = document.getElementById('prfNodes');
+  const nodeEls = [];
+  runs.forEach((r,i)=>{
+    const g = document.createElementNS(NS,'g');
+    g.setAttribute('opacity','0');
+    g.style.transition = 'opacity .3s ease';
+    const outer = document.createElementNS(NS,'circle');
+    outer.setAttribute('cx', xAt(i));
+    outer.setAttribute('cy', qY(r.q));
+    outer.setAttribute('r', 6);
+    outer.setAttribute('fill','#F5EFE2');
+    outer.setAttribute('stroke','#0d8a75');
+    outer.setAttribute('stroke-width','1.8');
+    outer.style.transition='r .3s ease,stroke-width .3s ease';
+    const inner = document.createElementNS(NS,'circle');
+    inner.setAttribute('cx', xAt(i));
+    inner.setAttribute('cy', qY(r.q));
+    inner.setAttribute('r', 2.6);
+    inner.setAttribute('fill','#0d8a75');
+    g.appendChild(outer); g.appendChild(inner);
+    nodesG.appendChild(g);
+    nodeEls.push({g, outer, inner});
+  });
+
+  const xlabelsG = document.getElementById('prfXlabels');
+  runs.forEach((r,i)=>{
+    const t = document.createElementNS(NS,'text');
+    t.setAttribute('x', xAt(i));
+    t.setAttribute('y', 348);
+    t.setAttribute('text-anchor','middle');
+    t.setAttribute('data-i', i);
+    t.textContent = String(i+1).padStart(2,'0');
+    t.style.transition = 'fill .3s';
+    xlabelsG.appendChild(t);
+  });
+
+  const chartWrap = document.getElementById('prfChartWrap');
+  const clipRect = document.getElementById('prfClipRect');
+  const flags = section.querySelectorAll('.prf-flag');
+
+  // Position each flag over its target node (fixes alignment issues).
+  // Called on init and on resize — uses each node's actual rendered rect.
+  function positionFlags(){
+    const wrapRect = chartWrap.getBoundingClientRect();
+    flags.forEach(f => {
+      const atRun = parseInt(f.dataset.at);
+      const nodeEl = nodeEls[atRun - 1] && nodeEls[atRun - 1].outer;
+      if (!nodeEl) return;
+      const nodeRect = nodeEl.getBoundingClientRect();
+      const nodeCx = nodeRect.left + nodeRect.width/2 - wrapRect.left;
+      const nodeCy = nodeRect.top + nodeRect.height/2 - wrapRect.top;
+      const card = f.querySelector('.prf-card');
+      const cardH = card ? card.offsetHeight : 48;
+      const tickH = 28;
+      const tickMarginLeft = 22;
+      // Place card bottom at node_y − tickH; tick (margin-left 22px) falls onto node
+      f.style.left = (nodeCx - tickMarginLeft) + 'px';
+      f.style.top  = (nodeCy - cardH - tickH) + 'px';
+    });
+  }
+
+  const narratives = [
+    ['第一次跑。', 'Solarian 还不认识你的 OPC，执行者之间也没磨合——', '但它正在学', '。'],
+    ['第二次。', '已经记住了你昨天指出的两个口味偏好。', '', ''],
+    ['第三次。', 'Marcus ', '自己封装了一个 Skill', '——把每次都要做的 3 步操作合成一个动作。'],
+    ['第四次。', 'Robin 开始在交接给 Dors 前主动补上缺失字段。', '', ''],
+    ['第五次。', '', '提炼出一条准则', '——「交接前必须复核数字」。从此写进规则集。'],
+    ['第六次。', 'Hober 不再问你「先做 A 还是先做 B」——它观察到了你的习惯。', '', ''],
+    ['第七次。', 'Marcus ', '直接写了一段脚本', '替掉之前不稳的 LLM 调用。'],
+    ['第八次。', 'Token 降到最初的 40%，质量反而更稳。', '', ''],
+    ['第九次。', 'PM 自己重排了工作流——把原来串行的两步改成并行。', '', ''],
+    ['第十次。', '30 分钟，0 次介入。', '你几乎忘了它在跑', '。'],
+  ];
+  const stamps = [
+    'BASELINE','LEARN','SKILL +1','HANDOFF','RULE +1',
+    'HABIT','TOOL +1','EFFICIENCY','SELF-OPTIMIZE','STEADY'
+  ];
+
+  const fmt = {
+    time: v => v >= 1 ? v.toFixed(1) : String(Math.floor(v*60)),
+    timeUnit: v => v >= 1 ? 'hrs' : 'min',
+    qual: v => v.toFixed(1),
+    tok:  v => v >= 10 ? v.toFixed(1)+'k' : String(Math.floor(v*1000)),
+    hum:  v => String(v|0),
+  };
+
+  const q = sel => section.querySelector(sel);
+  const els = {
+    time: q('[data-m="time"]'),
+    timeU: q('[data-u="time"]'),
+    qual: q('[data-m="qual"]'),
+    tok:  q('[data-m="tok"]'),
+    hum:  q('[data-m="hum"]'),
+    dTime: q('[data-d="time"]'),
+    dQual: q('[data-d="qual"]'),
+    dTok:  q('[data-d="tok"]'),
+    dHum:  q('[data-d="hum"]'),
+    rTime: q('.prf-readout.prf-m-time'),
+    rQual: q('.prf-readout.prf-m-qual'),
+    rTok:  q('.prf-readout.prf-m-tok'),
+    rHum:  q('.prf-readout.prf-m-hum'),
+    logNum: document.getElementById('prfLogNum'),
+    logText: document.getElementById('prfLogText'),
+    counter: document.getElementById('prfCounter'),
+    xlabels: xlabelsG.querySelectorAll('text'),
+  };
+
+  let cur = 0;
+
+  function setRun(i, animate){
+    cur = i;
+    const r = runs[cur];
+    const base = runs[0];
+
+    els.time.textContent = fmt.time(r.t);
+    els.timeU.textContent = fmt.timeUnit(r.t);
+    els.qual.textContent = fmt.qual(r.q);
+    els.tok.textContent  = fmt.tok(r.k);
+    els.hum.textContent  = fmt.hum(r.h);
+
+    if(cur === 0){
+      ['dTime','dQual','dTok','dHum'].forEach(k => {
+        els[k].textContent='— baseline';
+        els[k].className='prf-r-delta';
+      });
+      [els.rTime, els.rQual, els.rTok, els.rHum].forEach(e => e.classList.remove('awake'));
+    } else {
+      const dt = Math.round((1 - r.t/base.t)*100);
+      const dq = ((r.q - base.q)/base.q*100);
+      const dk = Math.round((1 - r.k/base.k)*100);
+      els.dTime.textContent = '↓ '+dt+'% vs run 01';  els.dTime.className='prf-r-delta good';
+      els.dQual.textContent = '↑ '+dq.toFixed(0)+'% vs run 01'; els.dQual.className='prf-r-delta good';
+      els.dTok.textContent  = '↓ '+dk+'% vs run 01';  els.dTok.className='prf-r-delta good';
+      els.dHum.textContent  = base.h>0 ? (base.h - r.h)+' 次 less' : '—'; els.dHum.className='prf-r-delta good';
+      [els.rTime, els.rQual, els.rTok, els.rHum].forEach(e => e.classList.add('awake'));
+    }
+
+    els.logText.classList.remove('prf-on');
+    setTimeout(()=>{
+      els.logNum.textContent = String(cur+1).padStart(2,'0');
+      els.logNum.classList.toggle('big', cur === N-1);
+      const nar = narratives[cur];
+      const stamp = stamps[cur];
+      els.logText.innerHTML = '<span class="prf-stamp">'+stamp+'</span><strong>'+nar[0]+'</strong>'+nar[1]+(nar[2] ? '<em>'+nar[2]+'</em>' : '')+nar[3];
+      els.logText.classList.add('prf-on');
+    }, 180);
+    els.counter.innerHTML = '<b>'+String(cur+1).padStart(2,'0')+'</b> / '+N;
+
+    const targetW = xAt(cur) - X0 + 8;
+    clipRect.style.transition = animate ? 'width .8s cubic-bezier(.5,0,.2,1)' : 'none';
+    clipRect.setAttribute('width', Math.max(0, targetW));
+
+    nodeEls.forEach((n, idx) => {
+      n.g.setAttribute('opacity', idx <= cur ? '1' : '0');
+      if(idx === cur){
+        n.outer.setAttribute('r', '9');
+        n.outer.setAttribute('stroke-width','2.4');
+      } else {
+        n.outer.setAttribute('r','6');
+        n.outer.setAttribute('stroke-width','1.8');
+      }
+    });
+
+    els.xlabels.forEach(t => {
+      const isActive = parseInt(t.dataset.i) === cur;
+      t.setAttribute('fill', isActive ? '#1B2430' : '#6B7687');
+      t.setAttribute('font-weight', isActive ? '700' : '400');
+    });
+
+    flags.forEach(f => {
+      const at = parseInt(f.dataset.at);
+      f.classList.toggle('show', cur + 1 >= at);
+    });
+  }
+
+  setRun(0, false);
+  // Position flags after first paint (so offsetHeight/rects are correct)
+  requestAnimationFrame(() => { requestAnimationFrame(positionFlags); });
+  window.addEventListener('resize', positionFlags);
+
+  let timer = null;
+  let looping = false;
+  function startLoop(){
+    if(looping) return;
+    looping = true;
+    function step(){
+      let next = cur + 1;
+      if(next >= N){
+        timer = setTimeout(()=>{
+          setRun(0, false);
+          timer = setTimeout(step, 1600);
+        }, 3200);
+        return;
+      }
+      setRun(next, true);
+      timer = setTimeout(step, 1400);
+    }
+    timer = setTimeout(step, 1400);
+  }
+  function stopLoop(){
+    if (timer) { clearTimeout(timer); timer = null; }
+    looping = false;
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting) { positionFlags(); startLoop(); }
+    });
+  }, {threshold: 0.25});
+  io.observe(section);
+
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden) stopLoop();
+    else if(!looping) startLoop();
+  });
+})();
 </script>
 </body>
 </html>
