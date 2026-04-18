@@ -262,12 +262,16 @@ nav{
 .hero-title-new{
   font-family:'Noto Serif SC','Source Han Serif SC',var(--font-display),serif;
   font-weight:700;
-  font-size:clamp(26px,3.8vw,54px);
-  line-height:1.22;letter-spacing:-.01em;
+  font-size:clamp(24px,3.2vw,46px);
+  line-height:1.2;letter-spacing:-.01em;
   color:var(--text);
-  margin:0 auto;max-width:22ch;text-wrap:balance;
+  margin:0 auto;max-width:none;text-wrap:balance;white-space:nowrap;
 }
-.hero-title-new .hl1,.hero-title-new .hl2{display:block}
+.hero-title-new .hl1,.hero-title-new .hl2{display:inline}
+@media(max-width:768px){
+  .hero-title-new{white-space:normal}
+  .hero-title-new .hl1,.hero-title-new .hl2{display:block}
+}
 .hero-title-new .rust{
   font-family:'Instrument Serif','Noto Serif SC',serif;
   font-style:italic;font-weight:400;
