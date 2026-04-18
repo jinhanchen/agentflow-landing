@@ -55,6 +55,15 @@ nav{
   display:flex;align-items:center;gap:9px;letter-spacing:-.3px;
   color:#fff;
 }
+nav .nav-logo-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;
+  background:#fff;
+  border-radius:9px;
+  box-shadow:0 2px 8px rgba(0,0,0,.12), 0 0 0 1px rgba(0,0,0,.04);
+  flex-shrink:0;
+}
+nav .nav-logo-badge img{width:30px;height:30px;object-fit:contain;display:block}
 .nav-links{display:flex;align-items:center;gap:40px;list-style:none}
 .nav-links a{font-size:.85rem;font-weight:400;color:rgba(255,255,255,0.72);transition:color .2s}
 .nav-links a:hover{color:#fff}
@@ -453,7 +462,7 @@ article.story sup a:hover{text-decoration:underline}
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="Solarian" style="height:28px">
+      <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
