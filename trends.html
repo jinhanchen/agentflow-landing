@@ -1722,20 +1722,15 @@ articles.forEach((a, i) => {
 });
 
 // ========== DEEP LINK (from index.html ticker: trends.html#article-N) ==========
-(function(){
+function openArticleFromHash(){
   const m = location.hash.match(/^#article-(\d+)$/);
   if (!m) return;
   const id = parseInt(m[1], 10);
   const art = articles.find(a => a.id === id);
   if (art) openArticle(art);
-})();
-window.addEventListener('hashchange', () => {
-  const m = location.hash.match(/^#article-(\d+)$/);
-  if (!m) return;
-  const id = parseInt(m[1], 10);
-  const art = articles.find(a => a.id === id);
-  if (art) openArticle(art);
-});
+}
+openArticleFromHash();
+window.addEventListener('hashchange', openArticleFromHash);
 
 // ========== ARTICLE VIEW ==========
 let currentTocObserver = null;
