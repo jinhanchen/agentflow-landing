@@ -2555,12 +2555,11 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   --prf-rule-2:rgba(27,36,48,.08);
   --prf-teal:#0d8a75;
   --prf-rust:#B45309;
-  max-width:min(1780px, 96vw);margin:0 auto;padding:0 8px;
+  max-width:1200px;margin:0 auto;padding:0 8px;
   color:var(--prf-ink);
   font-family:'DM Sans','Noto Sans SC',sans-serif;
 }
-.proof .prf-title-wrap{text-align:center;margin-bottom:56px;max-width:1200px;margin-left:auto;margin-right:auto}
-.proof .prf-readouts{max-width:1200px;margin-left:auto;margin-right:auto}
+.proof .prf-title-wrap{text-align:center;margin-bottom:56px}
 .proof .prf-title{
   font-family:var(--font-display);
   font-size:clamp(2.1rem,4.6vw,4rem);
@@ -2658,11 +2657,11 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   margin-left:22px;
 }
 
-/* chart + log side-by-side split — chart keeps original ~1200px width; log fixed narrow column */
+/* chart + log side-by-side split — both fit within 1200px .proof container */
 .proof .prf-split{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 340px;
-  gap:32px;align-items:start;margin-top:8px;
+  grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);
+  gap:20px;align-items:start;margin-top:24px;
 }
 .proof .prf-split .prf-chart-wrap{padding-top:8px}
 .proof .prf-split .prf-log-wrap{margin-top:40px;align-self:center}
@@ -2732,7 +2731,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   font-weight:700;vertical-align:middle;
 }
 
-@media(max-width:1500px){
+@media(max-width:1000px){
   .proof .prf-split{grid-template-columns:1fr;gap:0}
   .proof .prf-split .prf-log-wrap{margin-top:40px;align-self:stretch}
 }
