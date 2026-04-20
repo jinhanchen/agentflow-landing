@@ -286,20 +286,20 @@ nav{
   transform-origin:9% 98.5%;   /* pivot at the fingertip */
   -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
           mask-image:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
-  animation:heroHandHumanIn 4.2s cubic-bezier(.34,1.32,.64,1) .5s forwards;
+  animation:
+    heroHandHumanIn 4.2s cubic-bezier(.16,1,.3,1.02) .5s forwards,
+    heroHandHumanIdle 6s ease-in-out 4.7s infinite;
 }
 .hero-hand-robot{
   left:45%;top:50%;
   transform-origin:80% 1%;   /* pivot at the fingertip */
   -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
           mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
-  animation:heroHandRobotIn 4.2s cubic-bezier(.34,1.32,.64,1) .5s forwards;
+  animation:
+    heroHandRobotIn 4.2s cubic-bezier(.16,1,.3,1.02) .5s forwards,
+    heroHandRobotIdle 6s ease-in-out 4.7s infinite;
 }
-/* Travel path runs STRAIGHT along the finger axis — finger thrusts forward
-   along its pointing direction (not a diagonal slide).
-   Human finger axis (post-rotation): 149° (30° below horizontal, pointing left).
-   Robot finger axis:                -34° (34° above horizontal, pointing right).
-   Start positions sit 400% back along the negative-axis direction. */
+/* Entrance: straight along finger axis, 400% travel, 2% damped overshoot */
 @keyframes heroHandHumanIn{
   0%  {transform:translate(335%, -303%) rotate(41deg); opacity:0}
   25% {opacity:.22}
@@ -309,6 +309,21 @@ nav{
   0%  {transform:translate(-413%, 221%) rotate(45deg); opacity:0}
   25% {opacity:.22}
   100%{transform:translate(-80%, -1%)   rotate(45deg); opacity:.22}
+}
+/* Slow idle oscillation along each hand's own finger axis, out-of-phase
+   so the two hands pulse in a "one-forward-one-back" rhythm.
+   Amplitude: 2% of hand size along the finger axis. */
+@keyframes heroHandHumanIdle{
+  0%,100%{transform:translate(-9%, -98.5%)   rotate(41deg)}
+  25%    {transform:translate(-10.7%, -97.5%) rotate(41deg)}  /* forward (down-left) */
+  50%    {transform:translate(-9%, -98.5%)   rotate(41deg)}
+  75%    {transform:translate(-7.3%, -99.5%) rotate(41deg)}   /* backward (up-right) */
+}
+@keyframes heroHandRobotIdle{
+  0%,100%{transform:translate(-80%, -1%)   rotate(45deg)}
+  25%    {transform:translate(-81.7%, 0.1%) rotate(45deg)}   /* backward (down-left) */
+  50%    {transform:translate(-80%, -1%)   rotate(45deg)}
+  75%    {transform:translate(-78.3%, -2.1%) rotate(45deg)}  /* forward (up-right) */
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
