@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPC 博客 — Solarian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#0a0f1a;
+  --bg-card:#141418;
+  --bg-card-hover:#1a1a20;
+  --border:rgba(255,255,255,0.06);
+  --border-hover:rgba(255,255,255,0.12);
+  --text:rgba(255,255,255,0.9);
+  --text-sub:rgba(255,255,255,0.5);
+  --text-dim:rgba(255,255,255,0.25);
+  --accent:#14b8a6;
+  --accent-sub:rgba(20,184,166,0.15);
+  --accent-glow:rgba(20,184,166,0.08);
+  --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
+  --font-body:'DM Sans','Noto Sans SC',sans-serif;
+  --ease:cubic-bezier(0.25,1,0.5,1);
+  --tag-policy:#3b82f6;
+  --tag-case:#22c55e;
+  --tag-trend:#a855f7;
+  --tag-opinion:#f97316;
+  --tag-insight:#14b8a6;
+  --tag-story:#ec4899;
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  font-weight:350;
+}
+a{color:inherit;text-decoration:none}
+
+/* ========== SPOTLIGHT ========== */
+.spotlight{
+  position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(20,184,166,0.04),transparent 60%);
+}
+
+/* ========== AMBIENT PARTICLES ========== */
+.particles{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+}
+.particles span{
+  position:absolute;
+  width:2px;height:2px;
+  background:rgba(255,255,255,0.15);
+  border-radius:50%;
+  animation:drift linear infinite;
+}
+@keyframes drift{
+  0%{transform:translateY(0) scale(1);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-100vh) scale(0.5);opacity:0}
+}
+
+/* ========== SCROLL REVEAL ========== */
+.reveal{opacity:0;transform:translateY(36px)}
+.reveal.vis{opacity:1;animation:springUp .85s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes springUp{
+  0%{opacity:0;transform:translateY(36px)}
+  60%{opacity:1;transform:translateY(-5px)}
+  80%{transform:translateY(2px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){.reveal.vis{animation:none;opacity:1;transform:none}}
+
+/* ========== LAYOUT ========== */
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding-inline:40px}
+.center{text-align:center;display:flex;flex-direction:column;align-items:center}
+
+/* ========== NAV ========== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  transition:background .3s,border-color .3s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(10,15,26,0.85);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom-color:var(--border);
+}
+.nav-inner{
+  width:100%;max-width:none;padding-inline:40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{
+  font-family:var(--font-display);font-size:1.05rem;font-weight:600;
+  display:flex;align-items:center;gap:9px;letter-spacing:-.3px;
+}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:400;color:var(--text-sub);transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* ========== BUTTONS ========== */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 24px;border-radius:100px;
+  font-family:var(--font-body);font-size:.88rem;font-weight:500;
+  border:1px solid var(--border);background:transparent;color:var(--text);
+  cursor:pointer;transition:all .25s var(--ease);
+  position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;top:0;left:-100%;
+  width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
+  transition:none;
+}
+.btn:hover::after{left:120%;transition:left .6s var(--ease)}
+.btn:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:14px;height:14px;transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+
+.btn-fill{
+  background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600;
+}
+.btn-fill:hover{border-color:var(--accent)}
+.btn-fill::after{
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+}
+.btn-nav{padding:7px 18px;font-size:.82rem;border-radius:100px}
+
+/* ========== PAGE HERO ========== */
+.page-hero h1 em{font-style:normal;color:var(--accent)}
+
+/* ========== GALLERY GRID ========== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+
+/* ========== GALLERY CARD ========== */
+.gallery-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:all .3s var(--ease);
+  display:flex;flex-direction:column;
+}
+.gallery-card:hover{
+  border-color:var(--border-hover);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3);
+}
+
+.card-cover{
+  aspect-ratio:16/10;
+  width:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:12px 12px 0 0;
+}
+.card-cover-placeholder{
+  aspect-ratio:16/10;
+  width:100%;
+  border-radius:12px 12px 0 0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;
+  color:rgba(255,255,255,0.15);
+}
+.card-cover-placeholder.grad-1{background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)}
+.card-cover-placeholder.grad-2{background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)}
+.card-cover-placeholder.grad-3{background:linear-gradient(135deg,#1a0533,#2d1b69,#1a1a2e)}
+.card-cover-placeholder.grad-4{background:linear-gradient(135deg,#1b1b2f,#162447,#1f4068)}
+.card-cover-placeholder.grad-5{background:linear-gradient(135deg,#0d1b2a,#1b2838,#2d4654)}
+.card-cover-placeholder.grad-6{background:linear-gradient(135deg,#1a1a2e,#2a1a3e,#1a2a3e)}
+
+.card-body{
+  padding:16px;
+  display:flex;flex-direction:column;gap:8px;
+  flex:1;
+}
+
+.card-tag{
+  display:inline-flex;
+  align-self:flex-start;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  padding:3px 10px;
+  border-radius:100px;
+  text-transform:uppercase;
+}
+.tag-policy{background:rgba(59,130,246,0.15);color:var(--tag-policy)}
+.tag-case{background:rgba(34,197,94,0.15);color:var(--tag-case)}
+.tag-trend{background:rgba(168,85,247,0.15);color:var(--tag-trend)}
+.tag-opinion{background:rgba(249,115,22,0.15);color:var(--tag-opinion)}
+.tag-insight{background:rgba(20,184,166,0.15);color:var(--tag-insight)}
+.tag-story{background:rgba(236,72,153,0.15);color:var(--tag-story)}
+
+.card-title{
+  font-family:var(--font-display);
+  font-size:.95rem;
+  font-weight:600;
+  line-height:1.35;
+  letter-spacing:-.3px;
+}
+.card-desc{
+  font-size:.78rem;
+  color:var(--text-sub);
+  line-height:1.55;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.card-meta{
+  font-size:.68rem;
+  color:var(--text-dim);
+  margin-top:auto;
+  padding-top:4px;
+}
+
+/* ========== ARTICLE READING VIEW ========== */
+.blog-article{
+  max-width:720px;margin:0 auto;padding:120px 24px 80px;
+}
+.article-back{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--accent);font-size:.85rem;cursor:pointer;
+  margin-bottom:24px;transition:opacity 0.2s;
+  user-select:none;
+}
+.article-back:hover{opacity:0.7}
+
+.article-page .article-cover{
+  width:100%;border-radius:12px;margin-bottom:24px;
+  display:block;
+}
+.article-page .article-cover-grad{
+  width:100%;aspect-ratio:16/9;border-radius:12px;margin-bottom:24px;
+}
+.article-page .card-tag{margin-bottom:12px}
+.article-page h1{
+  font-family:var(--font-display);
+  font-size:clamp(1.3rem,2.5vw,1.6rem);
+  font-weight:700;color:#fff;
+  margin-bottom:12px;line-height:1.3;
+  letter-spacing:-1px;
+}
+.article-page .article-meta{
+  font-size:.78rem;color:rgba(255,255,255,0.35);
+  margin-bottom:24px;padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.article-page .article-body{
+  font-size:.92rem;color:rgba(255,255,255,0.7);line-height:1.9;
+}
+.article-page .article-body p{margin-bottom:16px}
+.article-page .article-body p:last-child{margin-bottom:0}
+.article-page .article-body strong{color:var(--text);font-weight:500}
+.article-page .article-body blockquote{
+  border-left:3px solid var(--accent);
+  padding-left:16px;
+  margin:20px 0;
+  font-style:italic;
+  color:var(--text-sub);
+}
+
+/* ========== CTA BOX ========== */
+.cta-box{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:16px;padding:72px 40px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-box::before{
+  content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);
+  width:400px;height:250px;
+  background:radial-gradient(ellipse,var(--accent-glow),transparent 70%);
+  pointer-events:none;
+}
+.cta-box h2 em{font-style:normal;color:var(--accent)}
+.cta-sub{font-size:.92rem;color:var(--text-sub);margin-bottom:32px;position:relative}
+
+/* ========== FOOTER ========== */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--border);padding:32px 0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;padding-inline:40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-copy{font-size:.72rem;color:var(--text-dim)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.72rem;color:var(--text-dim);transition:color .2s}
+.footer-links a:hover{color:var(--text-sub)}
+
+/* ========== MOBILE ========== */
+@media(max-width:768px){
+  .wrap{padding-inline:20px}
+  .nav-inner{padding-inline:20px}
+  .nav-links{gap:16px}
+  .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .cta-box{padding:48px 20px}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center}
+  .blog-article{padding:100px 16px 60px}
+}
+
+/* ========== UNIFIED NAV OVERRIDE (matches index.html scrolled state) ========== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  background:rgba(30,40,60,0.88) !important;
+  backdrop-filter:blur(36px) saturate(180%);-webkit-backdrop-filter:blur(36px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.1) !important;
+}
+.nav-inner{
+  max-width:none !important;padding-inline:48px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+nav .logo{color:#fff !important;font-family:var(--font-display);font-size:1.05rem;font-weight:600;display:flex;align-items:center;gap:9px;letter-spacing:-.3px}
+nav .nav-links{display:flex;align-items:center;gap:40px;list-style:none}
+nav .nav-links a{color:rgba(255,255,255,0.72) !important;font-size:.85rem;font-weight:400;transition:color .2s}
+nav .nav-links a:hover{color:#fff !important}
+nav .nav-links a.current{color:#4FD1C5 !important;font-weight:500}
+
+/* Dropdown */
+.nav-dropdown{position:relative}
+.nav-dd-trigger{cursor:pointer}
+.nav-dd-menu{
+  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
+  min-width:260px;background:rgba(15,23,41,0.95);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .2s,transform .2s,visibility .2s;
+  transform:translateX(-50%) translateY(-6px);
+}
+.nav-dropdown:hover .nav-dd-menu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.dd-item{display:block;padding:10px 14px;border-radius:8px;text-decoration:none;transition:background .15s}
+.dd-item:hover{background:rgba(255,255,255,0.04)}
+.dd-item strong{display:block;font-size:.85rem;font-weight:600;color:rgba(255,255,255,0.9) !important;margin-bottom:2px}
+.dd-item span{display:block;font-size:.72rem;color:rgba(255,255,255,0.55) !important;line-height:1.4}
+.dd-footer{border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:4px}
+.dd-footer a{display:block;padding:8px 14px;font-size:.75rem;color:#4FD1C5 !important}
+
+/* Lang toggle */
+.lang-toggle{
+  display:inline-flex;
+  border:1px solid rgba(255,255,255,0.14);border-radius:100px;overflow:hidden;
+  background:rgba(255,255,255,0.02);cursor:pointer;
+}
+.lang-toggle span{padding:4px 10px;font-size:.72rem;font-weight:600;color:rgba(255,255,255,0.55) !important;transition:all .2s}
+.lang-toggle span.active{color:#4FD1C5 !important;background:rgba(13,148,136,0.22)}
+</style>
+</head>
+<body>
+
+<div class="spotlight" id="spot"></div>
+<div class="particles" id="particles"></div>
+
+<!-- NAV (unified across all pages) -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.svg" alt="Solarian" style="height:28px">
+      Solarian
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="index.html#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="index.html#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="index.html#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="index.html#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="index.html#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="trends.html" class="current">OPC 博客</a></li>
+      <li><a href="news.html">公告</a></li>
+      <li><a href="about.html">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
+      <li><a href="index.html#waitlist"><button class="btn btn-nav btn-fill">加入 Waitlist</button></a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ========== PAGE HERO ========== -->
+<div id="blogGallery">
+<section class="page-hero wrap center" style="min-height:auto;padding-top:160px;padding-bottom:40px">
+  <h1 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15">OPC <em>博客</em></h1>
+  <p style="font-size:.95rem;color:var(--text-sub);max-width:520px;line-height:1.7;margin-top:14px">一人公司时代的趋势、案例与洞见</p>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="wrap" style="padding-bottom:100px">
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- ========== BOTTOM CTA ========== -->
+<section class="wrap center" style="padding-bottom:120px">
+  <div class="cta-box reveal">
+    <h2 style="font-family:var(--font-display);font-size:clamp(1.4rem,2vw,1.8rem);font-weight:700;letter-spacing:-1px;margin-bottom:10px;position:relative">趋势已经明确，<em>工具还没就位</em></h2>
+    <p class="cta-sub">Solarian 是为一人公司时代设计的 AI 团队操作系统。</p>
+    <a href="index.html#waitlist" class="btn btn-fill" style="position:relative">
+      加入 Waitlist
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="index.html" class="logo" style="font-size:.9rem">
+        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
+      </a>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html#product">产品</a>
+      <a href="trends.html">博客</a>
+      <a href="about.html">关于</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /blogGallery -->
+
+<!-- ========== ARTICLE READING VIEW ========== -->
+<div class="blog-article" id="blogArticle" style="display:none">
+  <div class="article-back" onclick="closeArticle()">&#8592; 返回博客</div>
+  <div class="article-page" id="articleContent">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<script>
+// ========== ARTICLES DATA ==========
+const articles = [
+  {
+    id: 1,
+    title: 'AI 时代一人公司加速孵化',
+    tag: '政策', tagClass: 'tag-policy',
+    desc: '2025 年全年新设个体工商户 1,619 万户，AI 工具的普及正在加速一人创业形态的爆发。',
+    source: '新华网', date: '2026.03', readTime: '3 分钟',
+    cover: 'assets/news_xinhua_opc.png',
+    content: `<p>2025 年全年新设个体工商户 1,619 万户，同比增长 12.4%。在这一波创业浪潮中，AI 工具的普及正在成为最大的加速器。</p>
+<p>新华网报道指出，<strong>传统创业模式中需要 5-10 人团队才能完成的工作，如今借助 AI 代理、自动化营销和智能客服，一个人就能独立运营。</strong>从内容创作到财务管理，从客户服务到产品设计，AI 正在重新定义"最小可行团队"的下限。</p>
+<p>数据显示，使用 AI 工具的一人创业者平均生产力提升 3-5 倍，运营成本降低 60% 以上。政策层面也在跟进：北京、深圳等地相继推出一人企业扶持计划，为这一新型创业形态提供制度保障。</p>
+<p>业内人士认为，2026 年将是一人公司从"边缘试验"走向"主流选择"的关键转折年。</p>`
+  },
+  {
+    id: 2,
+    title: '深圳推出一人公司行动计划',
+    tag: '政策', tagClass: 'tag-policy',
+    desc: '继北京亦庄之后，深圳发布"AI + 一人企业"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。',
+    source: '深圳工信局', date: '2026.03', readTime: '4 分钟',
+    cover: 'assets/news_shenzhen_opc.png',
+    content: `<p>继北京亦庄之后，深圳市工业和信息化局正式发布《"AI + 一人企业"培育行动计划（2026-2028）》，目标在三年内培育 1,000 家 AI 驱动的一人企业。</p>
+<p>该计划包含五大核心举措：<strong>一是设立专项扶持基金，首批规模 2 亿元；二是建设 10 个一人企业孵化基地；三是提供免费 AI 工具包和算力补贴；四是简化一人公司注册和税务流程；五是打造"一人企业"标杆案例库。</strong></p>
+<p>深圳工信局相关负责人表示："一人企业不是权宜之计，而是 AI 时代的必然产物。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。深圳要做的，是让这种重构有序发生，让创业者有底气。"</p>
+<p>首批申报已于 2026 年 3 月启动，重点面向 AI 内容创作、智能电商、独立开发者和专业咨询四大方向。</p>`
+  },
+  {
+    id: 3,
+    title: '两个人做到年收入 $4 亿的秘密',
+    tag: '案例', tagClass: 'tag-case',
+    desc: 'Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。',
+    source: 'Medvi 案例', date: '2026.04', readTime: '5 分钟',
+    cover: 'assets/medvi_nyt.jpg', grad: null,
+    content: `<p>《纽约时报》2026 年 4 月的报道让全球创业圈震动：Medvi，一家只有两名联合创始人的远程医疗公司，仅凭 $2 万美元的启动资金和全栈 AI 工具，在 2025 年全年实现了 $4.01 亿的销售额。</p>
+<p><strong>没有销售团队，没有客服中心，没有技术部门。</strong>两个人用 AI 处理了从问诊分流、处方审核到客户跟进的全部流程。他们的核心武器是一套深度定制的 AI Agent 系统，每个 Agent 负责一个业务节点，协同运转，7x24 不间断。</p>
+<p>这个案例彻底打破了"规模需要人力"的传统认知。正如 Sam Altman 所预言的——一人十亿美元公司不是幻想，而是正在逼近的现实。Medvi 证明了：<strong>在 AI 时代，瓶颈不是人数，而是你能让多少个 AI Agent 为你工作。</strong></p>`
+  },
+  {
+    id: 4,
+    title: 'Sam Altman：一人十亿美元公司即将出现',
+    tag: '观点', tagClass: 'tag-opinion',
+    desc: '"在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。"',
+    source: 'Sam Altman', date: '2024', readTime: '3 分钟',
+    cover: 'assets/sam_altman.jpg', grad: null,
+    content: `<p>"在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。在 AI 之前这不可想象，但现在它会发生。" —— Sam Altman, OpenAI CEO</p>
+<p>这段话出自 2024 年初 Altman 的一次公开演讲，随即在创业圈引发热议。<strong>他的判断基于一个简单的逻辑：AI 正在将边际成本推向零。</strong>当代码、设计、营销、客服、数据分析都可以由 AI 完成，一个人理论上可以运营任何规模的业务。</p>
+<p>怀疑者指出，人际关系、战略判断和创造性洞察仍然需要人类。但支持者反驳：这恰恰说明"一个人"已经够了——你需要的是战略能力，不是执行人力。AI 负责执行，人类负责决策。</p>
+<p>无论你站在哪一边，一个事实无法回避：<strong>创办和运营一家公司所需的最低人数，正在指数级下降。</strong>这不是未来，而是正在发生的现在。</p>`
+  },
+  {
+    id: 5,
+    title: 'Y Combinator：25% 创业公司 95% 代码由 AI 生成',
+    tag: '趋势', tagClass: 'tag-trend',
+    desc: '"2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。"',
+    source: 'Garry Tan, YC CEO', date: '2025', readTime: '3 分钟',
+    cover: 'assets/garry_tan.jpg', grad: null,
+    content: `<p>Y Combinator CEO Garry Tan 在 2025 年初透露了一个惊人的数据："我们 2025 冬季批次中，有 25% 的创业公司 95% 的代码是由 AI 生成的。你不再需要 50 或 100 个工程师。"</p>
+<p>这意味着什么？<strong>技术壁垒——曾经是创业最大的门槛——正在被 AI 彻底拉平。</strong>一个有产品直觉的非技术创始人，借助 Cursor、Claude、GitHub Copilot 等工具，可以在几天内构建出过去需要一个工程团队花几个月才能完成的产品。</p>
+<p>Tan 进一步指出，这一趋势将重新定义 VC 的投资逻辑：未来的独角兽可能不是"雇最多工程师的公司"，而是"用最少的人、最深刻地理解问题的团队"。执行力不再稀缺，洞察力才是。</p>`
+  },
+  {
+    id: 6,
+    title: '新《公司法》如何为一人公司铺路',
+    tag: '政策', tagClass: 'tag-policy',
+    desc: '2024 年 7 月实施的新《公司法》正式允许一个自然人设立一人有限责任公司，打破了制度瓶颈。',
+    source: '政策解读', date: '2024.07', readTime: '4 分钟',
+    cover: 'assets/n8n_series_c.png', grad: null,
+    content: `<p>2024 年 7 月 1 日，修订后的《中华人民共和国公司法》正式实施。其中最具突破性的变化之一，是<strong>明确允许一个自然人设立一人有限责任公司</strong>，且取消了过去对一人公司的诸多限制。</p>
+<p>旧法下，一人有限责任公司面临注册资本实缴要求、不能再投资设立新的一人公司等限制。新法大幅简化了这些条款，让一人公司在法律地位上与多人公司完全平等。</p>
+<p>法律界人士指出，这一修订为 AI 时代的一人创业提供了制度基础。<strong>当技术上一个人已经可以运营一家完整的公司，法律不应成为障碍。</strong>新法的出台，标志着中国在制度层面正式拥抱"一人公司"这一新型组织形态。</p>`
+  },
+  {
+    id: 7,
+    title: '从工具碎片到团队协作：OPC 的 AI 困境',
+    tag: '洞见', tagClass: 'tag-insight',
+    desc: '一人公司创业者平均使用 12 个 AI 工具，却缺少一个让它们协同工作的操作系统。',
+    source: 'Solarian 研究', date: '2026', readTime: '5 分钟',
+    cover: 'assets/scenario_illustration.png', grad: null,
+    content: `<p>我们调研了 200 位一人公司创业者，发现一个共同的痛点：<strong>他们平均使用 12 个不同的 AI 工具，但这些工具之间几乎没有协同。</strong></p>
+<p>一个典型的日常工作流是这样的：用 ChatGPT 写文案，用 Midjourney 出图，用 Notion 管理项目，用 Zapier 做自动化，用 Mailchimp 发邮件，用 Stripe 收款……每个工具都很强大，但它们之间的衔接完全靠人工。复制粘贴、手动触发、反复切换——这些"胶水工作"吃掉了创业者 40% 的时间。</p>
+<p>真正的问题不是缺工具，而是<strong>缺一个让 AI 工具像团队一样协作的操作系统</strong>。当你一个人运营公司时，你需要的不是更多的独立工具，而是一支能自主协调、相互配合的 AI 团队。这正是 Solarian 要解决的问题。</p>`
+  },
+  {
+    id: 8,
+    title: 'Solarian 创始人：我就是第一个用户',
+    tag: '故事', tagClass: 'tag-story',
+    desc: '"我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"',
+    source: 'Solarian', date: '2026', readTime: '4 分钟',
+    cover: 'assets/franklin_avatar.png', grad: null,
+    content: `<p>"我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"</p>
+<p>Franklin，Solarian 的创始人，在过去两年里尝试了几乎所有主流的 AI 工具。<strong>他发现一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。</strong>他需要的不是又一个工具，而是一个能理解业务上下文、自主协调多个 AI Agent 的"团队操作系统"。</p>
+<p>Solarian 的核心理念很简单：<strong>把 AI Agent 当作团队成员来管理，而不是当作工具来使用。</strong>每个 Agent 有自己的角色、职责和工作流程，Agent 之间可以互相沟通、互相审核、互相学习。创始人只需要做一件事——定义目标，然后让 Agent 团队去执行。</p>
+<p>"我就是第一个用户，也是最苛刻的用户。如果 Solarian 能让我这样的一人创业者真正解放出来，它就能帮助所有人。"</p>`
+  }
+];
+
+// ========== RENDER GALLERY ==========
+const gallery = document.getElementById('gallery');
+articles.forEach((a, i) => {
+  const card = document.createElement('div');
+  card.className = 'gallery-card reveal';
+  if (i > 0) card.style.animationDelay = (i * 60) + 'ms';
+
+  const coverHTML = a.cover
+    ? `<img class="card-cover" src="${a.cover}" alt="" loading="lazy">`
+    : `<div class="card-cover-placeholder ${a.grad || 'grad-1'}"></div>`;
+
+  card.innerHTML = `
+    ${coverHTML}
+    <div class="card-body">
+      <span class="card-tag ${a.tagClass}">${a.tag}</span>
+      <div class="card-title">${a.title}</div>
+      <div class="card-desc">${a.desc}</div>
+      <div class="card-meta">${a.source} · ${a.date} · ${a.readTime}</div>
+    </div>
+  `;
+  card.addEventListener('click', () => openArticle(a));
+  gallery.appendChild(card);
+});
+
+// ========== ARTICLE VIEW ==========
+function openArticle(a) {
+  var coverHTML = a.cover
+    ? '<img class="article-cover" src="' + a.cover + '" alt="">'
+    : '<div class="article-cover-grad card-cover-placeholder ' + (a.grad || 'grad-1') + '"></div>';
+
+  document.getElementById('articleContent').innerHTML =
+    coverHTML +
+    '<span class="card-tag ' + a.tagClass + '">' + a.tag + '</span>' +
+    '<h1>' + a.title + '</h1>' +
+    '<div class="article-meta">' + a.source + ' &middot; ' + a.date + ' &middot; ' + a.readTime + '</div>' +
+    '<div class="article-body">' + a.content + '</div>';
+
+  document.getElementById('blogGallery').style.display = 'none';
+  document.getElementById('blogArticle').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+function closeArticle() {
+  document.getElementById('blogGallery').style.display = '';
+  document.getElementById('blogArticle').style.display = 'none';
+  window.scrollTo(0, 0);
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeArticle(); });
+
+// ========== SPOTLIGHT ==========
+const s = document.getElementById('spot');
+document.addEventListener('mousemove', e => {
+  s.style.setProperty('--mx', e.clientX + 'px');
+  s.style.setProperty('--my', e.clientY + 'px');
+});
+
+// ========== NAV SCROLL ==========
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 40);
+});
+
+// ========== SCROLL REVEAL ==========
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ========== PARTICLES ==========
+const pc = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const sp = document.createElement('span');
+  sp.style.left = Math.random() * 100 + '%';
+  sp.style.top = Math.random() * 100 + 'vh';
+  sp.style.animationDuration = (8 + Math.random() * 12) + 's';
+  sp.style.animationDelay = Math.random() * 8 + 's';
+  sp.style.width = sp.style.height = (1 + Math.random() * 2) + 'px';
+  pc.appendChild(sp);
+}
+
+// Lang toggle (visual-only fallback)
+function toggleLang(){
+  const t=document.getElementById('langToggle');
+  if(!t) return;
+  t.querySelector('.lang-zh').classList.toggle('active');
+  t.querySelector('.lang-en').classList.toggle('active');
+}
+</script>
+</body>
+</html>

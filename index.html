@@ -1520,20 +1520,14 @@ footer{
   max-width:1200px;margin:0 auto;padding-inline:40px;
   display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
 }
-.footer-brand-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-brand-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .footer-logo{
-  display:inline-flex;align-items:center;gap:10px;
+  display:inline-flex;align-items:center;
   text-decoration:none;
 }
-.footer-logo-icon{
-  width:28px;height:28px;display:block;
-}
-.footer-logo-text{
-  font-family:var(--font-display);
-  font-size:1rem;font-weight:700;letter-spacing:.01em;
-  background:var(--gradient-brand);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+.footer-logo-full{
+  height:42px;width:auto;display:block;
+  filter:drop-shadow(0 0 24px rgba(128,210,170,.18));
 }
 .footer-copy{
   font-family:var(--font-body);
@@ -3680,7 +3674,7 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
               </div>
               <div class="stat">
                 <span class="n">人肉</span>
-                <span class="u">中间件</span>
+                <span class="u">复印机</span>
               </div>
             </div>
 
@@ -4123,9 +4117,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 <footer>
   <div class="footer-inner">
     <div class="footer-brand-row">
-      <a href="#" class="footer-logo">
-        <img src="assets/solarian-logo-icon.svg" alt="Solarian" class="footer-logo-icon">
-        <span class="footer-logo-text">Solarian</span>
+      <a href="#" class="footer-logo" aria-label="Solarian">
+        <img src="assets/solarian-logo-dark.svg" alt="Solarian" class="footer-logo-full">
       </a>
       <span class="footer-copy">&copy; 2026 Solarian · A company of one, a team of many.</span>
     </div>
