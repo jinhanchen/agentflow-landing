@@ -2421,14 +2421,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   transition:grid-template-columns .55s cubic-bezier(.22,.61,.36,1);
   position:relative;
 }
-/* Feathered top + bottom rule — fades in from the sides so there's no hard line */
-.sol-bridge .pains::before,
-.sol-bridge .pains::after{
-  content:"";position:absolute;left:0;right:0;height:1px;pointer-events:none;
+/* Feathered top rule only — bottom is the natural gradient transition */
+.sol-bridge .pains::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
   background:linear-gradient(90deg,transparent 0%,var(--sb-rule-3) 25%,var(--sb-rule-3) 75%,transparent 100%);
 }
-.sol-bridge .pains::before{top:0}
-.sol-bridge .pains::after{bottom:0}
 /* Grid expansion — hover takes priority, falls back to .is-active */
 .sol-bridge .pains:has(.pain:nth-child(1):hover){grid-template-columns:2fr 1fr 1fr 1fr}
 .sol-bridge .pains:has(.pain:nth-child(2):hover){grid-template-columns:1fr 2fr 1fr 1fr}
@@ -2699,13 +2696,12 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   display:grid;grid-template-columns:repeat(3,1fr);gap:0;
   position:relative;
 }
-.sol-bridge .caps::before,
-.sol-bridge .caps::after{
-  content:"";position:absolute;left:0;right:0;height:1px;pointer-events:none;
+.sol-bridge .caps::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
   background:linear-gradient(90deg,transparent 0%,var(--sb-rule-3) 25%,var(--sb-rule-3) 75%,transparent 100%);
 }
-.sol-bridge .caps::before{top:0}
-.sol-bridge .caps::after{bottom:0}
+/* No bottom line: the sol-bridge gradient fading out to page cream IS the
+   natural boundary; adding a second feathered line made it read as a double rule. */
 .sol-bridge .cap{
   padding:44px 40px 40px;border-right:1px solid var(--sb-rule-2);
   position:relative;display:flex;flex-direction:column;gap:22px;
