@@ -321,9 +321,9 @@ nav{
 }
 @keyframes heroHandRobotIdle{
   0%,100%{transform:translate(-80%, -1%)   rotate(45deg)}
-  25%    {transform:translate(-81.7%, 0.1%) rotate(45deg)}   /* backward (down-left) */
+  25%    {transform:translate(-78.3%, -2.1%) rotate(45deg)}  /* forward (up-right) — synced with human */
   50%    {transform:translate(-80%, -1%)   rotate(45deg)}
-  75%    {transform:translate(-78.3%, -2.1%) rotate(45deg)}  /* forward (up-right) */
+  75%    {transform:translate(-81.7%, 0.1%) rotate(45deg)}   /* backward (down-left) — synced with human */
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
