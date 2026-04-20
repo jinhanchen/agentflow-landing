@@ -2402,25 +2402,25 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   pointer-events:none;
 }
 .sol-bridge .pain .stat{
-  border-top:1px dashed var(--sb-rule-2);padding-top:12px;
-  display:flex;flex-direction:column;gap:8px;align-items:stretch;
-  min-height:70px;
-}
-.sol-bridge .pain .stat .meta-row{
-  display:flex;align-items:baseline;justify-content:space-between;gap:10px;min-height:14px;
+  border-top:1px dashed var(--sb-rule-2);padding-top:14px;
+  display:flex;align-items:baseline;gap:12px;
+  min-height:48px;
 }
 .sol-bridge .pain .stat .n{
-  font-family:var(--sb-sans);font-weight:700;font-size:1.85rem;
+  font-family:var(--sb-sans);font-weight:700;font-size:1.8rem;
   line-height:1;letter-spacing:-1.2px;color:var(--sb-rust);
-  font-variant-numeric:tabular-nums;white-space:nowrap;align-self:flex-start;
+  font-variant-numeric:tabular-nums;white-space:nowrap;flex-shrink:0;
+}
+.sol-bridge .pain .stat .stat-meta{
+  display:flex;flex-direction:column;gap:3px;min-width:0;flex:1;
 }
 .sol-bridge .pain .stat .u{
   font-family:var(--sb-sans);font-weight:500;font-size:.78rem;
-  color:var(--sb-ink-2);letter-spacing:-.1px;white-space:nowrap;
+  color:var(--sb-ink-2);letter-spacing:-.1px;white-space:nowrap;line-height:1.2;
 }
 .sol-bridge .pain .stat .cap{
   font-family:var(--sb-mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--sb-ink-3);white-space:nowrap;opacity:0;transition:opacity .35s ease;
+  color:var(--sb-ink-3);white-space:nowrap;opacity:0;transition:opacity .35s ease;line-height:1.2;
 }
 
 /* OPEN state — .is-active (auto-rotated) or any hovered */
@@ -3560,11 +3560,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">你每天在 ChatGPT、Claude、Notion、n8n 等 10+ 工具间反复切换——上下文反复粘贴复制，AI 送来的"效率"正在被"搬运"抵消。</p>
               </div>
               <div class="stat">
-                <div class="meta-row">
+                <span class="n">5–8</span>
+                <div class="stat-meta">
                   <span class="u">小时 / 周</span>
                   <span class="cap">浪费在切换</span>
                 </div>
-                <span class="n">5–8</span>
               </div>
             </div>
 
@@ -3597,11 +3597,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">每个文件都从零开始，你需要反复介绍自己是谁、项目是什么、偏好是什么。87% 的用户反馈：记忆缺失 是目前最重要的功能需求。</p>
               </div>
               <div class="stat">
-                <div class="meta-row">
+                <span class="n">87<span style="font-size:.6em">%</span></span>
+                <div class="stat-meta">
                   <span class="u">用户需求度</span>
                   <span class="cap">Memory Gap</span>
                 </div>
-                <span class="n">87<span style="font-size:.6em">%</span></span>
               </div>
             </div>
 
@@ -3643,11 +3643,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">每个 AI 都独立运作，彼此不知道对方在做什么——你变成了中间件，手动搬运上下文，本该协作的 Agent，最后都靠你打工连起来。</p>
               </div>
               <div class="stat">
-                <div class="meta-row">
+                <span class="n">人肉</span>
+                <div class="stat-meta">
                   <span class="u">中间件</span>
                   <span class="cap">You = middleware</span>
                 </div>
-                <span class="n">人肉</span>
               </div>
             </div>
 
@@ -3682,11 +3682,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">第一个月一切顺滑，第三个月连接销老、提示词过时、模型迭代变形——Gartner 估计 40% 的 AI Agent 项目将在 2027 年前因维护成本失控被放弃。</p>
               </div>
               <div class="stat">
-                <div class="meta-row">
+                <span class="n">40<span style="font-size:.6em">%+</span></span>
+                <div class="stat-meta">
                   <span class="u">会被放弃</span>
                   <span class="cap">by 2027 · Gartner</span>
                 </div>
-                <span class="n">40<span style="font-size:.6em">%+</span></span>
               </div>
             </div>
 
@@ -3991,7 +3991,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
       <span data-zh="加入 Waitlist" data-en="Join Waitlist">加入 Waitlist</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
-    <p class="cta-note" data-zh="免费加入 · 无需信用卡" data-en="Free to join · No credit card required">免费加入 · 无需信用卡</p>
   </div>
 </section>
 
