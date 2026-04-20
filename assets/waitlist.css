@@ -1,0 +1,196 @@
+/* ============================================================
+   Shared Waitlist bundle — CTA section + Modal + Toast + Form
+   Self-contained: uses hardcoded VI palette, no :root var deps.
+   ============================================================ */
+
+/* ---------- CTA section ---------- */
+.cta-section{
+  padding:140px 0 160px;
+  margin-top:-40px;
+  background:linear-gradient(180deg,
+    #F5F0E6 0%,
+    #F5F0E6 18%,
+    rgba(128,210,170,.08) 40%,
+    rgba(45,139,146,.14) 70%,
+    rgba(26,91,132,.08) 100%);
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 1100px 500px at 50% 55%,rgba(128,210,170,.22),transparent 65%),
+    radial-gradient(ellipse 800px 300px at 50% 100%,rgba(26,91,132,.12),transparent 60%);
+}
+.cta-box{
+  max-width:780px;margin:0 auto;padding:0 40px;
+  text-align:center;position:relative;z-index:1;
+}
+.cta-eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:#2D8B92;margin-bottom:28px;font-weight:500;
+}
+.cta-eyebrow::before,.cta-eyebrow::after{
+  content:'';width:42px;height:1px;background:rgba(45,139,146,.4);
+}
+.cta-box h2{
+  font-family:'Space Grotesk','Noto Sans SC',sans-serif;
+  font-size:clamp(2.6rem,5.2vw,4.2rem);
+  font-weight:700;letter-spacing:-1.8px;line-height:1.08;
+  margin:0 0 20px;
+  background:linear-gradient(90deg,#80D2AA 0%,#2D8B92 35%,#1A5B84 65%,#1A2D5C 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:sb-gradient-shift 8s ease-in-out infinite;
+}
+.cta-box h2 em{font-style:normal;font-weight:700}
+@keyframes sb-gradient-shift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.cta-sub{
+  font-family:'Noto Sans SC','Space Grotesk',sans-serif;
+  font-size:1.05rem;line-height:1.7;
+  color:rgba(16,42,74,.7);
+  margin:0 auto 44px;max-width:560px;font-weight:400;
+}
+.cta-section .btn-waitlist-open{
+  background:linear-gradient(135deg,#80D2AA,#2D8B92);
+  color:#1A2D5C;border:none;
+  padding:16px 36px;border-radius:100px;
+  font-family:'Space Grotesk','Noto Sans SC',sans-serif;
+  font-size:15px;font-weight:700;letter-spacing:.005em;
+  cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  box-shadow:
+    0 10px 30px rgba(45,139,146,.2),
+    0 2px 6px rgba(16,42,74,.12),
+    inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .3s cubic-bezier(.25,1,.5,1),box-shadow .3s cubic-bezier(.25,1,.5,1);
+  position:relative;overflow:hidden;
+}
+.cta-section .btn-waitlist-open::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:translateX(-100%);transition:transform .8s cubic-bezier(.25,1,.5,1);
+}
+.cta-section .btn-waitlist-open:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 14px 36px rgba(45,139,146,.3),
+    0 2px 6px rgba(16,42,74,.12),
+    inset 0 1px 0 rgba(255,255,255,.35);
+}
+.cta-section .btn-waitlist-open:hover::before{transform:translateX(100%)}
+.cta-section .btn-waitlist-open svg{
+  width:16px;height:16px;stroke-width:2.4;
+  transition:transform .3s cubic-bezier(.25,1,.5,1);
+}
+.cta-section .btn-waitlist-open:hover svg{transform:translateX(4px)}
+
+/* ---------- Modal overlay + dialog ---------- */
+.wl-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(10,14,23,0.6);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s cubic-bezier(.25,1,.5,1);
+}
+.wl-overlay.open{opacity:1;pointer-events:auto}
+.wl-modal{
+  background:#F5F0E6;border:1px solid rgba(16,42,74,.10);
+  border-radius:20px;padding:40px 36px;
+  max-width:580px;width:90vw;max-height:90vh;
+  overflow-y:auto;position:relative;
+  box-shadow:0 24px 80px -16px rgba(0,0,0,0.3);
+  transform:translateY(20px) scale(0.97);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.wl-overlay.open .wl-modal{transform:translateY(0) scale(1)}
+.wl-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;font-size:1.6rem;
+  color:rgba(16,42,74,.35);cursor:pointer;
+  transition:color .2s;line-height:1;
+}
+.wl-close:hover{color:#102A4A}
+.wl-header{text-align:center;margin-bottom:28px}
+.wl-header h3{
+  font-family:'Space Grotesk','Noto Sans SC',sans-serif;font-size:1.4rem;
+  font-weight:700;letter-spacing:-.5px;color:#102A4A;
+  margin-bottom:6px;
+}
+.wl-header p{font-size:.85rem;color:rgba(16,42,74,.65)}
+.wl-form{display:flex;flex-direction:column;gap:18px}
+.wl-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wl-field{display:flex;flex-direction:column;gap:6px}
+.wl-field label{
+  font-size:.78rem;font-weight:600;color:#102A4A;letter-spacing:.2px;
+}
+.wl-req{color:#ef4444;font-weight:700}
+.wl-field input,.wl-field select,.wl-field textarea{
+  padding:10px 14px;border-radius:10px;
+  background:#FFFFFF;border:1px solid rgba(16,42,74,.10);
+  color:#102A4A;
+  font-family:'Noto Sans SC','Space Grotesk',sans-serif;
+  font-size:.88rem;outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.wl-field input:focus,.wl-field select:focus,.wl-field textarea:focus{
+  border-color:rgba(45,139,146,0.5);
+  box-shadow:0 0 0 3px rgba(45,139,146,0.08);
+}
+.wl-field input::placeholder,.wl-field textarea::placeholder{color:rgba(16,42,74,.35)}
+.wl-field select{cursor:pointer;appearance:auto}
+.wl-field textarea{resize:vertical;min-height:60px}
+.wl-submit{
+  width:100%;justify-content:center;margin-top:6px;
+  padding:13px 24px;font-size:.95rem;
+  background:#2D8B92;color:#fff;border:none;border-radius:100px;
+  font-family:'Space Grotesk','Noto Sans SC',sans-serif;
+  font-weight:600;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .2s,background .2s;
+}
+.wl-submit:hover{transform:translateY(-1px);background:#1A5B84}
+.wl-submit.loading{opacity:.6;pointer-events:none}
+.wl-submit svg{width:14px;height:14px}
+
+/* ---------- Success state ---------- */
+.wl-success{text-align:center;padding:40px 20px}
+.wl-success-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(45,139,146,.12);color:#2D8B92;
+  font-size:1.8rem;font-weight:700;
+  display:grid;place-items:center;
+  margin:0 auto 20px;
+}
+.wl-success h3{
+  font-family:'Space Grotesk','Noto Sans SC',sans-serif;font-size:1.3rem;
+  font-weight:700;color:#102A4A;margin-bottom:8px;
+}
+.wl-success p{font-size:.88rem;color:rgba(16,42,74,.65)}
+
+/* ---------- Already-joined toast ---------- */
+.wl-toast{
+  position:fixed;top:24px;left:50%;
+  transform:translateX(-50%) translateY(-100px);
+  z-index:10000;
+  padding:16px 28px;border-radius:14px;
+  background:#2D8B92;color:#fff;
+  font-size:.92rem;font-weight:600;
+  box-shadow:0 8px 32px rgba(45,139,146,0.3);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s;
+  opacity:0;pointer-events:none;
+}
+.wl-toast.show{
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
+
+@media(max-width:560px){
+  .wl-row{grid-template-columns:1fr}
+  .wl-modal{padding:28px 20px}
+}

@@ -44,9 +44,12 @@ nav{
   margin:14px 18px 0;
   border-radius:999px;
   padding:9px 13px 9px 14px;
-  background:rgba(20,32,28,.94);
-  backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
-  box-shadow:0 10px 30px rgba(15,24,22,.18), inset 0 0 0 1px rgba(255,255,255,.04);
+  background:rgba(20,32,28,.62);
+  backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+  box-shadow:
+    0 8px 24px rgba(15,24,22,.22),
+    0 1px 2px rgba(15,24,22,.10),
+    inset 0 0 0 1px rgba(255,255,255,.06);
 }
 .nav-inner{
   max-width:none;padding-inline:0;margin:0;
@@ -473,6 +476,7 @@ article.story sup a:hover{text-decoration:underline}
   .footer-inner{flex-direction:column;gap:14px}
 }
 </style>
+<link rel="stylesheet" href="assets/waitlist.css">
 </head>
 <body>
 
@@ -512,7 +516,7 @@ article.story sup a:hover{text-decoration:underline}
           <span class="lang-en">EN</span>
         </button>
       </li>
-      <li><a href="index.html#waitlist"><button class="btn btn-nav btn-fill">加入 Waitlist</button></a></li>
+      <li><button class="btn btn-nav btn-fill" onclick="openWaitlist()">加入 Waitlist</button></li>
     </ul>
   </div>
 </nav>
@@ -805,18 +809,20 @@ article.story sup a:hover{text-decoration:underline}
     </div>
   </div>
 
-  <!-- Bottom CTA -->
-  <div class="story-cta">
-    <div class="story-cta-inner">
-      <h3>一起出发</h3>
-      <p>Solarian Q2 发布。留下邮箱，第一时间获得内测资格。</p>
-      <a href="index.html#waitlist" class="btn btn-fill">
-        加入 Waitlist
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
 </div>
+
+<!-- ========== BOTTOM CTA (shared) ========== -->
+<section class="cta-section" id="waitlist">
+  <div class="cta-box reveal">
+    <div class="cta-eyebrow">Waitlist · Q2 2026</div>
+    <h2>加入 <em>Waitlist</em></h2>
+    <p class="cta-sub">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
+    <button class="btn-waitlist-open" onclick="openWaitlist()">
+      <span>加入 Waitlist</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -919,5 +925,60 @@ function closeArticle(){
 })();
 </script>
 
+<!-- ========== WAITLIST MODAL (shared bundle) ========== -->
+<div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
+<div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wl-modal">
+    <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="wl-header">
+      <h3>加入 Solarian Waitlist</h3>
+      <p>帮助我们了解你的需求，让 Solarian 更好地为你服务</p>
+    </div>
+    <form id="waitlistForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+      <div class="wl-row">
+        <div class="wl-field"><label>姓名 <span class="wl-req">*</span></label><input type="text" name="name" required placeholder="你的名字"></div>
+        <div class="wl-field"><label>邮箱 <span class="wl-req">*</span></label><input type="email" name="email" required placeholder="name@company.com"></div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-field"><label>所在国家/地区 <span class="wl-req">*</span></label>
+          <select name="country" required>
+            <option value="" disabled selected>选择国家/地区</option>
+            <option value="CN">中国</option><option value="US">美国</option><option value="GB">英国</option>
+            <option value="JP">日本</option><option value="KR">韩国</option><option value="SG">新加坡</option>
+            <option value="DE">德国</option><option value="FR">法国</option><option value="AU">澳大利亚</option>
+            <option value="CA">加拿大</option><option value="IN">印度</option><option value="BR">巴西</option>
+            <option value="AE">阿联酋</option><option value="HK">中国香港</option><option value="TW">中国台湾</option>
+            <option value="OTHER">其他</option>
+          </select>
+        </div>
+        <div class="wl-field"><label>所在行业 <span class="wl-req">*</span></label>
+          <select name="industry" required>
+            <option value="" disabled selected>选择行业</option>
+            <option value="tech">科技/互联网</option><option value="finance">金融/投资</option>
+            <option value="ecommerce">电商/零售</option><option value="education">教育/培训</option>
+            <option value="media">媒体/内容</option><option value="consulting">咨询/服务</option>
+            <option value="manufacturing">制造/工业</option><option value="healthcare">医疗/健康</option>
+            <option value="realestate">房地产/建筑</option><option value="legal">法律/合规</option>
+            <option value="freelancer">自由职业/独立开发</option><option value="student">学生/研究</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+      </div>
+      <div class="wl-field"><label>你的角色/职位</label><input type="text" name="role" placeholder="如：产品经理、创始人、开发者..."></div>
+      <div class="wl-field"><label>你目前工作中最大的痛点是什么？ <span class="wl-req">*</span></label><textarea name="painpoints" required rows="3" placeholder="例如：每天要在 5 个 AI 工具间切换..."></textarea></div>
+      <div class="wl-field"><label>你希望 Solarian 帮你完成哪些具体工作？</label><textarea name="usecase" rows="3" placeholder="例如：自动生成周报、管理社交媒体内容..."></textarea></div>
+      <button type="submit" class="wl-submit" id="wlSubmitBtn">
+        <span>提交申请</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>欢迎加入 Solarian！</h3>
+      <p>我们已收到你的申请，会在第一时间通知你内测开放。</p>
+    </div>
+  </div>
+</div>
+<script src="assets/waitlist.js"></script>
 </body>
 </html>
