@@ -261,43 +261,45 @@ nav{
 .hero{
   min-height:auto;display:flex;flex-direction:column;
   align-items:center;justify-content:flex-start;text-align:center;
-  padding:16px 40px 0;position:relative;overflow:hidden;
+  padding:16px 40px 0;position:relative;overflow:visible;
+  z-index:2;                          /* lift above demo-section so hands don't get masked by the laptop frame below */
 }
 
-/* Hero background hands — pre-split PNGs with native transparency,
-   anchored so the two fingertips converge near the hero center */
+/* Hero background hands — pre-split PNGs with native transparency.
+   Hands reach into frame from opposite corners OUTSIDE the viewport.
+   Container stays at hero bounds but overflow:visible lets the hand
+   extend beyond, simulating "reaching in from off-screen". */
 .hero-hands{
-  position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+  position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:0;
 }
 .hero-hand{
   position:absolute;
-  height:52vh;width:auto;max-width:none;
+  height:82vh;width:auto;max-width:none;  /* larger, so hands read as reaching in */
   opacity:0;
   filter:invert(.85) sepia(.4) hue-rotate(165deg) saturate(1.8) brightness(.55);
   will-change:transform,opacity;
 }
-/* Fingertip anchor points:
-   Human PNG: fingertip at (2%, 99%) of its own box — translate(-2%, -99%)
-              lands the fingertip at the (left, top) CSS coords.
-   Robot PNG: fingertip at (80%, 1%) of its own box — translate(-80%, -1%) lands the fingertip.
-   Target convergence point near hero center (49%, 48%). */
+/* Fingertip anchor math (PNGs carry their fingertip at a known %):
+   Human PNG — fingertip at (2%, 99%) of its own box
+   Robot PNG — fingertip at (80%, 1%)  of its own box
+   End transform: translate(-x%, -y%) aligns that pixel to the (left, top) anchor. */
 .hero-hand-human{
   left:49%;top:48%;
-  animation:heroHandHumanIn 2.4s cubic-bezier(.22,.8,.28,1) .4s forwards;
+  animation:heroHandHumanIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
 .hero-hand-robot{
   left:49%;top:52%;
-  animation:heroHandRobotIn 2.4s cubic-bezier(.22,.8,.28,1) .4s forwards;
+  animation:heroHandRobotIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
 @keyframes heroHandHumanIn{
-  0%  {transform:translate(300%, -250%) rotate(10deg); opacity:0}
-  40% {opacity:.45}
-  100%{transform:translate(-2%, -99%) rotate(0);       opacity:.45}
+  0%  {transform:translate(400%, -340%) rotate(12deg); opacity:0}
+  35% {opacity:.5}
+  100%{transform:translate(-2%, -99%)   rotate(0);     opacity:.5}
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-280%, 240%) rotate(-10deg); opacity:0}
-  40% {opacity:.45}
-  100%{transform:translate(-80%, -1%) rotate(0);        opacity:.45}
+  0%  {transform:translate(-360%, 320%) rotate(-12deg); opacity:0}
+  35% {opacity:.5}
+  100%{transform:translate(-80%, -1%)   rotate(0);      opacity:.5}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
