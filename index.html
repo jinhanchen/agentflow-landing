@@ -264,39 +264,40 @@ nav{
   padding:16px 40px 0;position:relative;overflow:hidden;
 }
 
-/* Hero background hands — pre-split PNGs with native transparency */
+/* Hero background hands — pre-split PNGs with native transparency,
+   anchored so the two fingertips converge near the hero center */
 .hero-hands{
   position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;
 }
 .hero-hand{
   position:absolute;
-  height:75vh;width:auto;max-width:none;
+  height:52vh;width:auto;max-width:none;
   opacity:0;
   filter:invert(.85) sepia(.4) hue-rotate(165deg) saturate(1.8) brightness(.55);
-  /* invert the white line-art → dark navy-ish, so strokes read on cream */
   will-change:transform,opacity;
 }
-/* Human hand: anchored to top-right, sweeps in from top-right off-screen */
+/* Fingertip anchor points:
+   Human PNG: fingertip at (2%, 99%) of its own box — translate(-2%, -99%)
+              lands the fingertip at the (left, top) CSS coords.
+   Robot PNG: fingertip at (80%, 1%) of its own box — translate(-80%, -1%) lands the fingertip.
+   Target convergence point near hero center (49%, 48%). */
 .hero-hand-human{
-  top:0;right:0;
-  transform-origin:top right;
+  left:49%;top:48%;
   animation:heroHandHumanIn 2.4s cubic-bezier(.22,.8,.28,1) .4s forwards;
 }
-/* Robot hand: anchored to bottom-left, sweeps in from bottom-left off-screen */
 .hero-hand-robot{
-  bottom:0;left:0;
-  transform-origin:bottom left;
+  left:49%;top:52%;
   animation:heroHandRobotIn 2.4s cubic-bezier(.22,.8,.28,1) .4s forwards;
 }
 @keyframes heroHandHumanIn{
-  0%  {transform:translate(80%, -80%) rotate(14deg);  opacity:0}
-  40% {opacity:.42}
-  100%{transform:translate(0,0) rotate(0);            opacity:.42}
+  0%  {transform:translate(300%, -250%) rotate(10deg); opacity:0}
+  40% {opacity:.45}
+  100%{transform:translate(-2%, -99%) rotate(0);       opacity:.45}
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-80%, 80%) rotate(-14deg); opacity:0}
-  40% {opacity:.42}
-  100%{transform:translate(0,0) rotate(0);            opacity:.42}
+  0%  {transform:translate(-280%, 240%) rotate(-10deg); opacity:0}
+  40% {opacity:.45}
+  100%{transform:translate(-80%, -1%) rotate(0);        opacity:.45}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
