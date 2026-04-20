@@ -1380,26 +1380,18 @@ nav{
 @media(max-width:768px) { .stats-grid { grid-template-columns: 1fr; } }
 
 /* ========== CTA (full-bleed dark strip with cream panel floating inside) ========== */
-/* ========== CTA · aligned to VI (Navy ground + Mint gradient + clean typography) ========== */
+/* ========== CTA · Cream ground · dark text · Mint gradient button ========== */
 .cta-section{
   padding:120px 0 120px;
-  background:var(--navy);
+  background:var(--bg);
   position:relative;overflow:hidden;
+  border-top:1px solid rgba(16,42,74,.08);
 }
 .cta-section::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 900px 500px at 50% 0%,rgba(128,210,170,.12),transparent 65%),
-    radial-gradient(ellipse 700px 400px at 50% 100%,rgba(26,91,132,.35),transparent 60%);
-}
-.cta-section::after{
-  content:'';position:absolute;inset:0;pointer-events:none;opacity:.35;
-  background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:radial-gradient(ellipse 800px 500px at 50% 50%,#000 0%,transparent 70%);
-  -webkit-mask-image:radial-gradient(ellipse 800px 500px at 50% 50%,#000 0%,transparent 70%);
+    radial-gradient(ellipse 900px 500px at 50% 0%,rgba(128,210,170,.18),transparent 65%),
+    radial-gradient(ellipse 700px 400px at 50% 100%,rgba(26,91,132,.08),transparent 60%);
 }
 .cta-box{
   max-width:780px;margin:0 auto;padding:0 40px;
@@ -1409,17 +1401,17 @@ nav{
   display:inline-flex;align-items:center;gap:14px;
   font-family:var(--font-mono);
   font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--mint);margin-bottom:28px;
+  color:var(--teal);margin-bottom:28px;
   font-weight:500;
 }
 .cta-eyebrow::before,.cta-eyebrow::after{
-  content:'';width:42px;height:1px;background:rgba(128,210,170,.4);
+  content:'';width:42px;height:1px;background:rgba(45,139,146,.4);
 }
 .cta-box h2{
   font-family:var(--font-display);
   font-size:clamp(2.6rem,5.2vw,4.2rem);
   font-weight:700;letter-spacing:-1.8px;line-height:1.08;
-  margin:0 0 20px;color:#FFF;
+  margin:0 0 20px;color:var(--abyss);
 }
 .cta-box h2 em{
   font-style:normal;font-weight:700;
@@ -1430,45 +1422,45 @@ nav{
 .cta-sub{
   font-family:var(--font-body);
   font-size:1.05rem;line-height:1.7;
-  color:rgba(255,255,255,.7);
+  color:rgba(16,42,74,.7);
   margin:0 auto 44px;max-width:560px;
-  font-weight:300;
+  font-weight:400;
 }
 .cta-section .btn-waitlist-open{
   background:var(--gradient-mint);
   color:var(--navy);border:none;
   padding:16px 36px;border-radius:100px;
   font-family:var(--font-display);
-  font-size:15px;font-weight:600;letter-spacing:.005em;
+  font-size:15px;font-weight:700;letter-spacing:.005em;
   cursor:pointer;display:inline-flex;align-items:center;gap:10px;
   box-shadow:
-    0 10px 30px rgba(128,210,170,.25),
-    0 2px 6px rgba(0,0,0,.2),
-    inset 0 1px 0 rgba(255,255,255,.3);
+    0 10px 30px rgba(45,139,146,.2),
+    0 2px 6px rgba(16,42,74,.12),
+    inset 0 1px 0 rgba(255,255,255,.35);
   transition:transform .3s var(--ease), box-shadow .3s var(--ease);
   position:relative;overflow:hidden;
 }
 .cta-section .btn-waitlist-open::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
   transform:translateX(-100%);transition:transform .8s var(--ease);
 }
 .cta-section .btn-waitlist-open:hover{
   transform:translateY(-2px);
   box-shadow:
-    0 14px 36px rgba(128,210,170,.35),
-    0 2px 6px rgba(0,0,0,.2),
-    inset 0 1px 0 rgba(255,255,255,.3);
+    0 14px 36px rgba(45,139,146,.3),
+    0 2px 6px rgba(16,42,74,.12),
+    inset 0 1px 0 rgba(255,255,255,.35);
 }
 .cta-section .btn-waitlist-open:hover::before{transform:translateX(100%)}
 .cta-section .btn-waitlist-open svg{
-  width:16px;height:16px;stroke-width:2;transition:transform .3s var(--ease);
+  width:16px;height:16px;stroke-width:2.4;transition:transform .3s var(--ease);
 }
 .cta-section .btn-waitlist-open:hover svg{transform:translateX(4px)}
 .cta-section .cta-note{
   margin-top:24px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;
-  color:rgba(255,255,255,.45);text-transform:uppercase;
+  color:rgba(16,42,74,.45);text-transform:uppercase;
   position:relative;z-index:1;
 }
 .cta-form{
@@ -2364,12 +2356,13 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 .sol-bridge .pains:not(:has(.pain:hover)):has(.pain:nth-child(4).is-active){grid-template-columns:1fr 1fr 1fr 2fr}
 
 .sol-bridge .pain{
-  position:relative;padding:22px 24px 22px;
+  position:relative;padding:18px 20px 18px;
   border-right:1px solid var(--sb-rule-2);overflow:hidden;cursor:pointer;
   transition:background .4s ease;
-  display:grid;grid-template-rows:auto 1fr auto;gap:14px;
+  display:grid;grid-template-rows:auto auto auto;gap:10px;
+  min-height:320px;
 }
-.sol-bridge .pain .body{display:grid;grid-template-rows:76px auto 1fr;gap:12px;min-width:0}
+.sol-bridge .pain .body{display:grid;grid-template-rows:56px auto auto;gap:8px;min-width:0}
 .sol-bridge .pain:last-child{border-right:none}
 .sol-bridge .pain::after{
   content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--sb-rust);
@@ -2391,13 +2384,13 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   color:var(--sb-ink-3);opacity:0;transition:opacity .35s ease;
 }
 .sol-bridge .pain .art{
-  height:76px;display:flex;align-items:center;justify-content:flex-start;
+  height:56px;display:flex;align-items:center;justify-content:flex-start;
   transition:transform .5s cubic-bezier(.22,.61,.36,1);
 }
 .sol-bridge .pain:hover .art{transform:translateY(-2px)}
-.sol-bridge .pain .art svg{height:76px;width:auto;display:block;overflow:visible}
+.sol-bridge .pain .art svg{height:56px;width:auto;display:block;overflow:visible}
 .sol-bridge .pain h3{
-  font-family:var(--sb-sans);font-weight:600;font-size:1.2rem;
+  font-family:var(--sb-sans);font-weight:600;font-size:1.1rem;
   letter-spacing:-.3px;color:var(--sb-ink);line-height:1.25;white-space:nowrap;
 }
 .sol-bridge .pain .title-row{display:flex;flex-direction:column;gap:10px;min-width:0;align-self:start}
@@ -2409,18 +2402,20 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   pointer-events:none;
 }
 .sol-bridge .pain .stat{
-  border-top:1px dashed var(--sb-rule-2);padding-top:14px;
-  display:grid;grid-template-columns:auto 1fr;align-items:baseline;
-  column-gap:10px;row-gap:6px;
+  border-top:1px dashed var(--sb-rule-2);padding-top:12px;
+  display:flex;flex-direction:column;gap:8px;align-items:stretch;
+  min-height:70px;
+}
+.sol-bridge .pain .stat .meta-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:10px;min-height:14px;
 }
 .sol-bridge .pain .stat .n{
-  font-family:var(--sb-sans);font-weight:700;font-size:2rem;
-  line-height:1.1;letter-spacing:-1.2px;color:var(--sb-rust);
-  font-variant-numeric:tabular-nums;grid-row:1/3;align-self:center;padding-bottom:2px;
-  white-space:nowrap;
+  font-family:var(--sb-sans);font-weight:700;font-size:1.85rem;
+  line-height:1;letter-spacing:-1.2px;color:var(--sb-rust);
+  font-variant-numeric:tabular-nums;white-space:nowrap;align-self:flex-start;
 }
 .sol-bridge .pain .stat .u{
-  font-family:var(--sb-sans);font-weight:500;font-size:.8rem;
+  font-family:var(--sb-sans);font-weight:500;font-size:.78rem;
   color:var(--sb-ink-2);letter-spacing:-.1px;white-space:nowrap;
 }
 .sol-bridge .pain .stat .cap{
@@ -2443,12 +2438,54 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 .sol-bridge .pain:hover::after{transform:scaleX(1)}
 .sol-bridge .pain.is-active{background:rgba(180,83,9,.03)}
 
-/* SVG animation on active card — subtle life on the illustration */
-.sol-bridge .pain.is-active .art svg,
-.sol-bridge .pain:hover .art svg{animation:sb-pain-art-breathe 3.6s ease-in-out infinite}
+/* SVG illustrations — always-on animations so cards feel alive (not click-gated) */
+.sol-bridge .pain .art svg{animation:sb-pain-art-breathe 5.5s ease-in-out infinite;transform-origin:center}
+.sol-bridge .pains > .pain:nth-child(1) .art svg{animation-delay:0s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg{animation-delay:-1.4s}
+.sol-bridge .pains > .pain:nth-child(3) .art svg{animation-delay:-2.8s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg{animation-delay:-4.2s}
 @keyframes sb-pain-art-breathe{
   0%,100%{transform:translateY(0) scale(1)}
-  50%{transform:translateY(-1px) scale(1.015)}
+  50%{transform:translateY(-1.5px) scale(1.02)}
+}
+
+/* Card 1 工具碎片化 — dashed connector paths flow between tiles */
+.sol-bridge .pains > .pain:nth-child(1) .art svg path[stroke-dasharray]{
+  animation:sb-stroke-flow-slow 5s linear infinite;
+}
+/* Card 3 Agent 孤岛 — broken bridges drift (rust-colored zig-zag paths) */
+.sol-bridge .pains > .pain:nth-child(3) .art svg path[stroke="#B45309"]{
+  animation:sb-stroke-flow-fast 3s linear infinite;
+}
+/* Card 4 自动化腐烂 — spark lines twinkle */
+.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]{
+  animation:sb-twinkle 1.6s ease-in-out infinite;
+}
+.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]:nth-of-type(odd){animation-delay:-.8s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg path[stroke="#B45309"]{
+  animation:sb-stroke-flow-fast 3.6s linear infinite;
+}
+@keyframes sb-stroke-flow-slow{to{stroke-dashoffset:-12}}
+@keyframes sb-stroke-flow-fast{to{stroke-dashoffset:-18}}
+@keyframes sb-twinkle{
+  0%,100%{opacity:.9}
+  50%{opacity:.3}
+}
+
+/* Card 2 AI 没有记忆 — rings breathe (concentric fade effect kept via scale not opacity) */
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle{
+  transform-origin:center;transform-box:fill-box;
+  animation:sb-ring-scale 3.6s ease-in-out infinite;
+}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(2){animation-delay:-.3s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(3){animation-delay:-.6s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(4){animation-delay:-.9s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(5){animation-delay:-1.2s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(6){animation-delay:-1.5s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(7){animation-delay:-1.8s}
+@keyframes sb-ring-scale{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.08)}
 }
 
 /* Section 2 animations */
@@ -2532,15 +2569,13 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   position:relative;display:flex;flex-direction:column;gap:22px;
   background:linear-gradient(to bottom,rgba(250,246,236,.4),transparent 50%);
   cursor:pointer;
-  opacity:.42;
-  transition:opacity .6s cubic-bezier(.22,.61,.36,1),background .6s ease;
+  transition:background .6s ease;
 }
 .sol-bridge .cap:last-child{border-right:none}
 
-/* --- Active card (auto-rotating spotlight) --- */
+/* --- Active card (auto-rotating spotlight) — subtle tint only, no dimming of others --- */
 .sol-bridge .cap.active{
-  opacity:1;
-  background:linear-gradient(to bottom,rgba(128,210,170,.08),transparent 55%);
+  background:linear-gradient(to bottom,rgba(128,210,170,.1),transparent 55%);
 }
 .sol-bridge .cap.active .art svg{filter:drop-shadow(0 10px 28px rgba(128,210,170,.22))}
 .sol-bridge .cap.active .label::before{
@@ -2550,9 +2585,6 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   0%,100%{box-shadow:0 0 0 0 rgba(128,210,170,0)}
   50%{box-shadow:0 0 0 7px rgba(128,210,170,.15)}
 }
-
-/* --- Inactive card: pause animations to save attention --- */
-.sol-bridge .cap:not(.active) .art svg *{animation-play-state:paused !important}
 
 /* --- Progress bar at bottom of active card --- */
 .sol-bridge .cap .cap-progress{
@@ -3528,9 +3560,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">你每天在 ChatGPT、Claude、Notion、n8n 等 10+ 工具间反复切换——上下文反复粘贴复制，AI 送来的"效率"正在被"搬运"抵消。</p>
               </div>
               <div class="stat">
+                <div class="meta-row">
+                  <span class="u">小时 / 周</span>
+                  <span class="cap">浪费在切换</span>
+                </div>
                 <span class="n">5–8</span>
-                <span class="u">小时 / 周</span>
-                <span class="cap">浪费在切换</span>
               </div>
             </div>
 
@@ -3563,9 +3597,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">每个文件都从零开始，你需要反复介绍自己是谁、项目是什么、偏好是什么。87% 的用户反馈：记忆缺失 是目前最重要的功能需求。</p>
               </div>
               <div class="stat">
+                <div class="meta-row">
+                  <span class="u">用户需求度</span>
+                  <span class="cap">Memory Gap</span>
+                </div>
                 <span class="n">87<span style="font-size:.6em">%</span></span>
-                <span class="u">用户需求度</span>
-                <span class="cap">Memory Gap</span>
               </div>
             </div>
 
@@ -3607,9 +3643,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">每个 AI 都独立运作，彼此不知道对方在做什么——你变成了中间件，手动搬运上下文，本该协作的 Agent，最后都靠你打工连起来。</p>
               </div>
               <div class="stat">
+                <div class="meta-row">
+                  <span class="u">中间件</span>
+                  <span class="cap">You = middleware</span>
+                </div>
                 <span class="n">人肉</span>
-                <span class="u">中间件</span>
-                <span class="cap">You = middleware</span>
               </div>
             </div>
 
@@ -3644,9 +3682,11 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                 <p class="desc">第一个月一切顺滑，第三个月连接销老、提示词过时、模型迭代变形——Gartner 估计 40% 的 AI Agent 项目将在 2027 年前因维护成本失控被放弃。</p>
               </div>
               <div class="stat">
+                <div class="meta-row">
+                  <span class="u">会被放弃</span>
+                  <span class="cap">by 2027 · Gartner</span>
+                </div>
                 <span class="n">40<span style="font-size:.6em">%+</span></span>
-                <span class="u">会被放弃</span>
-                <span class="cap">by 2027 · Gartner</span>
               </div>
             </div>
 
