@@ -1382,19 +1382,21 @@ nav{
 /* ========== CTA (full-bleed dark strip with cream panel floating inside) ========== */
 /* ========== CTA · Cream-to-mint gradient (seamless from Proof) ========== */
 .cta-section{
-  padding:120px 0 120px;
+  padding:160px 0 120px;
+  margin-top:-40px;
   background:linear-gradient(180deg,
     var(--bg) 0%,
-    rgba(128,210,170,.12) 35%,
-    rgba(45,139,146,.18) 70%,
-    rgba(26,91,132,.10) 100%);
+    var(--bg) 22%,
+    rgba(128,210,170,.08) 45%,
+    rgba(45,139,146,.14) 75%,
+    rgba(26,91,132,.08) 100%);
   position:relative;overflow:hidden;
 }
 .cta-section::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 1100px 600px at 50% 40%,rgba(128,210,170,.22),transparent 65%),
-    radial-gradient(ellipse 800px 400px at 50% 100%,rgba(26,91,132,.14),transparent 60%);
+    radial-gradient(ellipse 1100px 500px at 50% 75%,rgba(128,210,170,.22),transparent 65%),
+    radial-gradient(ellipse 800px 300px at 50% 100%,rgba(26,91,132,.12),transparent 60%);
 }
 .cta-box{
   max-width:780px;margin:0 auto;padding:0 40px;
@@ -1507,11 +1509,11 @@ nav{
 .floating-cta.visible { opacity: 1; pointer-events: auto; }
 .floating-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(20,184,166,0.4); }
 
-/* ========== FOOTER · VI-aligned ========== */
+/* ========== FOOTER · matches TopBar dark ink ========== */
 footer{
   position:relative;z-index:1;
-  background:var(--navy);
-  border-top:1px solid rgba(255,255,255,.06);
+  background:rgb(20,32,28);
+  border-top:1px solid rgba(255,255,255,.05);
   padding:40px 0 36px;
 }
 .footer-inner{
@@ -2621,35 +2623,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   padding:44px 40px 40px;border-right:1px solid var(--sb-rule-2);
   position:relative;display:flex;flex-direction:column;gap:22px;
   background:linear-gradient(to bottom,rgba(250,246,236,.4),transparent 50%);
-  cursor:pointer;
-  transition:background .6s ease;
 }
 .sol-bridge .cap:last-child{border-right:none}
-
-/* --- Active card (auto-rotating spotlight) — subtle tint only, no dimming of others --- */
-.sol-bridge .cap.active{
-  background:linear-gradient(to bottom,rgba(128,210,170,.1),transparent 55%);
-}
-.sol-bridge .cap.active .art svg{filter:drop-shadow(0 10px 28px rgba(128,210,170,.22))}
-.sol-bridge .cap.active .label::before{
-  animation:sb-label-ping 1.8s ease-in-out infinite;
-}
-@keyframes sb-label-ping{
-  0%,100%{box-shadow:0 0 0 0 rgba(128,210,170,0)}
-  50%{box-shadow:0 0 0 7px rgba(128,210,170,.15)}
-}
-
-/* --- Progress bar at bottom of active card --- */
-.sol-bridge .cap .cap-progress{
-  position:absolute;bottom:0;left:0;height:2px;width:0;
-  background:linear-gradient(to right,var(--sb-mint),var(--sb-teal));
-  opacity:0;pointer-events:none;
-}
-.sol-bridge .cap.active .cap-progress{
-  opacity:1;
-  animation:sb-cap-fill 4.8s linear forwards;
-}
-@keyframes sb-cap-fill{from{width:0}to{width:100%}}
 
 /* ============================================================
    Card 1 (记得你) — ALWAYS-ON looping animation
@@ -2680,6 +2655,17 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   0%,15%{stroke-dashoffset:60}
   28%,78%{stroke-dashoffset:0}
   92%,100%{stroke-dashoffset:60}
+}
+
+/* Connector line from focus card to timeline — fades with memory stack */
+.sol-bridge .caps > .cap:nth-child(1) .mem-link{
+  animation:sb-mem-link-loop 8s ease-in-out infinite;
+  animation-delay:.4s;
+}
+@keyframes sb-mem-link-loop{
+  0%,10%{opacity:0}
+  28%,78%{opacity:.6}
+  92%,100%{opacity:0}
 }
 
 /* Orange "new" dot — continuous ping ring */
@@ -3754,7 +3740,7 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
           <div class="caps">
 
             <!-- CAP 01 · 记得你 -->
-            <div class="cap"><div class="cap-progress"></div>
+            <div class="cap">
               <div class="art">
                 <svg viewBox="0 0 200 160" fill="none">
                   <defs>
@@ -3791,8 +3777,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                     <line x1="78"  y1="64" x2="122" y2="64" stroke="#1A2D5C" stroke-width="0.9" opacity=".3" class="mem-line mem-line-4"/>
                     <circle cx="136" cy="33" r="3" fill="#B45309" class="new-dot"/>
                   </g>
-                  <path d="M106 72 L146 128" stroke="#2D8B92" stroke-width="1" stroke-dasharray="2 3" opacity=".55" class="mem-dot"/>
-                  <circle cx="146" cy="132" r="4" fill="#2D8B92" stroke="#FAF6EC" stroke-width="1.5" class="mem-dot-2"/>
+                  <path d="M106 72 L146 128" stroke="#2D8B92" stroke-width="1" stroke-dasharray="2 3" class="mem-link"/>
+                  <circle cx="146" cy="132" r="4" fill="#2D8B92" stroke="#FAF6EC" stroke-width="1.5" class="mem-link"/>
                   <circle cx="28"  cy="40" r="1.8" fill="#80D2AA" class="mem-dot"/>
                   <circle cx="166" cy="56" r="1.8" fill="#80D2AA" class="mem-dot-2"/>
                   <circle cx="24"  cy="92" r="1.5" fill="#2D8B92" class="mem-dot-2"/>
@@ -3809,7 +3795,7 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
             </div>
 
             <!-- CAP 02 · 会协作 -->
-            <div class="cap"><div class="cap-progress"></div>
+            <div class="cap">
               <div class="art">
                 <svg viewBox="0 0 200 160" fill="none">
                   <defs>
@@ -3850,7 +3836,7 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
             </div>
 
             <!-- CAP 03 · 越跑越好 -->
-            <div class="cap"><div class="cap-progress"></div>
+            <div class="cap">
               <div class="art">
                 <svg viewBox="0 0 200 160" fill="none">
                   <defs>
@@ -6045,8 +6031,13 @@ document.addEventListener('keydown', e => {
   }
 })();
 
-/* ========== Bridge · Answer section auto-rotating spotlight ========== */
+/* ========== Bridge · Answer section — auto-rotate DISABLED per user request
+   Cards now rely purely on their own inherent SVG animations (which loop
+   continuously regardless of active state). No click handlers, no spotlight.
+   ========== */
+/* (intentionally no-op) */
 (function(){
+  if(true) return;  // disabled
   const caps = Array.from(document.querySelectorAll('.sol-bridge .caps .cap'));
   if(caps.length < 2) return;
   const wrap = document.querySelector('.sol-bridge .caps');
