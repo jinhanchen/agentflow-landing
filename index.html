@@ -5209,16 +5209,16 @@ fObs.observe(heroEl);
     // Boot animation (only on first load — demoBoot exists in initial HTML)
     var bootEl = document.getElementById('demoBoot');
     if (bootEl) {
-      // Wait for progress bar to fill
-      await wait(2500);
-      // Change status text
+      // Wait for progress bar to visually fill (CSS transition = 0.8s)
+      await wait(900);
+      // Briefly flash "Team Ready" then fade out
       var statusEl = bootEl.querySelector('div:last-child');
       if (statusEl) statusEl.textContent = currentLang === 'zh' ? '团队已就绪 \u2713' : 'Team Ready \u2713';
-      await wait(800);
+      await wait(250);
       // Fade out boot screen
-      bootEl.style.transition = 'opacity 0.5s';
+      bootEl.style.transition = 'opacity 0.35s';
       bootEl.style.opacity = '0';
-      await wait(500);
+      await wait(350);
     }
 
     content.innerHTML = '<div class="demo-chat-side">' +
@@ -5689,33 +5689,21 @@ fObs.observe(heroEl);
     });
   });
 
-  // Boot bar: fill to 70% on load, to 100% when demo reaches 60%+ visibility
+  // Boot bar + scene1 kick off together once user scrolls the demo a bit more
+  // into view (threshold 0.4 = user has scrolled past Hero enough for the
+  // panel to be ~40% visible). Bar no longer pre-fills on page load.
   const bootBar = document.getElementById('bootBarFill');
-  if (bootBar) {
-    // Step 1: fill to 70% after small delay (lets transition apply)
-    setTimeout(() => { bootBar.style.width = '70%'; }, 200);
-  }
 
-  // Start when scrolled into view
   const demoObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting && !started) { started = true; scene1(); }
+      if (e.isIntersecting && !started) {
+        started = true;
+        if (bootBar) bootBar.style.width = '100%';
+        scene1();
+      }
     });
-  }, { threshold: 0.7 });
+  }, { threshold: 0.4 });
   demoObs.observe(stage);
-
-  // Complete boot bar to 100% when demo is substantially visible
-  if (bootBar) {
-    const bootObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          bootBar.style.width = '100%';
-          bootObs.disconnect();
-        }
-      });
-    }, { threshold: 0.6 });
-    bootObs.observe(stage);
-  }
 })();
 
 // ========== WAITLIST FORM ==========
