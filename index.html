@@ -2555,11 +2555,12 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   --prf-rule-2:rgba(27,36,48,.08);
   --prf-teal:#0d8a75;
   --prf-rust:#B45309;
-  max-width:1200px;margin:0 auto;padding:0 8px;
+  max-width:min(1680px,94vw);margin:0 auto;padding:0 8px;
   color:var(--prf-ink);
   font-family:'DM Sans','Noto Sans SC',sans-serif;
 }
-.proof .prf-title-wrap{text-align:center;margin-bottom:56px}
+/* Title and 4-card readouts stay centered at 1200px; chart/log row extends wider. */
+.proof .prf-title-wrap{text-align:center;margin-bottom:56px;max-width:1200px;margin-left:auto;margin-right:auto}
 .proof .prf-title{
   font-family:var(--font-display);
   font-size:clamp(2.1rem,4.6vw,4rem);
@@ -2575,12 +2576,13 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 }
 .proof .prf-sub em{font-style:normal;color:var(--accent);font-weight:600}
 
-/* readouts */
+/* readouts — stay centered at 1200px even when proof is wider */
 .proof .prf-readouts{
   display:grid;grid-template-columns:repeat(4,1fr);gap:0;
   border-top:1px solid var(--prf-rule);
   border-bottom:1px solid var(--prf-rule);
   background:rgba(255,255,255,.35);
+  max-width:1200px;margin-left:auto;margin-right:auto;
 }
 .proof .prf-readout{
   padding:22px 26px;border-right:1px solid var(--prf-rule-2);
@@ -2657,11 +2659,11 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   margin-left:22px;
 }
 
-/* chart + log side-by-side split — both fit within 1200px .proof container */
+/* chart + log side-by-side split — extends to full .proof width (up to 1680px) */
 .proof .prf-split{
   display:grid;
-  grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);
-  gap:20px;align-items:start;margin-top:24px;
+  grid-template-columns:minmax(0,1fr) 380px;
+  gap:32px;align-items:start;margin-top:24px;
 }
 .proof .prf-split .prf-chart-wrap{padding-top:8px}
 .proof .prf-split .prf-log-wrap{margin-top:40px;align-self:center}
