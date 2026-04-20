@@ -2555,7 +2555,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   --prf-rule-2:rgba(27,36,48,.08);
   --prf-teal:#0d8a75;
   --prf-rust:#B45309;
-  max-width:1580px;margin:0 auto;padding:0 8px;
+  max-width:min(1780px, 96vw);margin:0 auto;padding:0 8px;
   color:var(--prf-ink);
   font-family:'DM Sans','Noto Sans SC',sans-serif;
 }
@@ -2664,7 +2664,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   grid-template-columns:minmax(0,1fr) 340px;
   gap:32px;align-items:start;margin-top:8px;
 }
-.proof .prf-split .prf-chart-wrap{padding-top:8px;max-width:1200px}
+.proof .prf-split .prf-chart-wrap{padding-top:8px}
 .proof .prf-split .prf-log-wrap{margin-top:40px;align-self:center}
 
 /* log */
@@ -2734,7 +2734,6 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 
 @media(max-width:1500px){
   .proof .prf-split{grid-template-columns:1fr;gap:0}
-  .proof .prf-split .prf-chart-wrap{max-width:none}
   .proof .prf-split .prf-log-wrap{margin-top:40px;align-self:stretch}
 }
 @media(max-width:900px){
