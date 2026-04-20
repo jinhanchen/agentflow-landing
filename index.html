@@ -2346,15 +2346,22 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 }
 .sol-bridge .s1-head .col-r p em{font-style:normal;color:var(--sb-rust);font-weight:600}
 
-/* Horizontal accordion — 4 cols, hover to expand */
+/* Horizontal accordion — auto-rotates every ~4.5s, hover to expand on demand */
 .sol-bridge .pains{
   border-top:1px solid var(--sb-rule-3);border-bottom:1px solid var(--sb-rule-3);
   display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
   transition:grid-template-columns .55s cubic-bezier(.22,.61,.36,1);
+  position:relative;
 }
+/* Grid expansion — hover takes priority, falls back to .is-active */
+.sol-bridge .pains:has(.pain:nth-child(1):hover){grid-template-columns:2fr 1fr 1fr 1fr}
 .sol-bridge .pains:has(.pain:nth-child(2):hover){grid-template-columns:1fr 2fr 1fr 1fr}
 .sol-bridge .pains:has(.pain:nth-child(3):hover){grid-template-columns:1fr 1fr 2fr 1fr}
 .sol-bridge .pains:has(.pain:nth-child(4):hover){grid-template-columns:1fr 1fr 1fr 2fr}
+.sol-bridge .pains:not(:has(.pain:hover)):has(.pain:nth-child(1).is-active){grid-template-columns:2fr 1fr 1fr 1fr}
+.sol-bridge .pains:not(:has(.pain:hover)):has(.pain:nth-child(2).is-active){grid-template-columns:1fr 2fr 1fr 1fr}
+.sol-bridge .pains:not(:has(.pain:hover)):has(.pain:nth-child(3).is-active){grid-template-columns:1fr 1fr 2fr 1fr}
+.sol-bridge .pains:not(:has(.pain:hover)):has(.pain:nth-child(4).is-active){grid-template-columns:1fr 1fr 1fr 2fr}
 
 .sol-bridge .pain{
   position:relative;padding:22px 24px 22px;
@@ -2421,21 +2428,28 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   color:var(--sb-ink-3);white-space:nowrap;opacity:0;transition:opacity .35s ease;
 }
 
-/* OPEN state — default first, or any hovered */
-.sol-bridge .pains:not(:hover) > .pain:nth-child(1) .desc,
+/* OPEN state — .is-active (auto-rotated) or any hovered */
+.sol-bridge .pain.is-active .desc,
 .sol-bridge .pain:hover .desc{
   opacity:1;transform:translateY(0);pointer-events:auto;
 }
-.sol-bridge .pains:not(:hover) > .pain:nth-child(1) .stat .cap,
+.sol-bridge .pain.is-active .stat .cap,
 .sol-bridge .pain:hover .stat .cap{opacity:1}
-.sol-bridge .pains:not(:hover) > .pain:nth-child(1) .idx .badge,
+.sol-bridge .pain.is-active .idx .badge,
 .sol-bridge .pain:hover .idx .badge{opacity:1;border-color:var(--sb-rust);color:var(--sb-rust)}
-.sol-bridge .pains:not(:hover) > .pain:nth-child(1) .art,
+.sol-bridge .pain.is-active .art,
 .sol-bridge .pain:hover .art{transform:translateY(-2px)}
-.sol-bridge .pains:not(:hover) > .pain:nth-child(1)::after,
+.sol-bridge .pain.is-active::after,
 .sol-bridge .pain:hover::after{transform:scaleX(1)}
-.sol-bridge .pains:not(:hover) > .pain:nth-child(1){background:rgba(180,83,9,.03)}
-.sol-bridge .pains:not(:hover){grid-template-columns:2fr 1fr 1fr 1fr}
+.sol-bridge .pain.is-active{background:rgba(180,83,9,.03)}
+
+/* SVG animation on active card — subtle life on the illustration */
+.sol-bridge .pain.is-active .art svg,
+.sol-bridge .pain:hover .art svg{animation:sb-pain-art-breathe 3.6s ease-in-out infinite}
+@keyframes sb-pain-art-breathe{
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-1px) scale(1.015)}
+}
 
 /* Section 2 animations */
 @keyframes sb-ring-pulse{0%,100%{opacity:.9;stroke-width:1}50%{opacity:.45;stroke-width:1.6}}
@@ -3459,7 +3473,7 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
             </div>
             <div class="col-r">
               <p>
-                每一个独立创作者（<em>OPC · One-Person-Company</em>）都被告知：
+                每一个<em>独立创作者 OPC</em> 都被告知：
                 AI 会让你更快、更强、更自由。
                 现实是 —— 你多了几十个工具，切换成本、记忆成本、协作成本、维护成本，
                 正在<em>吃掉</em>你本来节省下来的时间。
@@ -5903,6 +5917,49 @@ document.addEventListener('keydown', e => {
     if(document.hidden) stopLoop();
     else if(!looping) startLoop();
   });
+})();
+
+/* ========== Bridge · Problem section auto-expanding pain accordion ========== */
+(function(){
+  const pains = Array.from(document.querySelectorAll('.sol-bridge .pains .pain'));
+  if(pains.length < 2) return;
+  const wrap = document.querySelector('.sol-bridge .pains');
+  const DURATION = 4500; // ms per card
+  let idx = 0;
+  let timer = null;
+  let paused = false;
+
+  function setActive(i){
+    idx = ((i % pains.length) + pains.length) % pains.length;
+    pains.forEach((p, j) => p.classList.toggle('is-active', j === idx));
+  }
+  function scheduleNext(){
+    clearTimeout(timer);
+    if(paused) return;
+    timer = setTimeout(() => { setActive(idx + 1); scheduleNext(); }, DURATION);
+  }
+  function pause(){ paused = true; clearTimeout(timer); }
+  function resume(){ if(!paused) return; paused = false; scheduleNext(); }
+
+  pains.forEach((p, i) => p.addEventListener('click', () => { setActive(i); scheduleNext(); }));
+  if(wrap){
+    wrap.addEventListener('mouseenter', pause);
+    wrap.addEventListener('mouseleave', resume);
+  }
+
+  const section = document.querySelector('.sol-bridge .s1');
+  if(section && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){ paused = false; setActive(idx); scheduleNext(); }
+        else { pause(); }
+      });
+    }, {threshold: 0.25});
+    io.observe(section);
+  } else {
+    setActive(0);
+    scheduleNext();
+  }
 })();
 
 /* ========== Bridge · Answer section auto-rotating spotlight ========== */
