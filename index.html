@@ -284,22 +284,27 @@ nav{
    Robot PNG — fingertip at (80%, 1%)  of its own box
    End transform: translate(-x%, -y%) aligns that pixel to the (left, top) anchor. */
 .hero-hand-human{
-  left:49%;top:48%;
+  left:52%;top:50%;
+  transform-origin:2% 99%;   /* pivot at the fingertip so rotation keeps it pinned */
   animation:heroHandHumanIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
 .hero-hand-robot{
-  left:49%;top:52%;
+  left:48%;top:50%;
+  transform-origin:80% 1%;   /* pivot at the fingertip */
   animation:heroHandRobotIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
+/* Rotation ~30° flattens the forearm axis toward horizontal (down from the
+   near-vertical default). Both hands now read as reaching into frame from
+   the corners at a shallow diagonal instead of plunging straight down/up. */
 @keyframes heroHandHumanIn{
-  0%  {transform:translate(400%, -340%) rotate(12deg); opacity:0}
+  0%  {transform:translate(400%, -340%) rotate(-55deg); opacity:0}
   35% {opacity:.5}
-  100%{transform:translate(-2%, -99%)   rotate(0);     opacity:.5}
+  100%{transform:translate(-2%, -99%)   rotate(-30deg); opacity:.5}
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-360%, 320%) rotate(-12deg); opacity:0}
+  0%  {transform:translate(-360%, 320%) rotate(55deg);  opacity:0}
   35% {opacity:.5}
-  100%{transform:translate(-80%, -1%)   rotate(0);      opacity:.5}
+  100%{transform:translate(-80%, -1%)   rotate(30deg);  opacity:.5}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
