@@ -2176,6 +2176,160 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 @keyframes opcTicker{to{transform:translateX(-50%);}}
 
 /* Narrative bridge: illustration + text, side by side */
+/* ========== Bridge Section (OPC → Proof 承上启下) ========== */
+.mp-bridge{
+  max-width:1120px;margin:120px auto 100px;
+  padding:0 32px;
+  position:relative;
+}
+.mp-bridge::before,
+.mp-bridge::after{
+  content:'';position:absolute;left:50%;transform:translateX(-50%);
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+  z-index:1;
+}
+.mp-bridge::before{top:-3px}
+.mp-bridge::after{bottom:-3px}
+
+.bridge-act{padding:72px 0}
+.bridge-act-1{border-top:1px solid var(--border)}
+.bridge-act-2{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 0}
+.bridge-act-3{border-bottom:1px solid var(--border)}
+
+.bridge-kicker{
+  font-family:var(--font-body);
+  font-size:11px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 16px;text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.bridge-kicker::before,.bridge-kicker::after{
+  content:'';height:1px;width:36px;background:var(--accent);opacity:.4;
+}
+.bridge-head{
+  font-family:var(--font-display);
+  font-size:clamp(28px,3.4vw,46px);
+  font-weight:700;line-height:1.2;letter-spacing:-.015em;
+  color:var(--text);
+  margin:0 auto 52px;text-align:center;
+  max-width:820px;
+}
+.bridge-head em{font-style:normal;color:var(--accent);font-weight:700}
+.bridge-head .rust{color:#B45309}
+
+/* Act 1 — Pain cards */
+.bridge-pains{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.pain-card{
+  background:rgba(255,255,255,.55);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:24px 22px 22px;
+  position:relative;
+  transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.pain-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(180,83,9,.5);
+  box-shadow:0 14px 30px -18px rgba(27,36,48,.25);
+}
+.pain-num{
+  font-family:var(--font-body);
+  font-size:10.5px;letter-spacing:.22em;font-weight:700;
+  color:#B45309;margin-bottom:14px;
+}
+.pain-title{
+  font-family:var(--font-display);
+  font-size:1.08rem;font-weight:700;letter-spacing:-.005em;
+  color:var(--text);margin-bottom:14px;line-height:1.35;
+}
+.pain-stat{
+  font-family:var(--font-display);
+  font-size:2.1rem;font-weight:700;letter-spacing:-1.5px;
+  line-height:1;color:var(--text);
+  margin-bottom:6px;
+  font-variant-numeric:tabular-nums;
+}
+.pain-stat span{
+  display:block;
+  font-family:var(--font-body);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:500;color:var(--text-sub);
+  margin-top:6px;letter-spacing:.12em;
+}
+.pain-desc{
+  font-family:var(--font-body);
+  font-size:.88rem;line-height:1.6;color:var(--text-sub);
+  border-top:1px solid var(--border);padding-top:14px;margin-top:16px;
+}
+
+/* Act 2 — Pivot pull-quote */
+.bridge-act-2{text-align:center}
+.bridge-quote-mark{
+  font-family:'Instrument Serif',serif;
+  font-size:3rem;color:var(--accent);opacity:.4;
+  line-height:1;margin-bottom:14px;
+}
+.bridge-quote{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;font-weight:400;
+  font-size:clamp(26px,3.2vw,44px);
+  line-height:1.35;color:var(--text);
+  margin:0 auto;max-width:920px;
+  letter-spacing:.005em;
+}
+.bridge-quote em{
+  font-style:italic;color:var(--accent);font-weight:500;
+}
+
+/* Act 3 — Vision pillars */
+.bridge-pillars{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-top:12px;
+}
+.pillar{
+  background:rgba(255,255,255,.55);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:30px 26px 28px;
+  position:relative;
+  transition:transform .35s ease, border-color .35s ease;
+}
+.pillar:hover{
+  transform:translateY(-3px);
+  border-color:rgba(13,138,117,.5);
+}
+.pillar-icon{
+  font-family:var(--font-display);
+  font-size:1.8rem;color:var(--accent);
+  line-height:1;margin-bottom:18px;
+  display:inline-flex;width:44px;height:44px;
+  align-items:center;justify-content:center;
+  border:1px solid rgba(13,138,117,.3);border-radius:50%;
+  background:rgba(13,138,117,.06);
+}
+.pillar-title{
+  font-family:var(--font-display);
+  font-size:1.28rem;font-weight:700;letter-spacing:-.01em;
+  color:var(--text);margin-bottom:10px;
+}
+.pillar-desc{
+  font-family:var(--font-body);
+  font-size:.94rem;line-height:1.65;color:var(--text-sub);
+}
+.pillar-desc em{
+  font-style:normal;color:var(--accent);font-weight:600;
+  background:linear-gradient(transparent 62%, rgba(13,138,117,.18) 62%);
+  padding:0 2px;
+}
+
+/* Legacy .mp-narrative kept for any CSS references, no longer used in HTML */
 .mp-narrative{
   max-width:1120px;margin:120px auto;
   padding:64px 32px;
@@ -2223,6 +2377,17 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   line-height:1.45;
 }
 .narr-solution strong{color:var(--accent);font-weight:700}
+
+@media(max-width:900px){
+  .bridge-pains{grid-template-columns:repeat(2,1fr)}
+  .bridge-pillars{grid-template-columns:1fr;gap:16px}
+  .bridge-act{padding:56px 0}
+  .bridge-head{margin-bottom:36px}
+}
+@media(max-width:560px){
+  .bridge-pains{grid-template-columns:1fr}
+  .mp-bridge{padding:0 20px}
+}
 
 @media(max-width:768px){
   .mp-narrative{
@@ -2972,16 +3137,71 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
       </div>
     </div>
 
-    <!-- Narrative bridge: illustration + problem → solution -->
-    <div class="mp-narrative reveal">
-      <div class="narr-illustration">
-        <img src="assets/hero-concept.png" alt="Solarian — 一人指挥一支硅基团队" />
+    <!-- Narrative bridge: problems → pivot → vision (承上启下) -->
+    <section class="mp-bridge reveal">
+
+      <!-- Act 1 — The broken promise -->
+      <div class="bridge-act bridge-act-1">
+        <div class="bridge-kicker">当前现状</div>
+        <h2 class="bridge-head">AI 本应是答案——<em>它却在制造新的问题</em></h2>
+        <div class="bridge-pains">
+          <article class="pain-card">
+            <div class="pain-num">PAIN · 01</div>
+            <div class="pain-title">工具碎片化</div>
+            <div class="pain-stat">5–8<span>小时 / 周 流失</span></div>
+            <div class="pain-desc">每天在 ChatGPT、Claude、Notion、n8n 等 10+ 工具间切换——上下文切换吞掉了 AI 本该带来的效率收益。</div>
+          </article>
+          <article class="pain-card">
+            <div class="pain-num">PAIN · 02</div>
+            <div class="pain-title">AI 没有记忆</div>
+            <div class="pain-stat">87%<span>用户的刚需</span></div>
+            <div class="pain-desc">每次对话都从零开始。87% 的用户把"AI 记住我的偏好"列为最重要的功能需求。</div>
+          </article>
+          <article class="pain-card">
+            <div class="pain-num">PAIN · 03</div>
+            <div class="pain-title">Agent 之间是孤岛</div>
+            <div class="pain-stat">人肉<span>中间件</span></div>
+            <div class="pain-desc">每个 AI 都是信息孤岛。你被迫在 Agent 之间手动传递上下文——本质上，是你在替 AI 打工。</div>
+          </article>
+          <article class="pain-card">
+            <div class="pain-num">PAIN · 04</div>
+            <div class="pain-title">自动化会腐烂</div>
+            <div class="pain-stat">40%+<span>项目将被放弃</span></div>
+            <div class="pain-desc">搭好的工作流一个月就开始过时。Gartner：超过 40% 的 AI Agent 项目将在 2027 年前因维护成本失控被取消。</div>
+          </article>
+        </div>
       </div>
-      <div class="narr-text">
-        <p class="narr-problem">是时候改变了——你每天在 10 个 AI 工具间来回切换，每个 AI 都不认识你。你不是在用 AI，你在替 AI 打工。</p>
-        <p class="narr-solution"><strong>Solarian</strong> 把它们整合成一支能学习的团队。</p>
+
+      <!-- Act 2 — The pivot -->
+      <div class="bridge-act bridge-act-2">
+        <div class="bridge-quote-mark">—</div>
+        <p class="bridge-quote">你需要的不是第 <em>11 个</em> AI 工具——<br>你需要的是<em>一支真正的团队</em>。</p>
       </div>
-    </div>
+
+      <!-- Act 3 — The vision -->
+      <div class="bridge-act bridge-act-3">
+        <div class="bridge-kicker">产品愿景</div>
+        <h2 class="bridge-head">Solarian 给每一个 OPC，<br>一支<em>能自主学习的硅基团队</em></h2>
+        <div class="bridge-pillars">
+          <div class="pillar">
+            <div class="pillar-icon">◐</div>
+            <div class="pillar-title">记得你</div>
+            <div class="pillar-desc">每个硅基员工都记得你是谁——你的偏好、口吻、过往决定，它都记得。越用越懂你。</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⋈</div>
+            <div class="pillar-title">会协作</div>
+            <div class="pillar-desc">Agent 之间横向协作、自主交接。你不再当人肉中间件——像个真正的董事长下指令就行。</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">↗</div>
+            <div class="pillar-title">越跑越好</div>
+            <div class="pillar-desc">每次运行自动沉淀 Skill、Rule、Tool。<em>同一条工作流，越跑越好</em>。</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
   </div><!-- /.mp-inner .wrap — proof breaks out of this narrow parent below -->
 
     <!-- ACT 2 — The Proof (Claude Design: auto-playing quality curve) -->
