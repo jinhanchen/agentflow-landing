@@ -274,37 +274,39 @@ nav{
 }
 .hero-hand{
   position:absolute;
-  height:82vh;width:auto;max-width:none;  /* larger, so hands read as reaching in */
+  height:105vh;width:auto;max-width:none;  /* much larger so most of the arm sits off-screen */
   opacity:0;
   filter:invert(.85) sepia(.4) hue-rotate(165deg) saturate(1.8) brightness(.55);
   will-change:transform,opacity;
 }
-/* Fingertip anchor math (PNGs carry their fingertip at a known %):
-   Human PNG — fingertip at (2%, 99%) of its own box
-   Robot PNG — fingertip at (80%, 1%)  of its own box
-   End transform: translate(-x%, -y%) aligns that pixel to the (left, top) anchor. */
+/* Forearm-end fade: the FAR end of each PNG (opposite from fingertip) fades
+   to transparent so the arm doesn't show a hard cut. Mask is in the element's
+   local coords so fade direction is correct regardless of CSS rotation. */
 .hero-hand-human{
-  left:52%;top:50%;
-  transform-origin:2% 99%;   /* pivot at the fingertip so rotation keeps it pinned */
+  left:55%;top:50%;
+  transform-origin:9% 98.5%;   /* pivot at the fingertip */
+  -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
+          mask-image:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
   animation:heroHandHumanIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
 .hero-hand-robot{
-  left:48%;top:50%;
+  left:45%;top:50%;
   transform-origin:80% 1%;   /* pivot at the fingertip */
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
+          mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
   animation:heroHandRobotIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
-/* Rotation ~30° flattens the forearm axis toward horizontal (down from the
-   near-vertical default). Both hands now read as reaching into frame from
-   the corners at a shallow diagonal instead of plunging straight down/up. */
+/* Rotation: natural axis was ~71° from horizontal. Rotating by ~-62° / +62°
+   brings the arm axes down to near-horizontal (~10° tilt each, symmetrical). */
 @keyframes heroHandHumanIn{
-  0%  {transform:translate(400%, -340%) rotate(-55deg); opacity:0}
-  35% {opacity:.5}
-  100%{transform:translate(-2%, -99%)   rotate(-30deg); opacity:.5}
+  0%  {transform:translate(260%, -220%) rotate(-85deg); opacity:0}
+  35% {opacity:.32}
+  100%{transform:translate(-9%, -98.5%) rotate(-62deg); opacity:.32}
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-360%, 320%) rotate(55deg);  opacity:0}
-  35% {opacity:.5}
-  100%{transform:translate(-80%, -1%)   rotate(30deg);  opacity:.5}
+  0%  {transform:translate(-240%, 200%) rotate(85deg);  opacity:0}
+  35% {opacity:.32}
+  100%{transform:translate(-80%, -1%)   rotate(62deg);  opacity:.32}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
