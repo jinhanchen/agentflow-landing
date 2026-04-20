@@ -338,15 +338,15 @@ nav{
 }
 
 /* ========== HERO REDESIGN (Claude Design) ========== */
-.hero-brand-lock{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:-140px;}
+.hero-brand-lock{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:-110px;}
 .hero-mark{
-  width:clamp(170px,18vw,240px);height:auto;display:block;
+  width:clamp(140px,15vw,200px);height:auto;display:block;
 }
 .hero-title-new{
   font-family:var(--font-display);
   font-weight:800;
-  font-size:clamp(44px,5.8vw,82px);
-  line-height:1.02;letter-spacing:-.02em;
+  font-size:clamp(36px,4.8vw,66px);
+  line-height:1.04;letter-spacing:-.02em;
   color:var(--text);
   margin:0 auto;max-width:none;text-wrap:balance;
   text-align:center;width:100%;
@@ -361,23 +361,23 @@ nav{
 .hero-kicker{
   font-family:var(--font-display);
   font-weight:400;
-  font-size:clamp(22px,2.4vw,32px);
+  font-size:clamp(18px,2vw,26px);
   color:var(--blue);
-  margin:14px auto 0;letter-spacing:.02em;
+  margin:10px auto 0;letter-spacing:.02em;
 }
 .hero-kicker::before,.hero-kicker::after{
   content:"";display:inline-block;
-  width:28px;height:1px;background:rgba(16,42,74,.18);
-  vertical-align:middle;margin:0 14px 6px;
+  width:24px;height:1px;background:rgba(16,42,74,.18);
+  vertical-align:middle;margin:0 12px 5px;
 }
 .hero-btns-new{
-  display:flex;justify-content:center;gap:14px;margin-top:38px;flex-wrap:wrap;
+  display:flex;justify-content:center;gap:12px;margin-top:28px;flex-wrap:wrap;
 }
 .hero-btns-new .btn-pri{
   background:var(--text);color:var(--bg);border:none;
-  padding:14px 24px;border-radius:999px;
-  font-family:var(--font-body);font-size:14px;font-weight:500;
-  cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  padding:11px 20px;border-radius:999px;
+  font-family:var(--font-body);font-size:13px;font-weight:500;
+  cursor:pointer;display:inline-flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(20,32,28,.25);
   transition:transform .3s ease, background .3s;
 }
@@ -2469,8 +2469,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 .sol-bridge .pain .desc{
   font-family:var(--sb-sans);font-size:.9rem;line-height:1.7;font-weight:400;
   color:var(--sb-ink-2);max-width:340px;
-  opacity:0;transform:translateY(4px);
-  transition:opacity .4s ease .05s,transform .4s cubic-bezier(.22,.61,.36,1) .05s;
+  opacity:0;transform:translateY(4px);visibility:hidden;
+  transition:opacity .12s ease, transform .12s ease, visibility 0s .12s;
   pointer-events:none;
 }
 .sol-bridge .pain .stat{
@@ -2491,7 +2491,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 /* OPEN state — .is-active (auto-rotated) or any hovered */
 .sol-bridge .pain.is-active .desc,
 .sol-bridge .pain:hover .desc{
-  opacity:1;transform:translateY(0);pointer-events:auto;
+  opacity:1;transform:translateY(0);visibility:visible;pointer-events:auto;
+  transition:opacity .4s ease .12s, transform .4s cubic-bezier(.22,.61,.36,1) .12s, visibility 0s;
 }
 .sol-bridge .pain.is-active .idx .badge,
 .sol-bridge .pain:hover .idx .badge{opacity:1;border-color:var(--sb-rust);color:var(--sb-rust)}
