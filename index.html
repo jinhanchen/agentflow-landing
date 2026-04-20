@@ -286,26 +286,26 @@ nav{
   transform-origin:9% 98.5%;   /* pivot at the fingertip */
   -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
           mask-image:linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
-  animation:heroHandHumanIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
+  animation:heroHandHumanIn 4s cubic-bezier(.22,.8,.28,1) .5s forwards;
 }
 .hero-hand-robot{
   left:45%;top:50%;
   transform-origin:80% 1%;   /* pivot at the fingertip */
   -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
           mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
-  animation:heroHandRobotIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
+  animation:heroHandRobotIn 4s cubic-bezier(.22,.8,.28,1) .5s forwards;
 }
-/* Human hand keeps its +41° CW rotation — user said that position looks good.
-   Robot hand: ZERO rotation per user request (natural PNG orientation). */
+/* Rotation is CONSTANT throughout the animation — no mid-flight twisting.
+   Hand flies in straight at its final angle. */
 @keyframes heroHandHumanIn{
-  0%  {transform:translate(260%, -180%) rotate(70deg); opacity:0}
-  35% {opacity:.22}
+  0%  {transform:translate(260%, -180%) rotate(41deg); opacity:0}
+  30% {opacity:.22}
   100%{transform:translate(-9%, -98.5%) rotate(41deg); opacity:.22}
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-240%, 160%) rotate(0);  opacity:0}
-  35% {opacity:.22}
-  100%{transform:translate(-80%, -1%)   rotate(0);  opacity:.22}
+  0%  {transform:translate(-240%, 160%) rotate(45deg); opacity:0}
+  30% {opacity:.22}
+  100%{transform:translate(-80%, -1%)   rotate(45deg); opacity:.22}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
