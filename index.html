@@ -262,44 +262,57 @@ nav{
   min-height:auto;display:flex;flex-direction:column;
   align-items:center;justify-content:flex-start;text-align:center;
   padding:16px 40px 0;position:relative;overflow:hidden;
-  isolation:isolate;
 }
 
-/* Hero background hands — split diagonally, sweep in from opposite corners */
+/* Hero background hands — luminance mask removes black bg, split diagonally, sweep in */
 .hero-hands{
-  position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  z-index:0;
 }
 .hero-hand{
-  position:absolute;left:50%;top:50%;
-  height:95%;width:auto;max-width:none;
-  mix-blend-mode:multiply;           /* on cream bg, black stays, white disappears — but we want opposite; see inversion below */
-  opacity:.78;
-  filter:invert(1);                  /* invert: white lines -> dark; black bg -> white (disappears on cream via multiply) */
+  position:absolute;
+  width:min(92vh, 95vw);           /* large — fills hero generously */
+  aspect-ratio:707 / 1165;         /* matches source image proportions */
+  background:var(--navy);          /* color shown through the mask */
+  -webkit-mask-image:url('assets/hero-hands.png');
+          mask-image:url('assets/hero-hands.png');
+  -webkit-mask-mode:luminance;
+          mask-mode:luminance;     /* WHITE pixels render, BLACK pixels transparent */
+  -webkit-mask-size:100% 100%;
+          mask-size:100% 100%;
+  -webkit-mask-position:center;
+          mask-position:center;
+  -webkit-mask-repeat:no-repeat;
+          mask-repeat:no-repeat;
+  -webkit-mask-source-type:luminance;  /* Safari legacy */
+  opacity:0;
   will-change:transform,opacity;
 }
-/* Robot hand: bottom-left triangle of the source image, enters from bottom-left off-screen */
+/* Robot hand: lower-left triangle of source — enters from bottom-left */
 .hero-hand-robot{
   clip-path:polygon(0 0, 0 100%, 100% 100%);
-  animation:heroHandRobotIn 2.4s cubic-bezier(.22,.8,.28,1) .35s both;
+  animation:heroHandRobotIn 2.4s cubic-bezier(.22,.8,.28,1) .4s forwards;
 }
-/* Human hand: top-right triangle of the source image, enters from top-right off-screen */
+/* Human hand: upper-right triangle of source — enters from top-right */
 .hero-hand-human{
   clip-path:polygon(0 0, 100% 0, 100% 100%);
-  animation:heroHandHumanIn 2.4s cubic-bezier(.22,.8,.28,1) .35s both;
+  animation:heroHandHumanIn 2.4s cubic-bezier(.22,.8,.28,1) .4s forwards;
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-140%, 60%)  rotate(-14deg); opacity:0}
-  40% {opacity:.78}
-  100%{transform:translate(-50%,-50%)   rotate(0);      opacity:.78}
+  0%  {transform:translate(-80%, 55%) rotate(-14deg); opacity:0}
+  40% {opacity:.38}
+  100%{transform:translate(0,0) rotate(0);            opacity:.38}
 }
 @keyframes heroHandHumanIn{
-  0%  {transform:translate(40%,-160%)   rotate(14deg);  opacity:0}
-  40% {opacity:.78}
-  100%{transform:translate(-50%,-50%)   rotate(0);      opacity:.78}
+  0%  {transform:translate(80%, -55%) rotate(14deg);  opacity:0}
+  40% {opacity:.38}
+  100%{transform:translate(0,0) rotate(0);            opacity:.38}
 }
-@media (prefers-reduced-motion: reduce){
+@media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
 }
+.hero-reveal{position:relative;z-index:1}
 .hero-logo-icon{
   width:300px;height:auto;margin-bottom:36px;
   opacity:0;transform:translateY(70px);
@@ -3386,8 +3399,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 <!-- ========== HERO (Claude Design · Redesign) ========== -->
 <section class="hero">
   <div class="hero-hands" aria-hidden="true">
-    <img class="hero-hand hero-hand-robot" src="assets/hero-hands.png" alt="">
-    <img class="hero-hand hero-hand-human" src="assets/hero-hands.png" alt="">
+    <div class="hero-hand hero-hand-robot"></div>
+    <div class="hero-hand hero-hand-human"></div>
   </div>
   <div class="hero-reveal">
     <div class="hero-brand-lock">
