@@ -255,9 +255,9 @@ nav{
 }
 
 /* ========== HERO REDESIGN (Claude Design) ========== */
-.hero-brand-lock{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:-160px;}
+.hero-brand-lock{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:-140px;}
 .hero-mark{
-  width:clamp(200px,22vw,300px);height:auto;display:block;
+  width:clamp(170px,18vw,240px);height:auto;display:block;
 }
 .hero-title-new{
   font-family:var(--font-display);
@@ -283,7 +283,7 @@ nav{
   font-style:italic;font-weight:400;
   font-size:clamp(22px,2.4vw,32px);
   color:#063f35;
-  margin:26px auto 0;letter-spacing:.005em;
+  margin:14px auto 0;letter-spacing:.005em;
 }
 .hero-kicker::before,.hero-kicker::after{
   content:"";display:inline-block;
@@ -1577,7 +1577,7 @@ footer{
 /* ========== AUTO-PLAY DEMO ========== */
 .demo-section {
   padding: 0 0 40px;
-  margin-top: 32px;
+  margin-top: 96px;
   position: relative;
   z-index: 10;
 }
@@ -2630,7 +2630,7 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
   position:relative;padding:20px 0 8px;
 }
 .proof .prf-chart-svg{
-  width:100%;height:380px;display:block;overflow:visible;
+  width:100%;aspect-ratio:1000/380;height:auto;display:block;overflow:visible;
 }
 .proof .prf-chart-svg text{font-family:var(--font-body) !important}
 .proof .prf-flag{
@@ -2702,35 +2702,41 @@ footer .footer-links a:hover{color:rgba(255,255,255,0.85)}
 }
 .proof .prf-counter b{color:var(--prf-ink);font-weight:600}
 .proof .prf-log-body{
-  padding:22px 28px 26px;
-  display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;
-  min-height:118px;
+  padding:26px 28px 30px;
+  position:relative;
+  display:block;
+  min-height:150px;
 }
 .proof .prf-log-num{
   font-family:var(--font-display);
-  font-size:3.6rem;line-height:1;color:var(--text);
-  font-weight:700;letter-spacing:-2px;min-width:90px;
+  font-size:5.2rem;line-height:.9;
+  color:rgba(27,36,48,.08);
+  font-weight:700;letter-spacing:-3px;
   font-variant-numeric:tabular-nums;
+  position:absolute;right:24px;top:14px;
   transition:color .4s ease;
+  pointer-events:none;user-select:none;
 }
-.proof .prf-log-num.big{color:var(--accent)}
+.proof .prf-log-num.big{color:rgba(13,138,117,.18)}
 .proof .prf-log-text{
   font-family:var(--font-body);
-  font-size:1.04rem;line-height:1.65;color:var(--text-sub);
+  font-size:1rem;line-height:1.75;color:var(--prf-ink-2);
   opacity:0;transform:translateY(4px);
   transition:opacity .4s ease,transform .4s ease;
+  position:relative;z-index:1;
+  padding-right:70px;
 }
 .proof .prf-log-text.prf-on{opacity:1;transform:translateY(0)}
-.proof .prf-log-text strong{color:var(--text);font-weight:700}
+.proof .prf-log-text strong{color:var(--text);font-weight:700;display:block;font-size:1.08rem;margin-top:4px;margin-bottom:2px}
 .proof .prf-log-text em{font-style:normal;color:var(--accent);font-weight:600}
 .proof .prf-log-text .prf-stamp{
   display:inline-block;
   font-family:var(--font-body);
-  font-size:10.5px;letter-spacing:.2em;
+  font-size:10px;letter-spacing:.22em;
   color:var(--prf-rust);text-transform:uppercase;
-  margin-right:10px;padding:2px 8px;
+  margin:0 0 12px 0;padding:3px 10px;
   border:1px solid var(--prf-rust);border-radius:100px;
-  font-weight:700;vertical-align:middle;
+  font-weight:700;
 }
 
 @media(max-width:1000px){
