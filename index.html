@@ -1380,18 +1380,21 @@ nav{
 @media(max-width:768px) { .stats-grid { grid-template-columns: 1fr; } }
 
 /* ========== CTA (full-bleed dark strip with cream panel floating inside) ========== */
-/* ========== CTA · Cream ground · dark text · Mint gradient button ========== */
+/* ========== CTA · Cream-to-mint gradient (seamless from Proof) ========== */
 .cta-section{
   padding:120px 0 120px;
-  background:var(--bg);
+  background:linear-gradient(180deg,
+    var(--bg) 0%,
+    rgba(128,210,170,.12) 35%,
+    rgba(45,139,146,.18) 70%,
+    rgba(26,91,132,.10) 100%);
   position:relative;overflow:hidden;
-  border-top:1px solid rgba(16,42,74,.08);
 }
 .cta-section::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(ellipse 900px 500px at 50% 0%,rgba(128,210,170,.18),transparent 65%),
-    radial-gradient(ellipse 700px 400px at 50% 100%,rgba(26,91,132,.08),transparent 60%);
+    radial-gradient(ellipse 1100px 600px at 50% 40%,rgba(128,210,170,.22),transparent 65%),
+    radial-gradient(ellipse 800px 400px at 50% 100%,rgba(26,91,132,.14),transparent 60%);
 }
 .cta-box{
   max-width:780px;margin:0 auto;padding:0 40px;
@@ -1411,13 +1414,20 @@ nav{
   font-family:var(--font-display);
   font-size:clamp(2.6rem,5.2vw,4.2rem);
   font-weight:700;letter-spacing:-1.8px;line-height:1.08;
-  margin:0 0 20px;color:var(--abyss);
+  margin:0 0 20px;
+  background:var(--gradient-brand);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:sb-gradient-shift 8s ease-in-out infinite;
 }
 .cta-box h2 em{
   font-style:normal;font-weight:700;
-  background:var(--gradient-brand);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+  /* em inherits the gradient from h2 — no extra clip needed */
+}
+@keyframes sb-gradient-shift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
 }
 .cta-sub{
   font-family:var(--font-body);
@@ -2441,44 +2451,95 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
   100%{transform:translateY(0) scale(1)}
 }
 
-/* Card 1 工具碎片化 — dashed connector paths flow between tiles */
-.sol-bridge .pains > .pain:nth-child(1) .art svg path[stroke-dasharray]{
-  animation:sb-stroke-flow-slow 5s linear infinite;
+/* --- Card 1 工具碎片化: tiles flicker-float, orange accent connector pulses --- */
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g{
+  transform-origin:center;transform-box:fill-box;
+  animation:sb-tile-flicker 3.6s ease-in-out infinite;
 }
-/* Card 3 Agent 孤岛 — broken bridges drift (rust-colored zig-zag paths) */
-.sol-bridge .pains > .pain:nth-child(3) .art svg path[stroke="#B45309"]{
-  animation:sb-stroke-flow-fast 3s linear infinite;
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g:nth-of-type(1){animation-delay:0s}
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g:nth-of-type(2){animation-delay:-.45s}
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g:nth-of-type(3){animation-delay:-.9s}
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g:nth-of-type(4){animation-delay:-1.35s}
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g:nth-of-type(5){animation-delay:-1.8s}
+.sol-bridge .pains > .pain:nth-child(1) .art svg > g:nth-of-type(6){animation-delay:-2.25s}
+.sol-bridge .pains > .pain:nth-child(1) .art svg path[stroke-dasharray]{animation:sb-stroke-flow-slow 4s linear infinite}
+.sol-bridge .pains > .pain:nth-child(1) .art svg path[stroke="#B45309"]{animation:sb-stroke-flow-fast 2.4s linear infinite,sb-accent-pulse 2.4s ease-in-out infinite}
+@keyframes sb-tile-flicker{
+  0%,100%{opacity:1;filter:brightness(1)}
+  45%{opacity:.55;filter:brightness(1.15)}
+  55%{opacity:.8;filter:brightness(.92)}
 }
-/* Card 4 自动化腐烂 — spark lines twinkle */
-.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]{
-  animation:sb-twinkle 1.6s ease-in-out infinite;
-}
-.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]:nth-of-type(odd){animation-delay:-.8s}
-.sol-bridge .pains > .pain:nth-child(4) .art svg path[stroke="#B45309"]{
-  animation:sb-stroke-flow-fast 3.6s linear infinite;
-}
-@keyframes sb-stroke-flow-slow{to{stroke-dashoffset:-12}}
-@keyframes sb-stroke-flow-fast{to{stroke-dashoffset:-18}}
-@keyframes sb-twinkle{
-  0%,100%{opacity:.9}
-  50%{opacity:.3}
+@keyframes sb-accent-pulse{
+  0%,100%{opacity:.55}
+  50%{opacity:1}
 }
 
-/* Card 2 AI 没有记忆 — rings breathe (concentric fade effect kept via scale not opacity) */
+/* --- Card 2 AI 没有记忆: concentric rings decay in rolling wave, time-axis ticks blink --- */
 .sol-bridge .pains > .pain:nth-child(2) .art svg > circle{
   transform-origin:center;transform-box:fill-box;
-  animation:sb-ring-scale 3.6s ease-in-out infinite;
+  animation:sb-ring-decay 3.2s ease-in-out infinite;
 }
-.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(2){animation-delay:-.3s}
-.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(3){animation-delay:-.6s}
-.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(4){animation-delay:-.9s}
-.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(5){animation-delay:-1.2s}
-.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(6){animation-delay:-1.5s}
-.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(7){animation-delay:-1.8s}
-@keyframes sb-ring-scale{
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(2){animation-delay:-.2s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(3){animation-delay:-.4s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(4){animation-delay:-.6s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(5){animation-delay:-.8s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(6){animation-delay:-1s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > circle:nth-of-type(7){animation-delay:-1.2s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > line{animation:sb-tick-blink 2s ease-in-out infinite}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > line:nth-of-type(2){animation-delay:-.2s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > line:nth-of-type(3){animation-delay:-.4s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > line:nth-of-type(4){animation-delay:-.6s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > line:nth-of-type(5){animation-delay:-.8s}
+.sol-bridge .pains > .pain:nth-child(2) .art svg > line:nth-of-type(6){animation-delay:-1s}
+@keyframes sb-ring-decay{
   0%,100%{transform:scale(1)}
-  50%{transform:scale(1.08)}
+  50%{transform:scale(1.12)}
 }
+@keyframes sb-tick-blink{
+  0%,100%{opacity:.5}
+  50%{opacity:.95}
+}
+
+/* --- Card 3 Agent 孤岛: hex islands bob, broken bridges drift, middleman tilts --- */
+.sol-bridge .pains > .pain:nth-child(3) .art svg > g{
+  transform-origin:center;transform-box:fill-box;
+  animation:sb-hex-bob 3.4s ease-in-out infinite;
+}
+.sol-bridge .pains > .pain:nth-child(3) .art svg > g:nth-of-type(2){animation-delay:-.85s}
+.sol-bridge .pains > .pain:nth-child(3) .art svg > g:nth-of-type(3){animation-delay:-1.7s}
+.sol-bridge .pains > .pain:nth-child(3) .art svg > g:nth-of-type(4){animation-delay:-2.55s}
+.sol-bridge .pains > .pain:nth-child(3) .art svg path[stroke="#B45309"]{animation:sb-stroke-flow-fast 2.2s linear infinite}
+@keyframes sb-hex-bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-2.5px)}
+}
+
+/* --- Card 4 自动化腐烂: workflow line march, sparks twinkle hard, rot pieces fizz --- */
+.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]{
+  animation:sb-spark-twinkle 1.4s ease-in-out infinite;
+}
+.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]:nth-of-type(2){animation-delay:-.3s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]:nth-of-type(3){animation-delay:-.6s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg line[stroke="#B45309"]:nth-of-type(4){animation-delay:-.9s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg circle[fill="#B45309"]{
+  transform-origin:center;transform-box:fill-box;
+  animation:sb-spark-fizz 1.8s ease-in-out infinite;
+}
+.sol-bridge .pains > .pain:nth-child(4) .art svg circle[fill="#B45309"]:nth-of-type(2){animation-delay:-.6s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg circle[fill="#B45309"]:nth-of-type(3){animation-delay:-1.2s}
+.sol-bridge .pains > .pain:nth-child(4) .art svg path[stroke-dasharray]{animation:sb-stroke-flow-fast 3s linear infinite}
+@keyframes sb-spark-twinkle{
+  0%,100%{opacity:1;stroke-width:1.4}
+  50%{opacity:.2;stroke-width:1.8}
+}
+@keyframes sb-spark-fizz{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.6);opacity:.4}
+}
+
+/* Shared dash-flow keyframes */
+@keyframes sb-stroke-flow-slow{to{stroke-dashoffset:-12}}
+@keyframes sb-stroke-flow-fast{to{stroke-dashoffset:-18}}
 
 /* Section 2 animations */
 @keyframes sb-ring-pulse{0%,100%{opacity:.9;stroke-width:1}50%{opacity:.45;stroke-width:1.6}}
@@ -2590,39 +2651,41 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 }
 @keyframes sb-cap-fill{from{width:0}to{width:100%}}
 
-/* --- Card art entrance: content rises up when becoming active --- */
-.sol-bridge .cap.active .art > svg{animation:sb-art-enter .7s cubic-bezier(.2,.8,.2,1) both}
-@keyframes sb-art-enter{
-  0%{opacity:0;transform:translateY(10px) scale(.96)}
-  100%{opacity:1;transform:translateY(0) scale(1)}
+/* ============================================================
+   Card 1 (记得你) — ALWAYS-ON looping animation
+   No dependency on .active class; plays continuously every 8s.
+   ============================================================ */
+.sol-bridge .caps > .cap:nth-child(1) .mem-layer{
+  animation:sb-mem-loop 8s ease-in-out infinite;
+}
+.sol-bridge .caps > .cap:nth-child(1) .mem-layer-1{--mem-opacity:.35;animation-delay:0s}
+.sol-bridge .caps > .cap:nth-child(1) .mem-layer-2{--mem-opacity:.55;animation-delay:.2s}
+.sol-bridge .caps > .cap:nth-child(1) .mem-layer-3{--mem-opacity:1;animation-delay:.4s}
+@keyframes sb-mem-loop{
+  0%,8%{opacity:0;transform:translateY(8px)}
+  22%,78%{opacity:var(--mem-opacity,1);transform:translateY(0)}
+  92%,100%{opacity:0;transform:translateY(-4px)}
 }
 
-/* --- Card 1 (记得你) extra dynamism: memory layers stack in, new-dot pings --- */
-.sol-bridge .cap.active .mem-layer{animation:sb-mem-rise .8s cubic-bezier(.22,.8,.22,1) both}
-.sol-bridge .cap.active .mem-layer-1{animation-delay:.05s}
-.sol-bridge .cap.active .mem-layer-2{animation-delay:.2s}
-.sol-bridge .cap.active .mem-layer-3{animation-delay:.35s}
-@keyframes sb-mem-rise{
-  0%{opacity:0;transform:translateY(6px)}
-  100%{opacity:var(--mem-opacity,1);transform:translateY(0)}
+/* Focus card's text lines — draw in, hold, fade out, loop */
+.sol-bridge .caps > .cap:nth-child(1) .mem-line{
+  stroke-dasharray:60;
+  animation:sb-mem-line-loop 8s ease-in-out infinite;
 }
-.sol-bridge .cap.active .mem-layer-1{--mem-opacity:.35}
-.sol-bridge .cap.active .mem-layer-2{--mem-opacity:.55}
-.sol-bridge .cap.active .mem-layer-3{--mem-opacity:1}
-
-/* Focus card's text lines draw in sequentially */
-.sol-bridge .cap.active .mem-line{
-  stroke-dasharray:60;stroke-dashoffset:60;
-  animation:sb-mem-line-draw .55s cubic-bezier(.5,0,.2,1) forwards;
+.sol-bridge .caps > .cap:nth-child(1) .mem-line-1{animation-delay:.6s}
+.sol-bridge .caps > .cap:nth-child(1) .mem-line-2{animation-delay:.8s}
+.sol-bridge .caps > .cap:nth-child(1) .mem-line-3{animation-delay:1.0s}
+.sol-bridge .caps > .cap:nth-child(1) .mem-line-4{animation-delay:1.2s}
+@keyframes sb-mem-line-loop{
+  0%,15%{stroke-dashoffset:60}
+  28%,78%{stroke-dashoffset:0}
+  92%,100%{stroke-dashoffset:60}
 }
-.sol-bridge .cap.active .mem-line-1{animation-delay:.45s}
-.sol-bridge .cap.active .mem-line-2{animation-delay:.55s}
-.sol-bridge .cap.active .mem-line-3{animation-delay:.65s}
-.sol-bridge .cap.active .mem-line-4{animation-delay:.75s}
-@keyframes sb-mem-line-draw{to{stroke-dashoffset:0}}
 
-/* "New" dot: expanding ping ring when activated */
-.sol-bridge .cap.active .new-dot{animation:sb-new-dot-ping 1.6s ease-out .6s infinite}
+/* Orange "new" dot — continuous ping ring */
+.sol-bridge .caps > .cap:nth-child(1) .new-dot{
+  animation:sb-new-dot-ping 1.6s ease-out infinite;
+}
 @keyframes sb-new-dot-ping{
   0%{r:3;filter:drop-shadow(0 0 0 rgba(180,83,9,.6))}
   50%{r:4;filter:drop-shadow(0 0 6px rgba(180,83,9,.45))}
@@ -3041,6 +3104,8 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 /* Hide seps inside dark cascade (invisible anyway, but kill the 1px gap) */
 #waitlist + .sep,
 #trends + .sep{display:none}
+/* Kill separator between Proof and CTA for seamless gradient transition */
+.sep:has(+ #waitlist){display:none}
 
 /* ========== PROOF section (Claude Design: auto-playing quality curve) ========== */
 .proof{
