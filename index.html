@@ -262,7 +262,27 @@ nav{
   min-height:auto;display:flex;flex-direction:column;
   align-items:center;justify-content:flex-start;text-align:center;
   padding:16px 40px 0;position:relative;overflow:visible;
+  isolation:isolate;
 }
+/* Hero background image: behind content, fades from visible at top to invisible at bottom */
+.hero::before{
+  content:"";
+  position:absolute;inset:0;z-index:-1;
+  background:url('assets/hero-bg-hands.png') center 20% / cover no-repeat;
+  opacity:.2;
+  mask-image:linear-gradient(to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,.85) 30%,
+    rgba(0,0,0,.45) 65%,
+    rgba(0,0,0,0) 100%);
+  -webkit-mask-image:linear-gradient(to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,.85) 30%,
+    rgba(0,0,0,.45) 65%,
+    rgba(0,0,0,0) 100%);
+  pointer-events:none;
+}
+.hero-reveal{position:relative;z-index:1}
 .hero-logo-icon{
   width:300px;height:auto;margin-bottom:36px;
   opacity:0;transform:translateY(70px);
@@ -3846,10 +3866,10 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
                        stroke-dasharray="6 94" stroke-dashoffset="3">
                     <animate attributeName="stroke-dashoffset" from="3" to="-97" dur="3.2s" repeatCount="indefinite"/>
                   </use>
-                  <circle cx="30"  cy="120" r="3.5" fill="#80D2AA"/>
-                  <circle cx="70"  cy="105" r="3.5" fill="#2D8B92"/>
-                  <circle cx="110" cy="96"  r="3.5" fill="#1A5B84"/>
-                  <circle cx="145" cy="68"  r="3.5" fill="#1A5B84"/>
+                  <circle cx="30"  cy="120"    r="3.5" fill="#80D2AA"/>
+                  <circle cx="70"  cy="105"    r="3.5" fill="#2D8B92"/>
+                  <circle cx="100" cy="104.75" r="3.5" fill="#1A5B84"/>
+                  <circle cx="152.25" cy="67.25" r="3.5" fill="#1A5B84"/>
                   <circle r="4" fill="#80D2AA" stroke="#1A2D5C" stroke-width="1.2">
                     <animateMotion dur="3.2s" repeatCount="indefinite" rotate="auto">
                       <mpath href="#sbRunPath"/>
