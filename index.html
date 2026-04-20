@@ -274,7 +274,7 @@ nav{
 }
 .hero-hand{
   position:absolute;
-  height:72vh;width:auto;max-width:none;  /* sized down per user feedback */
+  height:72vh;width:auto;max-width:none;
   opacity:0;
   filter:invert(.85) sepia(.4) hue-rotate(165deg) saturate(1.8) brightness(.55);
   will-change:transform,opacity;
@@ -295,21 +295,17 @@ nav{
           mask-image:linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(0,0,0,0) 90%);
   animation:heroHandRobotIn 2.6s cubic-bezier(.22,.8,.28,1) .45s forwards;
 }
-/* Rotation geometry — both hands rotate CW (positive) to mirror-symmetry:
-   Human natural axis: up-right at -71.6° (screen math).
-     Target: 30° above horizontal-right (-30°). Rotate CW by +41.6°.
-   Robot natural axis: down-left at +105° (screen math).
-     Target: 30° below horizontal-left (+150°). Rotate CW by +45°.
-   Both use POSITIVE rotation — they are NOT opposite directions. */
+/* Human hand keeps its +41° CW rotation — user said that position looks good.
+   Robot hand: ZERO rotation per user request (natural PNG orientation). */
 @keyframes heroHandHumanIn{
   0%  {transform:translate(260%, -180%) rotate(70deg); opacity:0}
-  35% {opacity:.32}
-  100%{transform:translate(-9%, -98.5%) rotate(41deg); opacity:.32}
+  35% {opacity:.22}
+  100%{transform:translate(-9%, -98.5%) rotate(41deg); opacity:.22}
 }
 @keyframes heroHandRobotIn{
-  0%  {transform:translate(-240%, 160%) rotate(75deg); opacity:0}
-  35% {opacity:.32}
-  100%{transform:translate(-80%, -1%)   rotate(45deg); opacity:.32}
+  0%  {transform:translate(-240%, 160%) rotate(0);  opacity:0}
+  35% {opacity:.22}
+  100%{transform:translate(-80%, -1%)   rotate(0);  opacity:.22}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-hand{animation-duration:.01s;animation-delay:0s}
