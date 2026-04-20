@@ -262,27 +262,7 @@ nav{
   min-height:auto;display:flex;flex-direction:column;
   align-items:center;justify-content:flex-start;text-align:center;
   padding:16px 40px 0;position:relative;overflow:visible;
-  isolation:isolate;
 }
-/* Hero background image: behind content, fades from visible at top to invisible at bottom */
-.hero::before{
-  content:"";
-  position:absolute;inset:0;z-index:-1;
-  background:url('assets/hero-bg-hands.png') center 20% / cover no-repeat;
-  opacity:.2;
-  mask-image:linear-gradient(to bottom,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,.85) 30%,
-    rgba(0,0,0,.45) 65%,
-    rgba(0,0,0,0) 100%);
-  -webkit-mask-image:linear-gradient(to bottom,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,.85) 30%,
-    rgba(0,0,0,.45) 65%,
-    rgba(0,0,0,0) 100%);
-  pointer-events:none;
-}
-.hero-reveal{position:relative;z-index:1}
 .hero-logo-icon{
   width:300px;height:auto;margin-bottom:36px;
   opacity:0;transform:translateY(70px);
