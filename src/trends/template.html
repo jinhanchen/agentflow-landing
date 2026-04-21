@@ -74,124 +74,173 @@ a{color:inherit;text-decoration:none}
 .blog-hero::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 120% 80% at 20% 100%, rgba(128,210,170,.18) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 60% at 80% 20%, rgba(45,139,146,.22) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 40% at 50% 60%, rgba(26,91,132,.15) 0%, transparent 55%);
+    radial-gradient(ellipse 100% 70% at 15% 110%, rgba(128,210,170,.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 10%, rgba(45,139,146,.16) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 55% 55%, rgba(26,91,132,.10) 0%, transparent 55%);
   pointer-events:none;
 }
 
-/* Grid texture overlay */
+/* Fine grid texture */
 .blog-hero::after{
   content:'';position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(128,210,170,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(128,210,170,.04) 1px, transparent 1px);
-  background-size:48px 48px;
+    linear-gradient(rgba(128,210,170,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(128,210,170,.025) 1px, transparent 1px);
+  background-size:56px 56px;
   pointer-events:none;
 }
 
 .hero-inner{
   position:relative;z-index:2;
   max-width:1100px;margin:0 auto;
-  padding:160px 40px 80px;
+  padding:148px 40px 88px;
 }
 
-/* Eyebrow label */
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--font-mono);
-  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
-  color:var(--mint);
-  margin-bottom:28px;
-  opacity:.85;
+/* === ABOVE THE TITLE ZONE === */
+
+/* Brand mark row: small icon + SOLARIAN wordmark */
+.hero-brand-mark{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:20px;
 }
-.hero-eyebrow::before{
-  content:'';width:32px;height:1px;background:var(--mint);opacity:.5;
+.hero-brand-icon{
+  width:28px;height:28px;
+  opacity:.9;
+  flex-shrink:0;
+}
+.hero-brand-name{
+  font-family:var(--font-display);
+  font-size:12px;font-weight:600;
+  letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(251,255,254,.5);
+}
+.hero-brand-sep{
+  width:1px;height:16px;
+  background:rgba(128,210,170,.25);
+  flex-shrink:0;
+}
+.hero-brand-section{
+  font-family:var(--font-mono);
+  font-size:11px;font-weight:400;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--mint);
+  opacity:.8;
+}
+
+/* Brand gradient accent line (separates "above" from title) */
+.hero-accent-line{
+  width:64px;height:2px;
+  background:linear-gradient(90deg, var(--mint) 0%, var(--teal) 50%, transparent 100%);
+  border-radius:2px;
+  margin-bottom:28px;
+}
+
+/* Eyebrow status badge */
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(128,210,170,.7);
+  margin-bottom:16px;
 }
 .hero-eyebrow .dot{
-  width:5px;height:5px;border-radius:50%;background:var(--mint);
+  width:5px;height:5px;border-radius:50%;
+  background:var(--mint);
+  box-shadow:0 0 6px rgba(128,210,170,.6);
   animation:pulse-dot 2.4s ease-in-out infinite;
+  flex-shrink:0;
 }
 @keyframes pulse-dot{
-  0%,100%{opacity:.5;transform:scale(1)}
-  50%{opacity:1;transform:scale(1.4)}
+  0%,100%{opacity:.55;box-shadow:0 0 4px rgba(128,210,170,.4)}
+  50%{opacity:1;box-shadow:0 0 10px rgba(128,210,170,.8)}
 }
 
 /* Main title */
 .hero-title{
   font-family:var(--font-display);
-  font-size:clamp(3.2rem,7vw,6rem);
+  font-size:clamp(3.4rem,7.5vw,6.4rem);
   font-weight:700;
-  letter-spacing:-3px;
-  line-height:1.0;
+  letter-spacing:-3.5px;
+  line-height:.96;
   color:var(--white);
   margin-bottom:28px;
 }
 .hero-title .opc{
   display:inline-block;
-  background:var(--gradient-brand);
+  background:linear-gradient(90deg, #80D2AA 0%, #2D8B92 45%, #1A5B84 80%);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
   background-size:200% auto;
-  animation:gradient-shift 6s ease-in-out infinite;
+  animation:gradient-shift 7s ease-in-out infinite;
 }
 @keyframes gradient-shift{
   0%,100%{background-position:0% 50%}
   50%{background-position:100% 50%}
 }
 .hero-title .blog{
-  color:rgba(251,255,254,.92);
+  color:rgba(251,255,254,.88);
+  display:block;
+  margin-top:4px;
 }
 
 /* Subtitle */
 .hero-sub{
   font-family:var(--font-body);
-  font-size:1.05rem;font-weight:300;
-  color:rgba(251,255,254,.55);
-  letter-spacing:.02em;
-  line-height:1.7;
-  max-width:480px;
-  margin-bottom:48px;
+  font-size:1rem;font-weight:300;
+  color:rgba(251,255,254,.48);
+  letter-spacing:.015em;
+  line-height:1.75;
+  max-width:440px;
+  margin-bottom:52px;
+}
+.hero-sub em{
+  font-style:normal;
+  color:rgba(251,255,254,.65);
+  font-weight:400;
 }
 
 /* Stats strip */
 .hero-stats{
-  display:flex;align-items:center;gap:32px;
+  display:flex;align-items:center;gap:28px;
   flex-wrap:wrap;
 }
 .hero-stat{
-  display:flex;flex-direction:column;gap:3px;
+  display:flex;flex-direction:column;gap:4px;
 }
 .hero-stat-num{
   font-family:var(--font-mono);
-  font-size:1.4rem;font-weight:500;
+  font-size:1.5rem;font-weight:500;
   color:var(--mint);
   line-height:1;
+  letter-spacing:-.02em;
 }
 .hero-stat-label{
   font-family:var(--font-body);
-  font-size:.7rem;letter-spacing:.12em;
-  color:rgba(251,255,254,.38);
+  font-size:.65rem;letter-spacing:.14em;
+  color:rgba(251,255,254,.32);
   text-transform:uppercase;
 }
 .hero-stat-divider{
-  width:1px;height:36px;
-  background:rgba(128,210,170,.18);
+  width:1px;height:32px;
+  background:rgba(128,210,170,.14);
   flex-shrink:0;
 }
 
-/* Decorative infinity mark (top-right corner) */
-.hero-deco{
-  position:absolute;right:40px;top:50%;transform:translateY(-50%);
-  z-index:1;opacity:.06;
+/* Real logo mark watermark — large, right side, mint fades into navy naturally */
+.hero-logo-watermark{
+  position:absolute;
+  right:-120px;top:50%;
+  transform:translateY(-50%);
+  width:580px;height:auto;
+  opacity:.11;
   pointer-events:none;
+  z-index:1;
 }
-.hero-deco svg{width:280px;height:auto}
 
 /* Gradient transition: navy → bg */
 .hero-fade{
-  height:80px;
-  background:linear-gradient(to bottom, var(--navy), var(--bg));
+  height:88px;
+  background:linear-gradient(to bottom, var(--navy) 0%, rgba(26,45,92,.6) 50%, var(--bg) 100%);
   position:relative;z-index:0;
 }
 
@@ -554,7 +603,7 @@ footer .logo{color:var(--white);font-size:.9rem}
 @media(max-width:768px){
   .hero-inner{padding:140px 20px 60px}
   .hero-title{font-size:clamp(2.4rem,9vw,3.5rem);letter-spacing:-2px}
-  .hero-deco{display:none}
+  .hero-logo-watermark{width:320px;right:-60px;opacity:.08}
   .hero-stats{gap:20px}
   .filter-inner{padding:0 20px}
   .gallery-section{padding:32px 20px 80px}
@@ -607,29 +656,35 @@ footer .logo{color:var(--white);font-size:.9rem}
 
 <!-- ========== HERO ========== -->
 <section class="blog-hero">
-  <!-- Decorative infinity mark -->
-  <div class="hero-deco" aria-hidden="true">
-    <svg viewBox="0 0 240 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M120 60C120 60 90 20 60 20C30 20 10 38 10 60C10 82 30 100 60 100C90 100 120 60 120 60Z" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-      <path d="M120 60C120 60 150 20 180 20C210 20 230 38 230 60C230 82 210 100 180 100C150 100 120 60 120 60Z" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="120" cy="60" r="4" fill="white" opacity=".6"/>
-      <path d="M120 60L150 40" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
-      <path d="M146 38L152 40L150 46" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".4"/>
-    </svg>
-  </div>
+
+  <!-- Real Solarian logo mark as large watermark (mint→navy gradient fades naturally into bg) -->
+  <img class="hero-logo-watermark" src="assets/solarian-logo-icon.svg" alt="" aria-hidden="true">
 
   <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <div class="dot"></div>
-      OPC Intelligence · 一人公司研究
+
+    <!-- ↑ ABOVE THE TITLE: brand mark + accent line + eyebrow -->
+    <div class="hero-brand-mark">
+      <img class="hero-brand-icon" src="assets/solarian-logo-icon.svg" alt="Solarian">
+      <span class="hero-brand-name">Solarian</span>
+      <span class="hero-brand-sep"></span>
+      <span class="hero-brand-section">OPC Research</span>
     </div>
 
+    <div class="hero-accent-line"></div>
+
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      一人公司时代研究 · 持续更新
+    </div>
+    <!-- ↑ END ABOVE THE TITLE -->
+
     <h1 class="hero-title">
-      <span class="opc">OPC</span> <span class="blog">博客</span>
+      <span class="opc">OPC</span>
+      <span class="blog">博客</span>
     </h1>
 
     <p class="hero-sub">
-      追踪一人公司时代的浪潮——政策、案例、工具、洞见。<br>
+      追踪一人公司时代的浪潮——<em>政策、案例、工具、洞见</em>。<br>
       A company of one, a team of many.
     </p>
 
