@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Altman：一人十亿美元公司即将出现 — Solarian</title>
+<meta name="description" content=""在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。"">
+<meta property="og:title" content="Sam Altman：一人十亿美元公司即将出现 — Solarian">
+<meta property="og:description" content=""在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。"">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/trends/004">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#F5F0E6;
+  --bg-card:#FFFFFF;
+  --border:rgba(26,31,46,0.08);
+  --border-hover:rgba(26,31,46,0.15);
+  --text:#1A1F2E;
+  --text-sub:rgba(26,31,46,0.65);
+  --text-dim:rgba(26,31,46,0.35);
+  --accent:#2D8B92;
+  --accent-sub:rgba(13,148,136,0.12);
+  --accent-secondary:#D97757;
+  --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
+  --font-body:'DM Sans','Noto Sans SC',sans-serif;
+  --font-serif:'Noto Serif SC',Georgia,serif;
+  --ease:cubic-bezier(0.25,1,0.5,1);
+  --tag-policy:#1A5B84;
+  --tag-case:#1F9E6E;
+  --tag-trend:#2D8B92;
+  --tag-opinion:#D97757;
+  --tag-insight:#1F6F87;
+  --tag-story:#23376C;
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-weight:350;
+}
+a{color:inherit;text-decoration:none}
+
+.card-tag{
+  display:inline-flex;
+  align-self:flex-start;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  padding:3px 10px;
+  border-radius:100px;
+  text-transform:uppercase;
+}
+.tag-policy{background:rgba(26,91,132,0.1);color:var(--tag-policy)}
+.tag-case{background:rgba(31,158,110,0.1);color:var(--tag-case)}
+.tag-trend{background:rgba(45,139,146,0.1);color:var(--tag-trend)}
+.tag-opinion{background:rgba(217,119,87,0.1);color:var(--tag-opinion)}
+.tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
+.tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
+
+/* ========== ARTICLE LAYOUT ========== */
+.article-layout{
+  max-width:1120px;margin:120px auto 0;
+  padding:0 40px;
+  display:grid;grid-template-columns:220px 1fr;
+  gap:60px;align-items:start;
+}
+
+.sub-sidebar{
+  position:sticky;top:100px;
+  padding-top:8px;
+}
+.sub-sidebar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--text-sub);
+  font-size:.82rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  transition:all .2s var(--ease);
+  margin-bottom:40px;
+  font-family:var(--font-body);
+  text-decoration:none;
+}
+.sub-sidebar-back:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(-3px);
+}
+.sub-sidebar-back svg{width:12px;height:12px}
+
+.sub-sidebar-label{
+  font-family:var(--font-display);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+  padding-left:16px;
+}
+.sub-sidebar-toc{
+  list-style:none;padding:0;margin:0 0 32px;
+  border-left:1px solid var(--border);
+}
+.sub-sidebar-toc li{margin:0}
+.sub-sidebar-toc a{
+  display:block;padding:9px 16px;
+  font-size:.84rem;line-height:1.4;
+  color:var(--text-sub);
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.sub-sidebar-toc a:hover{
+  color:var(--text);border-left-color:var(--border-hover);
+}
+.sub-sidebar-toc a.active{
+  color:var(--accent);border-left-color:var(--accent);
+  font-weight:500;background:var(--accent-sub);
+}
+.sub-sidebar-meta{
+  padding:16px;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--text-dim);
+  line-height:1.6;
+}
+.sub-sidebar-meta strong{
+  display:block;color:var(--text-sub);font-weight:600;
+  font-family:var(--font-display);
+  margin-bottom:4px;
+}
+
+.article-main{min-width:0;padding-bottom:80px}
+
+.article-page .article-cover{
+  display:block;
+  width:100%;max-width:480px;
+  margin:0 auto 28px;
+  border-radius:12px;
+}
+.article-page .article-cover-grad{
+  width:100%;max-width:480px;aspect-ratio:16/9;
+  margin:0 auto 28px;border-radius:12px;
+}
+.article-page .card-tag{margin-bottom:12px}
+.article-page h1{
+  font-family:var(--font-display);
+  font-size:clamp(1.3rem,2.5vw,1.6rem);
+  font-weight:700;color:var(--text);
+  margin-bottom:12px;line-height:1.3;
+  letter-spacing:-1px;
+}
+.article-page .article-meta{
+  font-size:.78rem;color:var(--text-dim);
+  margin-bottom:24px;padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.article-page .article-body{
+  font-size:.92rem;color:rgba(26,31,46,0.78);line-height:1.9;
+}
+.article-page .article-body p{margin-bottom:16px}
+.article-page .article-body p:last-child{margin-bottom:0}
+.article-page .article-body strong{color:var(--text);font-weight:500}
+.article-page .article-body blockquote{
+  border-left:3px solid var(--accent);
+  padding-left:16px;
+  margin:20px 0;
+  font-style:italic;
+  color:var(--text-sub);
+}
+.article-page .article-body h2{
+  font-family:var(--font-display);
+  font-size:1.2rem;font-weight:700;
+  color:var(--text);margin:36px 0 16px;
+  letter-spacing:-.5px;
+  scroll-margin-top:100px;
+}
+.article-page .article-body p.lede{
+  font-size:1.05rem;line-height:1.8;
+  color:var(--text);margin-bottom:28px;font-weight:400;
+}
+.article-page .article-body .section-break{
+  width:70px;height:2px;background:var(--accent);
+  margin:40px auto;border-radius:2px;opacity:.35;
+}
+.article-page .article-body .signature{
+  margin-top:40px;padding-top:20px;
+  border-top:1px solid var(--border);text-align:center;
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body .signature strong{
+  display:block;color:var(--text);font-size:.92rem;margin-bottom:4px;
+}
+.article-page .article-body ol.references{
+  list-style:decimal;
+  margin:0 0 24px 0;padding-left:24px;
+  font-size:.78rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body ol.references li{margin-bottom:8px}
+.article-page .article-body ol.references a{
+  color:var(--accent);word-break:break-all;
+  text-decoration:underline;text-decoration-color:var(--accent-sub);
+  text-underline-offset:2px;
+}
+.article-page .article-body ol.references a:hover{text-decoration-color:var(--accent)}
+.article-page .article-body sup{
+  font-size:.65em;color:var(--accent);font-weight:600;
+}
+.article-page .article-body sup a{color:inherit;text-decoration:none}
+.article-page .article-body sup a:hover{text-decoration:underline}
+.article-page .article-body ul,.article-page .article-body ol{
+  margin:0 0 20px;padding-left:24px;
+}
+.article-page .article-body li{margin-bottom:8px}
+
+/* ========== FOOTER ========== */
+footer{
+  position:relative;z-index:1;
+  background:#1a1f2e;
+  border-top:1px solid rgba(255,255,255,0.08);padding:36px 0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;padding-inline:40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,0.85)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .article-layout{
+    grid-template-columns:1fr;gap:24px;margin-top:100px;
+  }
+  .sub-sidebar{
+    position:static;padding:0 0 24px;
+    border-bottom:1px solid var(--border);margin-bottom:16px;
+  }
+  .sub-sidebar-toc,.sub-sidebar-label,.sub-sidebar-meta{display:none}
+  .sub-sidebar-back{margin-bottom:16px}
+}
+@media(max-width:768px){
+  .nav-inner{padding-inline:20px}
+  .nav-links{gap:16px}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center}
+  .article-layout{padding:0 20px}
+  .article-main{padding-bottom:60px}
+}
+</style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/main" class="logo">
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
+      Solarian
+    </a>
+    <ul class="nav-links">
+      <li><a href="/main">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="/main#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="/main#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="/main#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="/main#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="/main#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="/trends" class="current">OPC 博客</a></li>
+      <li><a href="/news">公告</a></li>
+      <li><a href="/about">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
+      <li><button class="btn btn-nav btn-fill" onclick="openWaitlist()">加入 Waitlist</button></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="article-layout">
+
+  <aside class="sub-sidebar">
+    <a href="/trends" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回博客
+    </a>
+
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>Sam Altman</strong>
+      2026-04-04 · 10 分钟
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <div class="article-page">
+      <img class="article-cover" src="/assets/sam_altman.jpg" alt="">
+      <span class="card-tag tag-opinion">观点</span>
+      <h1>Sam Altman：一人十亿美元公司即将出现</h1>
+      <div class="article-meta">Sam Altman &middot; 2026-04-04 &middot; 10 分钟</div>
+      <div class="article-body">
+                <p class="lede">
+          "在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。在 AI 之前这不可想象，但现在它会发生。" 这段话出自 OpenAI CEO Sam Altman，最早流传于 2024 年初<sup><a href="#ref-1">[1]</a></sup>。一年后，Anthropic CEO Dario Amodei 在 Code with Claude 开发者大会上被直接问到同样的问题——"一人十亿美元公司什么时候出现？"他的回答是："2026 年，我有 70-80% 的信心。"<sup><a href="#ref-2">[2]</a></sup> 两位当今最重要的 AI 公司创始人，对同一个预言给出了几乎相同的判断。这不是营销话术，而是他们基于技术演进速度做出的推断。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、预言的逻辑</h2>
+
+        <p>Altman 的判断基于一个简单的经济学原理：<strong>AI 正在将边际成本推向零。</strong></p>
+
+        <p>在传统企业模型中，增长需要人力。客户增加 10 倍，你需要增加客服、增加工程师、增加运营人员——每多服务一个用户都有增量成本。这是为什么公司需要融资、需要团队扩张的根本原因。</p>
+
+        <p>AI 打破了这个等式。当代码由 AI 编写，设计由 AI 生成，客服由 AI 处理，数据分析由 AI 完成，一个人可以服务的客户数量不再受制于时间和精力——它受制于 <strong>AI Agent 的数量和能力</strong>。而 AI Agent 的边际成本，与人类员工相比，几乎可以忽略不计<sup><a href="#ref-3">[3]</a></sup>。</p>
+
+        <p>Altman 在 Fortune 杂志的采访中进一步阐述：很快我们就会看到"十人团队的十亿美元估值公司"，紧接着就是"一人十亿美元公司"<sup><a href="#ref-1">[1]</a></sup>。他认为 AI 将复制整个人类员工的产出——你不需要雇一个设计师，GPT 帮你设计；你不需要雇一个工程师，Claude 帮你写代码。</p>
+
+        <blockquote>我们很快就会看到一人公司拥有十亿美元估值。在 AI 之前这是不可想象的，但现在它会发生。—— Sam Altman, OpenAI CEO<sup><a href="#ref-1">[1]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>二、Amodei 的更具体预测</h2>
+
+        <p>如果说 Altman 的表述偏向愿景，Amodei 的判断则更具体、更可验证。</p>
+
+        <p>2025 年 5 月，在 Anthropic 的 Code with Claude 开发者大会上，当被问到首家一人十亿美元公司何时出现时，Amodei 明确回答："2026 年"，并给出了 <strong>70-80% 的置信度</strong><sup><a href="#ref-2">[2]</a></sup>。他还具体指出了最可能的领域：<strong>自动交易（proprietary trading）、开发者工具（developer tools）、以及全自动客户服务的业务</strong>——这些都是 AI 能直接接管核心价值链的场景。</p>
+
+        <p>Amodei 的另一个预测更加激进：到 2025 年底，AI 将负责编写 <strong>90-100%</strong> 的软件代码<sup><a href="#ref-4">[4]</a></sup>。当被问及"一个人用 Claude 能不能做出 Instagram 这样的产品"时，他停顿了一下说："好吧，也许是两个人的公司而不是一个人的公司，但我们会很接近。"<sup><a href="#ref-2">[2]</a></sup></p>
+
+        <p>在 2026 年初的达沃斯世界经济论坛上，Amodei 进一步预测：AI 将在 6-12 个月内对软件工程师产生实质性替代效果，50% 的白领工作将在 1-5 年内受到显著冲击<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <div class="section-break"></div>
+
+        <h2>三、不止是 Altman 和 Amodei</h2>
+
+        <p>一人十亿美元公司的预言，不是两个人的一厢情愿。整个硅谷最有影响力的一批人都在表达类似判断：</p>
+
+        <p><strong>Vinod Khosla</strong>（Sun Microsystems 联合创始人、Khosla Ventures 创始人）在多个场合表示，未来的创业公司不需要大团队——AI 将使 2-3 人团队具备传统百人公司的产出能力<sup><a href="#ref-6">[6]</a></sup>。</p>
+
+        <p><strong>Garry Tan</strong>（Y Combinator CEO）透露 YC 2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成，并断言"你不再需要 50 或 100 个工程师"<sup><a href="#ref-7">[7]</a></sup>。</p>
+
+        <p><strong>Satya Nadella</strong>（Microsoft CEO）在 2026 年初表示，2026 年将是 AI 从理论走向实践的转折点——AI 将从"热门话题"变成"日常工具"，真正嵌入每一个工作流程中<sup><a href="#ref-8">[8]</a></sup>。</p>
+
+        <p>这些判断来自各自独立的视角：OpenAI 看到的是模型能力的指数增长，Anthropic 看到的是编码能力的突破，YC 看到的是创业者行为的结构性变化，Microsoft 看到的是企业端的采纳速度。<em>当所有信号指向同一个方向，你很难说它不会发生。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>四、已经在逼近的现实</h2>
+
+        <p>预言是否太超前？让数据说话。</p>
+
+        <p><strong>Medvi</strong>：两人创办的远程医疗公司，2025 年营收 4.01 亿美元，2026 年 run rate 18 亿美元<sup><a href="#ref-9">[9]</a></sup>。如果按这个轨迹走下去，它可能成为第一家接近"一人十亿美元公司"定义的企业——虽然严格来说是两个人。</p>
+
+        <p><strong>Danny Postma · HeadshotPro</strong>：真正的一人公司，AI 头像生成工具，ARR 360 万美元。离十亿还远，但它证明了一个人可以从零到数百万美元营收，不需要任何员工<sup><a href="#ref-10">[10]</a></sup>。</p>
+
+        <p><strong>Maor Shlomo · Base44</strong>：一人创建的无代码平台，6 个月 25 万用户，8,000 万美元被 Wix 收购<sup><a href="#ref-10">[10]</a></sup>。不是营收十亿，但退出价值已经接近独角兽门槛。</p>
+
+        <p>从 360 万到 8,000 万到 4 亿——"一人十亿美元"不是一步到位的跳跃，而是一条正在被填充的连续谱。</p>
+
+        <div class="section-break"></div>
+
+        <h2>五、怀疑者的问题，和我们的回答</h2>
+
+        <p>当然，怀疑声也不少。最常见的质疑包括：</p>
+
+        <p><strong>"一个人怎么处理法律、合规、财务这些非技术问题？"</strong>——这些问题正在被专业化的 AI 工具和外包服务解决。Stripe Atlas 帮你注册公司，Clerk 处理用户认证，Stripe 管收款，AI 律师助手帮你审合同。"一个人"不是指所有事亲力亲为，而是指<em>决策权和利润归属于一个人</em>。</p>
+
+        <p><strong>"人际关系和战略判断还是需要人类"</strong>——这恰恰说明了一个人已经够了。如果一家公司最核心的价值来自创始人的战略判断和行业洞察，那需要的正是一个有远见的人 + 一套能执行远见的 AI 系统。</p>
+
+        <p><strong>"极端案例不可复制"</strong>——Medvi 确实有独特的市场时机（GLP-1 减重药爆发）。但重点不是 Medvi 能不能被复制，而是<em>AI 工具的能力曲线是否会让越来越多的人有机会做到类似的事</em>。答案显然是肯定的——每过六个月，AI 能做的事都在增加，而创业者需要手动做的事都在减少。</p>
+
+        <div class="section-break"></div>
+
+        <h2>结论：不是"会不会发生"，而是"什么时候"</h2>
+
+        <p>Sam Altman 和 Dario Amodei 之间的分歧，不是"一人十亿美元公司会不会出现"——他们都认为会。分歧只是时间：是 2026 年还是更晚一些。</p>
+
+        <p>对于今天的独立创业者来说，这个预言的意义不在于"你能不能做到十亿美元"——大多数人不需要。意义在于：<strong>创办和运营一家公司所需的最低人数，正在指数级下降。</strong>一个人能做的事情的天花板，正在被 AI 以前所未有的速度推高。</p>
+
+        <p>你不需要成为下一个 Gallagher，但你可以成为 AI 时代的独立创业者。而 Solarian 要做的，就是让"一个人指挥一支 AI 团队"这件事，变得像今天发一封邮件一样自然。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">Sam Altman wants AI to create a one-person unicorn with a billion-dollar valuation · Fortune · 2024 年 2 月 · <a href="https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/" target="_blank" rel="noopener">https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/</a></li>
+          <li id="ref-2">Anthropic CEO Dario Amodei Predicts the First Billion-Dollar Solopreneur by 2026 · Inc. · 2025 年 5 月 · <a href="https://www.inc.com/ben-sherry/anthropic-ceo-dario-amodei-predicts-the-first-billion-dollar-solopreneur-by-2026/91193609" target="_blank" rel="noopener">https://www.inc.com/ben-sherry/anthropic-ceo-dario-amodei-predicts-the-first-billion-dollar-solopreneur-by-2026/91193609</a></li>
+          <li id="ref-3">The One-person Billion-dollar Company · Every · <a href="https://every.to/napkin-math/the-one-person-billion-dollar-company" target="_blank" rel="noopener">https://every.to/napkin-math/the-one-person-billion-dollar-company</a></li>
+          <li id="ref-4">With AI, single person can operate billion dollar company · YourStory · 2025 · <a href="https://yourstory.com/ai-story/ai-billion-dollar-company-one-person-anthropic-dario-amodei" target="_blank" rel="noopener">https://yourstory.com/ai-story/ai-billion-dollar-company-one-person-anthropic-dario-amodei</a></li>
+          <li id="ref-5">WEF 2026: What the Most Powerful AI Leaders Say About AGI, Jobs, and the Future of Humanity · Context Studios · 2026 · <a href="https://www.contextstudios.ai/blog/wef-2026-what-the-most-powerful-ai-leaders-say-about-agi-jobs-and-the-future-of-humanity" target="_blank" rel="noopener">https://www.contextstudios.ai/blog/wef-2026-what-the-most-powerful-ai-leaders-say-about-agi-jobs-and-the-future-of-humanity</a></li>
+          <li id="ref-6">The Rise of the One-Person Billion-Dollar Company: Sam Altman's Take · StartupBell · <a href="https://www.startupbell.net/post/the-rise-of-the-one-person-billion-dollar-company-sam-altman-s-take" target="_blank" rel="noopener">https://www.startupbell.net/post/the-rise-of-the-one-person-billion-dollar-company-sam-altman-s-take</a></li>
+          <li id="ref-7">How Solo Founders Are Building Million-Dollar Businesses With AI Tools in 2026 · GREY Journal · 2026 · <a href="https://greyjournal.net/hustle/grow/solo-founders-million-dollar-ai-businesses-2026/" target="_blank" rel="noopener">https://greyjournal.net/hustle/grow/solo-founders-million-dollar-ai-businesses-2026/</a></li>
+          <li id="ref-8">Microsoft CEO Satya Nadella says 2026 will be a turning point for AI · Hack Diversity · 2026 · <a href="https://www.hackdiversity.com/microsoft-ceo-satya-nadella-says-2026/" target="_blank" rel="noopener">https://www.hackdiversity.com/microsoft-ceo-satya-nadella-says-2026/</a></li>
+          <li id="ref-9">How AI Helped Medvi, a Telehealth Provider With Just Two Employees, Hit $401M in 2025 Sales · Erin Griffith · The New York Times · 2026 年 4 月</li>
+          <li id="ref-10">The Rise of the Solopreneur: Why One-Person Businesses Are the Defining Entrepreneurship Story of 2026 · Epirus VC · 2026 · <a href="https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026" target="_blank" rel="noopener">https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 4 期<br>
+          2024
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
+      </a>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
+    </div>
+    <div class="footer-links">
+      <a href="/main#product">产品</a>
+      <a href="/trends">博客</a>
+      <a href="/about">关于</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+function toggleLang(){
+  const t = document.getElementById('langToggle');
+  if(!t) return;
+  t.querySelector('.lang-zh').classList.toggle('active');
+  t.querySelector('.lang-en').classList.toggle('active');
+}
+
+// Build TOC from h2 elements in article body
+(function(){
+  var content = document.querySelector('.article-body');
+  if (!content) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = content.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+<!-- ========== WAITLIST MODAL ========== -->
+<div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
+<div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wl-modal">
+    <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="wl-header">
+      <h3>加入 Solarian Waitlist</h3>
+      <p>帮助我们了解你的需求，让 Solarian 更好地为你服务</p>
+    </div>
+    <form id="waitlistForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+      <div class="wl-row">
+        <div class="wl-field"><label>姓名 <span class="wl-req">*</span></label><input type="text" name="name" required placeholder="你的名字"></div>
+        <div class="wl-field"><label>邮箱 <span class="wl-req">*</span></label><input type="email" name="email" required placeholder="name@company.com"></div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-field"><label>所在国家/地区 <span class="wl-req">*</span></label>
+          <select name="country" required>
+            <option value="" disabled selected>选择国家/地区</option>
+            <option value="CN">中国</option><option value="US">美国</option><option value="GB">英国</option>
+            <option value="JP">日本</option><option value="KR">韩国</option><option value="SG">新加坡</option>
+            <option value="DE">德国</option><option value="FR">法国</option><option value="AU">澳大利亚</option>
+            <option value="CA">加拿大</option><option value="IN">印度</option><option value="BR">巴西</option>
+            <option value="AE">阿联酋</option><option value="HK">中国香港</option><option value="TW">中国台湾</option>
+            <option value="OTHER">其他</option>
+          </select>
+        </div>
+        <div class="wl-field"><label>所在行业 <span class="wl-req">*</span></label>
+          <select name="industry" required>
+            <option value="" disabled selected>选择行业</option>
+            <option value="tech">科技/互联网</option><option value="finance">金融/投资</option>
+            <option value="ecommerce">电商/零售</option><option value="education">教育/培训</option>
+            <option value="media">媒体/内容</option><option value="consulting">咨询/服务</option>
+            <option value="manufacturing">制造/工业</option><option value="healthcare">医疗/健康</option>
+            <option value="realestate">房地产/建筑</option><option value="legal">法律/合规</option>
+            <option value="freelancer">自由职业/独立开发</option><option value="student">学生/研究</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+      </div>
+      <div class="wl-field"><label>你的角色/职位</label><input type="text" name="role" placeholder="如：产品经理、创始人、开发者..."></div>
+      <div class="wl-field"><label>你目前工作中最大的痛点是什么？ <span class="wl-req">*</span></label><textarea name="painpoints" required rows="3" placeholder="例如：每天要在 5 个 AI 工具间切换..."></textarea></div>
+      <div class="wl-field"><label>你希望 Solarian 帮你完成哪些具体工作？</label><textarea name="usecase" rows="3" placeholder="例如：自动生成周报、管理社交媒体内容..."></textarea></div>
+      <button type="submit" class="wl-submit" id="wlSubmitBtn">
+        <span>提交申请</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>欢迎加入 Solarian！</h3>
+      <p>我们已收到你的申请，会在第一时间通知你内测开放。</p>
+    </div>
+  </div>
+</div>
+<script src="/assets/waitlist.js"></script>
+</body>
+</html>

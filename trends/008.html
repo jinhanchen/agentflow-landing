@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPC 博客 — Solarian</title>
+<title>Solarian 创始人：我就是第一个用户 — Solarian</title>
+<meta name="description" content=""我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"">
+<meta property="og:title" content="Solarian 创始人：我就是第一个用户 — Solarian">
+<meta property="og:description" content=""我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/trends/008">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +18,6 @@
 :root{
   --bg:#F5F0E6;
   --bg-card:#FFFFFF;
-  --bg-card-hover:#FAFAF5;
   --border:rgba(26,31,46,0.08);
   --border-hover:rgba(26,31,46,0.15);
   --text:#1A1F2E;
@@ -40,83 +44,10 @@ body{
   background:var(--bg);
   color:var(--text);
   line-height:1.6;
-  overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   font-weight:350;
 }
 a{color:inherit;text-decoration:none}
-
-/* ========== SCROLL REVEAL ========== */
-.reveal{opacity:0;transform:translateY(36px)}
-.reveal.vis{opacity:1;animation:springUp .85s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes springUp{
-  0%{opacity:0;transform:translateY(36px)}
-  60%{opacity:1;transform:translateY(-5px)}
-  80%{transform:translateY(2px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@media(prefers-reduced-motion:reduce){.reveal.vis{animation:none;opacity:1;transform:none}}
-
-/* ========== LAYOUT ========== */
-.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding-inline:40px}
-.center{text-align:center;display:flex;flex-direction:column;align-items:center}
-
-/* Nav + nav-button CSS moved to shared assets/nav.css */
-
-/* ========== PAGE HERO ========== */
-.page-hero h1 em{font-style:normal;color:var(--accent)}
-
-/* ========== GALLERY GRID ========== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
-
-/* ========== GALLERY CARD ========== */
-.gallery-card{
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all .3s var(--ease);
-  display:flex;flex-direction:column;
-}
-.gallery-card:hover{
-  border-color:var(--border-hover);
-  transform:translateY(-4px);
-  box-shadow:0 8px 32px rgba(26,31,46,0.1), 0 2px 8px rgba(26,31,46,0.05);
-}
-
-.card-cover{
-  aspect-ratio:16/10;
-  width:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:12px 12px 0 0;
-}
-.card-cover-placeholder{
-  aspect-ratio:16/10;
-  width:100%;
-  border-radius:12px 12px 0 0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2rem;
-  color:rgba(26,31,46,0.1);
-}
-.card-cover-placeholder.grad-1{background:linear-gradient(135deg,#e8e0d0,#d4cfc5,#c7d2d8)}
-.card-cover-placeholder.grad-2{background:linear-gradient(135deg,#d8e0e4,#c5d4d8,#b8ccd2)}
-.card-cover-placeholder.grad-3{background:linear-gradient(135deg,#e4d8e8,#d0c5dc,#c8d0e0)}
-.card-cover-placeholder.grad-4{background:linear-gradient(135deg,#dde0e8,#c8d0dc,#bcc8d8)}
-.card-cover-placeholder.grad-5{background:linear-gradient(135deg,#d8dce4,#c8d0d8,#bcc4cc)}
-.card-cover-placeholder.grad-6{background:linear-gradient(135deg,#e0dce8,#d4cce0,#c8d0d8)}
-
-.card-body{
-  padding:16px;
-  display:flex;flex-direction:column;gap:8px;
-  flex:1;
-}
 
 .card-tag{
   display:inline-flex;
@@ -135,30 +66,7 @@ a{color:inherit;text-decoration:none}
 .tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
 .tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
 
-.card-title{
-  font-family:var(--font-display);
-  font-size:.95rem;
-  font-weight:600;
-  line-height:1.35;
-  letter-spacing:-.3px;
-}
-.card-desc{
-  font-size:.78rem;
-  color:var(--text-sub);
-  line-height:1.55;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-.card-meta{
-  font-size:.68rem;
-  color:var(--text-dim);
-  margin-top:auto;
-  padding-top:4px;
-}
-
-/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+/* ========== ARTICLE LAYOUT ========== */
 .article-layout{
   max-width:1120px;margin:120px auto 0;
   padding:0 40px;
@@ -166,7 +74,6 @@ a{color:inherit;text-decoration:none}
   gap:60px;align-items:start;
 }
 
-/* Left sidebar — sticky navigation */
 .sub-sidebar{
   position:sticky;top:100px;
   padding-top:8px;
@@ -181,6 +88,7 @@ a{color:inherit;text-decoration:none}
   transition:all .2s var(--ease);
   margin-bottom:40px;
   font-family:var(--font-body);
+  text-decoration:none;
 }
 .sub-sidebar-back:hover{
   border-color:var(--accent);color:var(--accent);
@@ -216,7 +124,6 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);border-left-color:var(--accent);
   font-weight:500;background:var(--accent-sub);
 }
-
 .sub-sidebar-meta{
   padding:16px;border-top:1px solid var(--border);
   font-size:.74rem;color:var(--text-dim);
@@ -230,7 +137,6 @@ a{color:inherit;text-decoration:none}
 
 .article-main{min-width:0;padding-bottom:80px}
 
-/* Article content styles */
 .article-page .article-cover{
   display:block;
   width:100%;max-width:480px;
@@ -302,9 +208,7 @@ a{color:inherit;text-decoration:none}
   text-decoration:underline;text-decoration-color:var(--accent-sub);
   text-underline-offset:2px;
 }
-.article-page .article-body ol.references a:hover{
-  text-decoration-color:var(--accent);
-}
+.article-page .article-body ol.references a:hover{text-decoration-color:var(--accent)}
 .article-page .article-body sup{
   font-size:.65em;color:var(--accent);font-weight:600;
 }
@@ -314,8 +218,6 @@ a{color:inherit;text-decoration:none}
   margin:0 0 20px;padding-left:24px;
 }
 .article-page .article-body li{margin-bottom:8px}
-
-/* CTA box styling now lives in shared assets/waitlist.css (.cta-section) */
 
 /* ========== FOOTER ========== */
 footer{
@@ -327,7 +229,7 @@ footer{
   max-width:1100px;margin:0 auto;padding-inline:40px;
   display:flex;justify-content:space-between;align-items:center;
 }
-footer .logo{color:#fff;font-size:.9rem}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
 .footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
 .footer-links{display:flex;gap:20px}
 .footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -346,28 +248,22 @@ footer .logo{color:#fff;font-size:.9rem}
   .sub-sidebar-back{margin-bottom:16px}
 }
 @media(max-width:768px){
-  .wrap{padding-inline:20px}
   .nav-inner{padding-inline:20px}
   .nav-links{gap:16px}
-  .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
   .article-layout{padding:0 20px}
   .article-main{padding-bottom:60px}
 }
-
-/* Nav + dropdown + lang-toggle CSS moved to shared assets/nav.css */
 </style>
-<link rel="stylesheet" href="assets/nav.css">
-<link rel="stylesheet" href="assets/waitlist.css">
-<style></style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
 </head>
 <body>
 
-<!-- NAV (unified across all pages) -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="/main" class="logo">
-      <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
@@ -404,37 +300,125 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </nav>
 
-<!-- ========== PAGE HERO ========== -->
-<div id="blogGallery">
-<section class="page-hero wrap center" style="min-height:auto;padding-top:160px;padding-bottom:40px">
-  <h1 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15">OPC <em>博客</em></h1>
-  <p style="font-size:.95rem;color:var(--text-sub);max-width:520px;line-height:1.7;margin-top:14px">一人公司时代的趋势、案例与洞见</p>
-</section>
+<div class="article-layout">
 
-<!-- ========== GALLERY ========== -->
-<section class="wrap" style="padding-bottom:100px">
-  <div class="gallery" id="gallery"></div>
-</section>
+  <aside class="sub-sidebar">
+    <a href="/trends" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回博客
+    </a>
 
-<!-- ========== BOTTOM CTA (shared) ========== -->
-<section class="cta-section" id="waitlist">
-  <div class="cta-box reveal">
-    <div class="cta-eyebrow">Waitlist · Q2 2026</div>
-    <h2>加入 <em>Waitlist</em></h2>
-    <p class="cta-sub">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
-    <button class="btn-waitlist-open" onclick="openWaitlist()">
-      <span>加入 Waitlist</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </button>
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>Solarian</strong>
+      2026-04-08 · 8 分钟
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <div class="article-page">
+      <img class="article-cover" src="/assets/franklin_avatar.png" alt="">
+      <span class="card-tag tag-story">故事</span>
+      <h1>Solarian 创始人：我就是第一个用户</h1>
+      <div class="article-meta">Solarian &middot; 2026-04-08 &middot; 8 分钟</div>
+      <div class="article-body">
+                <p class="lede">
+          "我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。" 这句话来自 Solarian 创始人 Franklin。在过去两年里，他尝试了几乎所有主流 AI 工具，积累了数千小时的实际使用经验。他发现了一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。他需要的不是又一个工具，而是一个操作系统——一个能让多个 AI Agent 像团队一样协同工作的底层架构。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、第一个用户的痛苦</h2>
+
+        <p>Franklin 的创业日常是这样的：早上用 Claude 写代码，中午用 ChatGPT 改营销文案，下午用 Midjourney 做社交媒体图片，晚上用 Notion 更新项目计划。每个工具都很好用，但问题是——<strong>它们之间不交流</strong>。</p>
+
+        <p>Claude 不知道他刚在 Notion 里更新了产品路线图。ChatGPT 不知道他昨天用 Claude 写的代码改变了产品的核心功能。Midjourney 不知道他的品牌指南刚做了调整。每一次对话都从零开始，每一个 AI 都像一个新来的实习生——很聪明，但对公司的事情一无所知。</p>
+
+        <p>"每天我花在'让 AI 理解我在做什么'的时间，几乎和'实际做事'的时间一样多。" 这个认知，成了 Solarian 的起点。</p>
+
+        <p>他不是唯一有这种感受的人。根据 Lokalise 的调查，<strong>45% 的知识工作者</strong>表示频繁切换工具正在降低他们的生产力<sup><a href="#ref-1">[1]</a></sup>。对于一人公司来说，这个比例可能更高——因为你没有团队分担这些"胶水工作"。</p>
+
+        <div class="section-break"></div>
+
+        <h2>二、从"碎片"到"团队"的顿悟</h2>
+
+        <p>转折点发生在 Franklin 开始使用 Anthropic 的 Claude Code——一个 AI 编码终端助手——的时候。Claude Code 不只是回答编程问题，它能直接在终端中读取文件、执行命令、理解项目结构、记住上下文。这让他第一次体验到"AI 不是工具，是同事"的感觉。</p>
+
+        <p>但即使是 Claude Code，它也只覆盖"写代码"这一个职能。Franklin 需要的是一整支团队——一个负责代码的 Agent、一个负责营销的 Agent、一个负责客户研究的 Agent、一个负责数据分析的 Agent——它们共享同一套业务知识，能自主协调，越用越好。</p>
+
+        <blockquote>我发现了一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。真正缺少的不是更强的工具，而是让工具像团队一样协作的操作系统。</blockquote>
+
+        <p>这个"从碎片到团队"的洞察，与整个行业的趋势不谋而合。多 Agent 协作框架的采用率从 2023 年的 12% 跃升至 2025 年的 <strong>38.5%</strong><sup><a href="#ref-2">[2]</a></sup>。AI Agent 编排市场预计从 2024 年的 47 亿美元增长至 2034 年的 <strong>263 亿美元</strong>，年复合增长率 18.8%<sup><a href="#ref-3">[3]</a></sup>。更广义的 AI Agent 市场更是从 2024 年的 52.5 亿美元飙升至 2030 年预计的 <strong>526.2 亿美元</strong>，CAGR 达到 46.3%<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>但几乎所有现有方案都面向企业级客户。CrewAI、LangChain、AutoGen——它们为拥有工程团队的公司设计。<em>谁在为一个人的公司设计？</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>三、Solarian 的三个核心信念</h2>
+
+        <p>Solarian 的产品设计，建立在三个核心信念之上：</p>
+
+        <p><strong>信念一：Agent 是团队成员，不是工具。</strong>传统的 AI 工具思路是"你输入指令，AI 返回结果"。Solarian 的思路是"你定义目标，AI 团队自主执行"。每个 Agent 有自己的角色（PM、设计师、工程师、营销专家）、职责范围和工作流程。Agent 之间可以互相沟通、互相审核、互相补位——就像真实的团队一样。</p>
+
+        <p><strong>信念二：经验必须可积累。</strong>大多数 AI 工具是无状态的——每次对话都从零开始。但真实的团队不是这样的：做过十次营销方案后，第十一次应该比第一次更快更好。Solarian 的"自进化工作流"就是要实现这一点：系统从每一次执行中学习，把有效的做法沉淀为可复用的经验，让 AI 团队真正"越用越好"。</p>
+
+        <p><strong>信念三：创始人是指挥官，不是操作员。</strong>一人公司创始人最宝贵的不是时间，是判断力和决策能力。Solarian 要做的，是让创始人把 80% 的时间花在战略判断上——选对市场、找准痛点、定义产品方向——而把 80% 的执行工作交给 AI 团队。</p>
+
+        <div class="section-break"></div>
+
+        <h2>四、为什么是"现在"</h2>
+
+        <p>AI Agent 协作平台的想法并不新鲜。那为什么是现在？因为三个条件在 2025-2026 年同时成熟：</p>
+
+        <p><strong>模型能力跨越实用门槛。</strong>Claude 3.5 Sonnet、GPT-4o、Gemini 1.5 Pro 这一代模型，第一次让 AI Agent 具备了"可靠执行复杂任务"的能力。之前的模型会犯太多错误，需要人类频繁纠正；现在，在很多任务上，AI 的输出质量已经可以直接使用<sup><a href="#ref-4">[4]</a></sup>。</p>
+
+        <p><strong>成本降至可负担水平。</strong>2023 年让一个 AI Agent 持续运行的成本高得惊人。到 2025 年，同等任务的 API 调用成本下降了 90% 以上。一人公司创业者每月 $200-300 就能让一支 AI Agent 团队 7×24 运转<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <p><strong>OPC 市场达到临界规模。</strong>中国新设个体工商户 1,619 万户，美国独立创业者超过 4,180 万人，深圳和北京在政策层面正式拥抱一人公司。这不再是小众需求，而是一个正在被政策推动、被技术赋能的庞大市场<sup><a href="#ref-6">[6]</a></sup>。</p>
+
+        <div class="section-break"></div>
+
+        <h2>五、最苛刻的第一个用户</h2>
+
+        <p>"我就是第一个用户，也是最苛刻的用户。" Franklin 在日常工作中完全依赖自己构建的系统——Solarian 的 Agent 团队帮他写代码、研究市场、管理内容、分析数据。每一个功能都是因为他自己需要而建，每一个改进都来自真实使用中的痛点。</p>
+
+        <p>这种"自用即产品"（dogfooding）的方式，意味着 Solarian 不是一个从市场调研报告里"设计"出来的产品，而是从一个真实一人创业者的日常需求中"长"出来的产品。</p>
+
+        <p>Deloitte 在其 2026 年技术预测中指出，AI Agent 编排将从"技术演示"进入"商业价值释放"阶段——企业将需要更成熟的框架来管理多个专业化 Agent 的协作<sup><a href="#ref-7">[7]</a></sup>。Solarian 的定位，正是把这种企业级的 Agent 编排能力，带给一人公司。</p>
+
+        <p><em>如果 Solarian 能让 Franklin 这样的一人创业者真正解放出来——把精力集中在最重要的判断上，把执行交给 AI 团队——它就能帮助所有人。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">Too Many Tools, Too Little Time: How Context Switching Is Killing Team Flow · Lokalise · <a href="https://lokalise.com/blog/blog-tool-fatigue-productivity-report/" target="_blank" rel="noopener">https://lokalise.com/blog/blog-tool-fatigue-productivity-report/</a></li>
+          <li id="ref-2">Multi-Agent AI Orchestration: Enterprise Strategy for 2025-2026 · On About · <a href="https://www.onabout.ai/p/mastering-multi-agent-orchestration-architectures-patterns-roi-benchmarks-for-2025-2026" target="_blank" rel="noopener">https://www.onabout.ai/p/mastering-multi-agent-orchestration-architectures-patterns-roi-benchmarks-for-2025-2026</a></li>
+          <li id="ref-3">Global AI Agent Orchestration Software Market Forecast · IntelEvo Research · <a href="https://www.intelevoresearch.com/reports/ai-agent-orchestration-software-market/" target="_blank" rel="noopener">https://www.intelevoresearch.com/reports/ai-agent-orchestration-software-market/</a></li>
+          <li id="ref-4">Top 9 AI Agent Frameworks as of March 2026 · Shakudo · <a href="https://www.shakudo.io/blog/top-9-ai-agent-frameworks" target="_blank" rel="noopener">https://www.shakudo.io/blog/top-9-ai-agent-frameworks</a></li>
+          <li id="ref-5">The Rise of the Solopreneur Tech Stack in 2026 · PrometAI · <a href="https://prometai.app/blog/solopreneur-tech-stack-2026" target="_blank" rel="noopener">https://prometai.app/blog/solopreneur-tech-stack-2026</a></li>
+          <li id="ref-6">《2025 年我国新设个体工商户超 1600 万户》· 新华网 · 2026 年 3 月 · <a href="https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html" target="_blank" rel="noopener">https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html</a></li>
+          <li id="ref-7">Unlocking Exponential Value with AI Agent Orchestration · Deloitte · 2026 · <a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/ai-agent-orchestration.html" target="_blank" rel="noopener">https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/ai-agent-orchestration.html</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 8 期<br>
+          2026
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 
-<!-- ========== FOOTER ========== -->
+</div>
+
 <footer>
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="index.html" class="logo" style="font-size:.9rem">
-        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
         Solarian
       </a>
       <span class="footer-copy">&copy; 2026 Solarian</span>
@@ -447,52 +431,56 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </footer>
 
-</div><!-- /blogGallery -->
-
-
 <script>
-// ========== ARTICLES DATA ==========
-const articles = {{ARTICLES_JS}};
-
-// ========== RENDER GALLERY ==========
-const gallery = document.getElementById('gallery');
-articles.forEach((a, i) => {
-  const card = document.createElement('a');
-  card.href = '/trends/' + a.id;
-  card.className = 'gallery-card reveal';
-  if (i > 0) card.style.animationDelay = (i * 60) + 'ms';
-
-  const coverHTML = a.cover
-    ? `<img class="card-cover" src="${a.cover}" alt="" loading="lazy">`
-    : `<div class="card-cover-placeholder ${a.grad || 'grad-1'}"></div>`;
-
-  card.innerHTML = `
-    ${coverHTML}
-    <div class="card-body">
-      <span class="card-tag ${a.tagClass}">${a.tag}</span>
-      <div class="card-title">${a.title}</div>
-      <div class="card-desc">${a.desc}</div>
-      <div class="card-meta">${a.source} · ${a.date} · ${a.readTime}</div>
-    </div>
-  `;
-  gallery.appendChild(card);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ========== SCROLL REVEAL ==========
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Lang toggle (visual-only fallback)
 function toggleLang(){
-  const t=document.getElementById('langToggle');
+  const t = document.getElementById('langToggle');
   if(!t) return;
   t.querySelector('.lang-zh').classList.toggle('active');
   t.querySelector('.lang-en').classList.toggle('active');
 }
+
+// Build TOC from h2 elements in article body
+(function(){
+  var content = document.querySelector('.article-body');
+  if (!content) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = content.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
 </script>
-<!-- ========== WAITLIST MODAL (shared bundle) ========== -->
+
+<!-- ========== WAITLIST MODAL ========== -->
 <div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
 <div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="wl-modal">
@@ -546,6 +534,6 @@ function toggleLang(){
     </div>
   </div>
 </div>
-<script src="assets/waitlist.js"></script>
+<script src="/assets/waitlist.js"></script>
 </body>
 </html>

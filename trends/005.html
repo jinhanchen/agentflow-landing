@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPC 博客 — Solarian</title>
+<title>Y Combinator：25% 创业公司 95% 代码由 AI 生成 — Solarian</title>
+<meta name="description" content=""2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。"">
+<meta property="og:title" content="Y Combinator：25% 创业公司 95% 代码由 AI 生成 — Solarian">
+<meta property="og:description" content=""2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。"">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/trends/005">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +18,6 @@
 :root{
   --bg:#F5F0E6;
   --bg-card:#FFFFFF;
-  --bg-card-hover:#FAFAF5;
   --border:rgba(26,31,46,0.08);
   --border-hover:rgba(26,31,46,0.15);
   --text:#1A1F2E;
@@ -40,83 +44,10 @@ body{
   background:var(--bg);
   color:var(--text);
   line-height:1.6;
-  overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   font-weight:350;
 }
 a{color:inherit;text-decoration:none}
-
-/* ========== SCROLL REVEAL ========== */
-.reveal{opacity:0;transform:translateY(36px)}
-.reveal.vis{opacity:1;animation:springUp .85s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes springUp{
-  0%{opacity:0;transform:translateY(36px)}
-  60%{opacity:1;transform:translateY(-5px)}
-  80%{transform:translateY(2px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@media(prefers-reduced-motion:reduce){.reveal.vis{animation:none;opacity:1;transform:none}}
-
-/* ========== LAYOUT ========== */
-.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding-inline:40px}
-.center{text-align:center;display:flex;flex-direction:column;align-items:center}
-
-/* Nav + nav-button CSS moved to shared assets/nav.css */
-
-/* ========== PAGE HERO ========== */
-.page-hero h1 em{font-style:normal;color:var(--accent)}
-
-/* ========== GALLERY GRID ========== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
-
-/* ========== GALLERY CARD ========== */
-.gallery-card{
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all .3s var(--ease);
-  display:flex;flex-direction:column;
-}
-.gallery-card:hover{
-  border-color:var(--border-hover);
-  transform:translateY(-4px);
-  box-shadow:0 8px 32px rgba(26,31,46,0.1), 0 2px 8px rgba(26,31,46,0.05);
-}
-
-.card-cover{
-  aspect-ratio:16/10;
-  width:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:12px 12px 0 0;
-}
-.card-cover-placeholder{
-  aspect-ratio:16/10;
-  width:100%;
-  border-radius:12px 12px 0 0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2rem;
-  color:rgba(26,31,46,0.1);
-}
-.card-cover-placeholder.grad-1{background:linear-gradient(135deg,#e8e0d0,#d4cfc5,#c7d2d8)}
-.card-cover-placeholder.grad-2{background:linear-gradient(135deg,#d8e0e4,#c5d4d8,#b8ccd2)}
-.card-cover-placeholder.grad-3{background:linear-gradient(135deg,#e4d8e8,#d0c5dc,#c8d0e0)}
-.card-cover-placeholder.grad-4{background:linear-gradient(135deg,#dde0e8,#c8d0dc,#bcc8d8)}
-.card-cover-placeholder.grad-5{background:linear-gradient(135deg,#d8dce4,#c8d0d8,#bcc4cc)}
-.card-cover-placeholder.grad-6{background:linear-gradient(135deg,#e0dce8,#d4cce0,#c8d0d8)}
-
-.card-body{
-  padding:16px;
-  display:flex;flex-direction:column;gap:8px;
-  flex:1;
-}
 
 .card-tag{
   display:inline-flex;
@@ -135,30 +66,7 @@ a{color:inherit;text-decoration:none}
 .tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
 .tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
 
-.card-title{
-  font-family:var(--font-display);
-  font-size:.95rem;
-  font-weight:600;
-  line-height:1.35;
-  letter-spacing:-.3px;
-}
-.card-desc{
-  font-size:.78rem;
-  color:var(--text-sub);
-  line-height:1.55;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-.card-meta{
-  font-size:.68rem;
-  color:var(--text-dim);
-  margin-top:auto;
-  padding-top:4px;
-}
-
-/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+/* ========== ARTICLE LAYOUT ========== */
 .article-layout{
   max-width:1120px;margin:120px auto 0;
   padding:0 40px;
@@ -166,7 +74,6 @@ a{color:inherit;text-decoration:none}
   gap:60px;align-items:start;
 }
 
-/* Left sidebar — sticky navigation */
 .sub-sidebar{
   position:sticky;top:100px;
   padding-top:8px;
@@ -181,6 +88,7 @@ a{color:inherit;text-decoration:none}
   transition:all .2s var(--ease);
   margin-bottom:40px;
   font-family:var(--font-body);
+  text-decoration:none;
 }
 .sub-sidebar-back:hover{
   border-color:var(--accent);color:var(--accent);
@@ -216,7 +124,6 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);border-left-color:var(--accent);
   font-weight:500;background:var(--accent-sub);
 }
-
 .sub-sidebar-meta{
   padding:16px;border-top:1px solid var(--border);
   font-size:.74rem;color:var(--text-dim);
@@ -230,7 +137,6 @@ a{color:inherit;text-decoration:none}
 
 .article-main{min-width:0;padding-bottom:80px}
 
-/* Article content styles */
 .article-page .article-cover{
   display:block;
   width:100%;max-width:480px;
@@ -302,9 +208,7 @@ a{color:inherit;text-decoration:none}
   text-decoration:underline;text-decoration-color:var(--accent-sub);
   text-underline-offset:2px;
 }
-.article-page .article-body ol.references a:hover{
-  text-decoration-color:var(--accent);
-}
+.article-page .article-body ol.references a:hover{text-decoration-color:var(--accent)}
 .article-page .article-body sup{
   font-size:.65em;color:var(--accent);font-weight:600;
 }
@@ -314,8 +218,6 @@ a{color:inherit;text-decoration:none}
   margin:0 0 20px;padding-left:24px;
 }
 .article-page .article-body li{margin-bottom:8px}
-
-/* CTA box styling now lives in shared assets/waitlist.css (.cta-section) */
 
 /* ========== FOOTER ========== */
 footer{
@@ -327,7 +229,7 @@ footer{
   max-width:1100px;margin:0 auto;padding-inline:40px;
   display:flex;justify-content:space-between;align-items:center;
 }
-footer .logo{color:#fff;font-size:.9rem}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
 .footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
 .footer-links{display:flex;gap:20px}
 .footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -346,28 +248,22 @@ footer .logo{color:#fff;font-size:.9rem}
   .sub-sidebar-back{margin-bottom:16px}
 }
 @media(max-width:768px){
-  .wrap{padding-inline:20px}
   .nav-inner{padding-inline:20px}
   .nav-links{gap:16px}
-  .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
   .article-layout{padding:0 20px}
   .article-main{padding-bottom:60px}
 }
-
-/* Nav + dropdown + lang-toggle CSS moved to shared assets/nav.css */
 </style>
-<link rel="stylesheet" href="assets/nav.css">
-<link rel="stylesheet" href="assets/waitlist.css">
-<style></style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
 </head>
 <body>
 
-<!-- NAV (unified across all pages) -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="/main" class="logo">
-      <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
@@ -404,37 +300,126 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </nav>
 
-<!-- ========== PAGE HERO ========== -->
-<div id="blogGallery">
-<section class="page-hero wrap center" style="min-height:auto;padding-top:160px;padding-bottom:40px">
-  <h1 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15">OPC <em>博客</em></h1>
-  <p style="font-size:.95rem;color:var(--text-sub);max-width:520px;line-height:1.7;margin-top:14px">一人公司时代的趋势、案例与洞见</p>
-</section>
+<div class="article-layout">
 
-<!-- ========== GALLERY ========== -->
-<section class="wrap" style="padding-bottom:100px">
-  <div class="gallery" id="gallery"></div>
-</section>
+  <aside class="sub-sidebar">
+    <a href="/trends" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回博客
+    </a>
 
-<!-- ========== BOTTOM CTA (shared) ========== -->
-<section class="cta-section" id="waitlist">
-  <div class="cta-box reveal">
-    <div class="cta-eyebrow">Waitlist · Q2 2026</div>
-    <h2>加入 <em>Waitlist</em></h2>
-    <p class="cta-sub">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
-    <button class="btn-waitlist-open" onclick="openWaitlist()">
-      <span>加入 Waitlist</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </button>
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>Garry Tan, YC CEO</strong>
+      2026-04-05 · 9 分钟
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <div class="article-page">
+      <img class="article-cover" src="/assets/trends_005_yc.png" alt="">
+      <span class="card-tag tag-trend">趋势</span>
+      <h1>Y Combinator：25% 创业公司 95% 代码由 AI 生成</h1>
+      <div class="article-meta">Garry Tan, YC CEO &middot; 2026-04-05 &middot; 9 分钟</div>
+      <div class="article-body">
+                <p class="lede">
+          2025 年 3 月 6 日，Y Combinator CEO Garry Tan 在 X 上发布了一条引爆科技圈的推文："在我们 2025 冬季批次中，25% 的创业公司 95% 的代码由 LLM 生成。这不是打字错误。Vibe coding 时代到来了。"<sup><a href="#ref-1">[1]</a></sup> 这条推文被 TechCrunch、CNBC、Slashdot 等主流科技媒体转载，成为 2025 年最具标志性的 AI 创业数据点之一。它宣告的不仅是一个统计事实，而是软件开发范式的根本转变。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、数据背后的 YC 批次</h2>
+
+        <p>先理解这个数字的分量。Y Combinator 是全球最负盛名的创业加速器，孵化了 Airbnb、Stripe、Dropbox、Coinbase 等万亿美元级公司。每个批次录取率低于 2%——能进入 YC 的创业者，本身就是经过严格筛选的顶尖技术人才<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>Tan 特别强调了一个关键前提：<strong>"这些人中的每一个都是高度技术型的，完全有能力从零开始自己构建产品。一年前，他们会从零写代码——但现在，95% 是 AI 写的。"</strong><sup><a href="#ref-1">[1]</a></sup> 这不是"不会写代码的人用 AI 凑合"，而是<em>最懂代码的人选择让 AI 来写</em>。</p>
+
+        <p>结果呢？Tan 透露，这一批次的 YC 公司<strong>整体每周增长率达到 10%</strong>——这是 YC 历史上最快的增长速度和最高的盈利水平<sup><a href="#ref-3">[3]</a></sup>。AI 代码生成不仅没有降低质量，反而释放了创始人的时间，让他们把精力集中在产品方向和用户增长上。</p>
+
+        <blockquote>对创始人来说，这意味着你不再需要一支 50 或 100 人的工程团队。—— Garry Tan, Y Combinator CEO<sup><a href="#ref-1">[1]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>二、Vibe Coding：从 Karpathy 到行业标准</h2>
+
+        <p>"Vibe coding"这个术语，由 OpenAI 联合创始人、前特斯拉 AI 负责人 <strong>Andrej Karpathy</strong> 于 2025 年 2 月提出<sup><a href="#ref-4">[4]</a></sup>。他描述的是一种全新的开发方式：开发者不直接编写代码，而是用自然语言向 AI 描述意图，由 LLM 自动生成代码。开发者的角色从"写代码的人"变成了"指导 AI 写代码的人"。</p>
+
+        <p>这个概念迅速引发共振。2025 年底，"vibe coding"被《柯林斯英语词典》评为<strong>年度词汇</strong><sup><a href="#ref-4">[4]</a></sup>——一个技术术语能获此殊荣，本身就说明了这种开发方式的社会影响力。</p>
+
+        <p>到 2026 年，vibe coding 已不再是实验性概念，而是主流开发实践：</p>
+
+        <ul>
+          <li><strong>92%</strong> 的美国开发者每天使用 AI 编码工具，资深开发者报告平均 <strong>81%</strong> 的生产力提升<sup><a href="#ref-5">[5]</a></sup></li>
+          <li>Gartner 预测到 2026 年底，<strong>60%</strong> 的新代码将由 AI 生成<sup><a href="#ref-5">[5]</a></sup></li>
+          <li>Microsoft 和 Google 披露，两家公司的新增代码中已有 <strong>25-30%</strong> 由 AI 生成<sup><a href="#ref-5">[5]</a></sup></li>
+          <li>Vibe coding 市场规模 2026 年估计达 <strong>47 亿美元</strong>，预计 2027 年将以 38% 的 CAGR 增长至 123 亿美元<sup><a href="#ref-5">[5]</a></sup></li>
+        </ul>
+
+        <div class="section-break"></div>
+
+        <h2>三、从 Vibe Coding 到 Agentic Engineering</h2>
+
+        <p>Karpathy 本人在 2026 年 2 月更新了他的框架。他指出，LLM 的能力进步已经超越了他最初定义的"vibe coding"——那时候 vibe coding 更适合一次性项目或原型。他提出了一个新术语：<strong>Agentic Engineering</strong>（智能体工程）<sup><a href="#ref-4">[4]</a></sup>。</p>
+
+        <p>在 Agentic Engineering 的工作流中，开发者 99% 的时间不是在写代码，而是在<strong>编排 AI Agent 并提供监督</strong>。AI Agent 负责代码编写、测试、调试、部署——开发者负责定义目标、审查输出、做关键判断。</p>
+
+        <p>这与 Solarian 的核心理念高度一致：<em>不是让一个人干十个人的活，而是让一个人指挥十个 AI Agent 干十个人的活。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>四、不可忽视的风险</h2>
+
+        <p>AI 代码生成的速度优势不等于质量保证。多项研究揭示了值得警惕的安全隐患：</p>
+
+        <p>CodeRabbit 于 2025 年 12 月对 470 个开源 GitHub Pull Request 的分析发现，AI 参与编写的代码包含的"重大问题"（major issues）约为纯人工代码的 <strong>1.7 倍</strong>，安全漏洞率高出 <strong>2.74 倍</strong><sup><a href="#ref-6">[6]</a></sup>。另一项行业统计显示，约 <strong>45%</strong> 的 AI 生成代码包含漏洞，如硬编码密钥或输入验证不当<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <p>Garry Tan 本人也承认：<strong>当前的推理模型还不够强大，无法独立完成高质量的调试</strong>。因此，创始人必须对产品有深刻理解——AI 写代码，人类把关质量<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <blockquote>AI 生成 95% 的代码，但那 5% 的人工干预——架构决策、安全审查、产品判断——决定了产品是能跑还是能卖。</blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>五、对 OPC 创业者的意义</h2>
+
+        <p>YC 的数据点，对一人公司创业者有三重意义：</p>
+
+        <p><strong>技术壁垒正在消失。</strong>过去，"没有技术联合创始人"是独立创业者最大的障碍。现在，Cursor、Claude Code、GitHub Copilot、Replit 等工具让一个有产品直觉的非技术创始人，可以在几天内构建出过去需要一个工程团队花几个月才能完成的产品。</p>
+
+        <p><strong>速度成为核心竞争力。</strong>YC 批次 10% 的周增长率说明，当开发速度不再是瓶颈，迭代速度就是竞争优势。一人公司没有会议、没有审批流程、没有跨部门协调——决策到执行的路径最短，这在 AI 时代是结构性优势。</p>
+
+        <p><strong>洞察力取代执行力成为稀缺资源。</strong>Tan 的判断是：未来的独角兽不是"雇最多工程师的公司"，而是"用最少的人、最深刻地理解问题的团队"<sup><a href="#ref-3">[3]</a></sup>。当所有人都能用 AI 快速构建产品，<em>做对的产品</em>比<em>快速做产品</em>更重要。</p>
+
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">Garry Tan (@garrytan) · X · 2025 年 3 月 6 日 · <a href="https://x.com/garrytan/status/1897303270311489931" target="_blank" rel="noopener">https://x.com/garrytan/status/1897303270311489931</a></li>
+          <li id="ref-2">95% AI-written code? Unpacking the Y Combinator CEO's developer jobs bombshell · LeadDev · 2025 · <a href="https://leaddev.com/hiring/95-ai-written-code-unpacking-the-y-combinator-ceos-developer-jobs-bombshell" target="_blank" rel="noopener">https://leaddev.com/hiring/95-ai-written-code-unpacking-the-y-combinator-ceos-developer-jobs-bombshell</a></li>
+          <li id="ref-3">Y Combinator startups are fastest growing, most profitable in fund history because of AI · CNBC · 2025 年 3 月 15 日 · <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank" rel="noopener">https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html</a></li>
+          <li id="ref-4">Vibe Coding · Wikipedia · <a href="https://en.wikipedia.org/wiki/Vibe_coding" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vibe_coding</a></li>
+          <li id="ref-5">Top Vibe Coding Statistics & Trends [2026] · Second Talent · 2026 · <a href="https://www.secondtalent.com/resources/vibe-coding-statistics/" target="_blank" rel="noopener">https://www.secondtalent.com/resources/vibe-coding-statistics/</a></li>
+          <li id="ref-6">Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code · daily.dev · 2026 · <a href="https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code" target="_blank" rel="noopener">https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 5 期<br>
+          2025
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 
-<!-- ========== FOOTER ========== -->
+</div>
+
 <footer>
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="index.html" class="logo" style="font-size:.9rem">
-        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
         Solarian
       </a>
       <span class="footer-copy">&copy; 2026 Solarian</span>
@@ -447,52 +432,56 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </footer>
 
-</div><!-- /blogGallery -->
-
-
 <script>
-// ========== ARTICLES DATA ==========
-const articles = {{ARTICLES_JS}};
-
-// ========== RENDER GALLERY ==========
-const gallery = document.getElementById('gallery');
-articles.forEach((a, i) => {
-  const card = document.createElement('a');
-  card.href = '/trends/' + a.id;
-  card.className = 'gallery-card reveal';
-  if (i > 0) card.style.animationDelay = (i * 60) + 'ms';
-
-  const coverHTML = a.cover
-    ? `<img class="card-cover" src="${a.cover}" alt="" loading="lazy">`
-    : `<div class="card-cover-placeholder ${a.grad || 'grad-1'}"></div>`;
-
-  card.innerHTML = `
-    ${coverHTML}
-    <div class="card-body">
-      <span class="card-tag ${a.tagClass}">${a.tag}</span>
-      <div class="card-title">${a.title}</div>
-      <div class="card-desc">${a.desc}</div>
-      <div class="card-meta">${a.source} · ${a.date} · ${a.readTime}</div>
-    </div>
-  `;
-  gallery.appendChild(card);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ========== SCROLL REVEAL ==========
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Lang toggle (visual-only fallback)
 function toggleLang(){
-  const t=document.getElementById('langToggle');
+  const t = document.getElementById('langToggle');
   if(!t) return;
   t.querySelector('.lang-zh').classList.toggle('active');
   t.querySelector('.lang-en').classList.toggle('active');
 }
+
+// Build TOC from h2 elements in article body
+(function(){
+  var content = document.querySelector('.article-body');
+  if (!content) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = content.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
 </script>
-<!-- ========== WAITLIST MODAL (shared bundle) ========== -->
+
+<!-- ========== WAITLIST MODAL ========== -->
 <div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
 <div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="wl-modal">
@@ -546,6 +535,6 @@ function toggleLang(){
     </div>
   </div>
 </div>
-<script src="assets/waitlist.js"></script>
+<script src="/assets/waitlist.js"></script>
 </body>
 </html>

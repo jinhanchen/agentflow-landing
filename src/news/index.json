@@ -1,19 +1,8 @@
 {
   "articles": [
     {
-      "id": "brand-story",
-      "date": "2026-04-15",
-      "tag": "Brand Story",
-      "tagClass": "tag-brand",
-      "title": "我们为什么叫 Solarian",
-      "summary": "一本 1957 年的科幻小说，一个叫 Baley 的侦探，和我们对 AI 时代的下一个决定。",
-      "author": "Franklin · 创始人",
-      "cover": "assets/logo.svg",
-      "coverBg": "#F5EFE2"
-    },
-    {
       "id": "opc-trend-report",
-      "date": "2026-04-15",
+      "date": "2026-04-05",
       "tag": "Research",
       "tagClass": "tag-research",
       "articleTag": "Research Report",
@@ -21,6 +10,17 @@
       "summary": "3 亿灵活就业人口、20+ 城市扶持政策、4.2× AI 效率差距——Solarian 研究团队整理的一份事实清单。",
       "author": "Solarian Research",
       "cover": "assets/scenario_illustration.png"
+    },
+    {
+      "id": "brand-story",
+      "date": "2026-04-01",
+      "tag": "Brand Story",
+      "tagClass": "tag-brand",
+      "title": "我们为什么叫 Solarian",
+      "summary": "一本 1957 年的科幻小说，一个叫 Baley 的侦探，和我们对 AI 时代的下一个决定。",
+      "author": "Franklin · 创始人",
+      "cover": "assets/logo.svg",
+      "coverBg": "#F5EFE2"
     }
   ]
 }

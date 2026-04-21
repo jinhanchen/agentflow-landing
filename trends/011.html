@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPC 博客 — Solarian</title>
+<title>SaaS 的黄昏：当 AI 开始替代整个部门 — Solarian</title>
+<meta name="description" content="2026 年初，SaaS 板块市值数千亿蒸发。不是因为软件变差了，而是因为 AI 开始直接替代人的职能。按人头卖坐席的时代，正在终结。">
+<meta property="og:title" content="SaaS 的黄昏：当 AI 开始替代整个部门 — Solarian">
+<meta property="og:description" content="2026 年初，SaaS 板块市值数千亿蒸发。不是因为软件变差了，而是因为 AI 开始直接替代人的职能。按人头卖坐席的时代，正在终结。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/trends/011">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +18,6 @@
 :root{
   --bg:#F5F0E6;
   --bg-card:#FFFFFF;
-  --bg-card-hover:#FAFAF5;
   --border:rgba(26,31,46,0.08);
   --border-hover:rgba(26,31,46,0.15);
   --text:#1A1F2E;
@@ -40,83 +44,10 @@ body{
   background:var(--bg);
   color:var(--text);
   line-height:1.6;
-  overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   font-weight:350;
 }
 a{color:inherit;text-decoration:none}
-
-/* ========== SCROLL REVEAL ========== */
-.reveal{opacity:0;transform:translateY(36px)}
-.reveal.vis{opacity:1;animation:springUp .85s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes springUp{
-  0%{opacity:0;transform:translateY(36px)}
-  60%{opacity:1;transform:translateY(-5px)}
-  80%{transform:translateY(2px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@media(prefers-reduced-motion:reduce){.reveal.vis{animation:none;opacity:1;transform:none}}
-
-/* ========== LAYOUT ========== */
-.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding-inline:40px}
-.center{text-align:center;display:flex;flex-direction:column;align-items:center}
-
-/* Nav + nav-button CSS moved to shared assets/nav.css */
-
-/* ========== PAGE HERO ========== */
-.page-hero h1 em{font-style:normal;color:var(--accent)}
-
-/* ========== GALLERY GRID ========== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
-
-/* ========== GALLERY CARD ========== */
-.gallery-card{
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all .3s var(--ease);
-  display:flex;flex-direction:column;
-}
-.gallery-card:hover{
-  border-color:var(--border-hover);
-  transform:translateY(-4px);
-  box-shadow:0 8px 32px rgba(26,31,46,0.1), 0 2px 8px rgba(26,31,46,0.05);
-}
-
-.card-cover{
-  aspect-ratio:16/10;
-  width:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:12px 12px 0 0;
-}
-.card-cover-placeholder{
-  aspect-ratio:16/10;
-  width:100%;
-  border-radius:12px 12px 0 0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2rem;
-  color:rgba(26,31,46,0.1);
-}
-.card-cover-placeholder.grad-1{background:linear-gradient(135deg,#e8e0d0,#d4cfc5,#c7d2d8)}
-.card-cover-placeholder.grad-2{background:linear-gradient(135deg,#d8e0e4,#c5d4d8,#b8ccd2)}
-.card-cover-placeholder.grad-3{background:linear-gradient(135deg,#e4d8e8,#d0c5dc,#c8d0e0)}
-.card-cover-placeholder.grad-4{background:linear-gradient(135deg,#dde0e8,#c8d0dc,#bcc8d8)}
-.card-cover-placeholder.grad-5{background:linear-gradient(135deg,#d8dce4,#c8d0d8,#bcc4cc)}
-.card-cover-placeholder.grad-6{background:linear-gradient(135deg,#e0dce8,#d4cce0,#c8d0d8)}
-
-.card-body{
-  padding:16px;
-  display:flex;flex-direction:column;gap:8px;
-  flex:1;
-}
 
 .card-tag{
   display:inline-flex;
@@ -135,30 +66,7 @@ a{color:inherit;text-decoration:none}
 .tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
 .tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
 
-.card-title{
-  font-family:var(--font-display);
-  font-size:.95rem;
-  font-weight:600;
-  line-height:1.35;
-  letter-spacing:-.3px;
-}
-.card-desc{
-  font-size:.78rem;
-  color:var(--text-sub);
-  line-height:1.55;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-.card-meta{
-  font-size:.68rem;
-  color:var(--text-dim);
-  margin-top:auto;
-  padding-top:4px;
-}
-
-/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+/* ========== ARTICLE LAYOUT ========== */
 .article-layout{
   max-width:1120px;margin:120px auto 0;
   padding:0 40px;
@@ -166,7 +74,6 @@ a{color:inherit;text-decoration:none}
   gap:60px;align-items:start;
 }
 
-/* Left sidebar — sticky navigation */
 .sub-sidebar{
   position:sticky;top:100px;
   padding-top:8px;
@@ -181,6 +88,7 @@ a{color:inherit;text-decoration:none}
   transition:all .2s var(--ease);
   margin-bottom:40px;
   font-family:var(--font-body);
+  text-decoration:none;
 }
 .sub-sidebar-back:hover{
   border-color:var(--accent);color:var(--accent);
@@ -216,7 +124,6 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);border-left-color:var(--accent);
   font-weight:500;background:var(--accent-sub);
 }
-
 .sub-sidebar-meta{
   padding:16px;border-top:1px solid var(--border);
   font-size:.74rem;color:var(--text-dim);
@@ -230,7 +137,6 @@ a{color:inherit;text-decoration:none}
 
 .article-main{min-width:0;padding-bottom:80px}
 
-/* Article content styles */
 .article-page .article-cover{
   display:block;
   width:100%;max-width:480px;
@@ -302,9 +208,7 @@ a{color:inherit;text-decoration:none}
   text-decoration:underline;text-decoration-color:var(--accent-sub);
   text-underline-offset:2px;
 }
-.article-page .article-body ol.references a:hover{
-  text-decoration-color:var(--accent);
-}
+.article-page .article-body ol.references a:hover{text-decoration-color:var(--accent)}
 .article-page .article-body sup{
   font-size:.65em;color:var(--accent);font-weight:600;
 }
@@ -314,8 +218,6 @@ a{color:inherit;text-decoration:none}
   margin:0 0 20px;padding-left:24px;
 }
 .article-page .article-body li{margin-bottom:8px}
-
-/* CTA box styling now lives in shared assets/waitlist.css (.cta-section) */
 
 /* ========== FOOTER ========== */
 footer{
@@ -327,7 +229,7 @@ footer{
   max-width:1100px;margin:0 auto;padding-inline:40px;
   display:flex;justify-content:space-between;align-items:center;
 }
-footer .logo{color:#fff;font-size:.9rem}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
 .footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
 .footer-links{display:flex;gap:20px}
 .footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -346,28 +248,22 @@ footer .logo{color:#fff;font-size:.9rem}
   .sub-sidebar-back{margin-bottom:16px}
 }
 @media(max-width:768px){
-  .wrap{padding-inline:20px}
   .nav-inner{padding-inline:20px}
   .nav-links{gap:16px}
-  .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
   .article-layout{padding:0 20px}
   .article-main{padding-bottom:60px}
 }
-
-/* Nav + dropdown + lang-toggle CSS moved to shared assets/nav.css */
 </style>
-<link rel="stylesheet" href="assets/nav.css">
-<link rel="stylesheet" href="assets/waitlist.css">
-<style></style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
 </head>
 <body>
 
-<!-- NAV (unified across all pages) -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="/main" class="logo">
-      <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
@@ -404,37 +300,117 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </nav>
 
-<!-- ========== PAGE HERO ========== -->
-<div id="blogGallery">
-<section class="page-hero wrap center" style="min-height:auto;padding-top:160px;padding-bottom:40px">
-  <h1 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15">OPC <em>博客</em></h1>
-  <p style="font-size:.95rem;color:var(--text-sub);max-width:520px;line-height:1.7;margin-top:14px">一人公司时代的趋势、案例与洞见</p>
-</section>
+<div class="article-layout">
 
-<!-- ========== GALLERY ========== -->
-<section class="wrap" style="padding-bottom:100px">
-  <div class="gallery" id="gallery"></div>
-</section>
+  <aside class="sub-sidebar">
+    <a href="/trends" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回博客
+    </a>
 
-<!-- ========== BOTTOM CTA (shared) ========== -->
-<section class="cta-section" id="waitlist">
-  <div class="cta-box reveal">
-    <div class="cta-eyebrow">Waitlist · Q2 2026</div>
-    <h2>加入 <em>Waitlist</em></h2>
-    <p class="cta-sub">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
-    <button class="btn-waitlist-open" onclick="openWaitlist()">
-      <span>加入 Waitlist</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </button>
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>硅谷101</strong>
+      2026-04-11 · 6 分钟
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <div class="article-page">
+      <img class="article-cover" src="/assets/trends_011_saas.png" alt="">
+      <span class="card-tag tag-opinion">观点</span>
+      <h1>SaaS 的黄昏：当 AI 开始替代整个部门</h1>
+      <div class="article-meta">硅谷101 &middot; 2026-04-11 &middot; 6 分钟</div>
+      <div class="article-body">
+                <p class="lede">
+          2026 年 2 月，全球软件行业经历了一场"信仰地震"：在 Anthropic 发布 Claude Cowork——展示 AI Agent 可以自主完成法律审核、财务分析、客服分流和项目管理等知识工作后，全球 SaaS 板块市值在约 48 小时内蒸发了近 <strong>2,850 亿美元</strong><sup><a href="#ref-1">[1]</a></sup>。华尔街的判断直接了当：<strong>按人头卖坐席的时代，结束了。</strong>
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>SaaS 帝国为何开始动摇</h2>
+
+        <p>过去 15 年，SaaS 的商业模式建立在一个隐性假设之上：软件能帮助人工作，但人依然需要大量存在。你按席位付费，按用户数扩张。这个逻辑无懈可击——直到 AI 开始直接承担"人"的职能。</p>
+
+        <p>核心问题是<strong>席位压缩（seat compression）</strong>：当 10 个 AI Agent 能完成 100 个销售代表的工作，你就不需要 100 个 Salesforce 坐席了。当一个配备 AI Agent 的员工能完成五个人的工作量，按人头定价的模式就崩塌了<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>Atlassian 在 2026 年 3 月报告了<strong>企业坐席数量有史以来的首次下降</strong>——对一家整个收入模型都依赖坐席扩张的公司来说，这是一场地震。财报发布后股价<strong>暴跌 35%</strong>。Salesforce 尽管收入仍在增长，股价也<strong>下跌了 28%</strong><sup><a href="#ref-1">[1]</a></sup>。</p>
+
+        <p>SaaStr 的分析指出了一个惊人的事实：<strong>软件股目前以 22 倍远期盈利交易——首次低于标普 500 的整体估值</strong><sup><a href="#ref-3">[3]</a></sup>。市场的信号不是"软件暂时被高估了"，而是"我们不确定即便在 22 倍的情况下，增长假设是否还成立"。</p>
+
+        <blockquote>企业开始提出一个更直接的问题：我为什么要为过程付费，而不是为结果付费？从"买螺丝刀"变成"买已拧好的螺丝"——这正是 RaaS（Results as a Service）的核心逻辑。<sup><a href="#ref-2">[2]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>硅基员工：新型组织正在形成</h2>
+
+        <p>最有意思的不是 SaaS 在消亡，而是消亡之后，企业组织在发生什么变化。</p>
+
+        <p>已有企业建立了"硅基员工"管理体系：AI 员工有工号、有 KPI、有绩效考核，甚至有退役机制。人类员工的角色，从执行者变成了系统的设计者和最终审核人。几个真实的案例：</p>
+
+        <ul>
+          <li>曾被视为成本中心的客服部门，45 名客服人员转岗成为 AI 训练师，进入利润中心</li>
+          <li>法律合同审核从 56 分钟缩短至 4 分钟——AI 完成 90% 的工作，人类负责最后签字</li>
+          <li>招聘周期从 28 天压缩至 2 天——AI 深度理解非结构化简历，自动筛选、邀约、访谈</li>
+        </ul>
+
+        <p>"碳硅比"——一名人类员工能指挥多少个 AI Agent——正在成为衡量企业竞争力的新指标<sup><a href="#ref-4">[4]</a></sup>。</p>
+
+        <div class="section-break"></div>
+
+        <h2>谁会在这轮洗牌中活下来</h2>
+
+        <p>并非所有 SaaS 公司都会消亡。事实上，到 2026 年 4 月中旬，有迹象表明经历了残酷的 18 个月"SaaS 末日"后，机构投资者开始重新买入被打压的云股票<sup><a href="#ref-5">[5]</a></sup>。能存活的公司，往往具备以下之一：</p>
+
+        <ul>
+          <li><strong>不可替代的私域数据</strong>：AI 能生成内容，但生成不了你积累十年的行业数据和客户关系。</li>
+          <li><strong>极度复杂的业务流程</strong>：高度定制、高容错要求的场景，AI 短期内难以完全接管。</li>
+          <li><strong>主动转型为 AI 原生架构</strong>：从工具提供商变为结果提供商，从卖软件变为卖 Agent 矩阵。</li>
+        </ul>
+
+        <p>功能简单、依赖席位费的中层工具，将以极快的速度被淘汰。</p>
+
+        <div class="section-break"></div>
+
+        <h2>对一人公司的结构性利好</h2>
+
+        <p>这场变革，对一人公司创业者而言其实是好消息。</p>
+
+        <p>大公司替换原有 SaaS 工具链、重建 AI 原生工作流，需要大量时间和克服内部阻力。而一人公司可以从第一天起，就以 AI 原生的方式构建业务——没有历史包袱，没有组织惰性，没有需要说服的委员会。</p>
+
+        <p>这是 OPC 时代真正的结构性优势：轻装上阵，比任何大公司都能更快完成"碳硅重组"。</p>
+
+        <p>Solarian 为 OPC 创业者提供的，正是这套 AI 原生的团队操作系统——不是又一个工具，而是让 AI 工具真正能够像团队一样协同工作的基础设施。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">AI Agents Just Erased $2T in SaaS Value — Who Survives [2026] · Tech Insider · <a href="https://tech-insider.org/saas-stock-crash-ai-agents-2-trillion-2026/" target="_blank" rel="noopener">https://tech-insider.org/saas-stock-crash-ai-agents-2-trillion-2026/</a></li>
+          <li id="ref-2">AI Agents Replacing SaaS Tools: What It Means for 2026 · Orbilon Tech · <a href="https://orbilontech.com/ai-agents-replacing-saas-tools-2026/" target="_blank" rel="noopener">https://orbilontech.com/ai-agents-replacing-saas-tools-2026/</a></li>
+          <li id="ref-3">The SaaS Rout of 2026 Is Even Worse Than You Think · SaaStr · <a href="https://www.saastr.com/the-saas-rout-of-2026-is-even-worse-than-you-think-for-the-first-time-ever-software-now-trades-at-a-discount-to-the-sp-500/" target="_blank" rel="noopener">https://www.saastr.com/the-saas-rout-of-2026-is-even-worse-than-you-think</a></li>
+          <li id="ref-4">The SaaSpocalypse: $285B Wiped, AI Agents Rising (2026) · Taskade · <a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">https://www.taskade.com/blog/saaspocalypse-explained</a></li>
+          <li id="ref-5">The Great Software Awakening: Why April 2026 Marks the End of the 'SaaS Apocalypse' · Financial Content · <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-4-15-the-great-software-awakening-why-april-2026-marks-the-end-of-the-saas-apocalypse" target="_blank" rel="noopener">https://markets.financialcontent.com/stocks/article/marketminute-2026-4-15</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 11 期<br>
+          2026-02
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 
-<!-- ========== FOOTER ========== -->
+</div>
+
 <footer>
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="index.html" class="logo" style="font-size:.9rem">
-        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
         Solarian
       </a>
       <span class="footer-copy">&copy; 2026 Solarian</span>
@@ -447,52 +423,56 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </footer>
 
-</div><!-- /blogGallery -->
-
-
 <script>
-// ========== ARTICLES DATA ==========
-const articles = {{ARTICLES_JS}};
-
-// ========== RENDER GALLERY ==========
-const gallery = document.getElementById('gallery');
-articles.forEach((a, i) => {
-  const card = document.createElement('a');
-  card.href = '/trends/' + a.id;
-  card.className = 'gallery-card reveal';
-  if (i > 0) card.style.animationDelay = (i * 60) + 'ms';
-
-  const coverHTML = a.cover
-    ? `<img class="card-cover" src="${a.cover}" alt="" loading="lazy">`
-    : `<div class="card-cover-placeholder ${a.grad || 'grad-1'}"></div>`;
-
-  card.innerHTML = `
-    ${coverHTML}
-    <div class="card-body">
-      <span class="card-tag ${a.tagClass}">${a.tag}</span>
-      <div class="card-title">${a.title}</div>
-      <div class="card-desc">${a.desc}</div>
-      <div class="card-meta">${a.source} · ${a.date} · ${a.readTime}</div>
-    </div>
-  `;
-  gallery.appendChild(card);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ========== SCROLL REVEAL ==========
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Lang toggle (visual-only fallback)
 function toggleLang(){
-  const t=document.getElementById('langToggle');
+  const t = document.getElementById('langToggle');
   if(!t) return;
   t.querySelector('.lang-zh').classList.toggle('active');
   t.querySelector('.lang-en').classList.toggle('active');
 }
+
+// Build TOC from h2 elements in article body
+(function(){
+  var content = document.querySelector('.article-body');
+  if (!content) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = content.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
 </script>
-<!-- ========== WAITLIST MODAL (shared bundle) ========== -->
+
+<!-- ========== WAITLIST MODAL ========== -->
 <div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
 <div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="wl-modal">
@@ -546,6 +526,6 @@ function toggleLang(){
     </div>
   </div>
 </div>
-<script src="assets/waitlist.js"></script>
+<script src="/assets/waitlist.js"></script>
 </body>
 </html>

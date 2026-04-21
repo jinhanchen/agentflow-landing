@@ -26,12 +26,12 @@
   --font-body:'DM Sans','Noto Sans SC',sans-serif;
   --font-serif:'Noto Serif SC',Georgia,serif;
   --ease:cubic-bezier(0.25,1,0.5,1);
-  --tag-policy:#2563eb;
-  --tag-case:#16a34a;
-  --tag-trend:#9333ea;
-  --tag-opinion:#ea580c;
-  --tag-insight:#0d9488;
-  --tag-story:#db2777;
+  --tag-policy:#1A5B84;
+  --tag-case:#1F9E6E;
+  --tag-trend:#2D8B92;
+  --tag-opinion:#D97757;
+  --tag-insight:#1F6F87;
+  --tag-story:#23376C;
 }
 
 html{scroll-behavior:smooth}
@@ -128,12 +128,12 @@ a{color:inherit;text-decoration:none}
   border-radius:100px;
   text-transform:uppercase;
 }
-.tag-policy{background:rgba(37,99,235,0.1);color:var(--tag-policy)}
-.tag-case{background:rgba(22,163,74,0.1);color:var(--tag-case)}
-.tag-trend{background:rgba(147,51,234,0.1);color:var(--tag-trend)}
-.tag-opinion{background:rgba(234,88,12,0.1);color:var(--tag-opinion)}
-.tag-insight{background:rgba(13,148,136,0.1);color:var(--tag-insight)}
-.tag-story{background:rgba(219,39,119,0.1);color:var(--tag-story)}
+.tag-policy{background:rgba(26,91,132,0.1);color:var(--tag-policy)}
+.tag-case{background:rgba(31,158,110,0.1);color:var(--tag-case)}
+.tag-trend{background:rgba(45,139,146,0.1);color:var(--tag-trend)}
+.tag-opinion{background:rgba(217,119,87,0.1);color:var(--tag-opinion)}
+.tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
+.tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
 
 .card-title{
   font-family:var(--font-display);
@@ -366,33 +366,33 @@ footer .logo{color:#fff;font-size:.9rem}
 <!-- NAV (unified across all pages) -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
+    <a href="/main" class="logo">
       <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">首页</a></li>
+      <li><a href="/main">首页</a></li>
       <li class="nav-dropdown">
-        <a href="index.html#demo" class="nav-dd-trigger">产品 ▾</a>
+        <a href="/main#demo" class="nav-dd-trigger">产品 ▾</a>
         <div class="nav-dd-menu">
-          <a href="index.html#demo" class="dd-item">
+          <a href="/main#demo" class="dd-item">
             <strong>DM 模式</strong>
             <span>与硅基员工一对一沟通</span>
           </a>
-          <a href="index.html#demo" class="dd-item">
+          <a href="/main#demo" class="dd-item">
             <strong>Workflow 模式</strong>
             <span>透明指挥一支 AI 团队</span>
           </a>
-          <a href="index.html#market-product" class="dd-item">
+          <a href="/main#market-product" class="dd-item">
             <strong>自进化工作流</strong>
             <span>越跑越好的车间模式</span>
           </a>
-          <div class="dd-footer"><a href="index.html#demo">查看全部功能 →</a></div>
+          <div class="dd-footer"><a href="/main#demo">查看全部功能 →</a></div>
         </div>
       </li>
-      <li><a href="trends.html" class="current">OPC 博客</a></li>
-      <li><a href="news.html">公告</a></li>
-      <li><a href="about.html">关于</a></li>
+      <li><a href="/trends" class="current">OPC 博客</a></li>
+      <li><a href="/news">公告</a></li>
+      <li><a href="/about">关于</a></li>
       <li>
         <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
           <span class="lang-zh active">中</span>
@@ -440,1165 +440,122 @@ footer .logo{color:#fff;font-size:.9rem}
       <span class="footer-copy">&copy; 2026 Solarian</span>
     </div>
     <div class="footer-links">
-      <a href="index.html#product">产品</a>
-      <a href="trends.html">博客</a>
-      <a href="about.html">关于</a>
+      <a href="/main#product">产品</a>
+      <a href="/trends">博客</a>
+      <a href="/about">关于</a>
     </div>
   </div>
 </footer>
 
 </div><!-- /blogGallery -->
 
-<!-- ========== ARTICLE READING VIEW ========== -->
-<div id="blogArticle" style="display:none">
-  <div class="article-layout">
-
-    <!-- LEFT STICKY SIDEBAR -->
-    <aside class="sub-sidebar">
-      <button class="sub-sidebar-back" onclick="closeArticle()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        返回博客
-      </button>
-
-      <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
-      <ul class="sub-sidebar-toc" id="articleToc"></ul>
-
-      <div class="sub-sidebar-meta" id="articleMeta"></div>
-    </aside>
-
-    <!-- MAIN ARTICLE COLUMN -->
-    <div class="article-main">
-      <div class="article-page" id="articleContent">
-        <!-- Populated by JS -->
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
 // ========== ARTICLES DATA ==========
 const articles = [
   {
-    id: 12,
+    id: '012',
     title: 'AI 开支从 $1000 降到 $200：分层用模型的真实账单',
     tag: '案例', tagClass: 'tag-case',
     desc: '4 个 AI Agent 7×24 运行，11 个定时任务，每天几十轮对话。优化前烧 $1000/月，优化后 $200。核心方法只有三个字：分层用。',
-    source: '实战案例', date: '2026.04', readTime: '5 分钟',
-    cover: 'assets/trends_012_cost.png',
-    content: `        <p class="lede">
-          在 AI Agent 系统真正跑通之前，很少有人关注一个问题：<strong>这玩意儿到底要烧多少钱？</strong>一个真实的案例：4 个 AI Agent 7×24 持续运行，11 个定时任务，每天几十轮对话。优化前，每天烧 $100-150，月均超过 $1,000。优化后，稳定在 $10/天，月均 $200 出头。省了 80%。核心方法，只有三个字：<strong>分层用</strong>。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>核心原则：不是所有任务都需要最强模型</h2>
-
-        <p>很多人一上来就让所有 AI 请求都走最贵的旗舰模型——无论是日常对话、定时任务还是后台自动化。这就像开法拉利去买菜：能用，但完全没必要。</p>
-
-        <p>正确的做法是<strong>按任务重要性分配模型</strong>。光这一步，通常就能砍掉 60-70% 的开支。</p>
-
-        <p>好消息是，AI API 的成本正在以类似摩尔定律的速度下降。OpenAI 的旗舰模型定价从 2023 年的 $30/百万 token 降到了 2025 年的 $2.50——<strong>三年下降了 12 倍</strong>。而"够用级别"的模型降幅更大：GPT-4o mini 的价格比最初的 GPT-4 便宜了 <strong>200 倍</strong><sup><a href="#ref-1">[1]</a></sup>。行业分析显示，同等能力的 AI 推理成本大约每 6-8 个月减半<sup><a href="#ref-1">[1]</a></sup>。</p>
-
-        <blockquote>DeepSeek V3 在 2024 年 12 月以 $0.14/百万 token 的价格登场——一个前沿级模型，定价仅为 GPT-4 发布时的 1/100。2025 年 1 月的 DeepSeek R1 推理模型定价 $0.55/$2.19，而 OpenAI 四个月前推出的 o1-preview 定价为 $15/$60——能力相当，价格差距 97%。<sup><a href="#ref-1">[1]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>四个有效的分层策略</h2>
-
-        <p><strong>策略一：建立 Fallback 链，永远不因一个模型挂掉而停摆</strong></p>
-
-        <p>配置模型优先级链：旗舰模型（主力）→ 国产大模型（成本低，API 兼容）→ 中端模型（备选）→ 轻量模型（兜底）。某个服务限流或故障时，自动切换到下一级，用户基本感知不到差异。这既是容灾方案，也是成本控制手段。业内实践报告显示，提示压缩和模型路由可以带来 <strong>20-40%</strong> 的额外成本节约<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p><strong>策略二：不同 Agent 用不同模型</strong></p>
-
-        <p>对创造力要求高的 Agent（写作、分析、策略）——用旗舰模型。执行确定性任务的 Agent（格式转换、数据整理、状态检查）——用中端或轻量模型。同等质量下，成本差距可达 5-10 倍。这也是 Mixture of Experts (MoE) 架构的核心思路：只激活模型总参数的一小部分来处理每个 token<sup><a href="#ref-1">[1]</a></sup>。</p>
-
-        <p><strong>策略三：定时任务全部走轻量模型</strong></p>
-
-        <p>这是省钱最狠的一刀。大多数定时任务做的事很简单：读个文件、查个 API、检查系统状态、格式化输出。这些根本不需要"聪明"的模型，需要的是快和便宜。</p>
-
-        <p>若全部用旗舰模型，10 个定时任务每月可能烧 $30+。换成轻量模型后，不到 $5。唯一的例外：需要创造力的任务（如自动生成内容），依然值得用旗舰模型。</p>
-
-        <p><strong>策略四：控制上下文窗口，避免 token 无限膨胀</strong></p>
-
-        <p>长对话的成本增长往往不是线性的——每一轮都要把历史对话带进去。对上下文进行定期压缩或裁剪（例如超过一小时的内容自动压缩），通常能让长对话的 token 成本降低 30-50%。缓存机制（prompt caching）对重复性工作负载的效果更加显著<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>真实的账单对比</h2>
-
-        <p><strong>优化前</strong>（全部旗舰模型，无 fallback）：Anthropic API 约 $1,000/月，其他模型 $30/月，合计超过 $1,000。</p>
-
-        <p><strong>优化后</strong>（分层策略 + fallback 链 + 定时任务降级）：主力 API 约 $200/月（仅主对话和高创造力任务），其他 API 约 $8/月，合计约 $210。</p>
-
-        <p><strong>节省 80%，系统稳定性反而提升了</strong>——因为 fallback 链消除了单点故障。</p>
-
-        <p>对比行业数据：2026 年一个完整的 solopreneur AI 工具栈年运营成本在 $3,000-$12,000 之间<sup><a href="#ref-3">[3]</a></sup>。通过分层路由优化，可以把 AI API 部分的支出压缩到这个范围的下限。</p>
-
-        <div class="section-break"></div>
-
-        <h2>如果你只做一件事</h2>
-
-        <p>如果觉得全面优化太复杂，优先做这两件事：</p>
-
-        <ul>
-          <li><strong>给所有 AI 调用加上 fallback 链</strong>——既是容灾，也是成本控制</li>
-          <li><strong>把所有定时任务降级到轻量模型</strong>——通常省下的钱，超过你的想象</li>
-        </ul>
-
-        <p>对一人公司而言，AI 开支是真实的运营成本，不是可以忽略的细节。成本控制做对了，AI 才是真正的杠杆；做错了，它只是一笔越来越大的账单。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">AI Price Index: LLM Costs Dropped 300x (2023-2026) · TokenCost · <a href="https://tokencost.app/blog/ai-price-index" target="_blank" rel="noopener">https://tokencost.app/blog/ai-price-index</a></li>
-          <li id="ref-2">Best Practices for AI API Cost & Throughput Management (2025) · SkyWork · <a href="https://skywork.ai/blog/ai-api-cost-throughput-pricing-token-math-budgets-2025/" target="_blank" rel="noopener">https://skywork.ai/blog/ai-api-cost-throughput-pricing-token-math-budgets-2025/</a></li>
-          <li id="ref-3">The Rise of the Solopreneur Tech Stack in 2026 · PrometAI · <a href="https://prometai.app/blog/solopreneur-tech-stack-2026" target="_blank" rel="noopener">https://prometai.app/blog/solopreneur-tech-stack-2026</a></li>
-          <li id="ref-4">LLM API Pricing 2026 — Compare 300+ AI Model Costs · PricePerToken · <a href="https://pricepertoken.com/" target="_blank" rel="noopener">https://pricepertoken.com/</a></li>
-          <li id="ref-5">The cost of AI is decreasing · Ramp · <a href="https://ramp.com/velocity/ai-is-getting-cheaper" target="_blank" rel="noopener">https://ramp.com/velocity/ai-is-getting-cheaper</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 12 期<br>
-          2026-04
-        </div>`
+    source: '实战案例', date: '2026-04-12', readTime: '5 分钟',
+    cover: 'assets/trends_012_cost.png'
   },
   {
-    id: 10,
-    title: '$20 开公司之后：完全竞争的陷阱与破局',
-    tag: '趋势', tagClass: 'tag-trend',
-    desc: '当所有人都能用 $20 开公司，进入门槛趋近于零，产品将滑向完全竞争市场——利润趋近于零。真正的竞争，才刚刚开始。',
-    source: 'Solarian 研究', date: '2026.04', readTime: '6 分钟',
-    cover: 'assets/trends_010_competition.png',
-    content: `        <p class="lede">
-          每个人都在欢呼"$20 就能开公司"。但极少有人接着往下想：<strong>当所有人都能用 $20 开公司，会发生什么？</strong>
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>完全竞争市场的幽灵</h2>
-
-        <p>经济学有一条规律：当一个行业的进入门槛趋近于零，它就会滑向<strong>完全竞争市场</strong>。</p>
-
-        <p>完全竞争市场的特征：大量卖家，产品高度同质化，没有定价权，价格由市场决定——利润趋近于零，准确地说，趋近于机会成本。</p>
-
-        <p>AI 工具 + 一人公司的浪潮，正在把软件开发推向这个方向：</p>
-
-        <ul>
-          <li>开发成本从"几十万/月的团队"降到"$20/月的 AI"</li>
-          <li>技术栈高度标准化——Next.js + Supabase + Vercel，几乎人人同一套<sup><a href="#ref-1">[1]</a></sup></li>
-          <li>产品越来越容易被复制——你今天做出来的东西，别人明天也能做出来</li>
-        </ul>
-
-        <p>当开发成本趋近于零，同质化软件产品的利润也会趋近于零。这不是悲观，这是经济规律。</p>
-
-        <div class="section-break"></div>
-
-        <h2>但我们现在在哪？</h2>
-
-        <p>现在处于这条曲线的<strong>早期阶段</strong>。真正能熟练运用 AI 工具、做出有质量产品的人，依然是少数。Y Combinator 2025 冬季批次的数据显示，虽然 25% 的创业公司 95% 的代码由 AI 生成，但这些创始人"每一个都是高度技术型的，完全有能力从零开始自己构建产品"<sup><a href="#ref-2">[2]</a></sup>。换句话说，AI 放大的是已有的能力，不是无中生有。</p>
-
-        <p>这意味着：</p>
-
-        <ul>
-          <li>先行者还有超额利润，这个窗口真实存在</li>
-          <li>但窗口正在快速关闭——AI 工具每个月都在变强，门槛每个月都在降低</li>
-          <li>12 到 18 个月后，"会用 AI 写全栈代码"将不再是竞争优势，就像"会用 Excel"不再是竞争优势一样</li>
-        </ul>
-
-        <div class="section-break"></div>
-
-        <h2>在完全竞争��场里，谁能赚到钱？</h2>
-
-        <p>经济学同样给出了答案——打破完全竞争，只有这几条路：</p>
-
-        <p><strong>差异化</strong>：不要做"又一个 XX 工具"。护城河往往不是代码，而是独特的数据源、深耕多年的行业知识，或网络效应。产品越用越好，才是壁垒。</p>
-
-        <p><strong>转换成本</strong>：让用户用了就离不开。数据锁定、习惯养成、社交关系沉淀——这些不会因为别人也学会了 AI 工具而消失。</p>
-
-        <p><strong>速度与迭代</strong>：窗口期有限，在它关闭前跑得比别人快。第一个深耕某个垂直场景的人，有机会建立品牌认知和用户基础。"快速验证并迭代"比单纯的"快"更重要。YC 最新一批创业公司每周增长 10%<sup><a href="#ref-2">[2]</a></sup>——这就是 AI 赋能下的迭代速度标杆。</p>
-
-        <p><strong>做 AI 做不了的事</strong>：AI 最擅长标准化、重复性的任务。那些需要深度领域知识、复杂业务判断、线下资源整合的工作，依然有壁垒。越是 AI 容易做的事，越不值钱；越是 AI 做不了的事，越值钱。</p>
-
-        <div class="section-break"></div>
-
-        <h2>给 OPC 创业者的三条建议</h2>
-
-        <p><strong>从问题出发，不要从工具出发。</strong>"我会 AI 写代码所以要做个产品"是最危险的起点。正确的顺序是：发现真实痛点 → 判断是否值得解决 → 用 AI 低成本验证。工具是放大器，不是方向盘。</p>
-
-        <p><strong>在窗口期建立不可复制的资产。</strong>用户数据、品牌认知、社区关系——这些不会因为别人也学会用 AI 而贬值。你在窗口期积累的这些，才是真正的护城河。</p>
-
-        <p><strong>把 AI 当杠杆，不当目的。</strong>AI 工具放大你已有的认知优势和行业洞察。如果你没有这些，它放大的是你的盲区。正如 Garry Tan 所说：未来的独角兽不是"雇最多工程师的公司"，而是"用最少的人、最深刻地理解问题的团队"<sup><a href="#ref-3">[3]</a></sup>。</p>
-
-        <blockquote>工具降低的是"把东西做出来"的成本。"做出正确的东西"的成本，从未降低。后者，才是真正的竞争。</blockquote>
-
-        <p>Solarian 在做的事，是帮助一人公司创业者将零散的 AI 工具整合成协同运转的系统——让你把节省下来的时间，真正用于那些机器做不了的判断和决策。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">The Solopreneur SaaS Toolkit for 2026 · Big Ideas DB · <a href="https://bigideasdb.com/solopreneur-saas-toolkit-2026" target="_blank" rel="noopener">https://bigideasdb.com/solopreneur-saas-toolkit-2026</a></li>
-          <li id="ref-2">Y Combinator startups are fastest growing, most profitable in fund history because of AI · CNBC · 2025 年 3 月 · <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank" rel="noopener">https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html</a></li>
-          <li id="ref-3">A quarter of startups in YC's current cohort have codebases that are almost entirely AI-generated · TechCrunch · 2025 年 3 月 · <a href="https://techcrunch.com/2025/03/06/a-quarter-of-startups-in-ycs-current-cohort-have-codebases-that-are-almost-entirely-ai-generated/" target="_blank" rel="noopener">https://techcrunch.com/2025/03/06/a-quarter-of-startups-in-ycs-current-cohort-have-codebases-that-are-almost-entirely-ai-generated/</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 10 期<br>
-          2026-04
-        </div>`
-  },
-  {
-    id: 9,
-    title: '月均 $20：一人公司的完整基建清单',
-    tag: '洞见', tagClass: 'tag-insight',
-    desc: 'Claude 写代码，Supabase 当后端，Vercel 部署，Stripe 收款——13 个工具，固定成本 $21/月，覆盖一家互联网公司从开发到收款的全部职能。',
-    source: 'Solarian 研究', date: '2026.04', readTime: '5 分钟',
-    cover: 'assets/trends_009_stack.png',
-    content: `        <p class="lede">
-          如果你在五年前告诉一位创业者，现在一个人可以用每月 20 美元运营一家完整的互联网公司，他大概率不会相信。融资、团队、服务器、运维——哪一项不是钱烧出来的？但今天，这不是玩笑，而是可以直接复制的事实。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一人公司的完整基建清单</h2>
-
-        <p>以下是目前验证可用的最精简工具栈，覆盖一家互联网公司从开发到收款的全部环节：</p>
-
-        <ul>
-          <li><strong>Claude Code（$20/月）</strong> — AI 开发助手，直接在终端写代码、调试、重构。把"雇一名全栈工程师"变成了月费服务。</li>
-          <li><strong>Supabase（免费）</strong> — 开源后端，底层 PostgreSQL，提供数据库、认证、实时订阅和存储。免费层包含 500MB 数据库、5 万月活用户和 1GB 存储，对 MVP 绰绰有余<sup><a href="#ref-1">[1]</a></sup>。</li>
-          <li><strong>Vercel（免费）</strong> — 部署平台，git push 即上线，自带 CDN 和边缘计算。免费层提供 100GB/月流量和自动 CI/CD<sup><a href="#ref-2">[2]</a></sup>。</li>
-          <li><strong>Namecheap（约 $1/月）</strong> — 域名注册，.com 约 $12/年。有自己的域名，是"认真做产品"和"玩玩而已"的分水岭。</li>
-          <li><strong>Stripe（0 月费，2.9% + 30¢ 交易抽成）</strong> — 在线支付基础设施，无月费、无设置费，从收第一笔到百万级交易，用同一套系统<sup><a href="#ref-3">[3]</a></sup>。</li>
-          <li><strong>GitHub（免费）</strong> — 代码版本控制，同时也是整个项目的协作与 CI/CD 枢纽。</li>
-          <li><strong>Clerk（免费，1 万月活内）</strong> — 用户认证，提供完整登录 / 注册 / OAuth / MFA 组件。比自己写 auth 省几天时间，且更安全。</li>
-          <li><strong>Resend（免费，3,000 封/月）</strong> — 开发者邮件服务，用于验证码、通知、营销邮件。</li>
-          <li><strong>Cloudflare（免费）</strong> — DNS + CDN + DDoS 防护 + SSL，行业标准操作。</li>
-          <li><strong>PostHog（免费，百万事件/月）</strong> — 产品分析平台，事件追踪 + 漏斗分析 + A/B 测试。</li>
-          <li><strong>Sentry（免费，5,000 次错误事件/月）</strong> — 错误监控，代码报错时自动捕获并告警。没有它，你根本不知道用户遇到了什么 bug。</li>
-          <li><strong>Upstash（免费，1 万次请求/天）</strong> — Serverless Redis，用于缓存、速率限制、会话存储。</li>
-          <li><strong>Pinecone（免费，约 100 万向量）</strong> — 向量数据库，AI 应用的语义搜索标配。</li>
-        </ul>
-
-        <p><strong>合计固定成本：约 $21/月。</strong> 变动成本只有 Stripe 的交易抽成——有收入才有这笔支出。</p>
-
-        <blockquote>行业分析显示，2026 年完整的 solopreneur AI 工具栈年运营成本在 $3,000-$12,000 之间，相比传统团队模式降低了 95-98% 的运营成本。当使用免费层构建时，从 0 到 10,000 用户甚至可能不花一分钱。<sup><a href="#ref-4">[4]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>这张清单的真正意义</h2>
-
-        <p>不是"便宜"，而是<strong>职能的完整覆盖</strong>。</p>
-
-        <p>这 13 个工具，分别对应一家互联网公司的开发层（Claude + GitHub）、后端与数据层（Supabase + Upstash + Pinecone）、部署与基础设施层（Vercel + Namecheap + Cloudflare）、用户与支付层（Clerk + Stripe），以及运维与监控层（Resend + PostHog + Sentry）。</p>
-
-        <p>五年前，这些职能对应的是五个以上专职人员，加上动辄几万元/月的服务器开销。现在，它们被打包成"一键即用"的 SaaS 服务，90% 以上对个人和早期项目完全免费。业内最推荐的组合——Next.js + Supabase + Stripe + Vercel——几乎已经成为 solo founder 的标准技术栈<sup><a href="#ref-5">[5]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>你一个人，就是一家公司</h2>
-
-        <p>一人公司的核心，从来不是"一个人干所有活"，而是"一个人掌控全部决策权和 100% 的利润"。AI 和工具接管了执行层，你负责判断什么值得做，以及怎么做。</p>
-
-        <p>不需要融资，不用稀释股权；不需要团队，不用应付管理内耗。你只需要找到一个能解决真实痛点的需求，把产品做出来，然后收钱。</p>
-
-        <p>从来没有哪个时代，让普通人以这么低的成本，完整掌控自己的商业价值链。</p>
-
-        <p>不过，工具清单解决的是"能做"的问题。真正的挑战——<strong>做什么、做给谁、做到什么程度</strong>——这些问题工具给不了答案。一人公司需要的不只是一堆工具，而是让这些工具像团队一样协同运转的操作系统。这正是 Solarian 正在构建的事。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">Supabase Pricing · <a href="https://supabase.com/pricing" target="_blank" rel="noopener">https://supabase.com/pricing</a></li>
-          <li id="ref-2">Vercel Pricing: Hobby, Pro, and Enterprise plans · <a href="https://vercel.com/pricing" target="_blank" rel="noopener">https://vercel.com/pricing</a></li>
-          <li id="ref-3">Stripe Pricing & Fees · <a href="https://stripe.com/pricing" target="_blank" rel="noopener">https://stripe.com/pricing</a></li>
-          <li id="ref-4">The $0 Tech Stack That Actually Scales to 10,000 Users · Medium · 2026 · <a href="https://medium.com/@pranavgorathe19/the-0-tech-stack-that-actually-scales-to-10-000-users-no-credit-card-required-4096f4c881c5" target="_blank" rel="noopener">https://medium.com/@pranavgorathe19</a></li>
-          <li id="ref-5">The Solopreneur SaaS Toolkit for 2026: Every Tool You Need to Build, Launch & Grow · Big Ideas DB · <a href="https://bigideasdb.com/solopreneur-saas-toolkit-2026" target="_blank" rel="noopener">https://bigideasdb.com/solopreneur-saas-toolkit-2026</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 9 期<br>
-          2026-04
-        </div>`
-  },
-  {
-    id: 3,
-    title: '两个人做到年收入 $4 亿的秘密',
-    tag: '案例', tagClass: 'tag-case',
-    desc: 'Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。',
-    source: 'Medvi 案例', date: '2026.04', readTime: '9 分钟',
-    cover: 'assets/medvi_nyt.jpg', grad: null,
-    content: `        <p class="lede">
-          2026 年 4 月 2 日，《纽约时报》记者 Erin Griffith 发表了一篇报道，让全球科技圈震动：Medvi，一家只有两名员工的远程医疗公司——创始人 Matthew Gallagher 和他的弟弟 Elliot——凭借 2 万美元启动资金和全栈 AI 自动化，2025 年全年实现 <strong>4.01 亿美元</strong>销售额，2026 年营收目标直指 <strong>18 亿美元</strong><sup><a href="#ref-1">[1]</a></sup>。Sam Altman 曾预言的"一人十亿美元公司"，似乎正在变为现实。但这个故事比表面看起来复杂得多。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、从拖车公园到 4 亿美元</h2>
-
-        <p>Matthew Gallagher 成长于美国佛罗里达州的一个拖车公园（trailer park），没有名校背景，没有硅谷人脉。2024 年 9 月，他用 2 万美元积蓄创办了 Medvi——一个面向消费者的远程医疗平台，专门提供 GLP-1 类减重药物（即 Ozempic、Wegovy 背后的那一类药物）的在线诊疗和处方服务<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p>增长速度令人咋舌：第一个月营收 30 万美元，第二个月突破 100 万美元<sup><a href="#ref-3">[3]</a></sup>。到 2025 年底，Medvi 的客户从 300 人增长到超过 <strong>25 万人</strong>，全年销售额 4.01 亿美元，净利润率 <strong>16.2%</strong><sup><a href="#ref-1">[1]</a></sup>。</p>
-
-        <p>这一切，靠的是两个人和一群 AI Agent。</p>
-
-        <div class="section-break"></div>
-
-        <h2>二、AI 如何替代了整个公司</h2>
-
-        <p>Gallagher 的运营模式是彻底的 AI 原生架构。他公开表示，公司几乎每一个职能都由 AI 工具承担<sup><a href="#ref-4">[4]</a></sup>：</p>
-
-        <ul>
-          <li><strong>代码开发</strong>：使用 ChatGPT、Claude 和 Grok 编写和维护网站、后台系统和自动化工具</li>
-          <li><strong>广告创意</strong>：Midjourney 生成图片，Runway 制作视频广告</li>
-          <li><strong>客户服务</strong>：ElevenLabs 的 AI 语音工具处理客户沟通</li>
-          <li><strong>运营自动化</strong>：定制化 AI Agent 网络处理从问诊分流到处方审核到客户跟进的全部业务流程</li>
-        </ul>
-
-        <p>正如 Gallagher 所描述的：他和弟弟"监督着一个复杂的 AI Agent 网络，这些 Agent 编写软件代码、制作网站文案、生成广告视频、管理客户服务"<sup><a href="#ref-2">[2]</a></sup>。两个人不是在"做所有事"，而是在<strong>指挥 AI 做所有事</strong>。</p>
-
-        <blockquote>没有销售团队，没有客服中心，没有技术部门。所有这些职能，都被 AI Agent 接管了。Medvi 证明的不是"两个人有多能干"，而是"AI 团队的上限有多高"。<sup><a href="#ref-4">[4]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>三、硬币的另一面</h2>
-
-        <p>如果只讲增长曲线，Medvi 是一个完美的创业童话。但现实更复杂。</p>
-
-        <p><strong>FDA 警告函</strong>：美国食品药品监督管理局（FDA）向 Medvi 发出了正式警告函，指出其存在合规问题——包括"产品标签具有误导性""未经授权声称复方药物与品牌 GLP-1 药物等效""通过州际商业不当分销药品"等<sup><a href="#ref-5">[5]</a></sup>。</p>
-
-        <p><strong>AI 生成的虚假内容</strong>：调查发现，Medvi 使用 AI 生成了虚假的医生社交媒体账号、编造的视频、伪造的用药前后对比图<sup><a href="#ref-5">[5]</a></sup>。当 AI 被用来提升效率时，它是工具；当 AI 被用来制造虚假信任时，它是武器。</p>
-
-        <p>Forrester 分析师发表评论文章警告：<em>不要被"神奇的两人十亿美元 AI 创业公司"的叙事迷惑</em>——极端案例的可复制性值得怀疑，而 AI 自动化带来的监管灰色地带需要被认真对待<sup><a href="#ref-6">[6]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>四、Medvi 真正证明了什么</h2>
-
-        <p>即使打了折扣，Medvi 的故事仍然具有划时代意义。它证明了几件事：</p>
-
-        <p><strong>第一，AI 自动化的上限远超预期。</strong>一个没有技术背景的创业者，用 AI 工具在几个月内搭建了一套从获客到交付的完整业务系统。这在两年前不可想象。</p>
-
-        <p><strong>第二，团队规模不再决定业务规模。</strong>4.01 亿美元的年营收，传统模式下至少需要数百人的团队。Medvi 用 2 个人 + AI Agent 矩阵做到了。Replit CEO Amjad Masad 在 LinkedIn 评论道：一个在拖车公园长大的人，用 AI 和 2 万美元启动资金，建成了一家十亿美元级公司——"这就是我们正在构建的未来"<sup><a href="#ref-7">[7]</a></sup>。</p>
-
-        <p><strong>第三，"碳硅比"成为真正的竞争力指标。</strong>不是你雇了多少人，而是你能指挥多少个 AI Agent——这决定了你的产出上限。Inc. 杂志将 Medvi 的模式称为"无员工十亿美元创业公司"的范本，标志着 AI 正在改变 solopreneurship 的面貌<sup><a href="#ref-8">[8]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>五、对 OPC 创业者的启示</h2>
-
-        <p>Medvi 的成功和争议，给一人公司创业者留下了三条教训：</p>
-
-        <p><strong>AI 是放大器，不是护城河。</strong>Medvi 的增长来自 GLP-1 减重药的爆发性需求 + AI 工具的极致运用。没有 GLP-1 的市场时机，AI 再强也不会产生 4 亿美元。选对问题比选对工具更重要。</p>
-
-        <p><strong>效率不能替代合规。</strong>AI 可以帮你快速做很多事，但"能做"不等于"该做"。FDA 的警告函提醒我们：当监管框架还没跟上 AI 的速度时，创业者需要自我约束。</p>
-
-        <p><strong>故事要经得起追问。</strong>Medvi 最初被讲述为一个纯粹的励志故事——直到深入报道揭露了虚假内容和合规问题。对于 OPC 创业者来说，透明度和信誉比短期增长更重要。</p>
-
-        <p>Medvi 的案例，无论如何评价，都证明了一件事：<em>AI 时代的创业瓶颈，已经不是团队规模或启动资金，而是你能否让 AI 团队为你系统化地工作。</em>这正是 Solarian 要解决的核心问题。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">How AI Helped Medvi, a Telehealth Provider With Just Two Employees, Hit $401M in 2025 Sales · Erin Griffith · The New York Times · 2026 年 4 月 2 日 · <a href="https://www.techmeme.com/260402/p12" target="_blank" rel="noopener">https://www.techmeme.com/260402/p12</a></li>
-          <li id="ref-2">The Billion-Dollar Solo Startup: How One Man Built Medvi — $401M in Year One, $1.8B Run Rate in Year Two — With Just AI and His Brother · Quasa · 2026 · <a href="https://quasa.io/media/the-billion-dollar-solo-startup-how-one-man-built-medvi-401m-in-year-one-1-8b-run-rate-in-year-two-with-just-ai-and-his-brother" target="_blank" rel="noopener">https://quasa.io/media/the-billion-dollar-solo-startup-how-one-man-built-medvi-401m-in-year-one-1-8b-run-rate-in-year-two-with-just-ai-and-his-brother</a></li>
-          <li id="ref-3">Man Turns $20K and AI Tools Into a $1.8B Telehealth Business · eWeek · 2026 · <a href="https://www.eweek.com/news/ai-telehealth-startup-one-person-1-8b-revenue-neuron/" target="_blank" rel="noopener">https://www.eweek.com/news/ai-telehealth-startup-one-person-1-8b-revenue-neuron/</a></li>
-          <li id="ref-4">How one man used AI to build a fast-growing company selling GLP-1 · NewsNation · 2026 · <a href="https://www.newsnationnow.com/health/ai-telehealth-startup-billions-matthew-gallagher/" target="_blank" rel="noopener">https://www.newsnationnow.com/health/ai-telehealth-startup-billions-matthew-gallagher/</a></li>
-          <li id="ref-5">MEDVi FDA Warning Letter and $1.8 Billion NYT Profile: The Full Story · HealthDataConsortium · 2026 · <a href="https://healthdataconsortium.org/medvi-telehealth/" target="_blank" rel="noopener">https://healthdataconsortium.org/medvi-telehealth/</a></li>
-          <li id="ref-6">Beware The Magical Two-Person, $1 Billion AI-Driven Startup · Forrester · 2026 · <a href="https://www.forrester.com/blogs/beware-the-magical-two-person-1-billion-ai-driven-startup/" target="_blank" rel="noopener">https://www.forrester.com/blogs/beware-the-magical-two-person-1-billion-ai-driven-startup/</a></li>
-          <li id="ref-7">Amjad Masad on Medvi · LinkedIn · 2026 · <a href="https://www.linkedin.com/posts/amjadmasad_matthew-gallagher-grew-up-in-a-trailer-park-activity-7445568950811389952-kWQq" target="_blank" rel="noopener">https://www.linkedin.com/posts/amjadmasad</a></li>
-          <li id="ref-8">The 1-Employee Billion-Dollar Startup: How AI Is Changing the Face of Solopreneurship · Inc. · 2026 · <a href="https://www.inc.com/leila-sheridan/the-no-employee-billion-dollar-startup-how-ai-is-changing-the-face-of-solopreneurship/91326517" target="_blank" rel="noopener">https://www.inc.com/leila-sheridan/the-no-employee-billion-dollar-startup-how-ai-is-changing-the-face-of-solopreneurship/91326517</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 3 期<br>
-          2026-04
-        </div>`
-  },
-  {
-    id: 2,
-    title: '深圳推出一人公司行动计划',
-    tag: '政策', tagClass: 'tag-policy',
-    desc: '继北京亦庄之后，深圳发布"AI + 一人企业"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。',
-    source: '深圳工信局', date: '2026.03', readTime: '9 分钟',
-    cover: 'assets/trends_002_city.png',
-    content: `        <p class="lede">
-          2026 年 1 月，深圳市工业和信息化局正式印发《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》，目标到 2027 年底建成超 10 家面积均不少于 1 万平方米的 OPC 社区，培育超千家高成长性人工智能创业企业，集聚超万名人工智能创新创业人才<sup><a href="#ref-1">[1]</a></sup>。这不是一份普通的产业扶持文件——它标志着中国第一座城市将"一人公司"作为一种独立的产业形态，从制度层面正式纳入城市战略。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、深圳的 OPC 行动计划：不只是口号</h2>
-
-        <p>深圳的行动计划，核心是三个数字：<strong>10+、1,000、10,000</strong>——10 个以上万平方米级 OPC 社区、1,000 家以上 AI 创业企业、10,000 名以上创新创业人才。这个目标并非空中楼阁。在政策发布前，深圳已经开始了试点布局：多个城区率先建设 OPC 专属社区，提供从办公空间到算力补贴的全栈支持<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p>更值得关注的是各区的差异化打法：</p>
-
-        <p><strong>南山区</strong>早在 2025 年就推出了"六个一 + 六个券"政策体系。"六个一"指一人一室一桌一笔钱一场景一站式服务；"六个券"则包括模型券、贴息券、技改券、流量券、保险券和消费券<sup><a href="#ref-3">[3]</a></sup>。对于 AI 创业者来说，模型券直接降低了大模型调用成本，这是真金白银的补贴。</p>
-
-        <p><strong>龙岗区</strong>更为激进，拟推出"AI 龙虾十条"政策：新入驻 OPC 社区的企业可获得<strong>三个月免费算力</strong>；符合条件的 AIGC 企业，按实际调用大模型费用的 30% 给予补贴，每家企业每年最高可获 <strong>100 万元</strong>支持<sup><a href="#ref-4">[4]</a></sup>。龙岗的目标很明确：要让深圳成为全国 OPC 创业的"热带雨林"。</p>
-
-        <p><strong>宝安区</strong>则从硬件制造切入，以"场景 + 金融 + 制造"构建面向 OPC 硬创业的系统性支持体系，整合政府引导基金和政府采购创新产品支持政策<sup><a href="#ref-5">[5]</a></sup>。</p>
-
-        <blockquote>一人公司不是权宜之计，而是 AI 时代的必然产物。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。深圳要做的，是让这种重构有序发生。<sup><a href="#ref-2">[2]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>二、北京亦庄：另一种路径</h2>
-
-        <p>深圳不是唯一入局的城市。北京经济技术开发区（亦庄）在 2026 年 2 月发布了《关于进一步加快建设全域人工智能之城的实施方案（2026—2027 年）》，明确到 2027 年底，要<strong>聚集人工智能产业链核心企业 1,000 家，引聚超级个体及独立开发者 10,000 人</strong><sup><a href="#ref-6">[6]</a></sup>。</p>
-
-        <p>2026 年 4 月，亦庄正式启动了<strong>模数 OPC 社区</strong>——全国首个以"一人公司"为主体的产业社区，提出两年内培育 1 万名 AI 独立开发者和 100 家"超级个体"公司<sup><a href="#ref-7">[7]</a></sup>。该社区已初步形成集共享办公、人才公寓、社交空间、微接驳交通、消费配套于一体的"职、住、行、创"四位一体 AI 人才生态圈，首批 20 家 OPC 已率先入驻。</p>
-
-        <p>亦庄还建设了<strong>全国首个聚焦 AI 超级个体的全周期服务站</strong>——模数 OPC 社区企业综合服务中心，可实现<strong>最快 1 小时面对面完成公司注册</strong><sup><a href="#ref-7">[7]</a></sup>。从注册到入驻到获得算力，全链条打通。</p>
-
-        <div class="section-break"></div>
-
-        <h2>三、全国城市的政策竞赛</h2>
-
-        <p>深圳和北京之外，一场围绕 OPC 的城市政策竞赛正在全国蔓延：</p>
-
-        <ul>
-          <li><strong>上海临港新片区</strong>启动了"超级个体 288 计划"，提供专属办公和居住空间<sup><a href="#ref-8">[8]</a></sup></li>
-          <li><strong>苏州</strong>明确提出要成为"OPC 创业首选城市"，计划到 2028 年培育 1,000 家标杆一人公司<sup><a href="#ref-8">[8]</a></sup></li>
-          <li><strong>北京海淀区</strong>发布了八条硬核政策，专门面向 OPC 创业者<sup><a href="#ref-9">[9]</a></sup></li>
-          <li><strong>杭州、成都、武汉</strong>等城市也相继推出了不同力度的一人创业扶持方案</li>
-        </ul>
-
-        <p>这种城市间的竞争，本身就是最强的政策信号：<em>地方政府不是在"帮助"一人创业，而是在"争抢"一人创业者。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>四、制度松绑：从法律到税务</h2>
-
-        <p>城市级的扶持政策，建立在两层制度松绑之上。</p>
-
-        <p><strong>法律层面</strong>：2024 年 7 月 1 日实施的新《公司法》，彻底取消了"一个自然人只能设立一家一人有限责任公司"的限制，放宽了设立子公司的限制条件，同时将实缴资本缴纳期限延长至 5 年<sup><a href="#ref-10">[10]</a></sup>。这为规模化 OPC 提供了完整的法律基础架构。</p>
-
-        <p><strong>税务层面</strong>：2026 年的税收优惠力度前所未有。月销售额不超过 10 万元的 OPC 免征增值税；符合小微企业条件的一人公司，企业所得税实际税负仅 5%；个体工商户个人所得税减半征收——这些政策执行期均已明确延长至 <strong>2027 年底</strong><sup><a href="#ref-11">[11]</a></sup>。</p>
-
-        <p>法律打开了门，税务降低了槛，城市政策提供了路。三者叠加，构成了中国 OPC 创业史上最友好的制度环境。</p>
-
-        <div class="section-break"></div>
-
-        <h2>五、对创业者意味着什么</h2>
-
-        <p>如果你是一名考虑 AI 创业的独立创业者，2026 年的政策环境提供了三重确定性：</p>
-
-        <p><strong>确定性一：成本可控。</strong>算力补贴、模型券、免费办公空间——政府在帮你压低 AI 创业最大的变动成本。龙岗区的 100 万元 AI 调用补贴，对于一人公司来说，可能意味着一整年的零算力成本<sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <p><strong>确定性二：身份合法。</strong>新《公司法》让一人公司获得了与多人公司完全平等的法律地位。你不再需要找一个"挂名股东"来满足注册要求。</p>
-
-        <p><strong>确定性三：不是孤军奋战。</strong>OPC 社区模式意味着，独立创业不等于孤独创业。共享空间、社群网络、政策对接——一人公司也可以有"生态"。</p>
-
-        <p>深圳的行动计划，北京的模数社区，上海的 288 计划——这些不是地方政府的一时兴起，而是一个明确的时代信号：<em>AI 时代的一人公司，正在从"民间自发"走向"制度化支持"。</em></p>
-
-        <p>对 Solarian 而言，这意味着我们面向的不再是一个需要被"说服"的市场，而是一个正在被政策推动、加速扩大的市场。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》· 深圳市工业和信息化局 · 2026 年 1 月 · <a href="https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html" target="_blank" rel="noopener">https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html</a></li>
-          <li id="ref-2">"超级个体"登场 深圳"一人公司"重构商业新生态 · 中国新闻网 · 2026 年 3 月 16 日 · <a href="https://www.chinanews.com.cn/cj/2026/03-16/10587507.shtml" target="_blank" rel="noopener">https://www.chinanews.com.cn/cj/2026/03-16/10587507.shtml</a></li>
-          <li id="ref-3">"一人公司"在深圳悄然兴起 · 深圳市发展和改革委员会 · 2026 年 · <a href="https://fgw.sz.gov.cn/ztzl/qtztzl/szscjmyjjfzzhfwpt/xwdt/content/post_12641545.html" target="_blank" rel="noopener">https://fgw.sz.gov.cn/ztzl/qtztzl/szscjmyjjfzzhfwpt/xwdt/content/post_12641545.html</a></li>
-          <li id="ref-4">助"一人公司"创业！深圳龙岗拟推"AI 龙虾十条" · 深圳 AI 创新产业信息网 · 2026 年 · <a href="https://szaicx.com/page192?article_id=20306" target="_blank" rel="noopener">https://szaicx.com/page192?article_id=20306</a></li>
-          <li id="ref-5">"一人公司"蓬勃发展！深圳龙岗构建 OPC 创业"热带雨林" · 新浪财经 · 2026 年 · <a href="https://cj.sina.com.cn/articles/view/5787187353/158f17899020021cck" target="_blank" rel="noopener">https://cj.sina.com.cn/articles/view/5787187353/158f17899020021cck</a></li>
-          <li id="ref-6">《关于进一步加快建设全域人工智能之城的实施方案（2026—2027 年）》· 北京经济技术开发区 · 2026 年 2 月 · <a href="https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202601/t20260130_4478660.html" target="_blank" rel="noopener">https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202601/t20260130_4478660.html</a></li>
-          <li id="ref-7">亦庄谋划打造全球最大"一人公司"社区 · 首都之窗 · 2026 年 4 月 · <a href="https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html" target="_blank" rel="noopener">https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html</a></li>
-          <li id="ref-8">2026 中国一人公司政策解读：法律松绑与财税红利全析 · OpenAxo · 2026 年 · <a href="https://openaxo.com/trends/china-2026-opc-support-policy-analysis" target="_blank" rel="noopener">https://openaxo.com/trends/china-2026-opc-support-policy-analysis</a></li>
-          <li id="ref-9">海淀发布八条硬核政策，邀你共创"一人公司" · 北京日报 · 2026 年 4 月 · <a href="https://news.bjd.com.cn/2026/04/10/11681407.shtml" target="_blank" rel="noopener">https://news.bjd.com.cn/2026/04/10/11681407.shtml</a></li>
-          <li id="ref-10">"一人公司"近来何以兴起？ · 科技日报 · 2026 年 1 月 30 日 · <a href="https://www.stdaily.com/web/gdxw/2026-01/30/content_468455.html" target="_blank" rel="noopener">https://www.stdaily.com/web/gdxw/2026-01/30/content_468455.html</a></li>
-          <li id="ref-11">2026 中国一人公司政策解读：法律松绑与财税红利全析 · OpenAxo · 2026 年 · <a href="https://openaxo.com/trends/china-2026-opc-support-policy-analysis" target="_blank" rel="noopener">https://openaxo.com/trends/china-2026-opc-support-policy-analysis</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 2 期<br>
-          2026-03
-        </div>`
-  },
-  {
-    id: 1,
-    title: 'AI 时代一人公司加速孵化',
-    tag: '政策', tagClass: 'tag-policy',
-    desc: '2025 年全年新设个体工商户 1,619 万户，AI 工具的普及正在加速一人创业形态的爆发。',
-    source: '新华网', date: '2026.03', readTime: '8 分钟',
-    cover: 'assets/trends_001_network.png',
-    content: `        <p class="lede">
-          2025 年全年，中国新设个体工商户 1,619.4 万户，其中"四新经济"个体工商户 646.8 万户，累计达到 3,997.5 万户，连续五年保持稳步增长<sup><a href="#ref-1">[1]</a></sup>。在大洋彼岸，美国独立创业者（solopreneur）已超过 4,180 万人，每年向经济贡献超过 1.3 万亿美元<sup><a href="#ref-2">[2]</a></sup>。这两组数字指向同一个事实：一人创业不再是边缘选择，它正在成为全球最活跃的经济增长极之一——而 AI 工具的爆发式普及，是这轮加速的核心引擎。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、数据：一人创业浪潮的规模</h2>
-
-        <p>先看中国。市场监管总局 2026 年 3 月发布的数据显示，2025 年全国新设经营主体 2,574.5 万户，其中个体工商户占 1,619.4 万户<sup><a href="#ref-1">[1]</a></sup>。更值得关注的是结构变化：在网络交易平台开展经营活动的个体工商户数量<strong>同比增长 14.7%</strong>，"成长型""发展型"个体工商户增长至 1,389 万户，占分型总量的 17.3%<sup><a href="#ref-1">[1]</a></sup>。这意味着，越来越多的个体创业者不再停留在"生存模式"，而是在借助数字工具快速成长。</p>
-
-        <p>再看全球。美国独立创办企业（不依赖风险投资的单人创始人）占新设创业公司的比例，从 2015 年的 22% 上升到 2024 年的 38%<sup><a href="#ref-3">[3]</a></sup>。在 Y Combinator 等顶级加速器的数据中，这一趋势更加明显：独立创始人占比从 2019 年的 23.7% 跃升至 2025 年中的 36.3%<sup><a href="#ref-2">[2]</a></sup>。值得注意的是，<strong>52.3% 的成功创业退出（exit）是由独立创始人实现的</strong><sup><a href="#ref-3">[3]</a></sup>——单人并不意味着单薄。</p>
-
-        <blockquote>一人创业不是权宜之计。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。<sup><a href="#ref-4">[4]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>二、AI 工具：从辅助到替代</h2>
-
-        <p>一人创业的加速，核心驱动力是 AI 工具的能力跃升。过去，一个人开公司意味着什么都得自己干——写代码、做设计、跑营销、管财务。每一项都是专业岗位，每一项都需要学习成本和时间投入。AI 改变了这个等式。</p>
-
-        <p>麦肯锡 2025 年发布的《AI 现状报告》显示，<strong>78% 的企业已在至少一个业务职能中使用 AI</strong>，但真正实现深度转型的仅占 6%<sup><a href="#ref-5">[5]</a></sup>。这个差距恰恰是一人创业者的机会窗口——他们没有组织惯性，可以从第一天起就以 AI 原生的方式构建业务。</p>
-
-        <p>麦肯锡的另一项研究追踪了 2018-2024 年间创办的数百家新企业，发现 <strong>AI 时代（2023-2024 年）启动的企业，在人均产出和资金效率上显著优于前 AI 时代</strong><sup><a href="#ref-6">[6]</a></sup>。AI 在三个维度创造价值：加速创新周期（更快生成、测试和验证想法）、提升生产力（小团队完成过去整个部门的工作）、压缩速度（从概念到 MVP 的时间大幅缩短）。</p>
-
-        <p>具体到数字：使用 AI 工具的早期创业者，<strong>调研时间缩短 60%，运营开销降低 40%，MVP 开发速度提升近 3 倍</strong><sup><a href="#ref-2">[2]</a></sup>。而麦肯锡全球研究院的宏观测算更为惊人：生成式 AI 每年可释放约 <strong>4.4 万亿美元</strong>的生产力，相当于全球 GDP 的 4%<sup><a href="#ref-7">[7]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>三、真实案例：一个人能走多远</h2>
-
-        <p>数据是抽象的，案例是具体的。以下几个 2025-2026 年的真实案例，展示了 AI 加持下一人创业的上限正在被不断刷新：</p>
-
-        <p><strong>Danny Postma · HeadshotPro</strong>：一个人运营的 AI 头像生成工具，年经常性收入（ARR）达到 <strong>360 万美元</strong>。没有联合创始人，没有员工，从产品开发到客户获取全部由 Postma 本人借助 AI 工具完成<sup><a href="#ref-8">[8]</a></sup>。</p>
-
-        <p><strong>Maor Shlomo · Base44</strong>：一人创建的无代码开发平台，6 个月内积累 25 万用户并实现盈利，随后以 <strong>8,000 万美元</strong>被 Wix 收购<sup><a href="#ref-2">[2]</a></sup>。整个产品从概念到盈利，一个人，半年。</p>
-
-        <p><strong>Medvi</strong>：两名联合创始人的远程医疗公司，用 2 万美元启动资金和全栈 AI Agent 系统，2025 年实现 <strong>4.01 亿美元</strong>销售额<sup><a href="#ref-9">[9]</a></sup>。没有销售团队，没有客服中心——AI Agent 承担了从问诊分流到客户跟进的全部流程。</p>
-
-        <blockquote>AI 时代的创业瓶颈不是人数，而是你能让多少个 AI Agent 为你工作。HeadshotPro、Base44、Medvi 的故事，正在被无数创业者复制。</blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>四、政策加速：从默许到主动扶持</h2>
-
-        <p>一人创业浪潮不仅有市场推力，还有政策拉力。中国在 2024-2026 年间，出现了密集的制度松绑和政策支持：</p>
-
-        <p><strong>2024 年 7 月</strong>，新修订的《公司法》正式施行，取消"一个自然人只能设立一家一人有限责任公司"的限制，首次允许一人公司再投资设立一人公司<sup><a href="#ref-10">[10]</a></sup>。<strong>2025 年底</strong>，个体工商户个人所得税减半征收、增值税小规模纳税人月销售额 10 万元以下免税等优惠政策，执行期延长至 2027 年底<sup><a href="#ref-11">[11]</a></sup>。</p>
-
-        <p>地方层面更为积极。北京亦庄、深圳先后发布"AI + 一人企业"专项扶持计划，目标在三年内培育 1,000 家 AI 驱动的一人企业，配套专项基金、算力补贴和孵化基地<sup><a href="#ref-4">[4]</a></sup>。杭州、上海、成都、苏州等 20 余座城市，均推出了涵盖创业补贴、税收减免、担保贷款的一人创业支持政策。</p>
-
-        <p>政策信号很清晰：<em>一人创业不是过渡态，而是国家认可的新型生产组织方式。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>结论：浪潮已至，基础设施缺位</h2>
-
-        <p>1,619 万新设个体工商户，4,180 万美国独立创业者，78% 的企业已采用 AI——数据清楚地表明，AI 时代的一人创业浪潮已经不是预测，而是正在发生的事实。</p>
-
-        <p>但一个关键问题仍未解决：<strong>工具够多了，协同不够。</strong>一人创业者平均使用 12 个 AI 工具，但这些工具之间几乎没有协作。复制粘贴、手动触发、反复切换——这些"胶水工作"吃掉了创业者大量的时间。</p>
-
-        <p>真正缺少的，不是更多的单点工具，而是一套能让 AI 工具像团队一样协同运转的操作系统——让每一个独立创业者，都能像指挥一支真实团队一样，指挥自己的 AI 团队。</p>
-
-        <p><em>一人公司时代不是下一个十年要发生的事。它已经到来了。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">《2025 年我国新设个体工商户超 1600 万户》· 新华网 · 2026 年 3 月 26 日 · <a href="https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html" target="_blank" rel="noopener">https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html</a></li>
-          <li id="ref-2">The Rise of the Solopreneur: Why One-Person Businesses Are the Defining Entrepreneurship Story of 2026 · Epirus VC · 2026 · <a href="https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026" target="_blank" rel="noopener">https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026</a></li>
-          <li id="ref-3">The Next 1-Man Million Dollar Startup: Why 2026 Is the Year of the Solo Founder · Medium · 2026 · <a href="https://medium.com/@ayushojha010/the-next-1-man-million-dollar-startup-why-2025-is-the-year-of-the-solo-founder-d220edd35203" target="_blank" rel="noopener">https://medium.com/@ayushojha010/the-next-1-man-million-dollar-startup-why-2025-is-the-year-of-the-solo-founder-d220edd35203</a></li>
-          <li id="ref-4">《"AI + 一人企业"培育行动计划》· 深圳市工业和信息化局 · 2026 年 3 月</li>
-          <li id="ref-5">The State of AI in 2025 · McKinsey & Company · 2025 · <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai</a></li>
-          <li id="ref-6">AI Venture Building: How to Scale Faster and Smarter · McKinsey & Company · 2025 · <a href="https://www.mckinsey.com/capabilities/business-building/our-insights/how-to-build-businesses-faster-and-better-with-ai" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/business-building/our-insights/how-to-build-businesses-faster-and-better-with-ai</a></li>
-          <li id="ref-7">The Economic Potential of Generative AI: The Next Productivity Frontier · McKinsey Global Institute · 2023 · <a href="https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier</a></li>
-          <li id="ref-8">7 AI Tools That Run a One-Person Business in 2026 · Entrepreneur · 2026 · <a href="https://www.entrepreneur.com/growing-a-business/7-ai-tools-that-run-a-one-person-business-in-2026-no/501943" target="_blank" rel="noopener">https://www.entrepreneur.com/growing-a-business/7-ai-tools-that-run-a-one-person-business-in-2026-no/501943</a></li>
-          <li id="ref-9">Medvi: Two Founders, $401 Million in Revenue · The New York Times · 2026 年 4 月</li>
-          <li id="ref-10">《新〈公司法〉一人公司注册松绑》· 深圳市市场监管局 · 2024 年 7 月 · <a href="https://amr.sz.gov.cn/zcjzts/ssdj/content/post_11458245.html" target="_blank" rel="noopener">https://amr.sz.gov.cn/zcjzts/ssdj/content/post_11458245.html</a></li>
-          <li id="ref-11">《个体工商户个人所得税减半征收政策》· 国家税务总局 · <a href="https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5237814/content.html" target="_blank" rel="noopener">https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5237814/content.html</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 1 期<br>
-          2026-03
-        </div>`
-  },
-  {
-    id: 11,
+    id: '011',
     title: 'SaaS 的黄昏：当 AI 开始替代整个部门',
     tag: '观点', tagClass: 'tag-opinion',
     desc: '2026 年初，SaaS 板块市值数千亿蒸发。不是因为软件变差了，而是因为 AI 开始直接替代人的职能。按人头卖坐席的时代，正在终结。',
-    source: '硅谷101', date: '2026.02', readTime: '6 分钟',
-    cover: 'assets/trends_011_saas.png',
-    content: `        <p class="lede">
-          2026 年 2 月，全球软件行业经历了一场"信仰地震"：在 Anthropic 发布 Claude Cowork——展示 AI Agent 可以自主完成法律审核、财务分析、客服分流和项目管理等知识工作后，全球 SaaS 板块市值在约 48 小时内蒸发了近 <strong>2,850 亿美元</strong><sup><a href="#ref-1">[1]</a></sup>。华尔街的判断直接了当：<strong>按人头卖坐席的时代，结束了。</strong>
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>SaaS 帝国为何开始动摇</h2>
-
-        <p>过去 15 年，SaaS 的商业模式建立在一个隐性假设之上：软件能帮助人工作，但人依然需要大量存在。你按席位付费，按用户数扩张。这个逻辑无懈可击——直到 AI 开始直接承担"人"的职能。</p>
-
-        <p>核心问题是<strong>席位压缩（seat compression）</strong>：当 10 个 AI Agent 能完成 100 个销售代表的工作，你就不需要 100 个 Salesforce 坐席了。当一个配备 AI Agent 的员工能完成五个人的工作量，按人头定价的模式就崩塌了<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p>Atlassian 在 2026 年 3 月报告了<strong>企业坐席数量有史以来的首次下降</strong>——对一家整个收入模型都依赖坐席扩张的公司来说，这是一场地震。财报发布后股价<strong>暴跌 35%</strong>。Salesforce 尽管收入仍在增长，股价也<strong>下跌了 28%</strong><sup><a href="#ref-1">[1]</a></sup>。</p>
-
-        <p>SaaStr 的分析指出了一个惊人的事实：<strong>软件股目前以 22 倍远期盈利交易——首次低于标普 500 的整体估值</strong><sup><a href="#ref-3">[3]</a></sup>。市场的信号不是"软件暂时被高估了"，而是"我们不确定即便在 22 倍的情况下，增长假设是否还成立"。</p>
-
-        <blockquote>企业开始提出一个更直接的问题：我为什么要为过程付费，而不是为结果付费？从"买螺丝刀"变成"买已拧好的螺丝"——这正是 RaaS（Results as a Service）的核心逻辑。<sup><a href="#ref-2">[2]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>硅基员工：新型组织正在形成</h2>
-
-        <p>最有意思的不是 SaaS 在消亡，而是消亡之后，企业组织在发生什么变化。</p>
-
-        <p>已有企业建立了"硅基员工"管理体系：AI 员工有工号、有 KPI、有绩效考核，甚至有退役机制。人类员工的角色，从执行者变成了系统的设计者和最终审核人。几个真实的案例：</p>
-
-        <ul>
-          <li>曾被视为成本中心的客服部门，45 名客服人员转岗成为 AI 训练师，进入利润中心</li>
-          <li>法律合同审核从 56 分钟缩短至 4 分钟——AI 完成 90% 的工作，人类负责最后签字</li>
-          <li>招聘周期从 28 天压缩至 2 天——AI 深度理解非结构化简历，自动筛选、邀约、访谈</li>
-        </ul>
-
-        <p>"碳硅比"——一名人类员工能指挥多少个 AI Agent——正在成为衡量企业竞争力的新指标<sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>谁会在这轮洗牌中活下来</h2>
-
-        <p>并非所有 SaaS 公司都会消亡。事实上，到 2026 年 4 月中旬，有迹象表明经历了残酷的 18 个月"SaaS 末日"后，机构投资者开始重新买入被打压的云股票<sup><a href="#ref-5">[5]</a></sup>。能存活的公司，往往具备以下之一：</p>
-
-        <ul>
-          <li><strong>不可替代的私域数据</strong>：AI 能生成内容，但生成不了你积累十年的行业数据和客户关系。</li>
-          <li><strong>极度复杂的业务流程</strong>：高度定制、高容错要求的场景，AI 短期内难以完全接管。</li>
-          <li><strong>主动转型为 AI 原生架构</strong>：从工具提供商变为结果提供商，从卖软件变为卖 Agent 矩阵。</li>
-        </ul>
-
-        <p>功能简单、依赖席位费的中层工具，将以极快的速度被淘汰。</p>
-
-        <div class="section-break"></div>
-
-        <h2>对一人公司的结构性利好</h2>
-
-        <p>这场变革，对一人公司创业者而言其实是好消息。</p>
-
-        <p>大公司替换原有 SaaS 工具链、重建 AI 原生工作流，需要大量时间和克服内部阻力。而一人公司可以从第一天起，就以 AI 原生的方式构建业务——没有历史包袱，没有组织惰性，没有需要说服的委员会。</p>
-
-        <p>这是 OPC 时代真正的结构性优势：轻装上阵，比任何大公司都能更快完成"碳硅重组"。</p>
-
-        <p>Solarian 为 OPC 创业者提供的，正是这套 AI 原生的团队操作系统——不是又一个工具，而是让 AI 工具真正能够像团队一样协同工作的基础设施。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">AI Agents Just Erased $2T in SaaS Value — Who Survives [2026] · Tech Insider · <a href="https://tech-insider.org/saas-stock-crash-ai-agents-2-trillion-2026/" target="_blank" rel="noopener">https://tech-insider.org/saas-stock-crash-ai-agents-2-trillion-2026/</a></li>
-          <li id="ref-2">AI Agents Replacing SaaS Tools: What It Means for 2026 · Orbilon Tech · <a href="https://orbilontech.com/ai-agents-replacing-saas-tools-2026/" target="_blank" rel="noopener">https://orbilontech.com/ai-agents-replacing-saas-tools-2026/</a></li>
-          <li id="ref-3">The SaaS Rout of 2026 Is Even Worse Than You Think · SaaStr · <a href="https://www.saastr.com/the-saas-rout-of-2026-is-even-worse-than-you-think-for-the-first-time-ever-software-now-trades-at-a-discount-to-the-sp-500/" target="_blank" rel="noopener">https://www.saastr.com/the-saas-rout-of-2026-is-even-worse-than-you-think</a></li>
-          <li id="ref-4">The SaaSpocalypse: $285B Wiped, AI Agents Rising (2026) · Taskade · <a href="https://www.taskade.com/blog/saaspocalypse-explained" target="_blank" rel="noopener">https://www.taskade.com/blog/saaspocalypse-explained</a></li>
-          <li id="ref-5">The Great Software Awakening: Why April 2026 Marks the End of the 'SaaS Apocalypse' · Financial Content · <a href="https://markets.financialcontent.com/stocks/article/marketminute-2026-4-15-the-great-software-awakening-why-april-2026-marks-the-end-of-the-saas-apocalypse" target="_blank" rel="noopener">https://markets.financialcontent.com/stocks/article/marketminute-2026-4-15</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 11 期<br>
-          2026-02
-        </div>`
+    source: '硅谷101', date: '2026-04-11', readTime: '6 分钟',
+    cover: 'assets/trends_011_saas.png'
   },
   {
-    id: 8,
+    id: '010',
+    title: '$20 开公司之后：完全竞争的陷阱与破局',
+    tag: '趋势', tagClass: 'tag-trend',
+    desc: '当所有人都能用 $20 开公司，进入门槛趋近于零，产品将滑向完全竞争市场——利润趋近于零。真正的竞争，才刚刚开始。',
+    source: 'Solarian 研究', date: '2026-04-10', readTime: '6 分钟',
+    cover: 'assets/trends_010_competition.png'
+  },
+  {
+    id: '009',
+    title: '月均 $20：一人公司的完整基建清单',
+    tag: '洞见', tagClass: 'tag-insight',
+    desc: 'Claude 写代码，Supabase 当后端，Vercel 部署，Stripe 收款——13 个工具，固定成本 $21/月，覆盖一家互联网公司从开发到收款的全部职能。',
+    source: 'Solarian 研究', date: '2026-04-09', readTime: '5 分钟',
+    cover: 'assets/trends_009_stack.png'
+  },
+  {
+    id: '008',
     title: 'Solarian 创始人：我就是第一个用户',
     tag: '故事', tagClass: 'tag-story',
     desc: '"我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。"',
-    source: 'Solarian', date: '2026', readTime: '8 分钟',
-    cover: 'assets/franklin_avatar.png', grad: null,
-    content: `        <p class="lede">
-          "我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。" 这句话来自 Solarian 创始人 Franklin。在过去两年里，他尝试了几乎所有主流 AI 工具，积累了数千小时的实际使用经验。他发现了一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。他需要的不是又一个工具，而是一个操作系统——一个能让多个 AI Agent 像团队一样协同工作的底层架构。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、第一个用户的痛苦</h2>
-
-        <p>Franklin 的创业日常是这样的：早上用 Claude 写代码，中午用 ChatGPT 改营销文案，下午用 Midjourney 做社交媒体图片，晚上用 Notion 更新项目计划。每个工具都很好用，但问题是——<strong>它们之间不交流</strong>。</p>
-
-        <p>Claude 不知道他刚在 Notion 里更新了产品路线图。ChatGPT 不知道他昨天用 Claude 写的代码改变了产品的核心功能。Midjourney 不知道他的品牌指南刚做了调整。每一次对话都从零开始，每一个 AI 都像一个新来的实习生——很聪明，但对公司的事情一无所知。</p>
-
-        <p>"每天我花在'让 AI 理解我在做什么'的时间，几乎和'实际做事'的时间一样多。" 这个认知，成了 Solarian 的起点。</p>
-
-        <p>他不是唯一有这种感受的人。根据 Lokalise 的调查，<strong>45% 的知识工作者</strong>表示频繁切换工具正在降低他们的生产力<sup><a href="#ref-1">[1]</a></sup>。对于一人公司来说，这个比例可能更高——因为你没有团队分担这些"胶水工作"。</p>
-
-        <div class="section-break"></div>
-
-        <h2>二、从"碎片"到"团队"的顿悟</h2>
-
-        <p>转折点发生在 Franklin 开始使用 Anthropic 的 Claude Code——一个 AI 编码终端助手——的时候。Claude Code 不只是回答编程问题，它能直接在终端中读取文件、执行命令、理解项目结构、记住上下文。这让他第一次体验到"AI 不是工具，是同事"的感觉。</p>
-
-        <p>但即使是 Claude Code，它也只覆盖"写代码"这一个职能。Franklin 需要的是一整支团队——一个负责代码的 Agent、一个负责营销的 Agent、一个负责客户研究的 Agent、一个负责数据分析的 Agent——它们共享同一套业务知识，能自主协调，越用越好。</p>
-
-        <blockquote>我发现了一个悖论：AI 工具越多，协调成本越高；自动化越深，失控风险越大。真正缺少的不是更强的工具，而是让工具像团队一样协作的操作系统。</blockquote>
-
-        <p>这个"从碎片到团队"的洞察，与整个行业的趋势不谋而合。多 Agent 协作框架的采用率从 2023 年的 12% 跃升至 2025 年的 <strong>38.5%</strong><sup><a href="#ref-2">[2]</a></sup>。AI Agent 编排市场预计从 2024 年的 47 亿美元增长至 2034 年的 <strong>263 亿美元</strong>，年复合增长率 18.8%<sup><a href="#ref-3">[3]</a></sup>。更广义的 AI Agent 市场更是从 2024 年的 52.5 亿美元飙升至 2030 年预计的 <strong>526.2 亿美元</strong>，CAGR 达到 46.3%<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p>但几乎所有现有方案都面向企业级客户。CrewAI、LangChain、AutoGen——它们为拥有工程团队的公司设计。<em>谁在为一个人的公司设计？</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>三、Solarian 的三个核心信念</h2>
-
-        <p>Solarian 的产品设计，建立在三个核心信念之上：</p>
-
-        <p><strong>信念一：Agent 是团队成员，不是工具。</strong>传统的 AI 工具思路是"你输入指令，AI 返回结果"。Solarian 的思路是"你定义目标，AI 团队自主执行"。每个 Agent 有自己的角色（PM、设计师、工程师、营销专家）、职责范围和工作流程。Agent 之间可以互相沟通、互相审核、互相补位——就像真实的团队一样。</p>
-
-        <p><strong>信念二：经验必须可积累。</strong>大多数 AI 工具是无状态的——每次对话都从零开始。但真实的团队不是这样的：做过十次营销方案后，第十一次应该比第一次更快更好。Solarian 的"自进化工作流"就是要实现这一点：系统从每一次执行中学习，把有效的做法沉淀为可复用的经验，让 AI 团队真正"越用越好"。</p>
-
-        <p><strong>信念三：创始人是指挥官，不是操作员。</strong>一人公司创始人最宝贵的不是时间，是判断力和决策能力。Solarian 要做的，是让创始人把 80% 的时间花在战略判断上——选对市场、找准痛点、定义产品方向——而把 80% 的执行工作交给 AI 团队。</p>
-
-        <div class="section-break"></div>
-
-        <h2>四、为什么是"现在"</h2>
-
-        <p>AI Agent 协作平台的想法并不新鲜。那为什么是现在？因为三个条件在 2025-2026 年同时成熟：</p>
-
-        <p><strong>模型能力跨越实用门槛。</strong>Claude 3.5 Sonnet、GPT-4o、Gemini 1.5 Pro 这一代模型，第一次让 AI Agent 具备了"可靠执行复杂任务"的能力。之前的模型会犯太多错误，需要人类频繁纠正；现在，在很多任务上，AI 的输出质量已经可以直接使用<sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <p><strong>成本降至可负担水平。</strong>2023 年让一个 AI Agent 持续运行的成本高得惊人。到 2025 年，同等任务的 API 调用成本下降了 90% 以上。一人公司创业者每月 $200-300 就能让一支 AI Agent 团队 7×24 运转<sup><a href="#ref-5">[5]</a></sup>。</p>
-
-        <p><strong>OPC 市场达到临界规模。</strong>中国新设个体工商户 1,619 万户，美国独立创业者超过 4,180 万人，深圳和北京在政策层面正式拥抱一人公司。这不再是小众需求，而是一个正在被政策推动、被技术赋能的庞大市场<sup><a href="#ref-6">[6]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>五、最苛刻的第一个用户</h2>
-
-        <p>"我就是第一个用户，也是最苛刻的用户。" Franklin 在日常工作中完全依赖自己构建的系统——Solarian 的 Agent 团队帮他写代码、研究市场、管理内容、分析数据。每一个功能都是因为他自己需要而建，每一个改进都来自真实使用中的痛点。</p>
-
-        <p>这种"自用即产品"（dogfooding）的方式，意味着 Solarian 不是一个从市场调研报告里"设计"出来的产品，而是从一个真实一人创业者的日常需求中"长"出来的产品。</p>
-
-        <p>Deloitte 在其 2026 年技术预测中指出，AI Agent 编排将从"技术演示"进入"商业价值释放"阶段——企业将需要更成熟的框架来管理多个专业化 Agent 的协作<sup><a href="#ref-7">[7]</a></sup>。Solarian 的定位，正是把这种企业级的 Agent 编排能力，带给一人公司。</p>
-
-        <p><em>如果 Solarian 能让 Franklin 这样的一人创业者真正解放出来——把精力集中在最重要的判断上，把执行交给 AI 团队——它就能帮助所有人。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">Too Many Tools, Too Little Time: How Context Switching Is Killing Team Flow · Lokalise · <a href="https://lokalise.com/blog/blog-tool-fatigue-productivity-report/" target="_blank" rel="noopener">https://lokalise.com/blog/blog-tool-fatigue-productivity-report/</a></li>
-          <li id="ref-2">Multi-Agent AI Orchestration: Enterprise Strategy for 2025-2026 · On About · <a href="https://www.onabout.ai/p/mastering-multi-agent-orchestration-architectures-patterns-roi-benchmarks-for-2025-2026" target="_blank" rel="noopener">https://www.onabout.ai/p/mastering-multi-agent-orchestration-architectures-patterns-roi-benchmarks-for-2025-2026</a></li>
-          <li id="ref-3">Global AI Agent Orchestration Software Market Forecast · IntelEvo Research · <a href="https://www.intelevoresearch.com/reports/ai-agent-orchestration-software-market/" target="_blank" rel="noopener">https://www.intelevoresearch.com/reports/ai-agent-orchestration-software-market/</a></li>
-          <li id="ref-4">Top 9 AI Agent Frameworks as of March 2026 · Shakudo · <a href="https://www.shakudo.io/blog/top-9-ai-agent-frameworks" target="_blank" rel="noopener">https://www.shakudo.io/blog/top-9-ai-agent-frameworks</a></li>
-          <li id="ref-5">The Rise of the Solopreneur Tech Stack in 2026 · PrometAI · <a href="https://prometai.app/blog/solopreneur-tech-stack-2026" target="_blank" rel="noopener">https://prometai.app/blog/solopreneur-tech-stack-2026</a></li>
-          <li id="ref-6">《2025 年我国新设个体工商户超 1600 万户》· 新华网 · 2026 年 3 月 · <a href="https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html" target="_blank" rel="noopener">https://www.news.cn/fortune/20260326/57173d72d3874851b8947968322bf63a/c.html</a></li>
-          <li id="ref-7">Unlocking Exponential Value with AI Agent Orchestration · Deloitte · 2026 · <a href="https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/ai-agent-orchestration.html" target="_blank" rel="noopener">https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/ai-agent-orchestration.html</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 8 期<br>
-          2026
-        </div>`
+    source: 'Solarian', date: '2026-04-08', readTime: '8 分钟',
+    cover: 'assets/franklin_avatar.png', grad: null
   },
   {
-    id: 7,
+    id: '007',
     title: '从工具碎片到团队协作：OPC 的 AI 困境',
     tag: '洞见', tagClass: 'tag-insight',
     desc: '一人公司创业者平均使用 12 个 AI 工具，却缺少一个让它们协同工作的操作系统。',
-    source: 'Solarian 研究', date: '2026', readTime: '9 分钟',
-    cover: 'assets/trends_007_tools.png',
-    content: `        <p class="lede">
-          一人公司创业者平均每天在 <strong>9.4 个不同的应用之间切换</strong>，每天切换窗口、标签页和平台的次数超过 <strong>33 次</strong>——17% 的人每天切换超过 100 次<sup><a href="#ref-1">[1]</a></sup>。加利福尼亚大学欧文分校的研究发现，每次中断后，大脑平均需要 <strong>23 分 15 秒</strong>才能完全恢复专注状态<sup><a href="#ref-2">[2]</a></sup>。简单算一下：如果你每天切换 10 次应用，你就失去了将近 4 小时的深度工作时间。工具越多，效率越低——这就是 OPC 创业者面临的"AI 工具困境"。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、悖论：工具越多，效率越低</h2>
-
-        <p>AI 工具的爆发本应是一人创业者的福音。ChatGPT 写文案，Midjourney 出图，Cursor 写代码，Notion 管项目，Zapier 做自动化，Mailchimp 发邮件，Stripe 收款，PostHog 看数据……每一个工具单独拿出来都很强大。但当你把它们堆在一起，问题就来了。</p>
-
-        <p>一项对知识工作者的调查显示，<strong>45% 的受访者表示频繁切换工具正在主动降低他们的生产力</strong><sup><a href="#ref-1">[1]</a></sup>。超过五分之一的人（22%）每周因为"工具疲劳"损失 <strong>2 小时以上</strong>——累积到全年，这是超过 <strong>100 小时</strong>，相当于 2.5 个完整工作周被工具切换吞噬<sup><a href="#ref-1">[1]</a></sup>。</p>
-
-        <p>对一人公司来说，这个问题尤其致命。大公司可以用专人管理工具链，可以有 IT 部门做集成。但你只有一个人——你既是 CEO 也是实习生，你不仅要用这些工具，还要<em>维护它们之间的连接</em>。</p>
-
-        <blockquote>复制粘贴、手动触发、反复切换——这些"胶水工作"吃掉了创业者 40% 的时间。工具碎片化的代价不是"多付几个月费"，而是你最稀缺的资源——注意力和决策能力——被无意义地消耗。<sup><a href="#ref-2">[2]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>二、AI 工具碎片化的三个层面</h2>
-
-        <p>AI 工具碎片化不只是"用的软件多"这么简单。它在三个层面侵蚀一人创业者的效率：</p>
-
-        <p><strong>层面一：数据碎片化。</strong>你的客户数据在 Stripe，你的内容在 Notion，你的代码在 GitHub，你的分析在 PostHog，你的邮件列表在 Mailchimp。没有一个地方能看到你的业务全貌。当你想回答"我的核心用户是谁？他们怎么发现我的产品？他们为什么付费？"这样的基本问题时，你需要在五个工具之间拼凑答案。</p>
-
-        <p><strong>层面二：上下文碎片化。</strong>每个 AI 工具都是独立运作的。ChatGPT 不知道你的 Notion 里写了什么，Cursor 不知道你的营销策略是什么，你的客服 AI 不了解你的产品路线图。每次对话都从零开始——你必须反复向不同的 AI 解释同样的业务背景。这就像雇了十个实习生，但他们之间从不交流。</p>
-
-        <p><strong>层面三：决策碎片化。</strong>当工具之间没有协同，每个决策都变成了手动操作。一篇博客发布后，你需要手动把它推到社交媒体、手动更新邮件列表、手动追踪传播效果。这些本应是自动化链条的一部分，但工具碎片化让每一步都需要你亲自操作。</p>
-
-        <div class="section-break"></div>
-
-        <h2>三、为什么 Zapier 式的"连接"不够</h2>
-
-        <p>有人会说：不是有 Zapier、Make、n8n 这些自动化工具吗？它们不就是用来连接碎片化工具的吗？</p>
-
-        <p>确实，Zapier 拥有 6,000+ 集成，是连接工具的行业标准。但它解决的是<strong>"动作连接"</strong>，不是<strong>"智能协同"</strong>。Zapier 能做到"当 Stripe 收到付款时，自动在 Notion 创建一条记录"。但它做不到"根据这个客户过去三个月的行为模式，判断他是否需要升级服务，然后自动生成一封个性化邮件并在最佳时间发送"。</p>
-
-        <p>前者是机械触发，后者是智能决策。OPC 创业者需要的是后者——一个能<em>理解业务上下文</em>并<em>自主做出判断</em>的系统，而不是一个需要你预先定义每一条规则的触发器。</p>
-
-        <p>统计数据印证了这一点：<strong>73% 的独立创业者在尝试 AI 自动化后 90 天内失败</strong>，因为他们"在收集工具而不是构建系统"<sup><a href="#ref-3">[3]</a></sup>。大多数失败的模式是：同时订阅 6 个工具 → 每个都学得不深 → 结果令人失望 → 工具被闲置<sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>四、成本：看得见的和看不见的</h2>
-
-        <p>工具碎片化的成本是双重的。</p>
-
-        <p><strong>看得见的成本</strong>：一个典型的独立创业者工具栈——团队通讯、文档、项目管理、日程、视频会议、社交媒体管理——每月 $60-80<sup><a href="#ref-4">[4]</a></sup>。加上 AI 工具（ChatGPT Plus $20、Claude Pro $20、Cursor $20、各种 API 调用），总月费很容易突破 $150-200。</p>
-
-        <p>但<strong>看不见的成本</strong>才是真正的杀手。知识工作者平均每周因工具疲劳损失 <strong>51 分钟</strong><sup><a href="#ref-1">[1]</a></sup>。对于一人公司来说，时间=产出=收入。如果你的产品月收入 $5,000，每周浪费 1 小时在工具切换上，每月就是 4 小时，按你的时薪折算，这是一笔远超 $200 月费的隐性支出。</p>
-
-        <p>更隐蔽的是<strong>决策质量的下降</strong>。当你的注意力被工具切换不断打断，你做出的产品决策、营销决策、定价决策——这些真正决定公司命运的判断——质量都在下降。这笔账没有人算过，但它可能是最昂贵的。</p>
-
-        <div class="section-break"></div>
-
-        <h2>五、从碎片到系统：OPC 需要什么</h2>
-
-        <p>真正的解决方案不是"更好的连接"，而是范式的转变。一人公司需要的，不是 12 个独立工具 + 一个连接层，而是<strong>一套原生协同的 AI 团队操作系统</strong>。</p>
-
-        <p>这意味着：</p>
-
-        <ul>
-          <li><strong>共享上下文</strong>：所有 AI Agent 共享同一套业务知识库。你的营销 Agent 知道你的产品路线图，你的客服 Agent 了解你的定价策略，你的开发 Agent 知道用户反馈里的高频痛点</li>
-          <li><strong>自主协调</strong>：Agent 之间可以直接通信和协作，不需要你手动做"胶水"。当一个 Agent 完成任务后，相关的 Agent 会自动获得更新并采取下一步行动</li>
-          <li><strong>经验积累</strong>：系统从每一次工作中学习。第 10 次写博客比第 1 次更快更好，不是因为你变熟练了，而是因为 AI 团队积累了关于"什么有效"的经验</li>
-        </ul>
-
-        <p>这不是又一个工具——这是从"工具堆叠"到"团队协同"的架构级跃迁。这就是 Solarian 要构建的东西：让一人公司的 AI 工具，从各自为战的碎片，变成协同运转的团队。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">Too Many Tools, Too Little Time: How Context Switching Is Killing Team Flow · Lokalise · <a href="https://lokalise.com/blog/blog-tool-fatigue-productivity-report/" target="_blank" rel="noopener">https://lokalise.com/blog/blog-tool-fatigue-productivity-report/</a></li>
-          <li id="ref-2">Gloria Mark et al. The Cost of Interrupted Work: More Speed and Stress · University of California, Irvine · <a href="https://www.ics.uci.edu/~gmark/chi08-mark.pdf" target="_blank" rel="noopener">https://www.ics.uci.edu/~gmark/chi08-mark.pdf</a></li>
-          <li id="ref-3">12 AI Tools Every Solo Founder Needs to Scale Fast in 2026 · Entrepreneur Loop · <a href="https://entrepreneurloop.com/ai-tools-to-scale-solo-business/" target="_blank" rel="noopener">https://entrepreneurloop.com/ai-tools-to-scale-solo-business/</a></li>
-          <li id="ref-4">Why More Tools Don't Mean More Leverage: The Hidden Cost of Tool Sprawl · Alfred · <a href="https://get-alfred.ai/blog/why-more-tools-dont-mean-more-leverage" target="_blank" rel="noopener">https://get-alfred.ai/blog/why-more-tools-dont-mean-more-leverage</a></li>
-          <li id="ref-5">The Death of Tool Sprawl: How AI Workspaces Are Replacing Your SaaS Stack · Trilo · Medium · <a href="https://medium.com/trilohq/the-death-of-tool-sprawl-how-ai-workspaces-are-replacing-your-saas-stack-dd77e4141941" target="_blank" rel="noopener">https://medium.com/trilohq/the-death-of-tool-sprawl-how-ai-workspaces-are-replacing-your-saas-stack-dd77e4141941</a></li>
-          <li id="ref-6">AI Sprawl in the Workplace: How to Regain Control and Productivity · ClickUp · <a href="https://clickup.com/blog/ai-sprawl/" target="_blank" rel="noopener">https://clickup.com/blog/ai-sprawl/</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 7 期<br>
-          2026
-        </div>`
+    source: 'Solarian 研究', date: '2026-04-07', readTime: '9 分钟',
+    cover: 'assets/trends_007_tools.png'
   },
   {
-    id: 5,
-    title: 'Y Combinator：25% 创业公司 95% 代码由 AI 生成',
-    tag: '趋势', tagClass: 'tag-trend',
-    desc: '"2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。"',
-    source: 'Garry Tan, YC CEO', date: '2025', readTime: '9 分钟',
-    cover: 'assets/trends_005_yc.png',
-    content: `        <p class="lede">
-          2025 年 3 月 6 日，Y Combinator CEO Garry Tan 在 X 上发布了一条引爆科技圈的推文："在我们 2025 冬季批次中，25% 的创业公司 95% 的代码由 LLM 生成。这不是打字错误。Vibe coding 时代到来了。"<sup><a href="#ref-1">[1]</a></sup> 这条推文被 TechCrunch、CNBC、Slashdot 等主流科技媒体转载，成为 2025 年最具标志性的 AI 创业数据点之一。它宣告的不仅是一个统计事实，而是软件开发范式的根本转变。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、数据背后的 YC 批次</h2>
-
-        <p>先理解这个数字的分量。Y Combinator 是全球最负盛名的创业加速器，孵化了 Airbnb、Stripe、Dropbox、Coinbase 等万亿美元级公司。每个批次录取率低于 2%——能进入 YC 的创业者，本身就是经过严格筛选的顶尖技术人才<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p>Tan 特别强调了一个关键前提：<strong>"这些人中的每一个都是高度技术型的，完全有能力从零开始自己构建产品。一年前，他们会从零写代码——但现在，95% 是 AI 写的。"</strong><sup><a href="#ref-1">[1]</a></sup> 这不是"不会写代码的人用 AI 凑合"，而是<em>最懂代码的人选择让 AI 来写</em>。</p>
-
-        <p>结果呢？Tan 透露，这一批次的 YC 公司<strong>整体每周增长率达到 10%</strong>——这是 YC 历史上最快的增长速度和最高的盈利水平<sup><a href="#ref-3">[3]</a></sup>。AI 代码生成不仅没有降低质量，反而释放了创始人的时间，让他们把精力集中在产品方向和用户增长上。</p>
-
-        <blockquote>对创始人来说，这意味着你不再需要一支 50 或 100 人的工程团队。—— Garry Tan, Y Combinator CEO<sup><a href="#ref-1">[1]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>二、Vibe Coding：从 Karpathy 到行业标准</h2>
-
-        <p>"Vibe coding"这个术语，由 OpenAI 联合创始人、前特斯拉 AI 负责人 <strong>Andrej Karpathy</strong> 于 2025 年 2 月提出<sup><a href="#ref-4">[4]</a></sup>。他描述的是一种全新的开发方式：开发者不直接编写代码，而是用自然语言向 AI 描述意图，由 LLM 自动生成代码。开发者的角色从"写代码的人"变成了"指导 AI 写代码的人"。</p>
-
-        <p>这个概念迅速引发共振。2025 年底，"vibe coding"被《柯林斯英语词典》评为<strong>年度词汇</strong><sup><a href="#ref-4">[4]</a></sup>——一个技术术语能获此殊荣，本身就说明了这种开发方式的社会影响力。</p>
-
-        <p>到 2026 年，vibe coding 已不再是实验性概念，而是主流开发实践：</p>
-
-        <ul>
-          <li><strong>92%</strong> 的美国开发者每天使用 AI 编码工具，资深开发者报告平均 <strong>81%</strong> 的生产力提升<sup><a href="#ref-5">[5]</a></sup></li>
-          <li>Gartner 预测到 2026 年底，<strong>60%</strong> 的新代码将由 AI 生成<sup><a href="#ref-5">[5]</a></sup></li>
-          <li>Microsoft 和 Google 披露，两家公司的新增代码中已有 <strong>25-30%</strong> 由 AI 生成<sup><a href="#ref-5">[5]</a></sup></li>
-          <li>Vibe coding 市场规模 2026 年估计达 <strong>47 亿美元</strong>，预计 2027 年将以 38% 的 CAGR 增长至 123 亿美元<sup><a href="#ref-5">[5]</a></sup></li>
-        </ul>
-
-        <div class="section-break"></div>
-
-        <h2>三、从 Vibe Coding 到 Agentic Engineering</h2>
-
-        <p>Karpathy 本人在 2026 年 2 月更新了他的框架。他指出，LLM 的能力进步已经超越了他最初定义的"vibe coding"——那时候 vibe coding 更适合一次性项目或原型。他提出了一个新术语：<strong>Agentic Engineering</strong>（智能体工程）<sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <p>在 Agentic Engineering 的工作流中，开发者 99% 的时间不是在写代码，而是在<strong>编排 AI Agent 并提供监督</strong>。AI Agent 负责代码编写、测试、调试、部署——开发者负责定义目标、审查输出、做关键判断。</p>
-
-        <p>这与 Solarian 的核心理念高度一致：<em>不是让一个人干十个人的活，而是让一个人指挥十个 AI Agent 干十个人的活。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>四、不可忽视的风险</h2>
-
-        <p>AI 代码生成的速度优势不等于质量保证。多项研究揭示了值得警惕的安全隐患：</p>
-
-        <p>CodeRabbit 于 2025 年 12 月对 470 个开源 GitHub Pull Request 的分析发现，AI 参与编写的代码包含的"重大问题"（major issues）约为纯人工代码的 <strong>1.7 倍</strong>，安全漏洞率高出 <strong>2.74 倍</strong><sup><a href="#ref-6">[6]</a></sup>。另一项行业统计显示，约 <strong>45%</strong> 的 AI 生成代码包含漏洞，如硬编码密钥或输入验证不当<sup><a href="#ref-5">[5]</a></sup>。</p>
-
-        <p>Garry Tan 本人也承认：<strong>当前的推理模型还不够强大，无法独立完成高质量的调试</strong>。因此，创始人必须对产品有深刻理解——AI 写代码，人类把关质量<sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <blockquote>AI 生成 95% 的代码，但那 5% 的人工干预——架构决策、安全审查、产品判断——决定了产品是能跑还是能卖。</blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>五、对 OPC 创业者的意义</h2>
-
-        <p>YC 的数据点，对一人公司创业者有三重意义：</p>
-
-        <p><strong>技术壁垒正在消失。</strong>过去，"没有技术联合创始人"是独立创业者最大的障碍。现在，Cursor、Claude Code、GitHub Copilot、Replit 等工具让一个有产品直觉的非技术创始人，可以在几天内构建出过去需要一个工程团队花几个月才能完成的产品。</p>
-
-        <p><strong>速度成为核心竞争力。</strong>YC 批次 10% 的周增长率说明，当开发速度不再是瓶颈，迭代速度就是竞争优势。一人公司没有会议、没有审批流程、没有跨部门协调——决策到执行的路径最短，这在 AI 时代是结构性优势。</p>
-
-        <p><strong>洞察力取代执行力成为稀缺资源。</strong>Tan 的判断是：未来的独角兽不是"雇最多工程师的公司"，而是"用最少的人、最深刻地理解问题的团队"<sup><a href="#ref-3">[3]</a></sup>。当所有人都能用 AI 快速构建产品，<em>做对的产品</em>比<em>快速做产品</em>更重要。</p>
-
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">Garry Tan (@garrytan) · X · 2025 年 3 月 6 日 · <a href="https://x.com/garrytan/status/1897303270311489931" target="_blank" rel="noopener">https://x.com/garrytan/status/1897303270311489931</a></li>
-          <li id="ref-2">95% AI-written code? Unpacking the Y Combinator CEO's developer jobs bombshell · LeadDev · 2025 · <a href="https://leaddev.com/hiring/95-ai-written-code-unpacking-the-y-combinator-ceos-developer-jobs-bombshell" target="_blank" rel="noopener">https://leaddev.com/hiring/95-ai-written-code-unpacking-the-y-combinator-ceos-developer-jobs-bombshell</a></li>
-          <li id="ref-3">Y Combinator startups are fastest growing, most profitable in fund history because of AI · CNBC · 2025 年 3 月 15 日 · <a href="https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html" target="_blank" rel="noopener">https://www.cnbc.com/2025/03/15/y-combinator-startups-are-fastest-growing-in-fund-history-because-of-ai.html</a></li>
-          <li id="ref-4">Vibe Coding · Wikipedia · <a href="https://en.wikipedia.org/wiki/Vibe_coding" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Vibe_coding</a></li>
-          <li id="ref-5">Top Vibe Coding Statistics & Trends [2026] · Second Talent · 2026 · <a href="https://www.secondtalent.com/resources/vibe-coding-statistics/" target="_blank" rel="noopener">https://www.secondtalent.com/resources/vibe-coding-statistics/</a></li>
-          <li id="ref-6">Vibe Coding in 2026: How AI Is Changing the Way Developers Write Code · daily.dev · 2026 · <a href="https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code" target="_blank" rel="noopener">https://daily.dev/blog/vibe-coding-how-ai-changing-developers-code</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 5 期<br>
-          2025
-        </div>`
-  },
-  {
-    id: 6,
+    id: '006',
     title: '新《公司法》如何为一人公司铺路',
     tag: '政策', tagClass: 'tag-policy',
     desc: '2024 年 7 月实施的新《公司法》正式允许一个自然人设立一人有限责任公司，打破了制度瓶颈。',
-    source: '政策解读', date: '2024.07', readTime: '10 分钟',
-    cover: 'assets/trends_006_door.png',
-    content: `        <p class="lede">
-          2024 年 7 月 1 日，修订后的《中华人民共和国公司法》正式施行。这是自 1993 年公司法颁布以来最大幅度的一次修订——全文 266 个条款中实质性修改超过 <strong>100 条</strong>，其中对一人公司（One-Person Company，OPC）影响最深远的变化是：<strong>彻底取消了"一个自然人只能设立一家一人有限责任公司"的限制</strong>，并首次允许设立一人股份有限公司<sup><a href="#ref-1">[1]</a></sup>。这不是一条技术性修订，而是中国商事制度对"一个人就是一家公司"这一新型组织形态的正式认可。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、旧法的三道枷锁</h2>
-
-        <p>要理解新法的突破性，先要理解旧法对一人公司施加了怎样的限制。2005 年修订的《公司法》虽然首次允许自然人设立一人有限责任公司，但附加了三道严格的枷锁<sup><a href="#ref-2">[2]</a></sup>：</p>
-
-        <p><strong>枷锁一：数量限制。</strong>一个自然人<em>只能</em>设立一家一人有限责任公司。这意味着，如果你已经有一家一人公司，想再开第二家，法律不允许。对于 AI 时代可能需要同时运营多个独立项目的创业者来说，这是致命限制。</p>
-
-        <p><strong>枷锁二：再投资限制。</strong>一人有限责任公司不能再投资设立新的一人有限责任公司。这直接阻断了一人公司的"母子公司"结构——一个创业者无法通过一家控股公司管理多个业务实体。</p>
-
-        <p><strong>枷锁三：最低注册资本。</strong>一人有限责任公司的最低注册资本为 <strong>10 万元人民币</strong>，且必须一次性实缴<sup><a href="#ref-3">[3]</a></sup>。相比之下，普通有限责任公司的最低注册资本仅 3 万元，且可以分期缴纳。一人公司反而门槛更高，这种"惩罚性差异"背后的逻辑是对单人股东的不信任。</p>
-
-        <p>此外，旧法还有一条隐性约束：<strong>举证责任倒置</strong>——如果一人公司股东不能证明公司财产独立于个人财产，就要对公司债务承担无限连带责任<sup><a href="#ref-2">[2]</a></sup>。这条规定在新法中被保留，但其他三道枷锁全部被移除。</p>
-
-        <div class="section-break"></div>
-
-        <h2>二、新法的四项松绑</h2>
-
-        <p>新《公司法》对一人公司的修订，可以概括为"四项松绑"：</p>
-
-        <p><strong>松绑一：取消数量限制。</strong>一个自然人现在可以设立<em>多家</em>一人有限责任公司<sup><a href="#ref-1">[1]</a></sup>。对于 AI 时代的独立创业者来说，这意味着你可以同时运营一个 SaaS 产品、一个内容平台和一个咨询业务，每个都是独立的法律实体。</p>
-
-        <p><strong>松绑二：允许再投资。</strong>一人有限责任公司可以继续投资设立新的一人有限责任公司<sup><a href="#ref-1">[1]</a></sup>。母子公司结构不再是多人公司的专利。</p>
-
-        <p><strong>松绑三：取消最低注册资本。</strong>新法删除了有限责任公司最低注册资本 3 万元、一人有限责任公司最低注册资本 10 万元的限制<sup><a href="#ref-3">[3]</a></sup>。理论上，1 元也可以注册一人公司。同时，出资期限统一调整为<strong>自公司成立之日起 5 年内缴足</strong><sup><a href="#ref-4">[4]</a></sup>，给了创业者充裕的资金周转空间。</p>
-
-        <p><strong>松绑四：扩大股东范围。</strong>旧法规定一人有限责任公司的股东只能是"一个自然人或一个法人"。新法删除了这一限制——<strong>有限合伙企业</strong>也可以成为一人公司的唯一股东<sup><a href="#ref-2">[2]</a></sup>。这为通过有限合伙基金控股一人公司的架构设计打开了大门。</p>
-
-        <blockquote>新《公司法》最具突破性的变化是：一人有限责任公司不再作为特殊公司形式存在——旧法的专章规定被删除，一人公司在法律地位上与多人公司完全平等。<sup><a href="#ref-2">[2]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>三、允许设立一人股份有限公司</h2>
-
-        <p>这是一项容易被忽视但意义深远的变化。旧法下，股份有限公司要求至少 2 名发起人（2005 年前要求 5 名），且最低注册资本 500 万元。新法将发起人下限降至 <strong>1 人</strong>，取消了最低注册资本要求<sup><a href="#ref-3">[3]</a></sup>。</p>
-
-        <p>这意味着什么？<strong>一个人可以独立设立股份有限公司</strong>——而股份有限公司是上市的前提条件。虽然从设立到上市还有很长的路，但制度上的路径已经被打通：<em>一个人创办的公司，理论上可以直接走向资本市场</em>。</p>
-
-        <p>不过需要注意：与有限责任公司不同，股份有限公司的发起人<strong>不享有 5 年分期缴纳的权利</strong>——认购的股份应在公司注册前缴纳完毕<sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>四、保留的约束：举证责任倒置</h2>
-
-        <p>新法在松绑的同时，保留了一条核心约束：<strong>如果一人有限责任公司的股东不能证明公司财产独立于个人财产，仍然要对公司债务承担连带责任</strong><sup><a href="#ref-2">[2]</a></sup>。</p>
-
-        <p>在普通有限责任公司中，举证责任在债权人一方——你要告我股东，你得证明我混同了公司和个人财产。但一人公司的逻辑是反过来的：<em>我（股东）必须主动证明我没有混同</em>。如果我拿不出证据，法律推定我混同了。</p>
-
-        <p>这意味着一人公司的创业者必须做好三件事：</p>
-
-        <ul>
-          <li><strong>财务独立</strong>：公司账户与个人账户严格分离，不混用</li>
-          <li><strong>年度审计</strong>：旧法要求一人公司每年编制财务会计报告并经审计；新法虽删除了强制条款，但作为举证手段，审计依然是最有效的保护</li>
-          <li><strong>规范交易</strong>：股东与公司之间的任何资金往来都要有据可查</li>
-        </ul>
-
-        <p>这条约束不是惩罚，而是一人公司的"安全阀"——它在给你自由的同时，确保这种自由不被滥用。</p>
-
-        <div class="section-break"></div>
-
-        <h2>五、法律松绑遇上 AI 浪潮</h2>
-
-        <p>新《公司法》的施行时间是 2024 年 7 月 1 日。恰好是 AI 工具能力进入"实用阶段"的时间窗口——Claude 3 Opus、GPT-4 Turbo、Gemini 1.5 Pro 等模型在 2024 年上半年密集发布，AI 编码、AI 写作、AI 分析的实际可用性大幅提升。</p>
-
-        <p>法律松绑和技术突破在同一时间窗口交汇，不是巧合。当技术上一个人已经可以运营一家完整的公司，法律必须跟上。新公司法做到了这一点——它为 AI 时代的一人创业提供了<strong>完整的法律基础架构</strong>。</p>
-
-        <p>深圳在 2026 年初发布《打造人工智能 OPC 创业生态引领地行动计划》<sup><a href="#ref-5">[5]</a></sup>，北京亦庄启动模数 OPC 社区<sup><a href="#ref-6">[6]</a></sup>，上海、苏州、海淀相继跟进——这些城市级的政策响应，全部建立在新公司法的制度基础之上。没有法律层面的松绑，地方政策只是空中楼阁。</p>
-
-        <p><em>新公司法不是在"帮助"一人公司，它是在制度层面承认：一人公司是一种合法的、正当的、值得鼓励的企业形态。</em></p>
-
-        <p>对于 Solarian 而言，这意味着我们面向的不是一个需要"创造需求"的市场——法律已经为一人创业者打开了大门，AI 工具已经让一个人具备了团队的能力。我们要做的，是让这两者之间的最后一环——让 AI 工具像团队一样协同运转——变成现实。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">新《公司法》于 2024 年 7 月 1 日起施行 · 海安市公安局 · 2024 · <a href="https://www.haian.gov.cn/hasgaj/zcwj/content/c56f6ded-c5f1-4d56-a1dc-c24625df4a77.html" target="_blank" rel="noopener">https://www.haian.gov.cn/hasgaj/zcwj/content/c56f6ded-c5f1-4d56-a1dc-c24625df4a77.html</a></li>
-          <li id="ref-2">一人有限责任公司制度在最新《公司法》中的调整 · 北京商则律师事务所 · <a href="https://www.shangzelaw.com/147.html" target="_blank" rel="noopener">https://www.shangzelaw.com/147.html</a></li>
-          <li id="ref-3">新《公司法》关于注册资本那些事儿 · 青岛市企业登记服务平台 · <a href="https://qydjfw.qingdao.gov.cn/229/10654.html" target="_blank" rel="noopener">https://qydjfw.qingdao.gov.cn/229/10654.html</a></li>
-          <li id="ref-4">新公司法下注册资本五年实缴制及三年过渡期解读 · 邦盛律师事务所 · <a href="http://www.baclaw.cn/41/407" target="_blank" rel="noopener">http://www.baclaw.cn/41/407</a></li>
-          <li id="ref-5">《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》· 深圳市工信局 · 2026 年 1 月 · <a href="https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html" target="_blank" rel="noopener">https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html</a></li>
-          <li id="ref-6">亦庄谋划打造全球最大"一人公司"社区 · 首都之窗 · 2026 年 4 月 · <a href="https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html" target="_blank" rel="noopener">https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html</a></li>
-          <li id="ref-7">新《中华人民共和国公司法》正式施行，创业者将有更多选择 · 宁波市海曙区人民政府 · 2024 年 7 月 · <a href="https://www.haishu.gov.cn/art/2024/7/2/art_1229100495_58997593.html" target="_blank" rel="noopener">https://www.haishu.gov.cn/art/2024/7/2/art_1229100495_58997593.html</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 6 期<br>
-          2024-07
-        </div>`
+    source: '政策解读', date: '2026-04-06', readTime: '10 分钟',
+    cover: 'assets/trends_006_door.png'
   },
   {
-    id: 4,
+    id: '005',
+    title: 'Y Combinator：25% 创业公司 95% 代码由 AI 生成',
+    tag: '趋势', tagClass: 'tag-trend',
+    desc: '"2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。"',
+    source: 'Garry Tan, YC CEO', date: '2026-04-05', readTime: '9 分钟',
+    cover: 'assets/trends_005_yc.png'
+  },
+  {
+    id: '004',
     title: 'Sam Altman：一人十亿美元公司即将出现',
     tag: '观点', tagClass: 'tag-opinion',
     desc: '"在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。"',
-    source: 'Sam Altman', date: '2024', readTime: '10 分钟',
-    cover: 'assets/sam_altman.jpg', grad: null,
-    content: `        <p class="lede">
-          "在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。在 AI 之前这不可想象，但现在它会发生。" 这段话出自 OpenAI CEO Sam Altman，最早流传于 2024 年初<sup><a href="#ref-1">[1]</a></sup>。一年后，Anthropic CEO Dario Amodei 在 Code with Claude 开发者大会上被直接问到同样的问题——"一人十亿美元公司什么时候出现？"他的回答是："2026 年，我有 70-80% 的信心。"<sup><a href="#ref-2">[2]</a></sup> 两位当今最重要的 AI 公司创始人，对同一个预言给出了几乎相同的判断。这不是营销话术，而是他们基于技术演进速度做出的推断。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>一、预言的逻辑</h2>
-
-        <p>Altman 的判断基于一个简单的经济学原理：<strong>AI 正在将边际成本推向零。</strong></p>
-
-        <p>在传统企业模型中，增长需要人力。客户增加 10 倍，你需要增加客服、增加工程师、增加运营人员——每多服务一个用户都有增量成本。这是为什么公司需要融资、需要团队扩张的根本原因。</p>
-
-        <p>AI 打破了这个等式。当代码由 AI 编写，设计由 AI 生成，客服由 AI 处理，数据分析由 AI 完成，一个人可以服务的客户数量不再受制于时间和精力——它受制于 <strong>AI Agent 的数量和能力</strong>。而 AI Agent 的边际成本，与人类员工相比，几乎可以忽略不计<sup><a href="#ref-3">[3]</a></sup>。</p>
-
-        <p>Altman 在 Fortune 杂志的采访中进一步阐述：很快我们就会看到"十人团队的十亿美元估值公司"，紧接着就是"一人十亿美元公司"<sup><a href="#ref-1">[1]</a></sup>。他认为 AI 将复制整个人类员工的产出——你不需要雇一个设计师，GPT 帮你设计；你不需要雇一个工程师，Claude 帮你写代码。</p>
-
-        <blockquote>我们很快就会看到一人公司拥有十亿美元估值。在 AI 之前这是不可想象的，但现在它会发生。—— Sam Altman, OpenAI CEO<sup><a href="#ref-1">[1]</a></sup></blockquote>
-
-        <div class="section-break"></div>
-
-        <h2>二、Amodei 的更具体预测</h2>
-
-        <p>如果说 Altman 的表述偏向愿景，Amodei 的判断则更具体、更可验证。</p>
-
-        <p>2025 年 5 月，在 Anthropic 的 Code with Claude 开发者大会上，当被问到首家一人十亿美元公司何时出现时，Amodei 明确回答："2026 年"，并给出了 <strong>70-80% 的置信度</strong><sup><a href="#ref-2">[2]</a></sup>。他还具体指出了最可能的领域：<strong>自动交易（proprietary trading）、开发者工具（developer tools）、以及全自动客户服务的业务</strong>——这些都是 AI 能直接接管核心价值链的场景。</p>
-
-        <p>Amodei 的另一个预测更加激进：到 2025 年底，AI 将负责编写 <strong>90-100%</strong> 的软件代码<sup><a href="#ref-4">[4]</a></sup>。当被问及"一个人用 Claude 能不能做出 Instagram 这样的产品"时，他停顿了一下说："好吧，也许是两个人的公司而不是一个人的公司，但我们会很接近。"<sup><a href="#ref-2">[2]</a></sup></p>
-
-        <p>在 2026 年初的达沃斯世界经济论坛上，Amodei 进一步预测：AI 将在 6-12 个月内对软件工程师产生实质性替代效果，50% 的白领工作将在 1-5 年内受到显著冲击<sup><a href="#ref-5">[5]</a></sup>。</p>
-
-        <div class="section-break"></div>
-
-        <h2>三、不止是 Altman 和 Amodei</h2>
-
-        <p>一人十亿美元公司的预言，不是两个人的一厢情愿。整个硅谷最有影响力的一批人都在表达类似判断：</p>
-
-        <p><strong>Vinod Khosla</strong>（Sun Microsystems 联合创始人、Khosla Ventures 创始人）在多个场合表示，未来的创业公司不需要大团队——AI 将使 2-3 人团队具备传统百人公司的产出能力<sup><a href="#ref-6">[6]</a></sup>。</p>
-
-        <p><strong>Garry Tan</strong>（Y Combinator CEO）透露 YC 2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成，并断言"你不再需要 50 或 100 个工程师"<sup><a href="#ref-7">[7]</a></sup>。</p>
-
-        <p><strong>Satya Nadella</strong>（Microsoft CEO）在 2026 年初表示，2026 年将是 AI 从理论走向实践的转折点——AI 将从"热门话题"变成"日常工具"，真正嵌入每一个工作流程中<sup><a href="#ref-8">[8]</a></sup>。</p>
-
-        <p>这些判断来自各自独立的视角：OpenAI 看到的是模型能力的指数增长，Anthropic 看到的是编码能力的突破，YC 看到的是创业者行为的结构性变化，Microsoft 看到的是企业端的采纳速度。<em>当所有信号指向同一个方向，你很难说它不会发生。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>四、已经在逼近的现实</h2>
-
-        <p>预言是否太超前？让数据说话。</p>
-
-        <p><strong>Medvi</strong>：两人创办的远程医疗公司，2025 年营收 4.01 亿美元，2026 年 run rate 18 亿美元<sup><a href="#ref-9">[9]</a></sup>。如果按这个轨迹走下去，它可能成为第一家接近"一人十亿美元公司"定义的企业——虽然严格来说是两个人。</p>
-
-        <p><strong>Danny Postma · HeadshotPro</strong>：真正的一人公司，AI 头像生成工具，ARR 360 万美元。离十亿还远，但它证明了一个人可以从零到数百万美元营收，不需要任何员工<sup><a href="#ref-10">[10]</a></sup>。</p>
-
-        <p><strong>Maor Shlomo · Base44</strong>：一人创建的无代码平台，6 个月 25 万用户，8,000 万美元被 Wix 收购<sup><a href="#ref-10">[10]</a></sup>。不是营收十亿，但退出价值已经接近独角兽门槛。</p>
-
-        <p>从 360 万到 8,000 万到 4 亿——"一人十亿美元"不是一步到位的跳跃，而是一条正在被填充的连续谱。</p>
-
-        <div class="section-break"></div>
-
-        <h2>五、怀疑者的问题，和我们的回答</h2>
-
-        <p>当然，怀疑声也不少。最常见的质疑包括：</p>
-
-        <p><strong>"一个人怎么处理法律、合规、财务这些非技术问题？"</strong>——这些问题正在被专业化的 AI 工具和外包服务解决。Stripe Atlas 帮你注册公司，Clerk 处理用户认证，Stripe 管收款，AI 律师助手帮你审合同。"一个人"不是指所有事亲力亲为，而是指<em>决策权和利润归属于一个人</em>。</p>
-
-        <p><strong>"人际关系和战略判断还是需要人类"</strong>——这恰恰说明了一个人已经够了。如果一家公司最核心的价值来自创始人的战略判断和行业洞察，那需要的正是一个有远见的人 + 一套能执行远见的 AI 系统。</p>
-
-        <p><strong>"极端案例不可复制"</strong>——Medvi 确实有独特的市场时机（GLP-1 减重药爆发）。但重点不是 Medvi 能不能被复制，而是<em>AI 工具的能力曲线是否会让越来越多的人有机会做到类似的事</em>。答案显然是肯定的——每过六个月，AI 能做的事都在增加，而创业者需要手动做的事都在减少。</p>
-
-        <div class="section-break"></div>
-
-        <h2>结论：不是"会不会发生"，而是"什么时候"</h2>
-
-        <p>Sam Altman 和 Dario Amodei 之间的分歧，不是"一人十亿美元公司会不会出现"——他们都认为会。分歧只是时间：是 2026 年还是更晚一些。</p>
-
-        <p>对于今天的独立创业者来说，这个预言的意义不在于"你能不能做到十亿美元"——大多数人不需要。意义在于：<strong>创办和运营一家公司所需的最低人数，正在指数级下降。</strong>一个人能做的事情的天花板，正在被 AI 以前所未有的速度推高。</p>
-
-        <p>你不需要成为下一个 Gallagher，但你可以成为 AI 时代的独立创业者。而 Solarian 要做的，就是让"一个人指挥一支 AI 团队"这件事，变得像今天发一封邮件一样自然。</p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">Sam Altman wants AI to create a one-person unicorn with a billion-dollar valuation · Fortune · 2024 年 2 月 · <a href="https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/" target="_blank" rel="noopener">https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/</a></li>
-          <li id="ref-2">Anthropic CEO Dario Amodei Predicts the First Billion-Dollar Solopreneur by 2026 · Inc. · 2025 年 5 月 · <a href="https://www.inc.com/ben-sherry/anthropic-ceo-dario-amodei-predicts-the-first-billion-dollar-solopreneur-by-2026/91193609" target="_blank" rel="noopener">https://www.inc.com/ben-sherry/anthropic-ceo-dario-amodei-predicts-the-first-billion-dollar-solopreneur-by-2026/91193609</a></li>
-          <li id="ref-3">The One-person Billion-dollar Company · Every · <a href="https://every.to/napkin-math/the-one-person-billion-dollar-company" target="_blank" rel="noopener">https://every.to/napkin-math/the-one-person-billion-dollar-company</a></li>
-          <li id="ref-4">With AI, single person can operate billion dollar company · YourStory · 2025 · <a href="https://yourstory.com/ai-story/ai-billion-dollar-company-one-person-anthropic-dario-amodei" target="_blank" rel="noopener">https://yourstory.com/ai-story/ai-billion-dollar-company-one-person-anthropic-dario-amodei</a></li>
-          <li id="ref-5">WEF 2026: What the Most Powerful AI Leaders Say About AGI, Jobs, and the Future of Humanity · Context Studios · 2026 · <a href="https://www.contextstudios.ai/blog/wef-2026-what-the-most-powerful-ai-leaders-say-about-agi-jobs-and-the-future-of-humanity" target="_blank" rel="noopener">https://www.contextstudios.ai/blog/wef-2026-what-the-most-powerful-ai-leaders-say-about-agi-jobs-and-the-future-of-humanity</a></li>
-          <li id="ref-6">The Rise of the One-Person Billion-Dollar Company: Sam Altman's Take · StartupBell · <a href="https://www.startupbell.net/post/the-rise-of-the-one-person-billion-dollar-company-sam-altman-s-take" target="_blank" rel="noopener">https://www.startupbell.net/post/the-rise-of-the-one-person-billion-dollar-company-sam-altman-s-take</a></li>
-          <li id="ref-7">How Solo Founders Are Building Million-Dollar Businesses With AI Tools in 2026 · GREY Journal · 2026 · <a href="https://greyjournal.net/hustle/grow/solo-founders-million-dollar-ai-businesses-2026/" target="_blank" rel="noopener">https://greyjournal.net/hustle/grow/solo-founders-million-dollar-ai-businesses-2026/</a></li>
-          <li id="ref-8">Microsoft CEO Satya Nadella says 2026 will be a turning point for AI · Hack Diversity · 2026 · <a href="https://www.hackdiversity.com/microsoft-ceo-satya-nadella-says-2026/" target="_blank" rel="noopener">https://www.hackdiversity.com/microsoft-ceo-satya-nadella-says-2026/</a></li>
-          <li id="ref-9">How AI Helped Medvi, a Telehealth Provider With Just Two Employees, Hit $401M in 2025 Sales · Erin Griffith · The New York Times · 2026 年 4 月</li>
-          <li id="ref-10">The Rise of the Solopreneur: Why One-Person Businesses Are the Defining Entrepreneurship Story of 2026 · Epirus VC · 2026 · <a href="https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026" target="_blank" rel="noopener">https://www.epirus.vc/blog/the-rise-of-the-solopreneur-why-one-person-businesses-are-the-defining-entrepreneurship-story-of-2026</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 4 期<br>
-          2024
-        </div>`
+    source: 'Sam Altman', date: '2026-04-04', readTime: '10 分钟',
+    cover: 'assets/sam_altman.jpg', grad: null
+  },
+  {
+    id: '003',
+    title: '两个人做到年收入 $4 亿的秘密',
+    tag: '案例', tagClass: 'tag-case',
+    desc: 'Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。',
+    source: 'Medvi 案例', date: '2026-04-03', readTime: '9 分钟',
+    cover: 'assets/medvi_nyt.jpg', grad: null
+  },
+  {
+    id: '002',
+    title: '深圳推出一人公司行动计划',
+    tag: '政策', tagClass: 'tag-policy',
+    desc: '继北京亦庄之后，深圳发布"AI + 一人企业"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。',
+    source: '深圳工信局', date: '2026-04-02', readTime: '9 分钟',
+    cover: 'assets/trends_002_city.png'
+  },
+  {
+    id: '001',
+    title: 'AI 时代一人公司加速孵化',
+    tag: '政策', tagClass: 'tag-policy',
+    desc: '2025 年全年新设个体工商户 1,619 万户，AI 工具的普及正在加速一人创业形态的爆发。',
+    source: '新华网', date: '2026-04-01', readTime: '8 分钟',
+    cover: 'assets/trends_001_network.png'
   }
 ];
 
 // ========== RENDER GALLERY ==========
 const gallery = document.getElementById('gallery');
 articles.forEach((a, i) => {
-  const card = document.createElement('div');
+  const card = document.createElement('a');
+  card.href = '/trends/' + a.id;
   card.className = 'gallery-card reveal';
   if (i > 0) card.style.animationDelay = (i * 60) + 'ms';
 
@@ -1615,95 +572,8 @@ articles.forEach((a, i) => {
       <div class="card-meta">${a.source} · ${a.date} · ${a.readTime}</div>
     </div>
   `;
-  card.addEventListener('click', () => openArticle(a));
   gallery.appendChild(card);
 });
-
-// ========== DEEP LINK (from index.html ticker: trends.html#article-N) ==========
-function openArticleFromHash(){
-  const m = location.hash.match(/^#article-(\d+)$/);
-  if (!m) return;
-  const id = parseInt(m[1], 10);
-  const art = articles.find(a => a.id === id);
-  if (art) openArticle(art);
-}
-openArticleFromHash();
-window.addEventListener('hashchange', openArticleFromHash);
-
-// ========== ARTICLE VIEW ==========
-let currentTocObserver = null;
-
-function openArticle(a) {
-  var coverHTML = a.cover
-    ? '<img class="article-cover" src="' + a.cover + '" alt="">'
-    : '<div class="article-cover-grad card-cover-placeholder ' + (a.grad || 'grad-1') + '"></div>';
-
-  document.getElementById('articleContent').innerHTML =
-    coverHTML +
-    '<span class="card-tag ' + a.tagClass + '">' + a.tag + '</span>' +
-    '<h1>' + a.title + '</h1>' +
-    '<div class="article-meta">' + a.source + ' &middot; ' + a.date + ' &middot; ' + a.readTime + '</div>' +
-    '<div class="article-body">' + a.content + '</div>';
-
-  // Populate sidebar metadata
-  document.getElementById('articleMeta').innerHTML =
-    '<strong>' + a.source + '</strong>' +
-    a.date + ' · ' + a.readTime;
-
-  // Build TOC from h2 elements
-  buildTOC();
-
-  document.getElementById('blogGallery').style.display = 'none';
-  document.getElementById('blogArticle').style.display = 'block';
-  window.scrollTo(0, 0);
-}
-
-function buildTOC() {
-  var content = document.getElementById('articleContent');
-  var toc = document.getElementById('articleToc');
-  var label = document.getElementById('tocLabel');
-  toc.innerHTML = '';
-
-  var h2s = content.querySelectorAll('.article-body h2');
-  label.style.display = h2s.length ? '' : 'none';
-  if (!h2s.length) return;
-
-  h2s.forEach(function(h2, i) {
-    h2.id = 'sec-' + i;
-    var li = document.createElement('li');
-    var a = document.createElement('a');
-    a.dataset.target = h2.id;
-    a.textContent = h2.textContent;
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      h2.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    li.appendChild(a);
-    toc.appendChild(li);
-  });
-
-  // Scroll-spy
-  if (currentTocObserver) currentTocObserver.disconnect();
-  var tocLinks = toc.querySelectorAll('a');
-  currentTocObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        tocLinks.forEach(function(link) {
-          link.classList.toggle('active', link.dataset.target === e.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-20% 0px -60% 0px' });
-  h2s.forEach(function(h) { currentTocObserver.observe(h); });
-}
-
-function closeArticle() {
-  document.getElementById('blogGallery').style.display = '';
-  document.getElementById('blogArticle').style.display = 'none';
-  if (currentTocObserver) { currentTocObserver.disconnect(); currentTocObserver = null; }
-  window.scrollTo(0, 0);
-}
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeArticle(); });
 
 // ========== SCROLL REVEAL ==========
 const obs = new IntersectionObserver(es => {

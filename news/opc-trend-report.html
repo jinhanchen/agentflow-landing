@@ -1,4 +1,313 @@
-        <div class="story-header">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPC 趋势报告：一人公司时代已经到来 — Solarian</title>
+<meta name="description" content="3 亿灵活就业人口、20+ 城市扶持政策、4.2× AI 效率差距——Solarian 研究团队整理的一份事实清单。">
+<meta property="og:title" content="OPC 趋势报告：一人公司时代已经到来 — Solarian">
+<meta property="og:description" content="3 亿灵活就业人口、20+ 城市扶持政策、4.2× AI 效率差距——Solarian 研究团队整理的一份事实清单。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/news/opc-trend-report">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#F5F0E6;
+  --bg-card:#FFFFFF;
+  --border:rgba(26,31,46,0.08);
+  --border-hover:rgba(26,31,46,0.15);
+  --text:#1A1F2E;
+  --text-sub:rgba(26,31,46,0.65);
+  --text-dim:rgba(26,31,46,0.35);
+  --accent:#2D8B92;
+  --accent-sub:rgba(13,148,136,0.12);
+  --accent-secondary:#D97757;
+  --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
+  --font-body:'DM Sans','Noto Sans SC',sans-serif;
+  --font-serif:'Noto Serif SC',Georgia,serif;
+  --ease:cubic-bezier(0.25,1,0.5,1);
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-weight:350;
+}
+a{color:inherit;text-decoration:none}
+
+.tag-brand{background:rgba(45,139,146,0.12);color:#2D8B92}
+.tag-product{background:rgba(217,119,87,0.12);color:#D97757}
+.tag-milestone{background:rgba(26,91,132,0.12);color:#1A5B84}
+.tag-research{background:rgba(31,158,110,0.12);color:#1F9E6E}
+
+/* ========== ARTICLE LAYOUT ========== */
+.article-layout{
+  max-width:1120px;margin:120px auto 0;
+  padding:0 40px;
+  display:grid;grid-template-columns:220px 1fr;
+  gap:72px;align-items:start;
+}
+
+.sub-sidebar{
+  position:sticky;top:100px;
+  padding-top:8px;
+}
+.sub-sidebar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--text-sub);
+  font-size:.82rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  transition:all .2s var(--ease);
+  margin-bottom:40px;
+  font-family:var(--font-body);
+  text-decoration:none;
+}
+.sub-sidebar-back:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(-3px);
+}
+.sub-sidebar-back svg{width:12px;height:12px}
+
+.sub-sidebar-label{
+  font-family:var(--font-display);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+  padding-left:16px;
+}
+.sub-sidebar-toc{
+  list-style:none;padding:0;margin:0 0 32px;
+  border-left:1px solid var(--border);
+}
+.sub-sidebar-toc li{margin:0}
+.sub-sidebar-toc a{
+  display:block;padding:9px 16px;
+  font-size:.84rem;line-height:1.4;
+  color:var(--text-sub);
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.sub-sidebar-toc a:hover{
+  color:var(--text);border-left-color:var(--border-hover);
+}
+.sub-sidebar-toc a.active{
+  color:var(--accent);border-left-color:var(--accent);
+  font-weight:500;background:var(--accent-sub);
+}
+.sub-sidebar-meta{
+  padding:16px;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--text-dim);
+  line-height:1.6;
+}
+.sub-sidebar-meta strong{
+  display:block;color:var(--text-sub);font-weight:600;
+  font-family:var(--font-display);
+  margin-bottom:4px;
+}
+
+.article-main{min-width:0}
+
+/* Article content */
+article.story{
+  max-width:680px;margin:0;padding:0 0 80px;
+  font-family:var(--font-serif);
+  font-size:1.08rem;line-height:1.85;
+  color:var(--text);
+}
+article.story .story-header{
+  margin:0 0 48px;padding:0 0 32px;
+  border-bottom:1px solid var(--border);
+  font-family:var(--font-body);
+  background:transparent;
+  position:relative;
+}
+article.story .story-header::before{display:none}
+article.story .story-header::after{display:none}
+.story-header-eyebrow{
+  display:inline-block;padding:5px 12px;border-radius:100px;
+  background:rgba(13,148,136,0.1);color:var(--accent);
+  font-size:.72rem;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.story-header h1{
+  font-family:var(--font-display);
+  font-size:clamp(1.8rem,3.2vw,2.6rem);
+  font-weight:700;letter-spacing:-1.5px;line-height:1.2;
+  color:var(--text);
+  margin-bottom:16px;
+}
+.story-header h1 em{font-style:normal;color:var(--accent)}
+.story-header-meta{
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--text-dim);letter-spacing:.3px;
+}
+.story-header-meta span{margin:0 8px}
+article.story p{margin-bottom:24px;color:rgba(26,31,46,0.82)}
+article.story p.lede{
+  font-size:1.22rem;line-height:1.7;
+  color:var(--text);margin-bottom:40px;font-weight:500;
+}
+article.story blockquote{
+  margin:36px 0;padding:4px 0 4px 24px;
+  border-left:3px solid var(--accent);
+  font-style:italic;font-size:1.1rem;color:var(--text);
+}
+article.story h2{
+  font-family:var(--font-display);
+  font-size:1.6rem;font-weight:700;
+  letter-spacing:-1px;line-height:1.25;
+  color:var(--text);margin:52px 0 20px;
+  scroll-margin-top:100px;
+}
+article.story strong{color:var(--text);font-weight:700}
+article.story em{color:var(--accent-secondary);font-style:normal;font-weight:500}
+article.story .section-break{
+  width:70px;height:2px;background:var(--accent);
+  margin:52px auto;border-radius:2px;opacity:.35;
+}
+article.story .signature{
+  margin-top:56px;padding-top:28px;
+  border-top:1px solid var(--border);text-align:center;
+  font-family:var(--font-display);
+  font-size:.86rem;color:var(--text-sub);line-height:1.7;
+}
+article.story .signature strong{display:block;color:var(--text);font-size:1rem;margin-bottom:4px}
+article.story ol.references{
+  list-style:decimal;
+  margin:0 0 32px 0;padding-left:28px;
+  font-family:var(--font-body);
+  font-size:.85rem;
+  color:var(--text-sub);
+  line-height:1.7;
+}
+article.story ol.references li{margin-bottom:10px}
+article.story ol.references a{
+  color:var(--accent);
+  word-break:break-all;
+  text-decoration:underline;
+  text-decoration-color:var(--accent-sub);
+  text-underline-offset:2px;
+}
+article.story ol.references a:hover{text-decoration-color:var(--accent)}
+article.story sup{
+  font-size:.65em;color:var(--accent);font-family:var(--font-body);font-weight:600;padding:0 1px;
+}
+article.story sup a{color:inherit;text-decoration:none}
+article.story sup a:hover{text-decoration:underline}
+
+/* ========== FOOTER ========== */
+footer{
+  background:#1a1f2e;border-top:1px solid rgba(255,255,255,0.08);padding:36px 0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;padding-inline:40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,0.85)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .article-layout{
+    grid-template-columns:1fr;gap:24px;margin-top:100px;
+  }
+  .sub-sidebar{
+    position:static;padding:0 0 24px;
+    border-bottom:1px solid var(--border);margin-bottom:16px;
+  }
+  .sub-sidebar-toc,.sub-sidebar-label,.sub-sidebar-meta{display:none}
+  .sub-sidebar-back{margin-bottom:16px}
+  article.story{max-width:100%}
+}
+@media(max-width:768px){
+  .nav-inner{padding-inline:20px}
+  .nav-links{gap:16px}
+  .footer-inner{flex-direction:column;gap:14px}
+  .article-layout{padding:0 20px}
+  article.story{padding:12px 0 60px;font-size:1rem}
+}
+</style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/main" class="logo">
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
+      Solarian
+    </a>
+    <ul class="nav-links">
+      <li><a href="/main">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="/main#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="/main#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="/main#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="/main#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="/main#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="/trends">OPC 博客</a></li>
+      <li><a href="/news" class="current">公告</a></li>
+      <li><a href="/about">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
+      <li><button class="btn btn-nav btn-fill" onclick="openWaitlist()">加入 Waitlist</button></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="article-layout">
+
+  <aside class="sub-sidebar">
+    <a href="/news" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回公告列表
+    </a>
+
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>Solarian Research</strong>
+      2026-04-05
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <article class="story">
+              <div class="story-header">
           <span class="story-header-eyebrow">Research Report</span>
           <h1>OPC 趋势报告：<em>一人公司时代已经到来</em></h1>
           <div class="story-header-meta">
@@ -111,3 +420,132 @@
           OPC 趋势研究系列 · 第 1 期<br>
           2026-04-15
         </div>
+    </article>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
+      </a>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
+    </div>
+    <div class="footer-links">
+      <a href="/main#demo">产品</a>
+      <a href="/trends">博客</a>
+      <a href="/news">公告</a>
+      <a href="/about">关于</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+function toggleLang(){
+  const t = document.getElementById('langToggle');
+  if(!t) return;
+  t.querySelector('.lang-zh').classList.toggle('active');
+  t.querySelector('.lang-en').classList.toggle('active');
+}
+
+// Build TOC from article h2 elements
+(function(){
+  var article = document.querySelector('article.story');
+  if (!article) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = article.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+<!-- ========== WAITLIST MODAL ========== -->
+<div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
+<div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wl-modal">
+    <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="wl-header">
+      <h3>加入 Solarian Waitlist</h3>
+      <p>帮助我们了解你的需求，让 Solarian 更好地为你服务</p>
+    </div>
+    <form id="waitlistForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+      <div class="wl-row">
+        <div class="wl-field"><label>姓名 <span class="wl-req">*</span></label><input type="text" name="name" required placeholder="你的名字"></div>
+        <div class="wl-field"><label>邮箱 <span class="wl-req">*</span></label><input type="email" name="email" required placeholder="name@company.com"></div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-field"><label>所在国家/地区 <span class="wl-req">*</span></label>
+          <select name="country" required>
+            <option value="" disabled selected>选择国家/地区</option>
+            <option value="CN">中国</option><option value="US">美国</option><option value="GB">英国</option>
+            <option value="JP">日本</option><option value="KR">韩国</option><option value="SG">新加坡</option>
+            <option value="DE">德国</option><option value="FR">法国</option><option value="AU">澳大利亚</option>
+            <option value="CA">加拿大</option><option value="IN">印度</option><option value="BR">巴西</option>
+            <option value="AE">阿联酋</option><option value="HK">中国香港</option><option value="TW">中国台湾</option>
+            <option value="OTHER">其他</option>
+          </select>
+        </div>
+        <div class="wl-field"><label>所在行业 <span class="wl-req">*</span></label>
+          <select name="industry" required>
+            <option value="" disabled selected>选择行业</option>
+            <option value="tech">科技/互联网</option><option value="finance">金融/投资</option>
+            <option value="ecommerce">电商/零售</option><option value="education">教育/培训</option>
+            <option value="media">媒体/内容</option><option value="consulting">咨询/服务</option>
+            <option value="manufacturing">制造/工业</option><option value="healthcare">医疗/健康</option>
+            <option value="realestate">房地产/建筑</option><option value="legal">法律/合规</option>
+            <option value="freelancer">自由职业/独立开发</option><option value="student">学生/研究</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+      </div>
+      <div class="wl-field"><label>你的角色/职位</label><input type="text" name="role" placeholder="如：产品经理、创始人、开发者..."></div>
+      <div class="wl-field"><label>你目前工作中最大的痛点是什么？ <span class="wl-req">*</span></label><textarea name="painpoints" required rows="3" placeholder="例如：每天要在 5 个 AI 工具间切换..."></textarea></div>
+      <div class="wl-field"><label>你希望 Solarian 帮你完成哪些具体工作？</label><textarea name="usecase" rows="3" placeholder="例如：自动生成周报、管理社交媒体内容..."></textarea></div>
+      <button type="submit" class="wl-submit" id="wlSubmitBtn">
+        <span>提交申请</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>欢迎加入 Solarian！</h3>
+      <p>我们已收到你的申请，会在第一时间通知你内测开放。</p>
+    </div>
+  </div>
+</div>
+<script src="/assets/waitlist.js"></script>
+</body>
+</html>

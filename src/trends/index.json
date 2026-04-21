@@ -8,9 +8,21 @@
       "tagClass": "tag-case",
       "desc": "4 个 AI Agent 7×24 运行，11 个定时任务，每天几十轮对话。优化前烧 $1000/月，优化后 $200。核心方法只有三个字：分层用。",
       "source": "实战案例",
-      "date": "2026.04",
+      "date": "2026-04-12",
       "readTime": "5 分钟",
       "cover": "assets/trends_012_cost.png"
+    },
+    {
+      "id": "011",
+      "num": 11,
+      "title": "SaaS 的黄昏：当 AI 开始替代整个部门",
+      "tag": "观点",
+      "tagClass": "tag-opinion",
+      "desc": "2026 年初，SaaS 板块市值数千亿蒸发。不是因为软件变差了，而是因为 AI 开始直接替代人的职能。按人头卖坐席的时代，正在终结。",
+      "source": "硅谷101",
+      "date": "2026-04-11",
+      "readTime": "6 分钟",
+      "cover": "assets/trends_011_saas.png"
     },
     {
       "id": "010",
@@ -20,7 +32,7 @@
       "tagClass": "tag-trend",
       "desc": "当所有人都能用 $20 开公司，进入门槛趋近于零，产品将滑向完全竞争市场——利润趋近于零。真正的竞争，才刚刚开始。",
       "source": "Solarian 研究",
-      "date": "2026.04",
+      "date": "2026-04-10",
       "readTime": "6 分钟",
       "cover": "assets/trends_010_competition.png"
     },
@@ -32,58 +44,9 @@
       "tagClass": "tag-insight",
       "desc": "Claude 写代码，Supabase 当后端，Vercel 部署，Stripe 收款——13 个工具，固定成本 $21/月，覆盖一家互联网公司从开发到收款的全部职能。",
       "source": "Solarian 研究",
-      "date": "2026.04",
+      "date": "2026-04-09",
       "readTime": "5 分钟",
       "cover": "assets/trends_009_stack.png"
-    },
-    {
-      "id": "003",
-      "num": 3,
-      "title": "两个人做到年收入 $4 亿的秘密",
-      "tag": "案例",
-      "tagClass": "tag-case",
-      "desc": "Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。",
-      "source": "Medvi 案例",
-      "date": "2026.04",
-      "readTime": "9 分钟",
-      "cover": "assets/medvi_nyt.jpg",
-      "gradNull": true
-    },
-    {
-      "id": "002",
-      "num": 2,
-      "title": "深圳推出一人公司行动计划",
-      "tag": "政策",
-      "tagClass": "tag-policy",
-      "desc": "继北京亦庄之后，深圳发布\"AI + 一人企业\"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。",
-      "source": "深圳工信局",
-      "date": "2026.03",
-      "readTime": "9 分钟",
-      "cover": "assets/trends_002_city.png"
-    },
-    {
-      "id": "001",
-      "num": 1,
-      "title": "AI 时代一人公司加速孵化",
-      "tag": "政策",
-      "tagClass": "tag-policy",
-      "desc": "2025 年全年新设个体工商户 1,619 万户，AI 工具的普及正在加速一人创业形态的爆发。",
-      "source": "新华网",
-      "date": "2026.03",
-      "readTime": "8 分钟",
-      "cover": "assets/trends_001_network.png"
-    },
-    {
-      "id": "011",
-      "num": 11,
-      "title": "SaaS 的黄昏：当 AI 开始替代整个部门",
-      "tag": "观点",
-      "tagClass": "tag-opinion",
-      "desc": "2026 年初，SaaS 板块市值数千亿蒸发。不是因为软件变差了，而是因为 AI 开始直接替代人的职能。按人头卖坐席的时代，正在终结。",
-      "source": "硅谷101",
-      "date": "2026.02",
-      "readTime": "6 分钟",
-      "cover": "assets/trends_011_saas.png"
     },
     {
       "id": "008",
@@ -93,7 +56,7 @@
       "tagClass": "tag-story",
       "desc": "\"我创办 Solarian 不是因为看到了市场机会，而是因为我自己就是那个被工具碎片化折磨的一人创业者。\"",
       "source": "Solarian",
-      "date": "2026",
+      "date": "2026-04-08",
       "readTime": "8 分钟",
       "cover": "assets/franklin_avatar.png",
       "gradNull": true
@@ -106,21 +69,9 @@
       "tagClass": "tag-insight",
       "desc": "一人公司创业者平均使用 12 个 AI 工具，却缺少一个让它们协同工作的操作系统。",
       "source": "Solarian 研究",
-      "date": "2026",
+      "date": "2026-04-07",
       "readTime": "9 分钟",
       "cover": "assets/trends_007_tools.png"
-    },
-    {
-      "id": "005",
-      "num": 5,
-      "title": "Y Combinator：25% 创业公司 95% 代码由 AI 生成",
-      "tag": "趋势",
-      "tagClass": "tag-trend",
-      "desc": "\"2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。\"",
-      "source": "Garry Tan, YC CEO",
-      "date": "2025",
-      "readTime": "9 分钟",
-      "cover": "assets/trends_005_yc.png"
     },
     {
       "id": "006",
@@ -130,9 +81,21 @@
       "tagClass": "tag-policy",
       "desc": "2024 年 7 月实施的新《公司法》正式允许一个自然人设立一人有限责任公司，打破了制度瓶颈。",
       "source": "政策解读",
-      "date": "2024.07",
+      "date": "2026-04-06",
       "readTime": "10 分钟",
       "cover": "assets/trends_006_door.png"
+    },
+    {
+      "id": "005",
+      "num": 5,
+      "title": "Y Combinator：25% 创业公司 95% 代码由 AI 生成",
+      "tag": "趋势",
+      "tagClass": "tag-trend",
+      "desc": "\"2025 冬季批次中 25% 的创业公司 95% 的代码由 AI 生成。你不再需要 50 或 100 个工程师。\"",
+      "source": "Garry Tan, YC CEO",
+      "date": "2026-04-05",
+      "readTime": "9 分钟",
+      "cover": "assets/trends_005_yc.png"
     },
     {
       "id": "004",
@@ -142,10 +105,47 @@
       "tagClass": "tag-opinion",
       "desc": "\"在我和科技 CEO 朋友的群里，大家在赌哪一年会出现第一家一人十亿美元公司。\"",
       "source": "Sam Altman",
-      "date": "2024",
+      "date": "2026-04-04",
       "readTime": "10 分钟",
       "cover": "assets/sam_altman.jpg",
       "gradNull": true
+    },
+    {
+      "id": "003",
+      "num": 3,
+      "title": "两个人做到年收入 $4 亿的秘密",
+      "tag": "案例",
+      "tagClass": "tag-case",
+      "desc": "Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。",
+      "source": "Medvi 案例",
+      "date": "2026-04-03",
+      "readTime": "9 分钟",
+      "cover": "assets/medvi_nyt.jpg",
+      "gradNull": true
+    },
+    {
+      "id": "002",
+      "num": 2,
+      "title": "深圳推出一人公司行动计划",
+      "tag": "政策",
+      "tagClass": "tag-policy",
+      "desc": "继北京亦庄之后，深圳发布\"AI + 一人企业\"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。",
+      "source": "深圳工信局",
+      "date": "2026-04-02",
+      "readTime": "9 分钟",
+      "cover": "assets/trends_002_city.png"
+    },
+    {
+      "id": "001",
+      "num": 1,
+      "title": "AI 时代一人公司加速孵化",
+      "tag": "政策",
+      "tagClass": "tag-policy",
+      "desc": "2025 年全年新设个体工商户 1,619 万户，AI 工具的普及正在加速一人创业形态的爆发。",
+      "source": "新华网",
+      "date": "2026-04-01",
+      "readTime": "8 分钟",
+      "cover": "assets/trends_001_network.png"
     }
   ]
 }

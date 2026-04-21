@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深圳推出一人公司行动计划 — Solarian</title>
+<meta name="description" content="继北京亦庄之后，深圳发布"AI + 一人企业"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。">
+<meta property="og:title" content="深圳推出一人公司行动计划 — Solarian">
+<meta property="og:description" content="继北京亦庄之后，深圳发布"AI + 一人企业"扶持计划，目标三年培育 1,000 家 AI 驱动一人企业。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/trends/002">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#F5F0E6;
+  --bg-card:#FFFFFF;
+  --border:rgba(26,31,46,0.08);
+  --border-hover:rgba(26,31,46,0.15);
+  --text:#1A1F2E;
+  --text-sub:rgba(26,31,46,0.65);
+  --text-dim:rgba(26,31,46,0.35);
+  --accent:#2D8B92;
+  --accent-sub:rgba(13,148,136,0.12);
+  --accent-secondary:#D97757;
+  --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
+  --font-body:'DM Sans','Noto Sans SC',sans-serif;
+  --font-serif:'Noto Serif SC',Georgia,serif;
+  --ease:cubic-bezier(0.25,1,0.5,1);
+  --tag-policy:#1A5B84;
+  --tag-case:#1F9E6E;
+  --tag-trend:#2D8B92;
+  --tag-opinion:#D97757;
+  --tag-insight:#1F6F87;
+  --tag-story:#23376C;
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-weight:350;
+}
+a{color:inherit;text-decoration:none}
+
+.card-tag{
+  display:inline-flex;
+  align-self:flex-start;
+  font-size:.65rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  padding:3px 10px;
+  border-radius:100px;
+  text-transform:uppercase;
+}
+.tag-policy{background:rgba(26,91,132,0.1);color:var(--tag-policy)}
+.tag-case{background:rgba(31,158,110,0.1);color:var(--tag-case)}
+.tag-trend{background:rgba(45,139,146,0.1);color:var(--tag-trend)}
+.tag-opinion{background:rgba(217,119,87,0.1);color:var(--tag-opinion)}
+.tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
+.tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
+
+/* ========== ARTICLE LAYOUT ========== */
+.article-layout{
+  max-width:1120px;margin:120px auto 0;
+  padding:0 40px;
+  display:grid;grid-template-columns:220px 1fr;
+  gap:60px;align-items:start;
+}
+
+.sub-sidebar{
+  position:sticky;top:100px;
+  padding-top:8px;
+}
+.sub-sidebar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  border:1px solid var(--border);border-radius:100px;
+  color:var(--text-sub);
+  font-size:.82rem;font-weight:500;
+  cursor:pointer;background:transparent;
+  transition:all .2s var(--ease);
+  margin-bottom:40px;
+  font-family:var(--font-body);
+  text-decoration:none;
+}
+.sub-sidebar-back:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateX(-3px);
+}
+.sub-sidebar-back svg{width:12px;height:12px}
+
+.sub-sidebar-label{
+  font-family:var(--font-display);
+  font-size:.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-dim);
+  margin-bottom:14px;
+  padding-left:16px;
+}
+.sub-sidebar-toc{
+  list-style:none;padding:0;margin:0 0 32px;
+  border-left:1px solid var(--border);
+}
+.sub-sidebar-toc li{margin:0}
+.sub-sidebar-toc a{
+  display:block;padding:9px 16px;
+  font-size:.84rem;line-height:1.4;
+  color:var(--text-sub);
+  border-left:2px solid transparent;margin-left:-1px;
+  transition:all .18s var(--ease);
+  cursor:pointer;
+}
+.sub-sidebar-toc a:hover{
+  color:var(--text);border-left-color:var(--border-hover);
+}
+.sub-sidebar-toc a.active{
+  color:var(--accent);border-left-color:var(--accent);
+  font-weight:500;background:var(--accent-sub);
+}
+.sub-sidebar-meta{
+  padding:16px;border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--text-dim);
+  line-height:1.6;
+}
+.sub-sidebar-meta strong{
+  display:block;color:var(--text-sub);font-weight:600;
+  font-family:var(--font-display);
+  margin-bottom:4px;
+}
+
+.article-main{min-width:0;padding-bottom:80px}
+
+.article-page .article-cover{
+  display:block;
+  width:100%;max-width:480px;
+  margin:0 auto 28px;
+  border-radius:12px;
+}
+.article-page .article-cover-grad{
+  width:100%;max-width:480px;aspect-ratio:16/9;
+  margin:0 auto 28px;border-radius:12px;
+}
+.article-page .card-tag{margin-bottom:12px}
+.article-page h1{
+  font-family:var(--font-display);
+  font-size:clamp(1.3rem,2.5vw,1.6rem);
+  font-weight:700;color:var(--text);
+  margin-bottom:12px;line-height:1.3;
+  letter-spacing:-1px;
+}
+.article-page .article-meta{
+  font-size:.78rem;color:var(--text-dim);
+  margin-bottom:24px;padding-bottom:20px;
+  border-bottom:1px solid var(--border);
+}
+.article-page .article-body{
+  font-size:.92rem;color:rgba(26,31,46,0.78);line-height:1.9;
+}
+.article-page .article-body p{margin-bottom:16px}
+.article-page .article-body p:last-child{margin-bottom:0}
+.article-page .article-body strong{color:var(--text);font-weight:500}
+.article-page .article-body blockquote{
+  border-left:3px solid var(--accent);
+  padding-left:16px;
+  margin:20px 0;
+  font-style:italic;
+  color:var(--text-sub);
+}
+.article-page .article-body h2{
+  font-family:var(--font-display);
+  font-size:1.2rem;font-weight:700;
+  color:var(--text);margin:36px 0 16px;
+  letter-spacing:-.5px;
+  scroll-margin-top:100px;
+}
+.article-page .article-body p.lede{
+  font-size:1.05rem;line-height:1.8;
+  color:var(--text);margin-bottom:28px;font-weight:400;
+}
+.article-page .article-body .section-break{
+  width:70px;height:2px;background:var(--accent);
+  margin:40px auto;border-radius:2px;opacity:.35;
+}
+.article-page .article-body .signature{
+  margin-top:40px;padding-top:20px;
+  border-top:1px solid var(--border);text-align:center;
+  font-family:var(--font-display);
+  font-size:.82rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body .signature strong{
+  display:block;color:var(--text);font-size:.92rem;margin-bottom:4px;
+}
+.article-page .article-body ol.references{
+  list-style:decimal;
+  margin:0 0 24px 0;padding-left:24px;
+  font-size:.78rem;color:var(--text-sub);line-height:1.7;
+}
+.article-page .article-body ol.references li{margin-bottom:8px}
+.article-page .article-body ol.references a{
+  color:var(--accent);word-break:break-all;
+  text-decoration:underline;text-decoration-color:var(--accent-sub);
+  text-underline-offset:2px;
+}
+.article-page .article-body ol.references a:hover{text-decoration-color:var(--accent)}
+.article-page .article-body sup{
+  font-size:.65em;color:var(--accent);font-weight:600;
+}
+.article-page .article-body sup a{color:inherit;text-decoration:none}
+.article-page .article-body sup a:hover{text-decoration:underline}
+.article-page .article-body ul,.article-page .article-body ol{
+  margin:0 0 20px;padding-left:24px;
+}
+.article-page .article-body li{margin-bottom:8px}
+
+/* ========== FOOTER ========== */
+footer{
+  position:relative;z-index:1;
+  background:#1a1f2e;
+  border-top:1px solid rgba(255,255,255,0.08);padding:36px 0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;padding-inline:40px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,0.85)}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:960px){
+  .article-layout{
+    grid-template-columns:1fr;gap:24px;margin-top:100px;
+  }
+  .sub-sidebar{
+    position:static;padding:0 0 24px;
+    border-bottom:1px solid var(--border);margin-bottom:16px;
+  }
+  .sub-sidebar-toc,.sub-sidebar-label,.sub-sidebar-meta{display:none}
+  .sub-sidebar-back{margin-bottom:16px}
+}
+@media(max-width:768px){
+  .nav-inner{padding-inline:20px}
+  .nav-links{gap:16px}
+  .footer-inner{flex-direction:column;gap:16px;text-align:center}
+  .article-layout{padding:0 20px}
+  .article-main{padding-bottom:60px}
+}
+</style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/main" class="logo">
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
+      Solarian
+    </a>
+    <ul class="nav-links">
+      <li><a href="/main">首页</a></li>
+      <li class="nav-dropdown">
+        <a href="/main#demo" class="nav-dd-trigger">产品 ▾</a>
+        <div class="nav-dd-menu">
+          <a href="/main#demo" class="dd-item">
+            <strong>DM 模式</strong>
+            <span>与硅基员工一对一沟通</span>
+          </a>
+          <a href="/main#demo" class="dd-item">
+            <strong>Workflow 模式</strong>
+            <span>透明指挥一支 AI 团队</span>
+          </a>
+          <a href="/main#market-product" class="dd-item">
+            <strong>自进化工作流</strong>
+            <span>越跑越好的车间模式</span>
+          </a>
+          <div class="dd-footer"><a href="/main#demo">查看全部功能 →</a></div>
+        </div>
+      </li>
+      <li><a href="/trends" class="current">OPC 博客</a></li>
+      <li><a href="/news">公告</a></li>
+      <li><a href="/about">关于</a></li>
+      <li>
+        <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
+          <span class="lang-zh active">中</span>
+          <span class="lang-en">EN</span>
+        </button>
+      </li>
+      <li><button class="btn btn-nav btn-fill" onclick="openWaitlist()">加入 Waitlist</button></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="article-layout">
+
+  <aside class="sub-sidebar">
+    <a href="/trends" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回博客
+    </a>
+
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>深圳工信局</strong>
+      2026-04-02 · 9 分钟
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <div class="article-page">
+      <img class="article-cover" src="/assets/trends_002_city.png" alt="">
+      <span class="card-tag tag-policy">政策</span>
+      <h1>深圳推出一人公司行动计划</h1>
+      <div class="article-meta">深圳工信局 &middot; 2026-04-02 &middot; 9 分钟</div>
+      <div class="article-body">
+                <p class="lede">
+          2026 年 1 月，深圳市工业和信息化局正式印发《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》，目标到 2027 年底建成超 10 家面积均不少于 1 万平方米的 OPC 社区，培育超千家高成长性人工智能创业企业，集聚超万名人工智能创新创业人才<sup><a href="#ref-1">[1]</a></sup>。这不是一份普通的产业扶持文件——它标志着中国第一座城市将"一人公司"作为一种独立的产业形态，从制度层面正式纳入城市战略。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、深圳的 OPC 行动计划：不只是口号</h2>
+
+        <p>深圳的行动计划，核心是三个数字：<strong>10+、1,000、10,000</strong>——10 个以上万平方米级 OPC 社区、1,000 家以上 AI 创业企业、10,000 名以上创新创业人才。这个目标并非空中楼阁。在政策发布前，深圳已经开始了试点布局：多个城区率先建设 OPC 专属社区，提供从办公空间到算力补贴的全栈支持<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>更值得关注的是各区的差异化打法：</p>
+
+        <p><strong>南山区</strong>早在 2025 年就推出了"六个一 + 六个券"政策体系。"六个一"指一人一室一桌一笔钱一场景一站式服务；"六个券"则包括模型券、贴息券、技改券、流量券、保险券和消费券<sup><a href="#ref-3">[3]</a></sup>。对于 AI 创业者来说，模型券直接降低了大模型调用成本，这是真金白银的补贴。</p>
+
+        <p><strong>龙岗区</strong>更为激进，拟推出"AI 龙虾十条"政策：新入驻 OPC 社区的企业可获得<strong>三个月免费算力</strong>；符合条件的 AIGC 企业，按实际调用大模型费用的 30% 给予补贴，每家企业每年最高可获 <strong>100 万元</strong>支持<sup><a href="#ref-4">[4]</a></sup>。龙岗的目标很明确：要让深圳成为全国 OPC 创业的"热带雨林"。</p>
+
+        <p><strong>宝安区</strong>则从硬件制造切入，以"场景 + 金融 + 制造"构建面向 OPC 硬创业的系统性支持体系，整合政府引导基金和政府采购创新产品支持政策<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <blockquote>一人公司不是权宜之计，而是 AI 时代的必然产物。当一个人可以调动 AI 团队完成过去十个人的工作，传统的组织形态必然面临重构。深圳要做的，是让这种重构有序发生。<sup><a href="#ref-2">[2]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>二、北京亦庄：另一种路径</h2>
+
+        <p>深圳不是唯一入局的城市。北京经济技术开发区（亦庄）在 2026 年 2 月发布了《关于进一步加快建设全域人工智能之城的实施方案（2026—2027 年）》，明确到 2027 年底，要<strong>聚集人工智能产业链核心企业 1,000 家，引聚超级个体及独立开发者 10,000 人</strong><sup><a href="#ref-6">[6]</a></sup>。</p>
+
+        <p>2026 年 4 月，亦庄正式启动了<strong>模数 OPC 社区</strong>——全国首个以"一人公司"为主体的产业社区，提出两年内培育 1 万名 AI 独立开发者和 100 家"超级个体"公司<sup><a href="#ref-7">[7]</a></sup>。该社区已初步形成集共享办公、人才公寓、社交空间、微接驳交通、消费配套于一体的"职、住、行、创"四位一体 AI 人才生态圈，首批 20 家 OPC 已率先入驻。</p>
+
+        <p>亦庄还建设了<strong>全国首个聚焦 AI 超级个体的全周期服务站</strong>——模数 OPC 社区企业综合服务中心，可实现<strong>最快 1 小时面对面完成公司注册</strong><sup><a href="#ref-7">[7]</a></sup>。从注册到入驻到获得算力，全链条打通。</p>
+
+        <div class="section-break"></div>
+
+        <h2>三、全国城市的政策竞赛</h2>
+
+        <p>深圳和北京之外，一场围绕 OPC 的城市政策竞赛正在全国蔓延：</p>
+
+        <ul>
+          <li><strong>上海临港新片区</strong>启动了"超级个体 288 计划"，提供专属办公和居住空间<sup><a href="#ref-8">[8]</a></sup></li>
+          <li><strong>苏州</strong>明确提出要成为"OPC 创业首选城市"，计划到 2028 年培育 1,000 家标杆一人公司<sup><a href="#ref-8">[8]</a></sup></li>
+          <li><strong>北京海淀区</strong>发布了八条硬核政策，专门面向 OPC 创业者<sup><a href="#ref-9">[9]</a></sup></li>
+          <li><strong>杭州、成都、武汉</strong>等城市也相继推出了不同力度的一人创业扶持方案</li>
+        </ul>
+
+        <p>这种城市间的竞争，本身就是最强的政策信号：<em>地方政府不是在"帮助"一人创业，而是在"争抢"一人创业者。</em></p>
+
+        <div class="section-break"></div>
+
+        <h2>四、制度松绑：从法律到税务</h2>
+
+        <p>城市级的扶持政策，建立在两层制度松绑之上。</p>
+
+        <p><strong>法律层面</strong>：2024 年 7 月 1 日实施的新《公司法》，彻底取消了"一个自然人只能设立一家一人有限责任公司"的限制，放宽了设立子公司的限制条件，同时将实缴资本缴纳期限延长至 5 年<sup><a href="#ref-10">[10]</a></sup>。这为规模化 OPC 提供了完整的法律基础架构。</p>
+
+        <p><strong>税务层面</strong>：2026 年的税收优惠力度前所未有。月销售额不超过 10 万元的 OPC 免征增值税；符合小微企业条件的一人公司，企业所得税实际税负仅 5%；个体工商户个人所得税减半征收——这些政策执行期均已明确延长至 <strong>2027 年底</strong><sup><a href="#ref-11">[11]</a></sup>。</p>
+
+        <p>法律打开了门，税务降低了槛，城市政策提供了路。三者叠加，构成了中国 OPC 创业史上最友好的制度环境。</p>
+
+        <div class="section-break"></div>
+
+        <h2>五、对创业者意味着什么</h2>
+
+        <p>如果你是一名考虑 AI 创业的独立创业者，2026 年的政策环境提供了三重确定性：</p>
+
+        <p><strong>确定性一：成本可控。</strong>算力补贴、模型券、免费办公空间——政府在帮你压低 AI 创业最大的变动成本。龙岗区的 100 万元 AI 调用补贴，对于一人公司来说，可能意味着一整年的零算力成本<sup><a href="#ref-4">[4]</a></sup>。</p>
+
+        <p><strong>确定性二：身份合法。</strong>新《公司法》让一人公司获得了与多人公司完全平等的法律地位。你不再需要找一个"挂名股东"来满足注册要求。</p>
+
+        <p><strong>确定性三：不是孤军奋战。</strong>OPC 社区模式意味着，独立创业不等于孤独创业。共享空间、社群网络、政策对接——一人公司也可以有"生态"。</p>
+
+        <p>深圳的行动计划，北京的模数社区，上海的 288 计划——这些不是地方政府的一时兴起，而是一个明确的时代信号：<em>AI 时代的一人公司，正在从"民间自发"走向"制度化支持"。</em></p>
+
+        <p>对 Solarian 而言，这意味着我们面向的不再是一个需要被"说服"的市场，而是一个正在被政策推动、加速扩大的市场。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">《深圳市打造人工智能 OPC 创业生态引领地行动计划（2026—2027 年）》· 深圳市工业和信息化局 · 2026 年 1 月 · <a href="https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html" target="_blank" rel="noopener">https://www.sz.gov.cn/cn/xxgk/zfxxgj/tzgg/content/post_12602687.html</a></li>
+          <li id="ref-2">"超级个体"登场 深圳"一人公司"重构商业新生态 · 中国新闻网 · 2026 年 3 月 16 日 · <a href="https://www.chinanews.com.cn/cj/2026/03-16/10587507.shtml" target="_blank" rel="noopener">https://www.chinanews.com.cn/cj/2026/03-16/10587507.shtml</a></li>
+          <li id="ref-3">"一人公司"在深圳悄然兴起 · 深圳市发展和改革委员会 · 2026 年 · <a href="https://fgw.sz.gov.cn/ztzl/qtztzl/szscjmyjjfzzhfwpt/xwdt/content/post_12641545.html" target="_blank" rel="noopener">https://fgw.sz.gov.cn/ztzl/qtztzl/szscjmyjjfzzhfwpt/xwdt/content/post_12641545.html</a></li>
+          <li id="ref-4">助"一人公司"创业！深圳龙岗拟推"AI 龙虾十条" · 深圳 AI 创新产业信息网 · 2026 年 · <a href="https://szaicx.com/page192?article_id=20306" target="_blank" rel="noopener">https://szaicx.com/page192?article_id=20306</a></li>
+          <li id="ref-5">"一人公司"蓬勃发展！深圳龙岗构建 OPC 创业"热带雨林" · 新浪财经 · 2026 年 · <a href="https://cj.sina.com.cn/articles/view/5787187353/158f17899020021cck" target="_blank" rel="noopener">https://cj.sina.com.cn/articles/view/5787187353/158f17899020021cck</a></li>
+          <li id="ref-6">《关于进一步加快建设全域人工智能之城的实施方案（2026—2027 年）》· 北京经济技术开发区 · 2026 年 2 月 · <a href="https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202601/t20260130_4478660.html" target="_blank" rel="noopener">https://kfqgw.beijing.gov.cn/zwgkkfq/2024zcwj/202601/t20260130_4478660.html</a></li>
+          <li id="ref-7">亦庄谋划打造全球最大"一人公司"社区 · 首都之窗 · 2026 年 4 月 · <a href="https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html" target="_blank" rel="noopener">https://www.beijing.gov.cn/fuwu/lqfw/gggs/202604/t20260410_4578452.html</a></li>
+          <li id="ref-8">2026 中国一人公司政策解读：法律松绑与财税红利全析 · OpenAxo · 2026 年 · <a href="https://openaxo.com/trends/china-2026-opc-support-policy-analysis" target="_blank" rel="noopener">https://openaxo.com/trends/china-2026-opc-support-policy-analysis</a></li>
+          <li id="ref-9">海淀发布八条硬核政策，邀你共创"一人公司" · 北京日报 · 2026 年 4 月 · <a href="https://news.bjd.com.cn/2026/04/10/11681407.shtml" target="_blank" rel="noopener">https://news.bjd.com.cn/2026/04/10/11681407.shtml</a></li>
+          <li id="ref-10">"一人公司"近来何以兴起？ · 科技日报 · 2026 年 1 月 30 日 · <a href="https://www.stdaily.com/web/gdxw/2026-01/30/content_468455.html" target="_blank" rel="noopener">https://www.stdaily.com/web/gdxw/2026-01/30/content_468455.html</a></li>
+          <li id="ref-11">2026 中国一人公司政策解读：法律松绑与财税红利全析 · OpenAxo · 2026 年 · <a href="https://openaxo.com/trends/china-2026-opc-support-policy-analysis" target="_blank" rel="noopener">https://openaxo.com/trends/china-2026-opc-support-policy-analysis</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 2 期<br>
+          2026-03
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
+        Solarian
+      </a>
+      <span class="footer-copy">&copy; 2026 Solarian</span>
+    </div>
+    <div class="footer-links">
+      <a href="/main#product">产品</a>
+      <a href="/trends">博客</a>
+      <a href="/about">关于</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+function toggleLang(){
+  const t = document.getElementById('langToggle');
+  if(!t) return;
+  t.querySelector('.lang-zh').classList.toggle('active');
+  t.querySelector('.lang-en').classList.toggle('active');
+}
+
+// Build TOC from h2 elements in article body
+(function(){
+  var content = document.querySelector('.article-body');
+  if (!content) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = content.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
+</script>
+
+<!-- ========== WAITLIST MODAL ========== -->
+<div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
+<div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wl-modal">
+    <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="wl-header">
+      <h3>加入 Solarian Waitlist</h3>
+      <p>帮助我们了解你的需求，让 Solarian 更好地为你服务</p>
+    </div>
+    <form id="waitlistForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+      <div class="wl-row">
+        <div class="wl-field"><label>姓名 <span class="wl-req">*</span></label><input type="text" name="name" required placeholder="你的名字"></div>
+        <div class="wl-field"><label>邮箱 <span class="wl-req">*</span></label><input type="email" name="email" required placeholder="name@company.com"></div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-field"><label>所在国家/地区 <span class="wl-req">*</span></label>
+          <select name="country" required>
+            <option value="" disabled selected>选择国家/地区</option>
+            <option value="CN">中国</option><option value="US">美国</option><option value="GB">英国</option>
+            <option value="JP">日本</option><option value="KR">韩国</option><option value="SG">新加坡</option>
+            <option value="DE">德国</option><option value="FR">法国</option><option value="AU">澳大利亚</option>
+            <option value="CA">加拿大</option><option value="IN">印度</option><option value="BR">巴西</option>
+            <option value="AE">阿联酋</option><option value="HK">中国香港</option><option value="TW">中国台湾</option>
+            <option value="OTHER">其他</option>
+          </select>
+        </div>
+        <div class="wl-field"><label>所在行业 <span class="wl-req">*</span></label>
+          <select name="industry" required>
+            <option value="" disabled selected>选择行业</option>
+            <option value="tech">科技/互联网</option><option value="finance">金融/投资</option>
+            <option value="ecommerce">电商/零售</option><option value="education">教育/培训</option>
+            <option value="media">媒体/内容</option><option value="consulting">咨询/服务</option>
+            <option value="manufacturing">制造/工业</option><option value="healthcare">医疗/健康</option>
+            <option value="realestate">房地产/建筑</option><option value="legal">法律/合规</option>
+            <option value="freelancer">自由职业/独立开发</option><option value="student">学生/研究</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+      </div>
+      <div class="wl-field"><label>你的角色/职位</label><input type="text" name="role" placeholder="如：产品经理、创始人、开发者..."></div>
+      <div class="wl-field"><label>你目前工作中最大的痛点是什么？ <span class="wl-req">*</span></label><textarea name="painpoints" required rows="3" placeholder="例如：每天要在 5 个 AI 工具间切换..."></textarea></div>
+      <div class="wl-field"><label>你希望 Solarian 帮你完成哪些具体工作？</label><textarea name="usecase" rows="3" placeholder="例如：自动生成周报、管理社交媒体内容..."></textarea></div>
+      <button type="submit" class="wl-submit" id="wlSubmitBtn">
+        <span>提交申请</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>欢迎加入 Solarian！</h3>
+      <p>我们已收到你的申请，会在第一时间通知你内测开放。</p>
+    </div>
+  </div>
+</div>
+<script src="/assets/waitlist.js"></script>
+</body>
+</html>

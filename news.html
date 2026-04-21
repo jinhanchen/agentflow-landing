@@ -111,9 +111,9 @@ a{color:inherit;text-decoration:none}
   font-size:.7rem;font-weight:600;letter-spacing:.3px;
   width:fit-content;
 }
-.tag-brand{background:var(--accent-sub);color:var(--accent)}
-.tag-product{background:rgba(217,119,87,0.14);color:var(--accent-secondary)}
-.tag-milestone{background:rgba(201,169,97,0.18);color:#8A7433}
+.tag-brand{background:rgba(45,139,146,0.12);color:#2D8B92}
+.tag-product{background:rgba(217,119,87,0.12);color:#D97757}
+.tag-milestone{background:rgba(26,91,132,0.12);color:#1A5B84}
 .news-title-cell{min-width:0}
 .news-title{
   font-family:var(--font-display);font-size:1.05rem;font-weight:600;
@@ -306,8 +306,7 @@ footer .logo{color:#fff;font-size:.9rem}
 .footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
 .footer-links a:hover{color:rgba(255,255,255,0.85)}
 
-/* Research tag (绿色，用 DESIGN_TOKENS 里的 success 色) */
-.tag-research{background:rgba(95,141,78,0.14);color:#5F8D4E}
+.tag-research{background:rgba(31,158,110,0.12);color:#1F9E6E}
 
 /* References 列表样式 */
 article.story ol.references{
@@ -382,33 +381,33 @@ article.story sup a:hover{text-decoration:underline}
 <!-- ========== NAV (unified) ========== -->
 <nav id="nav">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
+    <a href="/main" class="logo">
       <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">首页</a></li>
+      <li><a href="/main">首页</a></li>
       <li class="nav-dropdown">
-        <a href="index.html#demo" class="nav-dd-trigger">产品 ▾</a>
+        <a href="/main#demo" class="nav-dd-trigger">产品 ▾</a>
         <div class="nav-dd-menu">
-          <a href="index.html#demo" class="dd-item">
+          <a href="/main#demo" class="dd-item">
             <strong>DM 模式</strong>
             <span>与硅基员工一对一沟通</span>
           </a>
-          <a href="index.html#demo" class="dd-item">
+          <a href="/main#demo" class="dd-item">
             <strong>Workflow 模式</strong>
             <span>透明指挥一支 AI 团队</span>
           </a>
-          <a href="index.html#market-product" class="dd-item">
+          <a href="/main#market-product" class="dd-item">
             <strong>自进化工作流</strong>
             <span>越跑越好的车间模式</span>
           </a>
-          <div class="dd-footer"><a href="index.html#demo">查看全部功能 →</a></div>
+          <div class="dd-footer"><a href="/main#demo">查看全部功能 →</a></div>
         </div>
       </li>
-      <li><a href="trends.html">OPC 博客</a></li>
-      <li><a href="news.html" class="current">公告</a></li>
-      <li><a href="about.html">关于</a></li>
+      <li><a href="/trends">OPC 博客</a></li>
+      <li><a href="/news" class="current">公告</a></li>
+      <li><a href="/about">关于</a></li>
       <li>
         <button class="lang-toggle" id="langToggle" onclick="toggleLang()">
           <span class="lang-zh active">中</span>
@@ -431,283 +430,37 @@ article.story sup a:hover{text-decoration:underline}
   <section class="news-list">
     <div class="news-table">
 
-      <div class="news-row" onclick="openArticle('brand-story')">
-        <div class="news-cover" style="background:#F5EFE2">
-          <img src="assets/logo.svg" alt="" loading="lazy">
-        </div>
-        <div class="news-date">2026-04-15</div>
-        <div class="news-tag tag-brand">Brand Story</div>
-        <div class="news-title-cell">
-          <div class="news-title">我们为什么叫 Solarian</div>
-          <div class="news-summary">一本 1957 年的科幻小说，一个叫 Baley 的侦探，和我们对 AI 时代的下一个决定。</div>
-        </div>
-        <div class="news-arrow">→</div>
-      </div>
-
-      <div class="news-row" onclick="openArticle('opc-trend-report')">
+      <a href="/news/opc-trend-report" class="news-row">
         <div class="news-cover">
           <img src="assets/scenario_illustration.png" alt="" loading="lazy">
         </div>
-        <div class="news-date">2026-04-15</div>
+        <div class="news-date">2026-04-05</div>
         <div class="news-tag tag-research">Research</div>
         <div class="news-title-cell">
           <div class="news-title">OPC 趋势报告：一人公司时代已经到来</div>
           <div class="news-summary">3 亿灵活就业人口、20+ 城市扶持政策、4.2× AI 效率差距——Solarian 研究团队整理的一份事实清单。</div>
         </div>
         <div class="news-arrow">→</div>
-      </div>
+      </a>
+
+      <a href="/news/brand-story" class="news-row">
+        <div class="news-cover" style="background:#F5EFE2">
+          <img src="assets/logo.svg" alt="" loading="lazy">
+        </div>
+        <div class="news-date">2026-04-01</div>
+        <div class="news-tag tag-brand">Brand Story</div>
+        <div class="news-title-cell">
+          <div class="news-title">我们为什么叫 Solarian</div>
+          <div class="news-summary">一本 1957 年的科幻小说，一个叫 Baley 的侦探，和我们对 AI 时代的下一个决定。</div>
+        </div>
+        <div class="news-arrow">→</div>
+      </a>
 
     </div>
 
   </section>
 </div>
 
-<!-- ========== ARTICLE VIEW ========== -->
-<div id="newsArticle" class="news-article-view">
-  <div class="article-layout">
-
-    <!-- LEFT STICKY SIDEBAR -->
-    <aside class="sub-sidebar">
-      <button class="sub-sidebar-back" onclick="closeArticle()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        返回公告列表
-      </button>
-
-      <div class="sub-sidebar-label">On This Page</div>
-      <ul class="sub-sidebar-toc" id="articleToc"></ul>
-    </aside>
-
-    <!-- MAIN ARTICLE COLUMN -->
-    <div class="article-main">
-      <article class="story" id="article-brand-story" style="display:none"
-               data-tag="Brand Story" data-date="2026-04-15" data-author="Franklin · 创始人">
-        <div class="story-header">
-          <span class="story-header-eyebrow">Brand Story</span>
-          <h1>我们为什么叫 <em>Solarian</em></h1>
-          <div class="story-header-meta">
-            2026-04-15<span>·</span>Franklin<span>·</span>创始人
-          </div>
-        </div>
-
-        <p class="lede">
-          一个人可以拥有一支团队——这件事我最早是在重读阿西莫夫的《裸阳》时真正感受到的。不是在某篇科技新闻里，也不是在一次 demo 现场。是在一本 1957 年写成的科幻小说里。
-        </p>
-
-        <p>
-          《裸阳》是阿西莫夫机器人系列的第二部。故事发生在一颗叫 <strong>Solaria</strong>（索拉利）的星球上。这颗星球只有 2 万人类，却有数亿个机器人。每个人拥有一片私人领地，衣食住行、生产科研、所有体力劳动，全部由硅基劳动力完成。
-        </p>
-
-        <p>
-          Solaria 的居民——<strong>Solarians</strong>——过着一种我们今天称为"理想"的生活：没有通勤，没有会议，没有人需要为别人打工。他们只需要发号施令。
-        </p>
-
-        <p>
-          我第一次读到这里的时候，觉得这就是未来。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>但阿西莫夫看见了危险</h2>
-
-        <p>
-          他在 1957 年就看见了：当每个人都拥有了一整支硅基劳动力，当技术让<em>孤立</em>变得无摩擦、舒适、甚至高效——人类会不会退回各自的壳里，把彼此变成抽象的符号？
-        </p>
-
-        <p>
-          Solaria 星球的居民选择了这条路。他们用机器人换取了独处的自由，代价是失去了对彼此的真实感。他们不再握手，不再共处一室，甚至不能忍受物理上的接触。他们拥有一切，却失去了互相看见的能力。
-        </p>
-
-        <p>
-          故事的主人公 <strong>Elijah Baley</strong> 是一个来自地球的侦探。地球人生活在密闭的钢铁城市里，恐惧天空，挤得无法呼吸。当 Baley 初次踏上 Solaria 的辽阔原野时，他差点崩溃——但在故事的结尾，他站在 Solaria 的土地上，望着头顶那颗太阳，做出了一个决定：
-        </p>
-
-        <blockquote>
-          他要成为 Spacer。他要去开拓新世界。
-        </blockquote>
-
-        <p>
-          这一刻是我所读过最有力的文学时刻之一。不是因为它讲了一个冒险者的故事，而是因为它给了一个答案——
-        </p>
-
-        <p>
-          <strong>技术不应该让我们退缩。它应该让我们出发。</strong>
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>于是有了 Solarian</h2>
-
-        <p>
-          Baley 不想做 Solaria 星球上的 Solarian——那种被机器人包围、互不接触、退守一片私人领地的生活。他想做的，是那些离开星球、朝着更远地方前进的人。
-        </p>
-
-        <p>
-          这就是为什么我们叫 <em>Solarian</em>。
-        </p>
-
-        <p>
-          不是那个退缩到舒适茧里的 Solarian。是那个望着太阳、想要出发的 Solarian。
-        </p>
-
-        <div class="section-break"></div>
-
-        <h2>我们相信什么</h2>
-
-        <p>
-          我们相信 2026 年的创业者正站在 Baley 的那一刻——<strong>手里第一次握住了过去只有大公司才能调动的资源</strong>。不是缺少劳动力，而是缺少能理解你、跨工具协作、持续学习的那支劳动力。
-        </p>
-
-        <p>
-          我们相信"一人公司"不是一个人孤独地加班，而是一个人指挥一支团队办事。
-        </p>
-
-        <p>
-          我们相信工作流应该<em>越跑越好</em>，而不是每次都从零开始。
-        </p>
-
-        <p>
-          我们相信 AI 不应该变成你为之打工的第 11 个应用。
-        </p>
-
-        <p>
-          <strong>我们要做的，是 Baley 拥抱太阳那一刻的产品答案。</strong>
-        </p>
-
-        <p>
-          给每一个创业者——一支真正属于自己的硅基团队。一支不是工具集合，而是会记住你、学习你的工作方式、和你一起开拓新边疆的团队。
-        </p>
-
-        <p>
-          这就是 Solarian 的故事。它从一本 1957 年的科幻小说开始，但它指向的，是你的下一个决定。
-        </p>
-
-        <div class="signature">
-          <strong>Franklin</strong>
-          Solarian 创始人<br>
-          2026-04-15 · 北京
-        </div>
-      </article>
-
-      <article class="story" id="article-opc-trend-report" style="display:none"
-               data-tag="Research Report" data-date="2026-04-15" data-author="Solarian Research">
-        <div class="story-header">
-          <span class="story-header-eyebrow">Research Report</span>
-          <h1>OPC 趋势报告：<em>一人公司时代已经到来</em></h1>
-          <div class="story-header-meta">
-            2026-04-15<span>·</span>Solarian Research
-          </div>
-        </div>
-
-        <p class="lede">
-          一个人能跑起来一家公司——这个命题，曾经只是创业者在深夜反复说服自己的话。但从 2023 年开始，三组数字同时在变：中国灵活就业人口已接近 3 亿，超过 20 座城市相继为独立创业者出台专项政策，而一系列顶级学术机构的受控实验则证明，AI 辅助工作的效率提升可以超过 2 倍——在某些任务类型上，已接近 4 倍。这不是技术预言，而是正在发生的经济现实。
-        </p>
-
-        <p>一人公司（One-Person Company，OPC）的兴起，是三重压力叠加的结果：平台经济重塑了就业结构，政策层主动为独立创业者开门，AI 工具则抹平了"人多力量大"这一传统优势。这三条线各自有数据支撑，合在一起，构成了一个不可逆的时代信号。</p>
-
-        <div class="section-break"></div>
-
-        <h2>一、3 亿 与正在发生的革命</h2>
-
-        <p>"3 亿灵活就业"是中国当下讨论最频繁的劳动力话题之一，但它实际上由多个统计口径叠加而成，需要分开理解。</p>
-
-        <p>第一个口径来自人社部。2021 年 5 月，人社部就业促进司司长宋鑫在国务院政策例行吹风会上首次将灵活就业人员规模定性为<strong>"超过 2 亿人"</strong><sup><a href="#ref-1">[1]</a></sup>。这是官方第一次以如此体量级别承认这支劳动力的存在。到 2024 年，据国家统计局数据，广义灵活就业人员已超过 <strong>2.4 亿人</strong><sup><a href="#ref-11">[11]</a></sup>。</p>
-
-        <p>第二个口径来自国家统计局的农民工监测体系。2025 年 4 月发布的《2024 年农民工监测调查报告》显示，全国农民工总量达 <strong>29,973 万人（约 3 亿）</strong><sup><a href="#ref-1">[1]</a></sup>，其中外出务工 1.79 亿，进城落户 1.32 亿。农民工是灵活就业最庞大的组成部分，二者存在大量重叠。</p>
-
-        <p>第三个维度，是全国总工会 2023 年《第九次全国职工队伍状况调查》提供的：<em>新就业形态劳动者</em>（通过互联网平台承接工作的快递员、外卖骑手、网约车司机、云端知识工作者等）达到 <strong>8,400 万人</strong>，占全国职工总数的 21%<sup><a href="#ref-2">[2]</a></sup>。这是"OPC 时代"最直接的预演群体——他们已经在用数字平台取代雇主，自主管理自己的收入与时间。</p>
-
-        <blockquote>从 2019 年到 2024 年，新型灵活就业招聘职位在全平台的占比，从 8.4% 上升至 15.2%——5 年翻近一倍。（暨南大学经济与社会研究院 × 智联招聘，2025）<sup><a href="#ref-5">[5]</a></sup></blockquote>
-
-        <p>趋势比截面数据更说明问题。2020 年共享经济服务提供者约 8,400 万人；2021 年广义灵活就业突破 2 亿；2024 年仅注册网约车司机已突破 748 万，外卖骑手超过 1,300 万，职业主播超过 3,880 万。与此同时，政策态度在转变：2021 年前是默许，2021-2023 年是主动支持，2025 年已上升为立法议题——国务院于 2025 年 12 月向全国人大常委会提交专题报告，推动《新就业形态劳动者基本权益保障办法》立法<sup><a href="#ref-15">[15]</a></sup>。</p>
-
-        <p>对于独立创业者而言，"一个人就是一家公司"<em>正在从非正式状态走向制度认可</em>。这支庞大劳动力，需要的不是更多的单点工具，而是一套能让一个人调动多角色、跨任务、持续成长的操作系统。</p>
-
-        <div class="section-break"></div>
-
-        <h2>二、20 座城市的政策转向</h2>
-
-        <p>2023 年是中国 OPC 政策的分水岭。多座主要城市几乎在同一时期密集发布专项扶持文件，形成了过去十年里最密集的一次政策波次。</p>
-
-        <p>广东省率先于 <strong>2023 年 1 月</strong>发布《培育扶持个体工商户若干措施》（31 条），确立"六税两费"减半征收、金融帮扶、数字化赋能三条主线<sup><a href="#ref-7">[7]</a></sup>。随后，<strong>深圳</strong>于 2023 年 6 月出台 <strong>33 条专项措施</strong>，包含最高 60 万元创业担保贷款及贴息、个体工商户"六税两费"顶格减免 50%、核定征收个人所得税统一降至 5%（低于全国多数城市的 10%）<sup><a href="#ref-9">[9]</a></sup>。同月，<strong>苏州</strong>发布《促进个体工商户高质量发展若干政策措施》（28 条），设立最高 50 万元富民创业担保贷款，并配套每月 1,100 元创业社保补贴<sup><a href="#ref-10">[10]</a></sup>。<strong>上海</strong>在 2023 年 4 月推出创业扶持政策，对首次创业毕业生给予 8,000 元一次性补贴，对初创期企业持续提供最长 36 个月社保补贴<sup><a href="#ref-6">[6]</a></sup>。</p>
-
-        <ul>
-          <li><strong>杭州</strong>（2025 年最新版）：一次性创业社保补贴 5,000 元 + 场地租金补贴（最高 50 平方米，最长 3 年）</li>
-          <li><strong>北京</strong>：一次性创业补贴 + 重点群体 3 年内最高减税 14,400 元/年</li>
-          <li><strong>成都</strong>（四川省 18 条）：高校毕业生创业补贴 5,000 元起，灵活就业社保补贴最长 2 年、按缴费的 70% 补贴</li>
-          <li><strong>武汉、南京、西安、厦门、福州、长沙、合肥、郑州、青岛、天津</strong>等城市：均有涵盖创业补贴、税收减免、担保贷款中一项或多项的专项政策</li>
-        </ul>
-
-        <p>如果说 2023 年是城市层面的主动探索，那 <strong>2024 年 7 月 1 日</strong>新《公司法》正式施行，则是更根本性的制度松绑：取消"一个自然人只能设立一家一人有限责任公司"的限制，首次允许一人公司再投资设立一人公司，并允许设立一人股份有限公司<sup><a href="#ref-13">[13]</a></sup>。这为规模化 OPC 提供了完整的法律基础架构。</p>
-
-        <blockquote>重庆是目前唯一一个在政策文件中明确使用"一人公司"措辞并建立"三零绿色通道"（零成本、零跑腿、零等待注册）的城市——这是政策端对 OPC 时代最直接的命名与认可。</blockquote>
-
-        <p>在全国统一政策层面，个体工商户个人所得税减半征收、增值税小规模纳税人月销售额 10 万元以下免税、"六税两费"减半征收等优惠政策，执行期均已延长至 <strong>2027 年底</strong><sup><a href="#ref-12">[12]</a></sup>。这意味着，无论在哪个城市，独立创业者今天面对的税收环境，是过去十年里最友好的。</p>
-
-        <p>这 20 座城市，加在一起，代表了中国超过 7 亿的城市人口。<em>政策转向已经发生，而 OPC 创始人真正需要的，是把政策红利转化为实际效率的工具。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>三、4.2× 和效率的新基准</h2>
-
-        <p>关于 AI 对工作效率的影响，有大量坊间数字在流传，但真正具有学术严谨性的受控实验，集中在 2023-2024 年密集涌现。以下是最具代表性的几项：</p>
-
-        <p><strong>编程</strong>：Microsoft Research 与 GitHub 联合开展的随机对照实验（约 70 名开发者）显示，使用 GitHub Copilot 的开发者完成同一编程任务的速度<strong>快 55.8%</strong><sup><a href="#ref-14">[14]</a></sup>——折算为效率倍数，原来 2.41 小时的工作量现在 1.18 小时完成，效率约为原来的 <em>2.04 倍</em>。</p>
-
-        <p><strong>写作</strong>：MIT 经济学系 Noy &amp; Zhang 在 <em>Science</em> 期刊发表的实验（453 名职场人，随机对照设计）显示，使用 ChatGPT 辅助完成职业写作任务，用时<strong>减少 40%</strong>，独立评分的输出质量<strong>提升 18%</strong><sup><a href="#ref-3">[3]</a></sup>。</p>
-
-        <p><strong>知识工作</strong>：哈佛商学院与波士顿咨询集团对 <strong>758 名 BCG 顾问</strong>开展的随机对照实验显示：使用 AI 的顾问完成任务数量多 12.2%，速度快 25.1%，输出质量高出对照组 <strong>40% 以上</strong><sup><a href="#ref-4">[4]</a></sup>。</p>
-
-        <p><strong>客服运营</strong>：斯坦福大学与 MIT 联合开展的准实验（5,172 名客服代理，发表于 <em>Quarterly Journal of Economics</em>）显示：AI 辅助使客服生产率整体提升 <strong>14%</strong>，新员工提升高达 <strong>34%</strong>——使用 AI 工具 2 个月的新员工，表现相当于未使用 AI 的 6 个月员工<sup><a href="#ref-5b">[5]</a></sup>。</p>
-
-        <blockquote>Nielsen Norman Group 元分析：AI 辅助工具使员工平均生产率提升 66%；编程任务每周可完成项目数量增加 126%，约 2.26 倍产出。<sup><a href="#ref-6">[6]</a></sup></blockquote>
-
-        <p>单一研究给出的是任务级别的数字——写作快 40%，编程快 55%，知识工作质量高 40%。但 OPC 创始人的工作场景，不是单一任务，而是<em>多个效率杠杆同时起效的复合场景</em>。当同一个人拥有 AI 辅助写作 + AI 辅助编程 + AI 辅助调研 + AI 工作流自动化，效率不是简单叠加，而是指数级释放。麦肯锡全球研究院的宏观测算印证了这个方向：GenAI 可将员工 <strong>60-70%</strong> 的工作活动实现自动化，远超此前任何技术工具的估算<sup><a href="#ref-7">[7]</a></sup>。Anthropic CEO Dario Amodei 于 2025 年公开预测：首家十亿美元规模的一人公司，将在 2026 年出现。</p>
-
-        <p>对于一人公司来说，这意味着：一个拥有 AI 团队的 OPC 创始人，<em>能以原来更少的时间，完成一支数人小团队的工作量。</em>这不是效率工具的堆叠，而是需要一个能让多个 AI 角色协同、记忆、持续进化的操作系统。</p>
-
-        <div class="section-break"></div>
-
-        <h2>结论：OPC 时代需要怎样的工具</h2>
-
-        <p>三个事实拼在一起，勾勒出同一幅图景。</p>
-
-        <p><strong>3 亿人</strong>，正在以各种形式脱离传统雇佣关系，寻找自我组织的工作方式。他们不是因为失业而灵活就业，而是因为平台经济和个人技能的升值，使得"一个人就是一家公司"在经济上开始合算。<strong>20 座城市</strong>的政策信号，说明这不是过渡态，而是政策层也认为可以持续的结构——减税、补贴、法律松绑，是国家对一种新型生产组织方式的背书。<strong>2 倍到 4 倍的效率差距</strong>，是目前可以被受控实验证明的数字，AI 正在把"一个人能做多少事"这条线，往上推得越来越高。</p>
-
-        <p>这三条线的交汇点，是一个正在扩大的真空：一支懂你、记住你、越用越好的 AI 团队，正是 OPC 时代最缺少的东西。这就是 Solarian 要做的事——让每一个独立创业者，能像指挥一支真实团队一样，指挥他的硅基劳动力。</p>
-
-        <p><em>OPC 时代不是下一个十年要发生的事。它已经到来了。</em></p>
-
-        <div class="section-break"></div>
-
-        <h2>参考来源</h2>
-        <ol class="references">
-          <li id="ref-1">《2024 年农民工监测调查报告》· 国家统计局 · 2025 年 4 月 30 日 · <a href="https://www.stats.gov.cn/sj/zxfb/202504/t20250430_1959523.html" target="_blank" rel="noopener">https://www.stats.gov.cn/sj/zxfb/202504/t20250430_1959523.html</a></li>
-          <li id="ref-2">《全国新就业形态劳动者达 8400 万人》（第九次全国职工队伍状况调查）· 全国总工会 · 2023 年 3 月 27 日 · <a href="https://www.gov.cn/xinwen/2023-03/27/content_5748417.htm" target="_blank" rel="noopener">https://www.gov.cn/xinwen/2023-03/27/content_5748417.htm</a></li>
-          <li id="ref-3">Noy, S. &amp; Zhang, W. (2023). Experimental Evidence on the Productivity Effects of Generative Artificial Intelligence. <em>Science</em>, Vol. 381 · MIT Economics · <a href="https://www.science.org/doi/10.1126/science.adh2586" target="_blank" rel="noopener">https://www.science.org/doi/10.1126/science.adh2586</a></li>
-          <li id="ref-4">Dell'Acqua, F. et al. (2023). Navigating the Jagged Technological Frontier · Harvard Business School Working Paper 24-013 · <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700" target="_blank" rel="noopener">https://www.hbs.edu/faculty/Pages/item.aspx?num=64700</a></li>
-          <li id="ref-5">Brynjolfsson, E., Li, D. &amp; Raymond, L. (2023). Generative AI at Work · NBER Working Paper 31161 · <em>Quarterly Journal of Economics</em> · <a href="https://academic.oup.com/qje/article/140/2/889/7990658" target="_blank" rel="noopener">https://academic.oup.com/qje/article/140/2/889/7990658</a></li>
-          <li id="ref-6">Nielsen Norman Group (2023). AI Improves Employee Productivity by 66% · <a href="https://www.nngroup.com/articles/ai-tools-productivity-gains/" target="_blank" rel="noopener">https://www.nngroup.com/articles/ai-tools-productivity-gains/</a></li>
-          <li id="ref-7">McKinsey Global Institute (2023). The Economic Potential of Generative AI: The Next Productivity Frontier · <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener">https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier</a></li>
-          <li id="ref-8">《为灵活就业、新就业形态劳动者撑起法治蓝天》· 全国人大常委会 · 2026 年 2 月 · <a href="http://www.npc.gov.cn/npc/c2/c30834/202602/t20260227_451738.html" target="_blank" rel="noopener">http://www.npc.gov.cn/npc/c2/c30834/202602/t20260227_451738.html</a></li>
-          <li id="ref-9">《扶持个体工商户高质量发展若干措施》（33 条）· 深圳市政府 · 2023 年 6 月 · <a href="https://www.sz.gov.cn/gkmlpt/content/10/10631/post_10631603.html" target="_blank" rel="noopener">https://www.sz.gov.cn/gkmlpt/content/10/10631/post_10631603.html</a></li>
-          <li id="ref-10">《促进个体工商户高质量发展若干政策措施》（28 条）· 苏州市人民政府 · 2023 年 6 月 · <a href="https://www.suzhou.gov.cn/szsrmzf/zfwj/202306/09b6d3ef8a984facbed159e5dd7a8d34.shtml" target="_blank" rel="noopener">https://www.suzhou.gov.cn/szsrmzf/zfwj/202306/09b6d3ef8a984facbed159e5dd7a8d34.shtml</a></li>
-          <li id="ref-11">《灵活就业群体超 2.4 亿人！如何推动社会工作高质量发展？》· 宁夏社会工作局（引用国家统计局数据）· 2025 年 6 月 · <a href="https://www.nxshgzb.gov.cn/llyj/202506/t20250627_1015067.html" target="_blank" rel="noopener">https://www.nxshgzb.gov.cn/llyj/202506/t20250627_1015067.html</a></li>
-          <li id="ref-12">《个体工商户个人所得税减半征收政策》· 国家税务总局 · <a href="https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5237814/content.html" target="_blank" rel="noopener">https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5237814/content.html</a></li>
-          <li id="ref-13">《新〈公司法〉一人公司注册松绑》· 深圳市市场监管局解读 · 2024 年 7 月 · <a href="https://amr.sz.gov.cn/zcjzts/ssdj/content/post_11458245.html" target="_blank" rel="noopener">https://amr.sz.gov.cn/zcjzts/ssdj/content/post_11458245.html</a></li>
-          <li id="ref-14">Peng, S. et al. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot · arXiv:2302.06590 · Microsoft Research · <a href="https://arxiv.org/abs/2302.06590" target="_blank" rel="noopener">https://arxiv.org/abs/2302.06590</a></li>
-          <li id="ref-15">《国务院关于灵活就业和新就业形态劳动者权益保障工作情况的报告》· 全国人大常委会 · 2025 年 12 月 24 日 · <a href="http://www.npc.gov.cn/npc/c2/c30834/202512/t20251224_450484.html" target="_blank" rel="noopener">http://www.npc.gov.cn/npc/c2/c30834/202512/t20251224_450484.html</a></li>
-        </ol>
-
-        <div class="signature">
-          <strong>Solarian Research</strong>
-          OPC 趋势研究系列 · 第 1 期<br>
-          2026-04-15
-        </div>
-      </article>
-    </div>
-  </div>
-
-</div>
 
 <!-- ========== BOTTOM CTA (shared) ========== -->
 <section class="cta-section" id="waitlist">
@@ -726,17 +479,17 @@ article.story sup a:hover{text-decoration:underline}
 <footer>
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="index.html" class="logo">
+      <a href="/main" class="logo">
         <img src="assets/logo.svg" alt="Solarian" style="height:22px">
         Solarian
       </a>
       <span class="footer-copy">&copy; 2026 Solarian</span>
     </div>
     <div class="footer-links">
-      <a href="index.html#demo">产品</a>
-      <a href="trends.html">博客</a>
-      <a href="news.html">公告</a>
-      <a href="about.html">关于</a>
+      <a href="/main#demo">产品</a>
+      <a href="/trends">博客</a>
+      <a href="/news">公告</a>
+      <a href="/about">关于</a>
     </div>
   </div>
 </footer>
@@ -757,70 +510,6 @@ function toggleLang(){
   en.classList.toggle('active');
 }
 
-// ========== ARTICLE SWITCHER ==========
-let currentTocObserver = null;
-
-function buildTOC(articleId){
-  const article = document.getElementById('article-' + articleId);
-  const toc = document.getElementById('articleToc');
-  toc.innerHTML = '';
-
-  // Build TOC from h2 elements
-  article.querySelectorAll('h2').forEach((h2, i) => {
-    if(!h2.id) h2.id = articleId + '-sec-' + i;
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.dataset.target = h2.id;
-    a.textContent = h2.textContent;
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      document.getElementById(h2.id).scrollIntoView({behavior:'smooth', block:'start'});
-    });
-    li.appendChild(a);
-    toc.appendChild(li);
-  });
-
-  // Scroll-spy
-  if(currentTocObserver) currentTocObserver.disconnect();
-  const tocLinks = toc.querySelectorAll('a');
-  currentTocObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting){
-        tocLinks.forEach(link => {
-          link.classList.toggle('active', link.dataset.target === e.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-20% 0px -60% 0px' });
-  article.querySelectorAll('h2').forEach(h => currentTocObserver.observe(h));
-}
-
-function openArticle(id){
-  document.getElementById('newsList').style.display = 'none';
-  const view = document.getElementById('newsArticle');
-  view.classList.add('active');
-  view.querySelectorAll('article.story').forEach(a => a.style.display = 'none');
-  const target = document.getElementById('article-' + id);
-  if(!target) return;
-  target.style.display = 'block';
-  buildTOC(id);
-  window.scrollTo({top:0, behavior:'instant'});
-  history.replaceState(null, '', '#' + id);
-}
-
-function closeArticle(){
-  document.getElementById('newsArticle').classList.remove('active');
-  document.getElementById('newsList').style.display = 'block';
-  if(currentTocObserver){ currentTocObserver.disconnect(); currentTocObserver = null; }
-  window.scrollTo({top:0, behavior:'instant'});
-  history.replaceState(null, '', location.pathname);
-}
-
-// Deep-link: open article directly if URL has hash
-(function(){
-  const hash = location.hash.replace('#','');
-  if(hash && document.getElementById('article-' + hash)) openArticle(hash);
-})();
 </script>
 
 <!-- ========== WAITLIST MODAL (shared bundle) ========== -->

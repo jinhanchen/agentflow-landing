@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OPC 博客 — Solarian</title>
+<title>两个人做到年收入 $4 亿的秘密 — Solarian</title>
+<meta name="description" content="Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。">
+<meta property="og:title" content="两个人做到年收入 $4 亿的秘密 — Solarian">
+<meta property="og:description" content="Medvi 只有两名创始人，用 $2 万启动资金和全栈 AI 工具，在 2025 年实现 $4.01 亿销售额。">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://solarian.app/trends/003">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,7 +18,6 @@
 :root{
   --bg:#F5F0E6;
   --bg-card:#FFFFFF;
-  --bg-card-hover:#FAFAF5;
   --border:rgba(26,31,46,0.08);
   --border-hover:rgba(26,31,46,0.15);
   --text:#1A1F2E;
@@ -40,83 +44,10 @@ body{
   background:var(--bg);
   color:var(--text);
   line-height:1.6;
-  overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
   font-weight:350;
 }
 a{color:inherit;text-decoration:none}
-
-/* ========== SCROLL REVEAL ========== */
-.reveal{opacity:0;transform:translateY(36px)}
-.reveal.vis{opacity:1;animation:springUp .85s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes springUp{
-  0%{opacity:0;transform:translateY(36px)}
-  60%{opacity:1;transform:translateY(-5px)}
-  80%{transform:translateY(2px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@media(prefers-reduced-motion:reduce){.reveal.vis{animation:none;opacity:1;transform:none}}
-
-/* ========== LAYOUT ========== */
-.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding-inline:40px}
-.center{text-align:center;display:flex;flex-direction:column;align-items:center}
-
-/* Nav + nav-button CSS moved to shared assets/nav.css */
-
-/* ========== PAGE HERO ========== */
-.page-hero h1 em{font-style:normal;color:var(--accent)}
-
-/* ========== GALLERY GRID ========== */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:20px;
-  margin-top:20px;
-}
-
-/* ========== GALLERY CARD ========== */
-.gallery-card{
-  background:var(--bg-card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:all .3s var(--ease);
-  display:flex;flex-direction:column;
-}
-.gallery-card:hover{
-  border-color:var(--border-hover);
-  transform:translateY(-4px);
-  box-shadow:0 8px 32px rgba(26,31,46,0.1), 0 2px 8px rgba(26,31,46,0.05);
-}
-
-.card-cover{
-  aspect-ratio:16/10;
-  width:100%;
-  object-fit:cover;
-  display:block;
-  border-radius:12px 12px 0 0;
-}
-.card-cover-placeholder{
-  aspect-ratio:16/10;
-  width:100%;
-  border-radius:12px 12px 0 0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2rem;
-  color:rgba(26,31,46,0.1);
-}
-.card-cover-placeholder.grad-1{background:linear-gradient(135deg,#e8e0d0,#d4cfc5,#c7d2d8)}
-.card-cover-placeholder.grad-2{background:linear-gradient(135deg,#d8e0e4,#c5d4d8,#b8ccd2)}
-.card-cover-placeholder.grad-3{background:linear-gradient(135deg,#e4d8e8,#d0c5dc,#c8d0e0)}
-.card-cover-placeholder.grad-4{background:linear-gradient(135deg,#dde0e8,#c8d0dc,#bcc8d8)}
-.card-cover-placeholder.grad-5{background:linear-gradient(135deg,#d8dce4,#c8d0d8,#bcc4cc)}
-.card-cover-placeholder.grad-6{background:linear-gradient(135deg,#e0dce8,#d4cce0,#c8d0d8)}
-
-.card-body{
-  padding:16px;
-  display:flex;flex-direction:column;gap:8px;
-  flex:1;
-}
 
 .card-tag{
   display:inline-flex;
@@ -135,30 +66,7 @@ a{color:inherit;text-decoration:none}
 .tag-insight{background:rgba(31,111,135,0.1);color:var(--tag-insight)}
 .tag-story{background:rgba(35,55,108,0.1);color:var(--tag-story)}
 
-.card-title{
-  font-family:var(--font-display);
-  font-size:.95rem;
-  font-weight:600;
-  line-height:1.35;
-  letter-spacing:-.3px;
-}
-.card-desc{
-  font-size:.78rem;
-  color:var(--text-sub);
-  line-height:1.55;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-.card-meta{
-  font-size:.68rem;
-  color:var(--text-dim);
-  margin-top:auto;
-  padding-top:4px;
-}
-
-/* ========== ARTICLE VIEW WITH LEFT SIDEBAR ========== */
+/* ========== ARTICLE LAYOUT ========== */
 .article-layout{
   max-width:1120px;margin:120px auto 0;
   padding:0 40px;
@@ -166,7 +74,6 @@ a{color:inherit;text-decoration:none}
   gap:60px;align-items:start;
 }
 
-/* Left sidebar — sticky navigation */
 .sub-sidebar{
   position:sticky;top:100px;
   padding-top:8px;
@@ -181,6 +88,7 @@ a{color:inherit;text-decoration:none}
   transition:all .2s var(--ease);
   margin-bottom:40px;
   font-family:var(--font-body);
+  text-decoration:none;
 }
 .sub-sidebar-back:hover{
   border-color:var(--accent);color:var(--accent);
@@ -216,7 +124,6 @@ a{color:inherit;text-decoration:none}
   color:var(--accent);border-left-color:var(--accent);
   font-weight:500;background:var(--accent-sub);
 }
-
 .sub-sidebar-meta{
   padding:16px;border-top:1px solid var(--border);
   font-size:.74rem;color:var(--text-dim);
@@ -230,7 +137,6 @@ a{color:inherit;text-decoration:none}
 
 .article-main{min-width:0;padding-bottom:80px}
 
-/* Article content styles */
 .article-page .article-cover{
   display:block;
   width:100%;max-width:480px;
@@ -302,9 +208,7 @@ a{color:inherit;text-decoration:none}
   text-decoration:underline;text-decoration-color:var(--accent-sub);
   text-underline-offset:2px;
 }
-.article-page .article-body ol.references a:hover{
-  text-decoration-color:var(--accent);
-}
+.article-page .article-body ol.references a:hover{text-decoration-color:var(--accent)}
 .article-page .article-body sup{
   font-size:.65em;color:var(--accent);font-weight:600;
 }
@@ -314,8 +218,6 @@ a{color:inherit;text-decoration:none}
   margin:0 0 20px;padding-left:24px;
 }
 .article-page .article-body li{margin-bottom:8px}
-
-/* CTA box styling now lives in shared assets/waitlist.css (.cta-section) */
 
 /* ========== FOOTER ========== */
 footer{
@@ -327,7 +229,7 @@ footer{
   max-width:1100px;margin:0 auto;padding-inline:40px;
   display:flex;justify-content:space-between;align-items:center;
 }
-footer .logo{color:#fff;font-size:.9rem}
+footer .logo{color:#fff;font-size:.9rem;display:flex;align-items:center;gap:8px}
 .footer-copy{font-size:.72rem;color:rgba(255,255,255,0.4)}
 .footer-links{display:flex;gap:20px}
 .footer-links a{font-size:.72rem;color:rgba(255,255,255,0.5);transition:color .2s}
@@ -346,28 +248,22 @@ footer .logo{color:#fff;font-size:.9rem}
   .sub-sidebar-back{margin-bottom:16px}
 }
 @media(max-width:768px){
-  .wrap{padding-inline:20px}
   .nav-inner{padding-inline:20px}
   .nav-links{gap:16px}
-  .gallery{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
   .footer-inner{flex-direction:column;gap:16px;text-align:center}
   .article-layout{padding:0 20px}
   .article-main{padding-bottom:60px}
 }
-
-/* Nav + dropdown + lang-toggle CSS moved to shared assets/nav.css */
 </style>
-<link rel="stylesheet" href="assets/nav.css">
-<link rel="stylesheet" href="assets/waitlist.css">
-<style></style>
+<link rel="stylesheet" href="/assets/nav.css">
+<link rel="stylesheet" href="/assets/waitlist.css">
 </head>
 <body>
 
-<!-- NAV (unified across all pages) -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="/main" class="logo">
-      <span class="nav-logo-badge"><img src="assets/logo.svg" alt="Solarian"></span>
+      <span class="nav-logo-badge"><img src="/assets/logo.svg" alt="Solarian"></span>
       Solarian
     </a>
     <ul class="nav-links">
@@ -404,37 +300,129 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </nav>
 
-<!-- ========== PAGE HERO ========== -->
-<div id="blogGallery">
-<section class="page-hero wrap center" style="min-height:auto;padding-top:160px;padding-bottom:40px">
-  <h1 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15">OPC <em>博客</em></h1>
-  <p style="font-size:.95rem;color:var(--text-sub);max-width:520px;line-height:1.7;margin-top:14px">一人公司时代的趋势、案例与洞见</p>
-</section>
+<div class="article-layout">
 
-<!-- ========== GALLERY ========== -->
-<section class="wrap" style="padding-bottom:100px">
-  <div class="gallery" id="gallery"></div>
-</section>
+  <aside class="sub-sidebar">
+    <a href="/trends" class="sub-sidebar-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      返回博客
+    </a>
 
-<!-- ========== BOTTOM CTA (shared) ========== -->
-<section class="cta-section" id="waitlist">
-  <div class="cta-box reveal">
-    <div class="cta-eyebrow">Waitlist · Q2 2026</div>
-    <h2>加入 <em>Waitlist</em></h2>
-    <p class="cta-sub">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
-    <button class="btn-waitlist-open" onclick="openWaitlist()">
-      <span>加入 Waitlist</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </button>
+    <div class="sub-sidebar-label" id="tocLabel" style="display:none">On This Page</div>
+    <ul class="sub-sidebar-toc" id="articleToc"></ul>
+
+    <div class="sub-sidebar-meta">
+      <strong>Medvi 案例</strong>
+      2026-04-03 · 9 分钟
+    </div>
+  </aside>
+
+  <div class="article-main">
+    <div class="article-page">
+      <img class="article-cover" src="/assets/medvi_nyt.jpg" alt="">
+      <span class="card-tag tag-case">案例</span>
+      <h1>两个人做到年收入 $4 亿的秘密</h1>
+      <div class="article-meta">Medvi 案例 &middot; 2026-04-03 &middot; 9 分钟</div>
+      <div class="article-body">
+                <p class="lede">
+          2026 年 4 月 2 日，《纽约时报》记者 Erin Griffith 发表了一篇报道，让全球科技圈震动：Medvi，一家只有两名员工的远程医疗公司——创始人 Matthew Gallagher 和他的弟弟 Elliot——凭借 2 万美元启动资金和全栈 AI 自动化，2025 年全年实现 <strong>4.01 亿美元</strong>销售额，2026 年营收目标直指 <strong>18 亿美元</strong><sup><a href="#ref-1">[1]</a></sup>。Sam Altman 曾预言的"一人十亿美元公司"，似乎正在变为现实。但这个故事比表面看起来复杂得多。
+        </p>
+
+        <div class="section-break"></div>
+
+        <h2>一、从拖车公园到 4 亿美元</h2>
+
+        <p>Matthew Gallagher 成长于美国佛罗里达州的一个拖车公园（trailer park），没有名校背景，没有硅谷人脉。2024 年 9 月，他用 2 万美元积蓄创办了 Medvi——一个面向消费者的远程医疗平台，专门提供 GLP-1 类减重药物（即 Ozempic、Wegovy 背后的那一类药物）的在线诊疗和处方服务<sup><a href="#ref-2">[2]</a></sup>。</p>
+
+        <p>增长速度令人咋舌：第一个月营收 30 万美元，第二个月突破 100 万美元<sup><a href="#ref-3">[3]</a></sup>。到 2025 年底，Medvi 的客户从 300 人增长到超过 <strong>25 万人</strong>，全年销售额 4.01 亿美元，净利润率 <strong>16.2%</strong><sup><a href="#ref-1">[1]</a></sup>。</p>
+
+        <p>这一切，靠的是两个人和一群 AI Agent。</p>
+
+        <div class="section-break"></div>
+
+        <h2>二、AI 如何替代了整个公司</h2>
+
+        <p>Gallagher 的运营模式是彻底的 AI 原生架构。他公开表示，公司几乎每一个职能都由 AI 工具承担<sup><a href="#ref-4">[4]</a></sup>：</p>
+
+        <ul>
+          <li><strong>代码开发</strong>：使用 ChatGPT、Claude 和 Grok 编写和维护网站、后台系统和自动化工具</li>
+          <li><strong>广告创意</strong>：Midjourney 生成图片，Runway 制作视频广告</li>
+          <li><strong>客户服务</strong>：ElevenLabs 的 AI 语音工具处理客户沟通</li>
+          <li><strong>运营自动化</strong>：定制化 AI Agent 网络处理从问诊分流到处方审核到客户跟进的全部业务流程</li>
+        </ul>
+
+        <p>正如 Gallagher 所描述的：他和弟弟"监督着一个复杂的 AI Agent 网络，这些 Agent 编写软件代码、制作网站文案、生成广告视频、管理客户服务"<sup><a href="#ref-2">[2]</a></sup>。两个人不是在"做所有事"，而是在<strong>指挥 AI 做所有事</strong>。</p>
+
+        <blockquote>没有销售团队，没有客服中心，没有技术部门。所有这些职能，都被 AI Agent 接管了。Medvi 证明的不是"两个人有多能干"，而是"AI 团队的上限有多高"。<sup><a href="#ref-4">[4]</a></sup></blockquote>
+
+        <div class="section-break"></div>
+
+        <h2>三、硬币的另一面</h2>
+
+        <p>如果只讲增长曲线，Medvi 是一个完美的创业童话。但现实更复杂。</p>
+
+        <p><strong>FDA 警告函</strong>：美国食品药品监督管理局（FDA）向 Medvi 发出了正式警告函，指出其存在合规问题——包括"产品标签具有误导性""未经授权声称复方药物与品牌 GLP-1 药物等效""通过州际商业不当分销药品"等<sup><a href="#ref-5">[5]</a></sup>。</p>
+
+        <p><strong>AI 生成的虚假内容</strong>：调查发现，Medvi 使用 AI 生成了虚假的医生社交媒体账号、编造的视频、伪造的用药前后对比图<sup><a href="#ref-5">[5]</a></sup>。当 AI 被用来提升效率时，它是工具；当 AI 被用来制造虚假信任时，它是武器。</p>
+
+        <p>Forrester 分析师发表评论文章警告：<em>不要被"神奇的两人十亿美元 AI 创业公司"的叙事迷惑</em>——极端案例的可复制性值得怀疑，而 AI 自动化带来的监管灰色地带需要被认真对待<sup><a href="#ref-6">[6]</a></sup>。</p>
+
+        <div class="section-break"></div>
+
+        <h2>四、Medvi 真正证明了什么</h2>
+
+        <p>即使打了折扣，Medvi 的故事仍然具有划时代意义。它证明了几件事：</p>
+
+        <p><strong>第一，AI 自动化的上限远超预期。</strong>一个没有技术背景的创业者，用 AI 工具在几个月内搭建了一套从获客到交付的完整业务系统。这在两年前不可想象。</p>
+
+        <p><strong>第二，团队规模不再决定业务规模。</strong>4.01 亿美元的年营收，传统模式下至少需要数百人的团队。Medvi 用 2 个人 + AI Agent 矩阵做到了。Replit CEO Amjad Masad 在 LinkedIn 评论道：一个在拖车公园长大的人，用 AI 和 2 万美元启动资金，建成了一家十亿美元级公司——"这就是我们正在构建的未来"<sup><a href="#ref-7">[7]</a></sup>。</p>
+
+        <p><strong>第三，"碳硅比"成为真正的竞争力指标。</strong>不是你雇了多少人，而是你能指挥多少个 AI Agent——这决定了你的产出上限。Inc. 杂志将 Medvi 的模式称为"无员工十亿美元创业公司"的范本，标志着 AI 正在改变 solopreneurship 的面貌<sup><a href="#ref-8">[8]</a></sup>。</p>
+
+        <div class="section-break"></div>
+
+        <h2>五、对 OPC 创业者的启示</h2>
+
+        <p>Medvi 的成功和争议，给一人公司创业者留下了三条教训：</p>
+
+        <p><strong>AI 是放大器，不是护城河。</strong>Medvi 的增长来自 GLP-1 减重药的爆发性需求 + AI 工具的极致运用。没有 GLP-1 的市场时机，AI 再强也不会产生 4 亿美元。选对问题比选对工具更重要。</p>
+
+        <p><strong>效率不能替代合规。</strong>AI 可以帮你快速做很多事，但"能做"不等于"该做"。FDA 的警告函提醒我们：当监管框架还没跟上 AI 的速度时，创业者需要自我约束。</p>
+
+        <p><strong>故事要经得起追问。</strong>Medvi 最初被讲述为一个纯粹的励志故事——直到深入报道揭露了虚假内容和合规问题。对于 OPC 创业者来说，透明度和信誉比短期增长更重要。</p>
+
+        <p>Medvi 的案例，无论如何评价，都证明了一件事：<em>AI 时代的创业瓶颈，已经不是团队规模或启动资金，而是你能否让 AI 团队为你系统化地工作。</em>这正是 Solarian 要解决的核心问题。</p>
+
+        <div class="section-break"></div>
+
+        <h2>参考来源</h2>
+        <ol class="references">
+          <li id="ref-1">How AI Helped Medvi, a Telehealth Provider With Just Two Employees, Hit $401M in 2025 Sales · Erin Griffith · The New York Times · 2026 年 4 月 2 日 · <a href="https://www.techmeme.com/260402/p12" target="_blank" rel="noopener">https://www.techmeme.com/260402/p12</a></li>
+          <li id="ref-2">The Billion-Dollar Solo Startup: How One Man Built Medvi — $401M in Year One, $1.8B Run Rate in Year Two — With Just AI and His Brother · Quasa · 2026 · <a href="https://quasa.io/media/the-billion-dollar-solo-startup-how-one-man-built-medvi-401m-in-year-one-1-8b-run-rate-in-year-two-with-just-ai-and-his-brother" target="_blank" rel="noopener">https://quasa.io/media/the-billion-dollar-solo-startup-how-one-man-built-medvi-401m-in-year-one-1-8b-run-rate-in-year-two-with-just-ai-and-his-brother</a></li>
+          <li id="ref-3">Man Turns $20K and AI Tools Into a $1.8B Telehealth Business · eWeek · 2026 · <a href="https://www.eweek.com/news/ai-telehealth-startup-one-person-1-8b-revenue-neuron/" target="_blank" rel="noopener">https://www.eweek.com/news/ai-telehealth-startup-one-person-1-8b-revenue-neuron/</a></li>
+          <li id="ref-4">How one man used AI to build a fast-growing company selling GLP-1 · NewsNation · 2026 · <a href="https://www.newsnationnow.com/health/ai-telehealth-startup-billions-matthew-gallagher/" target="_blank" rel="noopener">https://www.newsnationnow.com/health/ai-telehealth-startup-billions-matthew-gallagher/</a></li>
+          <li id="ref-5">MEDVi FDA Warning Letter and $1.8 Billion NYT Profile: The Full Story · HealthDataConsortium · 2026 · <a href="https://healthdataconsortium.org/medvi-telehealth/" target="_blank" rel="noopener">https://healthdataconsortium.org/medvi-telehealth/</a></li>
+          <li id="ref-6">Beware The Magical Two-Person, $1 Billion AI-Driven Startup · Forrester · 2026 · <a href="https://www.forrester.com/blogs/beware-the-magical-two-person-1-billion-ai-driven-startup/" target="_blank" rel="noopener">https://www.forrester.com/blogs/beware-the-magical-two-person-1-billion-ai-driven-startup/</a></li>
+          <li id="ref-7">Amjad Masad on Medvi · LinkedIn · 2026 · <a href="https://www.linkedin.com/posts/amjadmasad_matthew-gallagher-grew-up-in-a-trailer-park-activity-7445568950811389952-kWQq" target="_blank" rel="noopener">https://www.linkedin.com/posts/amjadmasad</a></li>
+          <li id="ref-8">The 1-Employee Billion-Dollar Startup: How AI Is Changing the Face of Solopreneurship · Inc. · 2026 · <a href="https://www.inc.com/leila-sheridan/the-no-employee-billion-dollar-startup-how-ai-is-changing-the-face-of-solopreneurship/91326517" target="_blank" rel="noopener">https://www.inc.com/leila-sheridan/the-no-employee-billion-dollar-startup-how-ai-is-changing-the-face-of-solopreneurship/91326517</a></li>
+        </ol>
+
+        <div class="signature">
+          <strong>Solarian Research</strong>
+          OPC 趋势研究系列 · 第 3 期<br>
+          2026-04
+        </div>
+      </div>
+    </div>
   </div>
-</section>
 
-<!-- ========== FOOTER ========== -->
+</div>
+
 <footer>
   <div class="footer-inner">
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="index.html" class="logo" style="font-size:.9rem">
-        <img src="assets/logo.svg" alt="Solarian" style="height:22px">
+      <a href="/main" class="logo">
+        <img src="/assets/logo.svg" alt="Solarian" style="height:22px">
         Solarian
       </a>
       <span class="footer-copy">&copy; 2026 Solarian</span>
@@ -447,52 +435,56 @@ footer .logo{color:#fff;font-size:.9rem}
   </div>
 </footer>
 
-</div><!-- /blogGallery -->
-
-
 <script>
-// ========== ARTICLES DATA ==========
-const articles = {{ARTICLES_JS}};
-
-// ========== RENDER GALLERY ==========
-const gallery = document.getElementById('gallery');
-articles.forEach((a, i) => {
-  const card = document.createElement('a');
-  card.href = '/trends/' + a.id;
-  card.className = 'gallery-card reveal';
-  if (i > 0) card.style.animationDelay = (i * 60) + 'ms';
-
-  const coverHTML = a.cover
-    ? `<img class="card-cover" src="${a.cover}" alt="" loading="lazy">`
-    : `<div class="card-cover-placeholder ${a.grad || 'grad-1'}"></div>`;
-
-  card.innerHTML = `
-    ${coverHTML}
-    <div class="card-body">
-      <span class="card-tag ${a.tagClass}">${a.tag}</span>
-      <div class="card-title">${a.title}</div>
-      <div class="card-desc">${a.desc}</div>
-      <div class="card-meta">${a.source} · ${a.date} · ${a.readTime}</div>
-    </div>
-  `;
-  gallery.appendChild(card);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-// ========== SCROLL REVEAL ==========
-const obs = new IntersectionObserver(es => {
-  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-}, { threshold: .12, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// Lang toggle (visual-only fallback)
 function toggleLang(){
-  const t=document.getElementById('langToggle');
+  const t = document.getElementById('langToggle');
   if(!t) return;
   t.querySelector('.lang-zh').classList.toggle('active');
   t.querySelector('.lang-en').classList.toggle('active');
 }
+
+// Build TOC from h2 elements in article body
+(function(){
+  var content = document.querySelector('.article-body');
+  if (!content) return;
+  var toc = document.getElementById('articleToc');
+  var label = document.getElementById('tocLabel');
+  var headings = content.querySelectorAll('h2');
+  if (!headings.length) return;
+  label.style.display = '';
+  headings.forEach(function(h, i) {
+    if (!h.id) h.id = 'sec-' + i;
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.dataset.target = h.id;
+    a.textContent = h.textContent;
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById(h.id).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  var tocLinks = toc.querySelectorAll('a');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        tocLinks.forEach(function(link) {
+          link.classList.toggle('active', link.dataset.target === e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  headings.forEach(function(h) { observer.observe(h); });
+})();
 </script>
-<!-- ========== WAITLIST MODAL (shared bundle) ========== -->
+
+<!-- ========== WAITLIST MODAL ========== -->
 <div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
 <div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="wl-modal">
@@ -546,6 +538,6 @@ function toggleLang(){
     </div>
   </div>
 </div>
-<script src="assets/waitlist.js"></script>
+<script src="/assets/waitlist.js"></script>
 </body>
 </html>

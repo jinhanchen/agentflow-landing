@@ -7,9 +7,11 @@ Workflow:
   3. Open the output HTML files (double-click, file:// works)
   4. Commit both src/ and output HTML to git
 
-Current pages built:
-  news.html     ← src/news/{template.html, index.json, articles/*.html}
-  trends.html   ← src/trends/{template.html, index.json, articles/*.html}
+Pages built:
+  news.html         ← src/news/{template.html, index.json}
+  news/<id>.html    ← src/news/{article-page.html, articles/<id>.html}
+  trends.html       ← src/trends/{template.html, index.json}
+  trends/<id>.html  ← src/trends/{article-page.html, articles/<id>.html}
 
 To add a new article:
   a. Create src/<page>/articles/<id>.html (content only, no wrapper)
@@ -29,9 +31,8 @@ def build_news() -> None:
     src = ROOT / "src" / "news"
     template = (src / "template.html").read_text(encoding="utf-8")
     index = json.loads((src / "index.json").read_text(encoding="utf-8"))
-    articles_dir = src / "articles"
 
-    # ---------- Generate list rows ----------
+    # ---------- Generate list rows (now <a> links) ----------
     row_parts = []
     for art in index["articles"]:
         cover = art.get("cover", "")
@@ -47,7 +48,7 @@ def build_news() -> None:
             cover_html = '        <div class="news-cover news-cover-placeholder"></div>\n'
 
         row_parts.append(
-            f'<div class="news-row" onclick="openArticle(\'{art["id"]}\')">\n'
+            f'<a href="/news/{art["id"]}" class="news-row">\n'
             f'{cover_html}'
             f'        <div class="news-date">{art["date"]}</div>\n'
             f'        <div class="news-tag {art["tagClass"]}">{art["tag"]}</div>\n'
@@ -56,44 +57,45 @@ def build_news() -> None:
             f'          <div class="news-summary">{art["summary"]}</div>\n'
             f'        </div>\n'
             f'        <div class="news-arrow">→</div>\n'
-            f'      </div>'
+            f'      </a>'
         )
-    # Join with blank line + row-level indent (6 spaces) to match original layout
     rows_html = "\n\n      ".join(row_parts)
-
-    # ---------- Generate article blocks ----------
     output = template.replace("{{NEWS_ROWS}}", rows_html)
-
-    article_placeholder_re = re.compile(r"\{\{ARTICLE:([\w-]+)\}\}")
-
-    def replace_article(m: re.Match) -> str:
-        aid = m.group(1)
-        meta = next((a for a in index["articles"] if a["id"] == aid), None)
-        if meta is None:
-            raise ValueError(
-                f"Template references article '{aid}' but it's missing from index.json"
-            )
-        inner = (articles_dir / f"{aid}.html").read_text(encoding="utf-8").rstrip("\n")
-        author = meta.get("author", "")
-        # articleTag is the data-tag attribute on <article> (for JS hooks);
-        # if not specified, fall back to the row tag label.
-        article_tag = meta.get("articleTag", meta["tag"])
-        return (
-            f'<article class="story" id="article-{aid}" style="display:none"\n'
-            f'               data-tag="{article_tag}" data-date="{meta["date"]}" data-author="{author}">\n'
-            f'{inner}\n'
-            f'      </article>'
-        )
-
-    output = article_placeholder_re.sub(replace_article, output)
-
-    # ---------- Write (force LF line endings for clean git diffs) ----------
-    out_path = ROOT / "news.html"
-    # Normalize any CRLF from sources down to LF so the output is consistent
     output = output.replace("\r\n", "\n")
+
+    out_path = ROOT / "news.html"
     with open(out_path, "w", encoding="utf-8", newline="\n") as f:
         f.write(output)
     print(f"[OK] Built {out_path.name} | {len(index['articles'])} articles | {len(output):,} chars")
+
+
+def build_news_articles() -> None:
+    src = ROOT / "src" / "news"
+    template = (src / "article-page.html").read_text(encoding="utf-8")
+    index = json.loads((src / "index.json").read_text(encoding="utf-8"))
+    articles_dir = src / "articles"
+    out_dir = ROOT / "news"
+    out_dir.mkdir(exist_ok=True)
+
+    for art in index["articles"]:
+        content = (articles_dir / f"{art['id']}.html").read_text(encoding="utf-8").rstrip("\n")
+
+        output = template
+        output = output.replace("{{TITLE}}", art["title"])
+        output = output.replace("{{DESC}}", art.get("summary", ""))
+        output = output.replace("{{TAG_CLASS}}", art.get("tagClass", ""))
+        output = output.replace("{{TAG}}", art.get("articleTag", art.get("tag", "")))
+        output = output.replace("{{DATE}}", art["date"])
+        output = output.replace("{{AUTHOR}}", art.get("author", ""))
+        output = output.replace("{{CONTENT}}", content)
+        output = output.replace("{{CANONICAL_ID}}", art["id"])
+        output = output.replace("\r\n", "\n")
+
+        out_path = out_dir / f"{art['id']}.html"
+        with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(output)
+
+    print(f"[OK] Built {len(index['articles'])} news article pages → news/")
 
 
 def _js_single_quoted(s: str) -> str:
@@ -118,21 +120,18 @@ def build_trends() -> None:
     src = ROOT / "src" / "trends"
     template = (src / "template.html").read_text(encoding="utf-8")
     index = json.loads((src / "index.json").read_text(encoding="utf-8"))
-    articles_dir = src / "articles"
 
     parts = []
     for art in index["articles"]:
-        content = (articles_dir / f"{art['id']}.html").read_text(encoding="utf-8").rstrip("\n")
         grad_line = ", grad: null" if art.get("gradNull") else ""
         parts.append(
             f"  {{\n"
-            f"    id: {art['num']},\n"
+            f"    id: {_js_single_quoted(art['id'])},\n"
             f"    title: {_js_single_quoted(art['title'])},\n"
             f"    tag: {_js_single_quoted(art['tag'])}, tagClass: {_js_single_quoted(art['tagClass'])},\n"
             f"    desc: {_js_single_quoted(art['desc'])},\n"
             f"    source: {_js_single_quoted(art['source'])}, date: {_js_single_quoted(art['date'])}, readTime: {_js_single_quoted(art['readTime'])},\n"
-            f"    cover: {_js_single_quoted(art['cover'])}{grad_line},\n"
-            f"    content: {_js_template_literal(content)}\n"
+            f"    cover: {_js_single_quoted(art.get('cover', ''))}{grad_line}\n"
             f"  }}"
         )
 
@@ -146,10 +145,50 @@ def build_trends() -> None:
     print(f"[OK] Built {out_path.name} | {len(index['articles'])} articles | {len(output):,} chars")
 
 
+def build_trends_articles() -> None:
+    src = ROOT / "src" / "trends"
+    template = (src / "article-page.html").read_text(encoding="utf-8")
+    index = json.loads((src / "index.json").read_text(encoding="utf-8"))
+    articles_dir = src / "articles"
+    out_dir = ROOT / "trends"
+    out_dir.mkdir(exist_ok=True)
+
+    for art in index["articles"]:
+        content = (articles_dir / f"{art['id']}.html").read_text(encoding="utf-8").rstrip("\n")
+
+        cover = art.get("cover", "")
+        if cover:
+            cover_html = f'<img class="article-cover" src="/{cover}" alt="">'
+        else:
+            grad = "grad-1" if not art.get("gradNull") else "grad-1"
+            cover_html = f'<div class="article-cover-grad card-cover-placeholder {grad}"></div>'
+
+        output = template
+        output = output.replace("{{TITLE}}", art["title"])
+        output = output.replace("{{DESC}}", art.get("desc", ""))
+        output = output.replace("{{TAG_CLASS}}", art["tagClass"])
+        output = output.replace("{{TAG}}", art["tag"])
+        output = output.replace("{{SOURCE}}", art["source"])
+        output = output.replace("{{DATE}}", art["date"])
+        output = output.replace("{{READ_TIME}}", art["readTime"])
+        output = output.replace("{{COVER_HTML}}", cover_html)
+        output = output.replace("{{CONTENT}}", content)
+        output = output.replace("{{CANONICAL_ID}}", art["id"])
+        output = output.replace("\r\n", "\n")
+
+        out_path = out_dir / f"{art['id']}.html"
+        with open(out_path, "w", encoding="utf-8", newline="\n") as f:
+            f.write(output)
+
+    print(f"[OK] Built {len(index['articles'])} trends article pages → trends/")
+
+
 def main() -> int:
     try:
         build_news()
+        build_news_articles()
         build_trends()
+        build_trends_articles()
     except Exception as e:
         print(f"[FAIL] Build failed: {e}", file=sys.stderr)
         return 1
