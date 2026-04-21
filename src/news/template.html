@@ -18,7 +18,7 @@
   --text:#1A1F2E;
   --text-sub:rgba(26,31,46,0.65);
   --text-dim:rgba(26,31,46,0.35);
-  --accent:#0d9488;
+  --accent:#2D8B92;
   --accent-sub:rgba(13,148,136,0.12);
   --accent-secondary:#D97757;
   --font-display:'Space Grotesk','Noto Sans SC',sans-serif;
@@ -38,100 +38,7 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-/* ========== NAV (unified — matches index.html) ========== */
-nav{
-  position:sticky;top:14px;z-index:100;
-  margin:14px 18px 0;
-  border-radius:999px;
-  padding:9px 13px 9px 14px;
-  background:rgba(20,32,28,.94);
-  backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
-  box-shadow:0 10px 30px rgba(15,24,22,.18), inset 0 0 0 1px rgba(255,255,255,.04);
-}
-.nav-inner{
-  max-width:none;padding-inline:0;margin:0;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-}
-.logo{
-  font-family:var(--font-display);font-size:1.05rem;font-weight:600;
-  display:flex;align-items:center;gap:9px;letter-spacing:-.3px;
-  color:#fff;
-}
-nav .nav-logo-badge{
-  position:relative;overflow:hidden;display:inline-block;
-  width:42px;height:42px;
-  background:#FAF6EC;
-  border-radius:50%;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.08),
-    0 4px 10px rgba(0,0,0,.25),
-    inset 0 -1px 0 rgba(20,32,28,.08);
-  transition:transform .3s ease, box-shadow .3s ease;
-  flex-shrink:0;
-}
-nav .logo:hover .nav-logo-badge{
-  transform:translateY(-1px);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.12),
-    0 8px 18px rgba(13,138,117,.25),
-    inset 0 -1px 0 rgba(20,32,28,.08);
-}
-nav .nav-logo-badge img{
-  position:absolute;left:50%;top:50%;
-  width:88%;height:auto;
-  transform:translate(-50%,-50%);
-  display:block;
-}
-.nav-links{display:flex;align-items:center;gap:40px;list-style:none}
-.nav-links a{font-size:.85rem;font-weight:400;color:rgba(255,255,255,0.72);transition:color .2s}
-.nav-links a:hover{color:#fff}
-.nav-links a.current{color:#4FD1C5;font-weight:500}
-
-/* Nav dropdown */
-.nav-dropdown{position:relative}
-.nav-dd-menu{
-  position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%);
-  min-width:260px;background:rgba(15,23,41,0.95);backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:8px;
-  opacity:0;visibility:hidden;pointer-events:none;
-  transition:opacity 0.2s,transform 0.2s,visibility 0.2s;
-  transform:translateX(-50%) translateY(-6px);
-}
-.nav-dropdown:hover .nav-dd-menu{
-  opacity:1;visibility:visible;pointer-events:auto;
-  transform:translateX(-50%) translateY(0);
-}
-.dd-item{
-  display:block;padding:10px 14px;border-radius:8px;
-  text-decoration:none;transition:background 0.15s;
-}
-.dd-item:hover{background:rgba(255,255,255,0.04)}
-.dd-item strong{display:block;font-size:.85rem;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:2px}
-.dd-item span{display:block;font-size:.72rem;color:rgba(255,255,255,0.55);line-height:1.4}
-.dd-footer{border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;padding-top:4px}
-.dd-footer a{display:block;padding:8px 14px;font-size:.75rem;color:var(--accent)}
-
-/* Lang toggle */
-.lang-toggle{
-  display:inline-flex;
-  border:1px solid rgba(255,255,255,0.14);border-radius:100px;overflow:hidden;
-  background:rgba(255,255,255,0.02);cursor:pointer;
-}
-.lang-toggle span{
-  padding:4px 10px;font-size:.72rem;font-weight:600;
-  color:rgba(255,255,255,0.55);transition:all .2s;
-}
-.lang-toggle span.active{color:#4FD1C5;background:rgba(13,148,136,0.22)}
-
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 24px;border-radius:100px;
-  font-family:var(--font-body);font-size:.88rem;font-weight:500;
-  border:1px solid var(--border);background:transparent;color:var(--text);
-  cursor:pointer;transition:all .25s var(--ease);
-}
-.btn-fill{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-.btn-nav{padding:7px 18px;font-size:.82rem;border-radius:100px}
+/* Nav + nav-button CSS moved to shared assets/nav.css */
 
 /* ========== PAGE HERO (list view) ========== */
 .page-hero{
@@ -473,6 +380,8 @@ article.story sup a:hover{text-decoration:underline}
   .footer-inner{flex-direction:column;gap:14px}
 }
 </style>
+<link rel="stylesheet" href="assets/nav.css">
+<link rel="stylesheet" href="assets/waitlist.css">
 </head>
 <body>
 
@@ -512,7 +421,7 @@ article.story sup a:hover{text-decoration:underline}
           <span class="lang-en">EN</span>
         </button>
       </li>
-      <li><a href="index.html#waitlist"><button class="btn btn-nav btn-fill">加入 Waitlist</button></a></li>
+      <li><button class="btn btn-nav btn-fill" onclick="openWaitlist()">加入 Waitlist</button></li>
     </ul>
   </div>
 </nav>
@@ -559,18 +468,20 @@ article.story sup a:hover{text-decoration:underline}
     </div>
   </div>
 
-  <!-- Bottom CTA -->
-  <div class="story-cta">
-    <div class="story-cta-inner">
-      <h3>一起出发</h3>
-      <p>Solarian Q2 发布。留下邮箱，第一时间获得内测资格。</p>
-      <a href="index.html#waitlist" class="btn btn-fill">
-        加入 Waitlist
-        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
 </div>
+
+<!-- ========== BOTTOM CTA (shared) ========== -->
+<section class="cta-section" id="waitlist">
+  <div class="cta-box reveal">
+    <div class="cta-eyebrow">Waitlist · Q2 2026</div>
+    <h2>加入 <em>Waitlist</em></h2>
+    <p class="cta-sub">Solarian Q2 发布。告诉我们你的需求，第一时间获得内测资格。</p>
+    <button class="btn-waitlist-open" onclick="openWaitlist()">
+      <span>加入 Waitlist</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -673,5 +584,60 @@ function closeArticle(){
 })();
 </script>
 
+<!-- ========== WAITLIST MODAL (shared bundle) ========== -->
+<div class="wl-toast" id="wlToast">你已加入 Waitlist，敬请期待！</div>
+<div class="wl-overlay" id="waitlistModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="wl-modal">
+    <button class="wl-close" onclick="this.closest('.wl-overlay').classList.remove('open')" aria-label="Close">&times;</button>
+    <div class="wl-header">
+      <h3>加入 Solarian Waitlist</h3>
+      <p>帮助我们了解你的需求，让 Solarian 更好地为你服务</p>
+    </div>
+    <form id="waitlistForm" class="wl-form" onsubmit="return submitWaitlist(event)">
+      <div class="wl-row">
+        <div class="wl-field"><label>姓名 <span class="wl-req">*</span></label><input type="text" name="name" required placeholder="你的名字"></div>
+        <div class="wl-field"><label>邮箱 <span class="wl-req">*</span></label><input type="email" name="email" required placeholder="name@company.com"></div>
+      </div>
+      <div class="wl-row">
+        <div class="wl-field"><label>所在国家/地区 <span class="wl-req">*</span></label>
+          <select name="country" required>
+            <option value="" disabled selected>选择国家/地区</option>
+            <option value="CN">中国</option><option value="US">美国</option><option value="GB">英国</option>
+            <option value="JP">日本</option><option value="KR">韩国</option><option value="SG">新加坡</option>
+            <option value="DE">德国</option><option value="FR">法国</option><option value="AU">澳大利亚</option>
+            <option value="CA">加拿大</option><option value="IN">印度</option><option value="BR">巴西</option>
+            <option value="AE">阿联酋</option><option value="HK">中国香港</option><option value="TW">中国台湾</option>
+            <option value="OTHER">其他</option>
+          </select>
+        </div>
+        <div class="wl-field"><label>所在行业 <span class="wl-req">*</span></label>
+          <select name="industry" required>
+            <option value="" disabled selected>选择行业</option>
+            <option value="tech">科技/互联网</option><option value="finance">金融/投资</option>
+            <option value="ecommerce">电商/零售</option><option value="education">教育/培训</option>
+            <option value="media">媒体/内容</option><option value="consulting">咨询/服务</option>
+            <option value="manufacturing">制造/工业</option><option value="healthcare">医疗/健康</option>
+            <option value="realestate">房地产/建筑</option><option value="legal">法律/合规</option>
+            <option value="freelancer">自由职业/独立开发</option><option value="student">学生/研究</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+      </div>
+      <div class="wl-field"><label>你的角色/职位</label><input type="text" name="role" placeholder="如：产品经理、创始人、开发者..."></div>
+      <div class="wl-field"><label>你目前工作中最大的痛点是什么？ <span class="wl-req">*</span></label><textarea name="painpoints" required rows="3" placeholder="例如：每天要在 5 个 AI 工具间切换..."></textarea></div>
+      <div class="wl-field"><label>你希望 Solarian 帮你完成哪些具体工作？</label><textarea name="usecase" rows="3" placeholder="例如：自动生成周报、管理社交媒体内容..."></textarea></div>
+      <button type="submit" class="wl-submit" id="wlSubmitBtn">
+        <span>提交申请</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+    <div class="wl-success" id="wlSuccess" style="display:none">
+      <div class="wl-success-icon">&#10003;</div>
+      <h3>欢迎加入 Solarian！</h3>
+      <p>我们已收到你的申请，会在第一时间通知你内测开放。</p>
+    </div>
+  </div>
+</div>
+<script src="assets/waitlist.js"></script>
 </body>
 </html>
