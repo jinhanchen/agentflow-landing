@@ -10,7 +10,7 @@
       "source": "新华网",
       "date": "2026.03",
       "readTime": "8 分钟",
-      "cover": "assets/news_xinhua_opc.png"
+      "cover": "assets/trends_001_network.png"
     },
     {
       "id": "002",
@@ -22,7 +22,7 @@
       "source": "深圳工信局",
       "date": "2026.03",
       "readTime": "9 分钟",
-      "cover": "assets/news_shenzhen_opc.png"
+      "cover": "assets/trends_002_city.png"
     },
     {
       "id": "003",
@@ -60,8 +60,7 @@
       "source": "Garry Tan, YC CEO",
       "date": "2025",
       "readTime": "9 分钟",
-      "cover": "assets/garry_tan.jpg",
-      "gradNull": true
+      "cover": "assets/trends_005_yc.png"
     },
     {
       "id": "006",
@@ -73,8 +72,7 @@
       "source": "政策解读",
       "date": "2024.07",
       "readTime": "10 分钟",
-      "cover": "assets/n8n_series_c.png",
-      "gradNull": true
+      "cover": "assets/trends_006_door.png"
     },
     {
       "id": "007",
@@ -86,8 +84,7 @@
       "source": "Solarian 研究",
       "date": "2026",
       "readTime": "9 分钟",
-      "cover": "assets/scenario_illustration.png",
-      "gradNull": true
+      "cover": "assets/trends_007_tools.png"
     },
     {
       "id": "008",
@@ -112,7 +109,7 @@
       "source": "Solarian 研究",
       "date": "2026.04",
       "readTime": "5 分钟",
-      "cover": "assets/workflow_flywheel.svg"
+      "cover": "assets/trends_009_stack.png"
     },
     {
       "id": "010",
@@ -124,7 +121,7 @@
       "source": "Solarian 研究",
       "date": "2026.04",
       "readTime": "6 分钟",
-      "cover": "assets/scenario_illustration.png"
+      "cover": "assets/trends_010_competition.png"
     },
     {
       "id": "011",
@@ -136,7 +133,7 @@
       "source": "硅谷101",
       "date": "2026.02",
       "readTime": "6 分钟",
-      "cover": "assets/n8n_series_c.png"
+      "cover": "assets/trends_011_saas.png"
     },
     {
       "id": "012",
@@ -148,7 +145,7 @@
       "source": "实战案例",
       "date": "2026.04",
       "readTime": "5 分钟",
-      "cover": "assets/cockpit_screenshot.png"
+      "cover": "assets/trends_012_cost.png"
     }
   ]
 }
