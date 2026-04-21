@@ -62,132 +62,53 @@ body{
 }
 a{color:inherit;text-decoration:none}
 
-/* ========== HERO SECTION — Editorial Masthead ========== */
+/* ========== HERO SECTION — Left-block compact ========== */
 .blog-hero{
   background:#FFFFFF;
   padding-top:64px;
+  border-bottom:1.5px solid var(--navy);
 }
-
-/* Dateline strip — newspaper edition meta */
-.hero-dateline{
-  border-top:1px solid rgba(26,45,92,0.12);
-  border-bottom:1px solid rgba(26,45,92,0.12);
-  padding:10px 40px;
-}
-.hero-dateline-inner{
+.hero-compact{
   max-width:1100px;margin:0 auto;
-  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:32px;
 }
-.hero-dateline-left,.hero-dateline-right{
-  font-family:var(--font-display);
-  font-size:.68rem;font-weight:500;
-  letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(26,45,92,0.38);
+.hero-title-block{
+  display:flex;flex-direction:column;
+  gap:3px;
 }
-.hero-dateline-center{
+.hero-pub-flag{
   font-family:var(--font-display);
-  font-size:.7rem;font-weight:700;
-  letter-spacing:.24em;text-transform:uppercase;
+  font-size:.68rem;font-weight:700;
+  letter-spacing:.28em;text-transform:uppercase;
   color:var(--teal);
 }
-
-/* Thick ink rule above masthead */
-.hero-thick-rule{
-  height:1.5px;
-  background:var(--navy);
-}
-
-/* Editorial masthead area */
-.hero-masthead{
-  text-align:center;
-  padding:40px 40px 32px;
-  max-width:1100px;margin:0 auto;
-}
-
-/* Brand mark above title */
-.masthead-icon{
-  display:flex;justify-content:center;
-  margin-bottom:14px;
-}
-.masthead-icon img{
-  height:32px;width:auto;
-  opacity:.65;
-}
-
-/* Section flag above title */
-.masthead-flag{
-  display:block;
-  font-family:var(--font-display);
-  font-size:.72rem;font-weight:700;
-  letter-spacing:.3em;text-transform:uppercase;
-  color:var(--teal);
-  margin-bottom:10px;
-}
-
-/* Masthead title */
-.masthead-name{
-  display:block;
+.hero-blog-name{
   font-family:'Noto Serif SC',Georgia,serif;
-  font-size:clamp(3rem,6.5vw,5.4rem);
-  font-weight:700;
-  letter-spacing:-1px;
-  line-height:.92;
+  font-size:2.2rem;font-weight:700;
+  letter-spacing:-.5px;line-height:1;
   color:#1A1A1A;
+  margin:0;
 }
-
-/* Ornamental rule between title and tagline */
-.masthead-rule-thin{
-  display:flex;align-items:center;gap:20px;
-  margin:22px 0 18px;
-}
-.masthead-rule-thin::before,.masthead-rule-thin::after{
-  content:'';flex:1;height:1px;background:rgba(26,45,92,0.15);
-}
-.masthead-rule-icon{
-  width:5px;height:5px;border-radius:50%;
-  background:var(--teal);
-  opacity:.55;
-  flex-shrink:0;
-}
-
-/* Italic serif tagline */
-.masthead-tagline{
+.hero-blog-tagline{
   font-family:'Noto Serif SC',Georgia,serif;
-  font-size:.97rem;
-  font-weight:400;
+  font-size:.82rem;font-weight:400;
   font-style:italic;
-  color:rgba(26,45,92,.5);
-  line-height:1.75;
+  color:rgba(26,45,92,.45);
   letter-spacing:.01em;
+  line-height:1.45;
+  margin-top:6px;
 }
-.masthead-tagline em{font-style:normal}
-
-/* Stats strip */
-.masthead-stats-row{
-  display:inline-flex;align-items:center;
-  margin-top:22px;
-  font-family:var(--font-display);
-  font-size:.7rem;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(26,45,92,.4);
-  border-top:1px solid rgba(26,45,92,.12);
-  border-bottom:1px solid rgba(26,45,92,.12);
-  padding:7px 0;
-}
-.masthead-stats-row .stat-item{
-  padding:0 22px;
-}
-.masthead-stats-row .stat-item+.stat-item{
-  border-left:1px solid rgba(26,45,92,.15);
-}
-.masthead-stats-row .stat-item strong{
-  color:var(--navy);font-weight:700;
-}
-
-/* Thick bottom ink rule */
-.hero-bottom-rule{
-  height:1.5px;
-  background:var(--navy);
+.hero-blog-tagline em{font-style:normal}
+.hero-meta-stats{
+  font-family:var(--font-mono);
+  font-size:.7rem;
+  color:rgba(26,45,92,.38);
+  letter-spacing:.1em;
+  text-align:right;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
 /* ========== FILTER TABS ========== */
@@ -547,10 +468,9 @@ footer .logo{color:var(--white);font-size:.9rem}
   .sub-sidebar-back{margin-bottom:16px}
 }
 @media(max-width:768px){
-  .hero-masthead{padding:28px 20px 24px}
-  .masthead-name{font-size:clamp(2.4rem,9vw,3.8rem);letter-spacing:-.5px}
-  .hero-dateline{padding:9px 20px}
-  .masthead-stats-row .stat-item{padding:0 14px}
+  .hero-compact{padding:14px 20px;gap:16px}
+  .hero-blog-name{font-size:1.8rem}
+  .hero-meta-stats{display:none}
   .filter-inner{padding:0 20px}
   .gallery-section{padding:32px 20px 80px}
   .article-grid{grid-template-columns:1fr}
@@ -600,46 +520,16 @@ footer .logo{color:var(--white);font-size:.9rem}
 
 <div id="blogGallery">
 
-<!-- ========== HERO — Editorial Masthead ========== -->
+<!-- ========== HERO — Left-block compact ========== -->
 <section class="blog-hero">
-
-  <!-- Dateline: publication meta strip -->
-  <div class="hero-dateline">
-    <div class="hero-dateline-inner">
-      <span class="hero-dateline-left">一人公司时代观察</span>
-      <span class="hero-dateline-center">Solarian · OPC Research</span>
-      <span class="hero-dateline-right">2026 · 持续更新</span>
+  <div class="hero-compact">
+    <div class="hero-title-block">
+      <span class="hero-pub-flag">OPC Research</span>
+      <h1 class="hero-blog-name">OPC 博客</h1>
+      <p class="hero-blog-tagline">追踪一人公司时代的浪潮——政策、案例、工具、洞见<br><em>A company of one, a team of many.</em></p>
     </div>
+    <div class="hero-meta-stats"><span id="heroTotal">—</span> 篇 · 6 话题 · 每周更新</div>
   </div>
-
-  <!-- Thick ink rule above masthead -->
-  <div class="hero-thick-rule"></div>
-
-  <!-- Editorial masthead -->
-  <div class="hero-masthead">
-    <div class="masthead-icon">
-      <img src="assets/solarian-logo-icon.svg" alt="Solarian" aria-hidden="true">
-    </div>
-    <span class="masthead-flag">OPC Research</span>
-    <h1 class="masthead-name">OPC 博客</h1>
-
-    <div class="masthead-rule-thin"><span class="masthead-rule-icon"></span></div>
-
-    <p class="masthead-tagline">
-      追踪一人公司时代的浪潮——政策、案例、工具、洞见<br>
-      <em>A company of one, a team of many.</em>
-    </p>
-
-    <div class="masthead-stats-row">
-      <div class="stat-item"><strong id="heroTotal">—</strong> 篇文章</div>
-      <div class="stat-item"><strong>6</strong> 个话题</div>
-      <div class="stat-item">每周更新</div>
-    </div>
-  </div>
-
-  <!-- Thick bottom ink rule — newspaper fold -->
-  <div class="hero-bottom-rule"></div>
-
 </section>
 
 <!-- ========== FILTER BAR ========== -->
