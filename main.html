@@ -2662,17 +2662,22 @@ nav .dd-item:hover{background:rgba(255,255,255,0.04)}
 }
 
 /* SECTION 02 — ANSWER */
-.sol-bridge .s2{margin-top:72px;padding:0 0 32px;position:relative}
+.sol-bridge .s2{margin-top:140px;padding:0 0 32px;position:relative}
 .sol-bridge .s2::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 900px 400px at 50% 0%,rgba(128,210,170,.18),transparent 70%),
-    radial-gradient(ellipse 700px 500px at 50% 100%,rgba(45,139,146,.10),transparent 70%);
+  content:"";position:absolute;
+  top:-140px;left:0;right:0;bottom:0;
+  background:linear-gradient(to bottom,
+    transparent 0%,
+    rgba(128,210,170,.04) 20%,
+    rgba(128,210,170,.13) 42%,
+    rgba(128,210,170,.17) 62%,
+    rgba(45,139,146,.10) 100%
+  );
   pointer-events:none;z-index:0;
 }
 .sol-bridge .s2 > *{position:relative;z-index:1}
 
-.sol-bridge .s2-head{text-align:center;margin-bottom:48px;padding-top:56px}
+.sol-bridge .s2-head{text-align:center;margin-bottom:48px;padding-top:40px}
 .sol-bridge .s2-head h2{
   font-family:var(--sb-sans);font-weight:700;
   font-size:clamp(2rem,3.6vw,2.9rem);
